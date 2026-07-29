@@ -19,3 +19,9 @@ The more you know, the better you can help. But remember — you're learning abo
 ## Related
 
 - [Agent workspace](/concepts/agent-workspace)
+
+## Ирина (@irina_mltsva)
+- **ID:** 739016616
+- **Роль:** Бизнес-аналитик
+- **Добавлен:** 29 июля 2026
+- **Статус:** допущен в Telegram-бот (main-агент)
