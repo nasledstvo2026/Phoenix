@@ -1,0 +1,34 @@
+# Чужие скиллы (Лунта)
+skills/ba-*/
+skills/katrin-*/
+skills/social-*/
+skills/lena-*/
+skills/danil-*/
+skills/inheritance-*/
+skills/research-*/
+skills/interview-*/
+skills/business-*/
+skills/skill-standards/
+skills/taskflow-handoff/
+skills/telegram-bot-expert/
+skills/frontend/
+
+# Чужие файлы (Лунта) в корне
+about-*.html
+aidj/
+aidj*.html
+ai-dj-*.py
+aidj-*.py
+architecture.*
+architecture-*.png
+architecture-*.svg
+benchmark*
+bt.*
+bt-sessions/
+business-requirements.md
+convert-br-to-docx.py
+schedule_control_and_risks.md
+auto-brd-*.md
+backup-*/
+backup-*.json
+activity.html

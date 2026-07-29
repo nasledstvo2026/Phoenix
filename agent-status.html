@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Феникс 🔥 — Дашборд агентов</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0d1117;
+      color: #c9d1d9;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+    .container { max-width: 800px; margin: 0 auto; }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    h1 span { background: #21262d; padding: 0.2rem 0.6rem; border-radius: 6px; font-size: 0.8rem; color: #8b949e; }
+    .subtitle { color: #8b949e; margin-bottom: 2rem; font-size: 0.95rem; }
+    .agent {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .agent-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.3rem;
+    }
+    .agent-name { font-size: 1.15rem; font-weight: 600; }
+    .badge {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+      font-weight: 500;
+    }
+    .badge-active { background: #1b3827; color: #3fb950; border: 1px solid #2ea043; }
+    .badge-inactive { background: #3d1f1f; color: #f85149; border: 1px solid #da3633; }
+    .agent-role { color: #8b949e; font-size: 0.85rem; margin-bottom: 0.5rem; }
+    .agent-desc { color: #8b949e; font-size: 0.85rem; line-height: 1.4; }
+    .footer {
+      text-align: center;
+      color: #484f58;
+      font-size: 0.8rem;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid #21262d;
+    }
+    .empty { text-align: center; padding: 3rem; color: #484f58; }
+    .stats {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .stat {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 0.8rem 1.2rem;
+      text-align: center;
+      flex: 1;
+    }
+    .stat-value { font-size: 1.4rem; font-weight: 700; color: #58a6ff; }
+    .stat-label { font-size: 0.75rem; color: #8b949e; margin-top: 0.2rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔥 Феникс <span>v1.0</span></h1>
+    <p class="subtitle">Дашборд мультиагентной системы</p>
+    <div class="stats" id="stats">
+      <div class="stat"><div class="stat-value" id="totalAgents">—</div><div class="stat-label">Агентов</div></div>
+      <div class="stat"><div class="stat-value" id="activeAgents">—</div><div class="stat-label">Активных</div></div>
+      <div class="stat"><div class="stat-value" id="lastUpdate">—</div><div class="stat-label">Обновлено</div></div>
+    </div>
+    <div id="agents"></div>
+    <div class="footer">
+      🔥 Феникс &mdash; обновлено <span id="timestamp"></span>
+    </div>
+  </div>
+  <script>
+    fetch('agents-registry.json')
+      .then(r => r.json())
+      .then(data => {
+        const agents = data.agents || {};
+        const keys = Object.keys(agents);
+        const active = keys.filter(k => agents[k].status === 'active').length;
+        document.getElementById('totalAgents').textContent = keys.length;
+        document.getElementById('activeAgents').textContent = active;
+        document.getElementById('lastUpdate').textContent = new Date().toLocaleDateString('ru-RU');
+
+        const container = document.getElementById('agents');
+        container.innerHTML = '';
+        keys.forEach(key => {
+          const a = agents[key];
+          const div = document.createElement('div');
+          div.className = 'agent';
+          const status = a.status === 'active' ? 'Активен' : 'Неактивен';
+          const badgeClass = a.status === 'active' ? 'badge-active' : 'badge-inactive';
+          div.innerHTML = `
+            <div class="agent-header">
+              <span class="agent-name">${a.name || key}</span>
+              <span class="badge ${badgeClass}">${status}</span>
+            </div>
+            <div class="agent-role">${a.role || ''}</div>
+            <div class="agent-desc">${a.description || ''}</div>
+          `;
+          container.appendChild(div);
+        });
+        document.getElementById('timestamp').textContent = new Date().toLocaleString('ru-RU');
+      })
+      .catch(() => {
+        document.getElementById('agents').innerHTML = '<div class="empty">Не удалось загрузить данные агентов</div>';
+      });
+  </script>
+</body>
+</html>
