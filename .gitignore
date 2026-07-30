@@ -32,3 +32,7 @@ auto-brd-*.md
 backup-*/
 backup-*.json
 activity.html
+
+# OpenClaw workspace state
+openclaw-workspace-state.json
+state.json
