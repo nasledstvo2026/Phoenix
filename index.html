@@ -57,6 +57,21 @@
     .desc h2 { color: #e5e7eb; font-size: 17px; margin: 20px 0 10px; }
     .desc strong { color: #cbd5e1; }
     hr { border: none; border-top: 1px solid #1e293b; margin: 28px 0; }
+    .results { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 12px; }
+    @media (max-width: 640px) { .results { grid-template-columns: 1fr; } }
+    .result-card { background: #111827; border: 1px solid #1e293b; border-radius: 10px; padding: 18px; }
+    .result-card h3 { color: #e5e7eb; font-size: 15px; margin-bottom: 10px; }
+    .result-card .score { font-size: 28px; font-weight: 700; margin: 8px 0 4px; }
+    .score-pass { color: #3fb950; }
+    .score-warn { color: #d29922; }
+    .result-card .detail { font-size: 12px; color: #64748b; line-height: 1.5; }
+    .example { background: #111827; border: 1px solid #1e293b; border-radius: 10px; padding: 20px; margin-top: 12px; }
+    .example .q { background: rgba(67,56,202,0.1); border-left: 3px solid #4338ca; padding: 12px 16px; border-radius: 0 6px 6px 0; margin-bottom: 14px; font-size: 14px; color: #cbd5e1; }
+    .example .q .q-label { font-size: 11px; color: #818cf8; font-weight: 600; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .example .a { background: rgba(15,118,110,0.08); border-left: 3px solid #0f766e; padding: 14px 16px; border-radius: 0 6px 6px 0; font-size: 14px; color: #cbd5e1; line-height: 1.6; }
+    .example .a .a-label { font-size: 11px; color: #2dd4bf; font-weight: 600; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .example .a .ref { color: #2dd4bf; font-size: 12px; margin-top: 8px; }
+    .badge-pass { display: inline-block; background: rgba(63,185,80,0.12); color: #3fb950; padding: 2px 10px; border-radius: 10px; font-size: 11px; font-weight: 600; }
   </style>
 </head>
 <body>
@@ -226,6 +241,71 @@
   <p><strong>Зона 3 — Embedding-поиск.</strong> law-search API на отдельном systemd-сервисе принимает REST-запросы. Векторный индекс FAISS (2981 чанк, время поиска ~45 мс) построен на эмбеддингах multilingual-e5-small (384 измерения, ONNX-рантайм). На входе работает препроцессинг: раскрытие аббревиатур по словарю tz-abbrev-dict.md для повышения точности поиска.</p>
 
   <p><strong>Зона 4 — Инфраструктура.</strong> Холодный рестарт гейтвея через safe-restart.sh (12 секунд, systemd-run таймер гарантирует перезапуск). Гейтвей и law-search — независимые systemd-юниты; law-search переживает рестарт гейтвея. Тяжёлые задачи агентов изолируются через sessions_spawn isolated для предотвращения переполнения контекста.</p>
+
+  <hr>
+
+  <h2>🧪 Результаты тестирования</h2>
+
+  <div class="results">
+    <div class="result-card">
+      <h3>🔬 ИФТ v2 — SKILL.md v2</h3>
+      <div class="score score-pass">5 / 5</div>
+      <div class="detail">
+        <span class="badge-pass">ПРОЙДЕН</span> · Июль 2026<br>
+        Т1: штраф ст. 135 НК — 1/150 ставки ЦБ ✅<br>
+        Т2: срок ПНО — 3 часа (п. 6 ст. 46 НК) ✅<br>
+        Т3: ст. 20 425-ФЗ — переходный период ✅<br>
+        Т4: терминология — честный ответ про СМЭВ-3 ✅<br>
+        Т5: приоритет НК над 425-ФЗ ✅<br>
+        Все 5 вердиктов верификатора — ПРИНЯТ
+      </div>
+    </div>
+    <div class="result-card">
+      <h3>🔄 Recovery — холодный рестарт</h3>
+      <div class="score score-pass">6 / 6</div>
+      <div class="detail">
+        <span class="badge-pass">ПРОЙДЕН</span> · Август 2026<br>
+        Т1: гейтвей жив, свежий PID ✅<br>
+        Т2: law-search пережил рестарт, 2981 чанков ✅<br>
+        Т3: embedding API — 3 результата, score ≥0.88 ✅<br>
+        Т4: exec — текст, не картинки ✅<br>
+        Т5: агент + верификатор — ответ корректен ✅<br>
+        Т6: нет truncation в main-сессии ✅
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <h2>💬 Живой пример</h2>
+
+  <div class="example">
+    <div class="q">
+      <div class="q-label">Запрос</div>
+      «Какой срок исполнения поручения налогового органа?»
+    </div>
+    <div class="a">
+      <div class="a-label">Ответ fz425-agent (с верификацией)</div>
+      <p>Сроки исполнения поручения налогового органа (ПНО) установлены <strong>пунктом 6 статьи 46 НК РФ</strong> в редакции 425-ФЗ.</p>
+      <p style="margin-top:8px;"><strong>ПНО — 3 часа</strong> с момента получения (включая доисполнение).</p>
+      <p style="margin-top:8px;">Дополнительно, общий срок по статье 60 НК РФ (п. 2) — один операционный день, но 425-ФЗ ужесточает требования именно для ПНО до 3 часов через Реестр решений о взыскании задолженности.</p>
+      <p style="margin-top:8px;">Для ПОС (поручение о списании) — <strong>1 календарный день</strong>.</p>
+      <div class="ref">
+        📎 Источники: п. 6 ст. 46 НК РФ (ред. 425-ФЗ) · п. 2 ст. 60 НК РФ · Реестр решений о взыскании задолженности<br>
+        🔍 Вердикт верификатора: <span class="badge-pass">ПРИНЯТ</span>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <h2>🔗 Ссылки</h2>
+  <p style="margin-top:8px;">
+    📐 <a href="index.html" style="color:#818cf8;">Архитектурная диаграмма (SVG)</a> — эта страница<br>
+    📋 <a href="https://nasledstvo2026.github.io/nasledstvo/fz425.html" style="color:#818cf8;">Полный аналитический отчёт по 425-ФЗ</a> — отдельный сайт<br>
+    🧪 <a href="https://github.com/nasledstvo2026/Phoenix/blob/main/tests-fenix-recovery.md" style="color:#818cf8;">Скрипт recovery-теста</a> — воспроизводимые проверки<br>
+    📄 <a href="https://github.com/nasledstvo2026/Phoenix/blob/main/ift-v2.md" style="color:#818cf8;">Скрипт ИФТ v2</a> — тесты SKILL.md
+  </p>
 
   <hr>
   <p style="color:#64748b; font-size:12px;">🔥 Феникс · Архитектура 425-ФЗ · Август 2026 · <a href="https://nasledstvo2026.github.io/Phoenix/" style="color:#94a3b8;">nasledstvo2026.github.io/Phoenix</a></p>
