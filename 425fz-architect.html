@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Феникс 🔥 — Архитектура 425-ФЗ</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0f172a;
+      --fg: #e5e7eb;
+      --muted: #a3adbd;
+      --line: #94a3b8;
+      --neutral: #334155;
+      --input: #1d4ed8;
+      --process: #4338ca;
+      --storage: #0f766e;
+      --external: #92400e;
+      --risk: #991b1b;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font: 14px/1.5 system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+    }
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 32px 20px;
+    }
+    .back {
+      display: inline-block;
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 14px;
+      margin-bottom: 24px;
+      transition: color 0.2s;
+    }
+    .back:hover { color: #e5e7eb; }
+    svg { width: 100%; height: auto; display: block; }
+    .title { font-size: 20px; font-weight: 650; fill: #e5e7eb; }
+    .label { font-size: 14px; font-weight: 600; fill: #e5e7eb; }
+    .small { font-size: 12px; fill: #a3adbd; }
+    .node { stroke: #94a3b8; stroke-width: 1; }
+    .neutral { fill: #334155; }
+    .input { fill: #1d4ed8; }
+    .process { fill: #4338ca; }
+    .storage { fill: #0f766e; }
+    .external { fill: #92400e; }
+    .risk { fill: #991b1b; }
+    .edge { stroke: #94a3b8; stroke-width: 1.5; fill: none; }
+    .zone { fill: none; stroke: #475569; stroke-width: 1; stroke-dasharray: 6 4; }
+    .zone-label { font-size: 13px; font-weight: 600; fill: #64748b; }
+    .desc { color: #94a3b8; font-size: 13px; margin-top: 24px; line-height: 1.7; }
+    .desc h2 { color: #e5e7eb; font-size: 17px; margin: 20px 0 10px; }
+    .desc strong { color: #cbd5e1; }
+    hr { border: none; border-top: 1px solid #1e293b; margin: 28px 0; }
+    .results { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 12px; }
+    @media (max-width: 640px) { .results { grid-template-columns: 1fr; } }
+    .result-card { background: #111827; border: 1px solid #1e293b; border-radius: 10px; padding: 18px; }
+    .result-card h3 { color: #e5e7eb; font-size: 15px; margin-bottom: 10px; }
+    .result-card .score { font-size: 28px; font-weight: 700; margin: 8px 0 4px; }
+    .score-pass { color: #3fb950; }
+    .score-warn { color: #d29922; }
+    .result-card .detail { font-size: 12px; color: #64748b; line-height: 1.5; }
+    .example { background: #111827; border: 1px solid #1e293b; border-radius: 10px; padding: 20px; margin-top: 12px; }
+    .example .q { background: rgba(67,56,202,0.1); border-left: 3px solid #4338ca; padding: 12px 16px; border-radius: 0 6px 6px 0; margin-bottom: 14px; font-size: 14px; color: #cbd5e1; }
+    .example .q .q-label { font-size: 11px; color: #818cf8; font-weight: 600; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .example .a { background: rgba(15,118,110,0.08); border-left: 3px solid #0f766e; padding: 14px 16px; border-radius: 0 6px 6px 0; font-size: 14px; color: #cbd5e1; line-height: 1.6; }
+    .example .a .a-label { font-size: 11px; color: #2dd4bf; font-weight: 600; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .example .a .ref { color: #2dd4bf; font-size: 12px; margin-top: 8px; }
+    .badge-pass { display: inline-block; background: rgba(63,185,80,0.12); color: #3fb950; padding: 2px 10px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+  </style>
+</head>
+<body>
+<main>
+
+<a href="index.html" class="back">← На главную</a>
+
+<svg viewBox="0 0 960 740" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text class="title" x="30" y="28">Архитектура AI-консультанта по 425-ФЗ</text>
+
+  <!-- ═══ ZONE 1: Request Pipeline ═══ -->
+  <rect class="zone" x="20" y="50" width="920" height="130" rx="8"/>
+  <text class="zone-label" x="34" y="70">ЗОНА 1: ПОТОК ЗАПРОСА</text>
+
+  <!-- User -->
+  <rect class="node external" x="40" y="88" width="100" height="50" rx="8"/>
+  <text class="label" x="90" y="108" text-anchor="middle">👤 User</text>
+  <text class="small" x="90" y="128" text-anchor="middle">Вопрос</text>
+
+  <!-- Gateway -->
+  <rect class="node neutral" x="180" y="88" width="110" height="50" rx="8"/>
+  <text class="label" x="235" y="108" text-anchor="middle">🌐 Gateway</text>
+  <text class="small" x="235" y="128" text-anchor="middle">OpenClaw</text>
+
+  <!-- Main -->
+  <rect class="node process" x="330" y="88" width="110" height="50" rx="8"/>
+  <text class="label" x="385" y="108" text-anchor="middle">🤖 Main</text>
+  <text class="small" x="385" y="128" text-anchor="middle">Курьер</text>
+
+  <!-- fz425-agent -->
+  <rect class="node process" x="480" y="88" width="130" height="50" rx="8"/>
+  <text class="label" x="545" y="108" text-anchor="middle">📋 fz425-agent</text>
+  <text class="small" x="545" y="128" text-anchor="middle">Анализ + черновик</text>
+
+  <!-- fz425-verifier -->
+  <rect class="node storage" x="650" y="88" width="130" height="50" rx="8"/>
+  <text class="label" x="715" y="108" text-anchor="middle">🔍 fz425-verifier</text>
+  <text class="small" x="715" y="128" text-anchor="middle">Проверка фактов</text>
+
+  <!-- Response -->
+  <rect class="node input" x="820" y="88" width="100" height="50" rx="8"/>
+  <text class="label" x="870" y="108" text-anchor="middle">✅ Ответ</text>
+  <text class="small" x="870" y="128" text-anchor="middle">С вердиктом</text>
+
+  <!-- Arrows: User→Gateway→Main→Agent→Verifier→Response -->
+  <line class="edge" x1="140" y1="113" x2="176" y2="113" marker-end="url(#arrow)"/>
+  <line class="edge" x1="290" y1="113" x2="326" y2="113" marker-end="url(#arrow)"/>
+  <line class="edge" x1="440" y1="113" x2="476" y2="113" marker-end="url(#arrow)"/>
+  <line class="edge" x1="610" y1="113" x2="646" y2="113" marker-end="url(#arrow)"/>
+  <line class="edge" x1="780" y1="113" x2="816" y2="113" marker-end="url(#arrow)"/>
+
+  <!-- ═══ ZONE 2: Knowledge Base ═══ -->
+  <rect class="zone" x="20" y="200" width="450" height="240" rx="8"/>
+  <text class="zone-label" x="34" y="222">ЗОНА 2: БАЗА ЗНАНИЙ</text>
+
+  <rect class="node neutral" x="40" y="240" width="200" height="40" rx="6"/>
+  <text class="label" x="140" y="265" text-anchor="middle">📜 НК РФ ч.1</text>
+
+  <rect class="node neutral" x="250" y="240" width="200" height="40" rx="6"/>
+  <text class="label" x="350" y="265" text-anchor="middle">📜 НК РФ ч.2</text>
+
+  <rect class="node neutral" x="40" y="295" width="200" height="40" rx="6"/>
+  <text class="label" x="140" y="320" text-anchor="middle">📜 425-ФЗ (полный текст)</text>
+
+  <rect class="node process" x="250" y="295" width="200" height="40" rx="6"/>
+  <text class="label" x="350" y="320" text-anchor="middle">📄 SKILL.md v2</text>
+
+  <rect class="node neutral" x="40" y="350" width="410" height="40" rx="6"/>
+  <text class="label" x="245" y="370" text-anchor="middle">📋 terms.md — глоссарий терминов</text>
+  <text class="small" x="245" y="384" text-anchor="middle">ПОС, ПНО, ЕНС, Реестр решений</text>
+
+  <!-- SKILL.md details -->
+  <rect class="node" x="40" y="405" width="410" height="25" rx="5" fill="rgba(67,56,202,0.15)"/>
+  <text class="small" x="245" y="422" text-anchor="middle">Приоритеты · Факты · Запрет домыслов · Протокол верификации</text>
+
+  <!-- ═══ ZONE 3: Embedding Search ═══ -->
+  <rect class="zone" x="490" y="200" width="450" height="240" rx="8"/>
+  <text class="zone-label" x="504" y="222">ЗОНА 3: EMBEDDING-ПОИСК</text>
+
+  <!-- law-search API -->
+  <rect class="node input" x="510" y="240" width="410" height="40" rx="6"/>
+  <text class="label" x="715" y="260" text-anchor="middle">🔌 law-search API</text>
+  <text class="small" x="715" y="274" text-anchor="middle">REST · поиск по семантическому сходству</text>
+
+  <!-- Arrow -->
+  <line class="edge" x1="715" y1="280" x2="715" y2="296" marker-end="url(#arrow)"/>
+
+  <!-- FAISS -->
+  <rect class="node storage" x="510" y="298" width="410" height="40" rx="6"/>
+  <text class="label" x="715" y="318" text-anchor="middle">🗂️ FAISS (векторный индекс)</text>
+  <text class="small" x="715" y="332" text-anchor="middle">2981 чанк · поиск 45 мс</text>
+
+  <!-- Arrow -->
+  <line class="edge" x1="715" y1="338" x2="715" y2="354" marker-end="url(#arrow)"/>
+
+  <!-- e5-small -->
+  <rect class="node storage" x="510" y="356" width="410" height="40" rx="6"/>
+  <text class="label" x="715" y="376" text-anchor="middle">🧠 intfloat/multilingual-e5-small</text>
+  <text class="small" x="715" y="390" text-anchor="middle">384-мерные эмбеддинги · ONNX · lightweight</text>
+
+  <!-- Preprocessing -->
+  <rect class="node" x="510" y="410" width="410" height="25" rx="5" fill="rgba(29,78,216,0.12)"/>
+  <text class="small" x="715" y="427" text-anchor="middle">Препроцессинг: раскрытие аббревиатур (tz-abbrev-dict.md)</text>
+
+  <!-- ═══ ZONE 4: Infrastructure ═══ -->
+  <rect class="zone" x="20" y="460" width="920" height="100" rx="8"/>
+  <text class="zone-label" x="34" y="482">ЗОНА 4: ИНФРАСТРУКТУРА</text>
+
+  <rect class="node risk" x="40" y="498" width="200" height="44" rx="6"/>
+  <text class="label" x="140" y="518" text-anchor="middle">🔄 safe-restart.sh</text>
+  <text class="small" x="140" y="534" text-anchor="middle">Холодный рестарт · 12s</text>
+
+  <rect class="node neutral" x="265" y="498" width="180" height="44" rx="6"/>
+  <text class="label" x="355" y="518" text-anchor="middle">⚙️ systemd (user)</text>
+  <text class="small" x="355" y="534" text-anchor="middle">openclaw-gateway</text>
+
+  <rect class="node neutral" x="470" y="498" width="210" height="44" rx="6"/>
+  <text class="label" x="575" y="518" text-anchor="middle">🛡️ law-search.service</text>
+  <text class="small" x="575" y="534" text-anchor="middle">Переживает рестарт гейтвея</text>
+
+  <rect class="node process" x="705" y="498" width="215" height="44" rx="6"/>
+  <text class="label" x="812" y="518" text-anchor="middle">📦 sessions_spawn isolated</text>
+  <text class="small" x="812" y="534" text-anchor="middle">Изоляция тяжёлых задач</text>
+
+  <!-- ═══ Bottom stats bar ═══ -->
+  <rect x="20" y="578" width="920" height="40" rx="6" fill="rgba(67,56,202,0.08)"/>
+  <text class="small" x="50" y="603">Модель: DeepSeek V4 Pro/Flash</text>
+  <text class="small" x="300" y="603">Хост: vm-low4-8</text>
+  <text class="small" x="500" y="603">Гейтвей: OpenClaw v2026.6.33</text>
+  <text class="small" x="760" y="603">Триггер: «Федор»</text>
+
+  <!-- Legend -->
+  <rect x="20" y="630" width="920" height="90" rx="6" fill="none" stroke="#334155" stroke-width="1"/>
+  <text class="small" x="34" y="652" font-weight="600" fill="#94a3b8">ЛЕГЕНДА</text>
+  <rect class="node external" x="34" y="662" width="16" height="12" rx="2"/>
+  <text class="small" x="56" y="673">Внешний</text>
+  <rect class="node neutral" x="120" y="662" width="16" height="12" rx="2"/>
+  <text class="small" x="142" y="673">Сервис</text>
+  <rect class="node process" x="200" y="662" width="16" height="12" rx="2"/>
+  <text class="small" x="222" y="673">Агент</text>
+  <rect class="node storage" x="280" y="662" width="16" height="12" rx="2"/>
+  <text class="small" x="302" y="673">Данные</text>
+  <rect class="node input" x="360" y="662" width="16" height="12" rx="2"/>
+  <text class="small" x="382" y="673">API</text>
+  <rect class="node risk" x="430" y="662" width="16" height="12" rx="2"/>
+  <text class="small" x="452" y="673">Инфра</text>
+  <text class="small" x="530" y="673">─── Направленный поток</text>
+  <text class="small" x="700" y="673">- - - Зона ответственности</text>
+
+</svg>
+
+<div class="desc">
+  <h2>📐 Описание архитектуры</h2>
+
+  <p><strong>Зона 1 — Поток запроса.</strong> Пользователь отправляет вопрос через мессенджер. Gateway OpenClaw принимает сообщение, Main (в режиме «курьера») распознаёт триггер «Федор» и маршрутизирует запрос к fz425-agent через <code>sessions_spawn</code> (isolated, stateless — каждый запрос в чистой сессии с cleanup=delete). Агент формирует черновик ответа и через <code>sessions_send</code> вызывает fz425-verifier для проверки всех фактов. После верификации ответ возвращается пользователю с вердиктом. Накопление контекста исключено, ANNOUNCE_SKIP устранён.</p>
+
+  <p><strong>Зона 2 — База знаний.</strong> Три нормативных документа (НК РФ ч.1, НК РФ ч.2, полный текст 425-ФЗ) плюс SKILL.md v2 с приоритетами, проверенными фактами и запретом домыслов. Глоссарий terms.md фиксирует терминологию (ПОС, ПНО, ЕНС, Реестр решений). SKILL.md регулирует протокол: агент не выдумывает, опирается только на подтверждённые факты.</p>
+
+  <p><strong>Зона 3 — Embedding-поиск.</strong> law-search API на отдельном systemd-сервисе принимает REST-запросы. Векторный индекс FAISS (2981 чанк, время поиска ~45 мс) построен на эмбеддингах multilingual-e5-small (384 измерения, ONNX-рантайм). На входе работает препроцессинг: раскрытие аббревиатур по словарю tz-abbrev-dict.md для повышения точности поиска.</p>
+
+  <p><strong>Зона 4 — Инфраструктура.</strong> Холодный рестарт гейтвея через safe-restart.sh (12 секунд, systemd-run таймер гарантирует перезапуск). Гейтвей и law-search — независимые systemd-юниты; law-search переживает рестарт гейтвея. Тяжёлые задачи агентов изолируются через sessions_spawn isolated для предотвращения переполнения контекста.</p>
+
+  <hr>
+
+  <h2>🧪 Результаты тестирования</h2>
+
+  <div class="results">
+    <div class="result-card">
+      <h3>🔬 ИФТ v2 — SKILL.md v2</h3>
+      <div class="score score-pass">5 / 5</div>
+      <div class="detail">
+        <span class="badge-pass">ПРОЙДЕН</span> · Июль 2026<br>
+        Т1: штраф ст. 135 НК — 1/150 ставки ЦБ ✅<br>
+        Т2: срок ПНО — 3 часа (п. 6 ст. 46 НК) ✅<br>
+        Т3: ст. 20 425-ФЗ — переходный период ✅<br>
+        Т4: терминология — честный ответ про СМЭВ-3 ✅<br>
+        Т5: приоритет НК над 425-ФЗ ✅<br>
+        Все 5 вердиктов верификатора — ПРИНЯТ
+      </div>
+    </div>
+    <div class="result-card">
+      <h3>🔄 Recovery — холодный рестарт</h3>
+      <div class="score score-pass">6 / 6</div>
+      <div class="detail">
+        <span class="badge-pass">ПРОЙДЕН</span> · Август 2026<br>
+        Т1: гейтвей жив, свежий PID ✅<br>
+        Т2: law-search пережил рестарт, 2981 чанков ✅<br>
+        Т3: embedding API — 3 результата, score ≥0.88 ✅<br>
+        Т4: exec — текст, не картинки ✅<br>
+        Т5: агент + верификатор — ответ корректен ✅<br>
+        Т6: нет truncation в main-сессии ✅
+      </div>
+    </div>
+    <div class="result-card">
+      <h3>🔄 Stateless — изоляция контекста</h3>
+      <div class="score score-pass">3 / 3</div>
+      <div class="detail">
+        <span class="badge-pass">ПРОЙДЕН</span> · Август 2026<br>
+        Т1: sessions_spawn → ответ получен ✅<br>
+        Т2: sessions_spawn → ответ получен ✅<br>
+        Т3: sessions_spawn → ответ получен ✅<br>
+        ANNOUNCE_SKIP: 0 · context overflow устранён<br>
+        Конфиг: subagents.allowAgents + tools.subagents.tools.allow
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <h2>💬 Живой пример</h2>
+
+  <div class="example">
+    <div class="q">
+      <div class="q-label">Запрос</div>
+      «Какой срок исполнения поручения налогового органа?»
+    </div>
+    <div class="a">
+      <div class="a-label">Ответ fz425-agent (с верификацией)</div>
+      <p>Сроки исполнения поручения налогового органа (ПНО) установлены <strong>пунктом 6 статьи 46 НК РФ</strong> в редакции 425-ФЗ.</p>
+      <p style="margin-top:8px;"><strong>ПНО — 3 часа</strong> с момента получения (включая доисполнение).</p>
+      <p style="margin-top:8px;">Дополнительно, общий срок по статье 60 НК РФ (п. 2) — один операционный день, но 425-ФЗ ужесточает требования именно для ПНО до 3 часов через Реестр решений о взыскании задолженности.</p>
+      <p style="margin-top:8px;">Для ПОС (поручение о списании) — <strong>1 календарный день</strong>.</p>
+      <div class="ref">
+        📎 Источники: п. 6 ст. 46 НК РФ (ред. 425-ФЗ) · п. 2 ст. 60 НК РФ · Реестр решений о взыскании задолженности<br>
+        🔍 Вердикт верификатора: <span class="badge-pass">ПРИНЯТ</span>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <h2>🔗 Ссылки</h2>
+  <p style="margin-top:8px;">
+    📐 <a href="index.html" style="color:#818cf8;">Архитектурная диаграмма (SVG)</a> — эта страница<br>
+    📋 <a href="https://nasledstvo2026.github.io/nasledstvo/fz425.html" style="color:#818cf8;">Полный аналитический отчёт по 425-ФЗ</a> — отдельный сайт<br>
+    🧪 <a href="https://github.com/nasledstvo2026/Phoenix/blob/main/tests-fenix-recovery.md" style="color:#818cf8;">Скрипт recovery-теста</a> — воспроизводимые проверки<br>
+    📄 <a href="https://github.com/nasledstvo2026/Phoenix/blob/main/ift-v2.md" style="color:#818cf8;">Скрипт ИФТ v2</a> — тесты SKILL.md
+  </p>
+
+  <hr>
+  <p style="color:#64748b; font-size:12px;">🔥 Феникс · Архитектура 425-ФЗ · Август 2026 · <a href="https://nasledstvo2026.github.io/Phoenix/" style="color:#94a3b8;">nasledstvo2026.github.io/Phoenix</a></p>
+</div>
+
+</main>
+</body>
+</html>
