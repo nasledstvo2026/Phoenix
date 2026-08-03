@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>425-ФЗ — Феникс 🔥</title>
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="style.css">
   <style>
     :root {
       --glass-bg: rgba(22, 27, 34, 0.6);
@@ -60,12 +62,7 @@
       text-transform: uppercase;
       margin-bottom: 16px;
     }
-    .placeholder {
-      text-align: center;
-      padding: 80px 24px;
-      color: var(--text-dim);
-      font-size: 15px;
-    }
+
   </style>
 </head>
 <body>
@@ -74,7 +71,35 @@
     <span class="back-arrow">←</span> Назад
   </a>
   <h1>425-ФЗ</h1>
-  <div class="placeholder">Здесь будет контент</div>
+  <div class="cards" style="max-width:900px;margin:0 auto;gap:24px;">
+
+    <!-- Архитектурная диаграмма -->
+    <div class="card purple">
+      <a href="425fz-architect.html">
+        <div class="card-header">
+          <div class="card-header-row">
+            <span class="card-tag purple">Архитектура</span>
+          </div>
+          <h2>Архитектурная диаграмма</h2>
+        </div>
+        <div class="desc">Поток запроса, база знаний, embedding-поиск, инфраструктура. Результаты тестов ИФТ, Recovery, Stateless.</div>
+      </a>
+    </div>
+
+    <!-- Расчёт штрафа -->
+    <div class="card orange">
+      <a href="sberbank-425fz-fine.html">
+        <div class="card-header">
+          <div class="card-header-row">
+            <span class="card-tag orange">Расчёт</span>
+          </div>
+          <h2>Штраф Сбербанка по ст. 135 НК</h2>
+        </div>
+        <div class="desc">Расчёт штрафа за 1 день неисполнения поручения. Ставка ЦБ, формула, сумма.</div>
+      </a>
+    </div>
+
+  </div>
 </div>
 </body>
 </html>
