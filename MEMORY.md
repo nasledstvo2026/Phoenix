@@ -28,9 +28,11 @@
 2. **Триггер = имя агента.** Чтобы обратиться к агенту, пользователь пишет его имя-триггер в сообщении.
 3. **Main-курьер.** Распознав триггер, main НЕ думает, НЕ анализирует, НЕ проверяет — только:
    - Извлекает имя агента из сообщения
-   - Отправляет запрос агенту через `sessions_send`
+   - Отправляет запрос агенту через `sessions_spawn(agentId="...", context="isolated", cleanup="delete")`
    - Получает ответ
    - Возвращает пользователю как есть
+
+⚠️ **Stateless.** Каждый вызов агента — чистая изолированная сессия, удаляемая после ответа. Накопление контекста исключено.
 4. **Без триггера** — main отвечает сам как обычно.
 
 ### Список триггеров (см. TOOLS.md)
@@ -45,13 +47,12 @@
 ### fz425-agent (Федор) + fz425-verifier (мультиагентная верификация)
 - **Статус:** ✅ работает, вызов через триггер «Федор»
 - **Имя-триггер:** Федор
-- **Конфиг:** tools.agentToAgent.enabled=true, allow=['main','fz425-agent','fz425-verifier'], sessions.visibility=all
-- **Маршрутизация:** Любой пользователь → main → (триггер «Федор») → fz425-agent → verifier → ответ
-- **Workspace:** оба агента → /home/user1/nasledstvo/
-- **Протокол:** fz425-agent.SKILL.md → sessions_send(agentId="fz425-verifier")
-- **Проблема рестартов:** tools.* изменения требуют gateway restart → сессия теряется
-- **Решение:** gateway.reload.mode = "hot" (включаем 28.07), чекпоинты в MEMORY.md перед опасными операциями
-- **Последнее действие:** утверждение архитектуры с триггерами (30.07), имя-триггер «Федор», исправлен протокол ответа (reply вместо sessions_send к пользователю)
+- **Архитектура:** Stateless — main вызывает через sessions_spawn (context="isolated", cleanup="delete"), каждый запрос в чистой сессии
+- **Конфиг:** main.subagents.allowAgents=['fz425-agent'], tools.subagents.tools.allow=['sessions_send'], tools.agentToAgent.enabled=true
+- **Маршрутизация:** Любой пользователь → main → sessions_spawn(«Федор») → fz425-agent → verifier → ответ
+- **Workspace:** fz425-agent → /home/user1/phoenix/fz425-agent/, fz425-verifier → /home/user1/phoenix/
+- **Протокол:** fz425-agent вызывает verifier через sessions_send(agentId="fz425-verifier") — это разрешено через tools.subagents.tools.allow
+- **Обновление:** 03.08.2026 — переход на stateless, устранён ANNOUNCE_SKIP (бывший context overflow перманентной сессии)
 
 ### Лунтик (vps: 176.123.162.12, хост: vm-f13581)
 - **Статус:** ✅ memory_search починен (30.07)
@@ -76,7 +77,9 @@
 - **Правило:** инфраструктурные факты (ветка, домен) — в TOOLS.md, а не в голове
 
 ## Хронология
+- **2026-08-03** — Stateless-архитектура для fz425-agent. Переход с `sessions_send` на `sessions_spawn(context="isolated", cleanup="delete")` для вызова из main. Конфиг: main.subagents.allowAgents=['fz425-agent'], tools.subagents.tools.allow=['sessions_send']. Тесты: 3/3, ANNOUNCE_SKIP=0. Обновлены SKILL.md, AGENTS.md, MEMORY.md, index.html.
 - **2026-07-30** — Утверждена новая архитектура маршрутизации: main — единая точка входа для всех пользователей, агенты — по триггерам (именам). fz425-agent получил имя-триггер «Федор». Main в режиме курьера: не думает, не проверяет — только маршрутизирует запрос-ответ.
+- **2026-07-30** — Обнаружен и исправлен race condition при перезапуске гейтвея: `systemctl restart` вызывает гонку процессов на VPS → инструменты (exec, sessions_send, sessions_history) ломаются (рендерят картинки вместо текста). Решение: скрипт `~/phoenix/safe-restart.sh` (stop → sleep 5 → start) + правило в AGENTS.md.
 - **2026-07-30** — Починен memory_search на Лунтике. OpenRouter заменён на локальный llama-cpp, swap увеличен 2→4 GB. Индекс: 42/42 файлов, 231 чанк.
 - **2026-07-26** — Первый запуск. Знакомство с Кириллом. Определили имя, роль и вайб.
 - **2026-07-26** — Установлено железное правило: никаких самостоятельных изменений/созданий без явного "да" от Кирилла.
