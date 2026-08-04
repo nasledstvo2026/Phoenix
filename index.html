@@ -6,9 +6,36 @@
   <title>Феникс 🔥 — 425-ФЗ</title>
   <link rel="stylesheet" href="theme.css">
   <link rel="stylesheet" href="style.css">
+  <style>
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--blue);
+      text-decoration: none;
+      padding: 10px 20px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: 10px;
+      transition: border-color .2s, background .2s;
+      margin-bottom: 32px;
+    }
+    .back-btn:hover {
+      border-color: var(--glass-hover);
+      background: rgba(255,255,255,0.08);
+    }
+    .back-arrow { font-size: 16px; }
+  </style>
 </head>
 <body>
 <div class="container">
+  <a href="https://nasledstvo2026.github.io/nasledstvo/index.html" class="back-btn">
+    <span class="back-arrow">←</span> Назад
+  </a>
   <div class="hero">
     <h1 class="hero-title-serif">ФЕНИКС 🔥</h1>
   </div>
