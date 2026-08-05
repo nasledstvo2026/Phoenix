@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Техническое задание — Социальный консультант 🔥</title>
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+  <a href="social.html" class="back">← Социальный консультант</a>
+
+  <div class="hero">
+    <h1>📋 Техническое задание</h1>
+    <p class="sub">Социальный консультант · Феникс 🔥 · Август 2026</p>
+  </div>
+
+  <div class="section">
+    <h2>🎯 Цель проекта</h2>
+    <div class="item">
+      <div class="title">Назначение</div>
+      <div class="body">Создать AI-консультанта по социальным вопросам: льготы, пособия, выплаты и меры поддержки. Консультант дополняет линейку сервисов Феникса (425-ФЗ, наследство) и отвечает на вопросы посетителей портала простым, проверенным языком.</div>
+    </div>
+    <div class="item">
+      <div class="title">Задачи</div>
+      <div class="body">Консультировать по действующим мерам социальной поддержки, объяснять условия получения, помогать с перечнем документов и давать ссылки на официальные источники.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>👥 Целевая аудитория</h2>
+    <div class="item">
+      <div class="title">Пользователи</div>
+      <div class="body">Посетители портала nasledstvo2026.github.io/Phoenix: граждане, разбирающиеся в вопросах льгот и выплат, а также специалисты, проверяющие актуальность мер поддержки.</div>
+    </div>
+    <div class="item">
+      <div class="title">Сценарии</div>
+      <div class="body">«Какие выплаты мне положены?», «Как оформить пособие?», «Какие документы нужны?», «Куда обращаться?».</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>⚙️ Функциональные требования</h2>
+    <div class="item">
+      <div class="title">Консультирование</div>
+      <div class="body">Ответы на вопросы по социальным выплатам, льготам и пособиям на основе утверждённой базы знаний.</div>
+    </div>
+    <div class="item">
+      <div class="title">Верификация фактов</div>
+      <div class="body">Каждый ответ проверяется по источникам (официальные документы, нормативная база) перед выдачей пользователю — по аналогии с верификатором fz425-verifier.</div>
+    </div>
+    <div class="item">
+      <div class="title">Ссылки на источники</div>
+      <div class="body">К каждому ответу — ссылки на официальные ресурсы (госуслуги, СФР, региональные порталы).</div>
+    </div>
+    <div class="item">
+      <div class="title">Оговорка об ответственности</div>
+      <div class="body">Консультант сообщает, что ответ носит справочный характер и не заменяет официальные разъяснения.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🔒 Нефункциональные требования</h2>
+    <div class="item">
+      <div class="title">Стиль и оформление</div>
+      <div class="body">Единый glass-morphism стиль портала: theme.css + style.css, утверждённая цветовая карта, мобильная адаптация.</div>
+    </div>
+    <div class="item">
+      <div class="title">Достоверность</div>
+      <div class="body">Только проверенные факты; при отсутствии данных — честный отказ от ответа вместо домыслов.</div>
+    </div>
+    <div class="item">
+      <div class="title">Производительность</div>
+      <div class="body">Время ответа в пределах лимитов gateway, стабильная работа при пиковых нагрузках.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📅 Этапы</h2>
+    <div class="item">
+      <div class="title">Этап 1 · Подготовка</div>
+      <div class="body">Сбор базы знаний по социальным мерам поддержки, определение источников и порядка верификации.</div>
+    </div>
+    <div class="item">
+      <div class="title">Этап 2 · Прототип</div>
+      <div class="body">Минимальный консультант с проверкой ответов по базе знаний, тестовые сценарии.</div>
+    </div>
+    <div class="item">
+      <div class="title">Этап 3 · Публикация</div>
+      <div class="body">Интеграция в портал, страница социального консультанта, приёмка и обратная связь.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>✅ Критерии приёмки</h2>
+    <div class="item">
+      <div class="title">Проверка ответов</div>
+      <div class="body">Не менее 5 из 5 контрольных вопросов по социальным выплатам отвечены корректно и подтверждены верификатором.</div>
+    </div>
+    <div class="item">
+      <div class="title">Источники</div>
+      <div class="body">Каждый ответ содержит ссылку на официальный источник.</div>
+    </div>
+    <div class="item">
+      <div class="title">Оформление</div>
+      <div class="body">Страницы соответствуют стилю портала, корректно отображаются на мобильных устройствах.</div>
+    </div>
+  </div>
+
+  <div class="note">⚠️ Документ — рабочий черновик. Состав требований и этапов уточняется по мере развития проекта.</div>
+
+  <div class="footer">
+    📋 Техническое задание · Социальный консультант · Феникс 🔥 · Август 2026 · <a href="https://nasledstvo2026.github.io/Phoenix/">nasledstvo2026.github.io/Phoenix</a>
+  </div>
+</div>
+</body>
+</html>
