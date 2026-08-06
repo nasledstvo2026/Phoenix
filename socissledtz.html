@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ТЗ: Социальный исследователь на Фениксе</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --card: #1a1d2e;
+    --border: #2a2d3e;
+    --text: #e1e1e6;
+    --text-secondary: #a0a0b0;
+    --accent: #2ea44f;
+    --accent-glow: rgba(46,164,79,0.15);
+    --green: #2ea44f;
+    --yellow: #d2991d;
+    --code-bg: #161822;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 0;
+  }
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+  header {
+    background: linear-gradient(135deg, var(--card), #1e2f1e);
+    border-bottom: 1px solid var(--border);
+    padding: 2.5rem 0;
+    text-align: center;
+  }
+  header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--green), #7ee787);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .meta-card {
+    display: inline-flex;
+    gap: 2rem;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+  .meta-card span { display: flex; align-items: center; gap: 0.4rem; }
+  .status-badge {
+    background: rgba(210,153,29,0.15);
+    color: var(--yellow);
+    padding: 0.15rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+  }
+  .back {
+    display: inline-block;
+    margin: 1.5rem 0 0;
+    color: var(--green);
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+  .back:hover { text-decoration: underline; }
+  section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+  }
+  h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+    color: var(--green);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  p { margin: 0.6rem 0; }
+  ul { padding-left: 1.5rem; margin: 0.6rem 0; }
+  li { margin: 0.3rem 0; }
+  strong { color: #fff; }
+  a { color: var(--green); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .placeholder {
+    border-left: 3px solid var(--yellow);
+    padding-left: 1rem;
+    margin: 1rem 0;
+    color: var(--text-secondary);
+  }
+  .flow-block {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+    font-family: monospace;
+    font-size: 0.85rem;
+    margin: 0.8rem 0;
+    white-space: pre-wrap;
+  }
+  footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+  }
+  @media (max-width: 640px) {
+    .container { padding: 1rem; }
+    section { padding: 1.2rem; margin: 1rem 0; }
+    header h1 { font-size: 1.4rem; }
+    .meta-card { flex-direction: column; gap: 0.3rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>📋 ТЗ: Социальный исследователь на Фениксе</h1>
+    <div class="meta-card">
+      <span>👤 <strong>Автор:</strong> Феникс (DeepSeek v4)</span>
+      <span class="status-badge">🕐 Черновик</span>
+      <span>📅 <strong>Дата:</strong> 2026-08-06</span>
+    </div>
+    <br>
+    <a class="back" href="social.html">← Назад к «Социальный консультант»</a>
+  </div>
+</header>
+
+<div class="container">
+
+<!-- 1. Контекст -->
+<section>
+  <h2>1. Контекст задачи</h2>
+  <div class="placeholder">
+    <p><strong>Раздел заполняется.</strong> Здесь будет описание задачи агента «Социальный исследователь»: целевая аудитория, предметная область, архитектурный подход и связь с существующей архитектурой Феникса (main, fz425-agent, social-consult-agent).</p>
+    <p>По аналогии с ТЗ на «Социальный консультант» (<a href="socialtz.html">socialtz.html</a>).</p>
+  </div>
+</section>
+
+<!-- 2. Функциональные требования -->
+<section>
+  <h2>2. Функциональные требования</h2>
+  <div class="placeholder">
+    <p><strong>Раздел заполняется.</strong> Здесь будут перечислены требования: инфраструктура, конфигурация агентов, наполнение базы знаний, тестирование, приёмка.</p>
+  </div>
+</section>
+
+<!-- 3. Ограничения -->
+<section>
+  <h2>3. Ограничения и правила</h2>
+  <div class="placeholder">
+    <p><strong>Раздел заполняется.</strong> Здесь будут зафиксированы ограничения (не трогать существующих агентов, формат ответов, SLA и т.д.).</p>
+  </div>
+</section>
+
+<!-- 4. Критерии приёмки -->
+<section>
+  <h2>4. Критерии приёмки</h2>
+  <div class="placeholder">
+    <p><strong>Раздел заполняется.</strong> Здесь будут перечислены критерии и тест-кейсы для приёмки.</p>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  ТЗ (черновик) · 2026-08-06 · Феникс 🔥 · <a href="https://nasledstvo2026.github.io/Phoenix/social.html">Социальный консультант</a>
+</footer>
+
+</body>
+</html>
