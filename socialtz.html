@@ -54,6 +54,10 @@
   }
   .meta-card span { display: flex; align-items: center; gap: 0.4rem; }
   .status-badge {
+  .status-badge.accepted {
+    background: rgba(76,175,80,0.15);
+    color: #81c784;
+  }
     background: rgba(210,153,29,0.15);
     color: var(--yellow);
     padding: 0.15rem 0.6rem;
@@ -398,9 +402,13 @@
   <h3>Логика работы social-verify-agent</h3>
   <ul class="req-list">
     <li class="req-item"><span class="req-num">47.</span> Принимать факты через sessions_send</li>
-    <li class="req-item"><span class="req-num">48.</span> Проверять факты: garant.ru → docs.cntd.ru → consultant.ru → sfr.gov.ru</li>
+    <li class="req-item"><span class="req-num">48.</span> Проверять факты: garant.ru → sfr.gov.ru (только два источника, приоритет скорости)</li>
     <li class="req-item"><span class="req-num">49.</span> Вердикт: ✅ подтверждено / ❌ опровергнуто / 🔄 уточнено / ❓ не проверено</li>
     <li class="req-item"><span class="req-num">50.</span> Следовать протоколу social-verifier-protocol</li>
+    <li class="req-item"><span class="req-num">51.</span> Использовать только источники garant.ru и sfr.gov.ru для верификации (наиболее быстрые и надёжные)</li>
+    <li class="req-item"><span class="req-num">52.</span> Верифицировать только ключевые факты: суммы выплат, номера и статьи НПА, названия актов. Детали — не верифицировать</li>
+    <li class="req-item"><span class="req-num">53.</span> Лимит web-поиска при верификации — не более 3 попыток на весь вердикт. Если не подтверждён — ❓ «не удалось проверить»</li>
+    <li class="req-item"><span class="req-num">54.</span> Модель social-verify-agent — v4-flash (приоритет скорости), fallback — v4-pro</li>
   </ul>
 </section>
 
@@ -422,6 +430,10 @@
     <li>100% ответов содержат ссылки на статьи НПА</li>
     <li>Конфигурацию Феникса править через SSH, не через TUI</li>
     <li>Перезапуск Феникса — только через safe-restart.sh</li>
+    <li>Social-verify-agent использует только garant.ru и sfr.gov.ru (не consultant.ru, не docs.cntd.ru)</li>
+    <li>Social-verify-agent выполняет не более 3 web_search на один вердикт</li>
+    <li>Social-verify-agent проверяет только ключевые факты (суммы, номера НПА, названия актов)</li>
+    <li>Social-consult-agent работает на v4-flash (основная), v4-pro — только для сложных кросс-категорийных запросов</li>
   </ol>
 </section>
 
