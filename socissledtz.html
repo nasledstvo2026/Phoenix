@@ -52,7 +52,7 @@
     <div class="meta-card">
       <span>👤 <strong>Автор:</strong> Лунтик 🦞</span>
       <span class="status-badge">⏳ Ожидает согласования</span>
-      <span>📅 <strong>Дата:</strong> 2026-08-06</span>
+      <span>📅 <strong>Дата:</strong> 2026-08-07</span>
     </div>
   </div>
 </header>
@@ -83,7 +83,7 @@
   </ul>
 
   <h3>Отличие от социального консультанта</h3>
-  <p>Консультант отвечает на конкретные вопросы (SLA 120с). Исследователь собирает полные перечни мер — многочасовая задача, ограничение только на время обработки одного региона.</p>
+  <p>Консультант отвечает на конкретные вопросы (SLA 120с). Исследователь собирает полные перечни мер — многочасовая задача. Целевое время на регион ~10 минут. Если сбор активно идёт — продлевать. Жёсткий cutoff: 30 минут (защита от реального зависания).</p>
 
   <h3>Модель</h3>
   <p>deepseek/deepseek-v4-flash (основная), deepseek/deepseek-v4-pro (fallback). После тестового прогона — решение об оптимальной модели.</p>
@@ -106,7 +106,7 @@
   <ul>
     <li>workspace: <code>/home/user1/phoenix/social-research-agent/</code></li>
     <li>model: v4-flash primary, v4-pro fallback</li>
-    <li>tools: web_search, web_fetch, write, sessions_send</li>
+    <li>tools: web_search, web_fetch, write, read, exec, sessions_send</li>
   </ul>
   <ul class="req-list">
     <li class="req-item"><span class="req-num">6.</span> Добавить агента в agents.list</li>
@@ -156,37 +156,57 @@
     <li class="req-item"><span class="req-num">28.</span> Уведомить Ирину о завершении</li>
   </ul>
 
-  <h4>Подзадача 5. Обработка ошибок</h4>
+  <h4>Подзадача 5. Логирование</h4>
   <ul class="req-list">
-    <li class="req-item"><span class="req-num">29.</span> Ошибка региона → лог <code>research-errors.md</code>, продолжить</li>
-    <li class="req-item"><span class="req-num">30.</span> Уведомить Ирину о пропущенных регионах</li>
+    <li class="req-item"><span class="req-num">29.</span> При старте задачи создать файл лога <code>memory/research-log-YYYY-MM-DD.md</code> (дата запуска в имени)</li>
+    <li class="req-item"><span class="req-num">30.</span> Перед созданием нового лога — проверить старые логи (<code>memory/research-log-*.md</code>). Если их > 3 — удалить самые старые (ротация)</li>
+    <li class="req-item"><span class="req-num">31.</span> Формат записи в лог — метка времени и категория:
+      <ul>
+        <li>Прогресс: <code>[HH:MM] [категория] Регион — старт, регион N/89</code></li>
+        <li>Действия: <code>[HH:MM] [категория] Регион — web_search: "запрос" → K результатов</code></li>
+        <li>URL источников: <code>[HH:MM] [категория] Регион — источник: https://...</code></li>
+        <li>Итог по региону: <code>[HH:MM] [категория] Регион — завершено: N мер, K источников, время X мин</code></li>
+        <li>Предупреждения: <code>[HH:MM] [категория] Регион — ⚠️ поле "Размер" не найдено</code></li>
+      </ul>
+    </li>
+    <li class="req-item"><span class="req-num">32.</span> При мягком превышении времени (> 10 мин) — записать причину продления в лог</li>
+    <li class="req-item"><span class="req-num">33.</span> При жёстком cutoff (30 мин) — записать в лог и пометить регион как пропущенный</li>
+    <li class="req-item"><span class="req-num">34.</span> В конце лога — итоговая сводка: всего регионов, обработано, пропущено, общее время</li>
+  </ul>
+
+  <h4>Подзадача 6. Обработка ошибок</h4>
+  <ul class="req-list">
+    <li class="req-item"><span class="req-num">35.</span> Ошибка региона (таймаут 30 мин, капча) → записать причину в лог, продолжить</li>
+    <li class="req-item"><span class="req-num">36.</span> Уведомить Ирину о пропущенных: «Не обработано регионов: {M}. Детали в research-log-YYYY-MM-DD.md»</li>
   </ul>
 
   <h3>Этап 5. Управление шаблонами</h3>
   <ul class="req-list">
-    <li class="req-item"><span class="req-num">31.</span> Шаблоны в <code>prompts/{категория}.md</code></li>
-    <li class="req-item"><span class="req-num">32.</span> Ирина правит через консультанта: «Улучши описание запроса для [категория]»</li>
-    <li class="req-item"><span class="req-num">33.</span> Консультант обновляет файл в prompts/</li>
-    <li class="req-item"><span class="req-num">34.</span> Следующий запуск — актуальная версия</li>
-    <li class="req-item"><span class="req-num">35.</span> Версионирование через git</li>
+    <li class="req-item"><span class="req-num">37.</span> Шаблоны в <code>prompts/{категория}.md</code></li>
+    <li class="req-item"><span class="req-num">38.</span> Ирина правит через консультанта: «Улучши описание запроса для [категория]»</li>
+    <li class="req-item"><span class="req-num">39.</span> Консультант обновляет файл в prompts/</li>
+    <li class="req-item"><span class="req-num">40.</span> Следующий запуск — актуальная версия</li>
+    <li class="req-item"><span class="req-num">41.</span> Версионирование через git</li>
   </ul>
 
   <h3>Этап 6. Тестирование</h3>
   <ul class="req-list">
-    <li class="req-item"><span class="req-num">36.</span> Тест 1: Москва, инвалиды — Excel, ≥ 80% заполнено</li>
-    <li class="req-item"><span class="req-num">37.</span> Тест 2: сравнение v4-flash vs v4-pro, выбор модели</li>
-    <li class="req-item"><span class="req-num">38.</span> Тест 3: Москва, все три категории — 3 Excel</li>
-    <li class="req-item"><span class="req-num">39.</span> Тест 4: 3 региона, 1 категория — время ≤ 10 мин/регион</li>
+    <li class="req-item"><span class="req-num">42.</span> Тест 1: Москва, инвалиды — Excel, ≥ 80% заполнено</li>
+    <li class="req-item"><span class="req-num">43.</span> Тест 2: сравнение v4-flash vs v4-pro, выбор модели</li>
+    <li class="req-item"><span class="req-num">44.</span> Тест 3: Москва, все три категории — 3 Excel</li>
+    <li class="req-item"><span class="req-num">45.</span> Тест 4: 3 региона, 1 категория — среднее время на регион ~10 минут (не жёсткий cutoff), 3 Excel-файла</li>
+    <li class="req-item"><span class="req-num">46.</span> Тест 5: проверка логов — лог создан, формат соответствует Требованию 31, старые логи ротируются (≤ 3 файлов)</li>
   </ul>
 
   <h3>Этап 7. Приёмка</h3>
   <ul class="req-list">
-    <li class="req-item"><span class="req-num">40.</span> ≥ 80% полей Excel заполнены</li>
-    <li class="req-item"><span class="req-num">41.</span> Excel открывается, структура по форме</li>
-    <li class="req-item"><span class="req-num">42.</span> Сводный Excel корректен</li>
-    <li class="req-item"><span class="req-num">43.</span> Триггер только от Ирины</li>
-    <li class="req-item"><span class="req-num">44.</span> Изменение промпта → новый запуск с новой версией</li>
-    <li class="req-item"><span class="req-num">45.</span> Отчёт Кириллу</li>
+    <li class="req-item"><span class="req-num">47.</span> ≥ 80% полей Excel заполнены</li>
+    <li class="req-item"><span class="req-num">48.</span> Excel открывается, структура по форме</li>
+    <li class="req-item"><span class="req-num">49.</span> Сводный Excel корректен</li>
+    <li class="req-item"><span class="req-num">50.</span> Триггер только от Ирины</li>
+    <li class="req-item"><span class="req-num">51.</span> Изменение промпта → новый запуск с новой версией</li>
+    <li class="req-item"><span class="req-num">52.</span> Логи: формат соответствует Требованию 31, ротация работает (≤ 3 файлов)</li>
+    <li class="req-item"><span class="req-num">53.</span> Отчёт Кириллу</li>
   </ul>
 </section>
 
@@ -201,7 +221,7 @@
     <li>НЕ экстраполировать с других регионов</li>
     <li>Шаблоны читать перед каждой категорией (не кэшировать)</li>
     <li>Модель: v4-flash → v4-pro. После Теста 2 — зафиксировать</li>
-    <li>Время на регион ≤ 10 минут</li>
+    <li>Целевое время на регион ~10 минут. Если сбор активно идёт — продлевать (с записью причины в лог). Жёсткий cutoff: 30 минут (защита от зависания)</li>
     <li>Результаты — локально на Фениксе</li>
     <li>Конфиг — через SSH, не TUI</li>
     <li>Перезапуск — safe-restart.sh</li>
@@ -214,18 +234,19 @@
     <li><strong>Тест 1</strong> (Москва, инвалиды): ≥ 80% полей Excel заполнены, структура по форме</li>
     <li><strong>Тест 2</strong> (сравнение моделей): данные собраны, модель выбрана</li>
     <li><strong>Тест 3</strong> (Москва, все категории): 3 Excel-файла, структура по форме</li>
-    <li><strong>Тест 4</strong> (3 региона): 3 Excel-файла, время ≤ 10 мин/регион</li>
+    <li><strong>Тест 4</strong> (3 региона): 3 Excel-файла, среднее время на регион ~10 минут (не жёсткий cutoff)</li>
+    <li><strong>Тест 5</strong> (логи): лог создан, формат по Требованию 31, ротация работает (≤ 3 файлов)</li>
     <li>Триггер срабатывает только от Ирины, другие — отказ</li>
     <li>Изменение промпта → новый запуск с новой версией</li>
     <li>После завершения — уведомление Ирине с перечнем файлов</li>
-    <li>Пропущенные регионы зафиксированы в research-errors.md</li>
+    <li>Пропущенные регионы зафиксированы в логе research-log-YYYY-MM-DD.md</li>
     <li>Сводный Excel создан для каждой категории</li>
   </ul>
 </section>
 
 </div>
 <footer>
-  ТЗ v1.0 · 2026-08-07 · Лунтик 🦞 · <a href="https://nasledstvo2026.github.io/Phoenix/">nasledstvo2026.github.io/Phoenix</a>
+  ТЗ v1.1 · 2026-08-07 · Лунтик 🦞 · <a href="https://nasledstvo2026.github.io/Phoenix/">nasledstvo2026.github.io/Phoenix</a>
 </footer>
 </body>
 </html>
