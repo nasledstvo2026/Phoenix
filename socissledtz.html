@@ -43,6 +43,7 @@
   .checklist li::before { content: "☐ "; color: var(--text-secondary); }
   footer { text-align: center; color: var(--text-secondary); font-size: 0.8rem; margin-top: 2rem; padding: 1rem; border-top: 1px solid var(--border); }
   footer a { color: var(--accent); }
+  .new-badge { background: rgba(46,164,79,0.15); color: var(--green); padding: 0.1rem 0.4rem; border-radius: 8px; font-size: 0.75rem; margin-left: 0.3rem; }
 </style>
 </head>
 <body>
@@ -53,6 +54,7 @@
       <span>👤 <strong>Автор:</strong> Лунтик 🦞</span>
       <span class="status-badge">⏳ Ожидает согласования</span>
       <span>📅 <strong>Дата:</strong> 2026-08-07</span>
+      <span>📌 <strong>v1.2</strong></span>
     </div>
   </div>
 </header>
@@ -62,16 +64,14 @@
   <h2>1. Контекст задачи</h2>
   <p>Создать на OpenClaw-инстансе «Феникс» (213.171.25.85) агента <strong>«Социальный исследователь»</strong> (social-research-agent) для сбора структурированных перечней мер социальной поддержки по всем регионам РФ.</p>
   <p><strong>Целевая аудитория:</strong> Ирина (@irina_mltsva, Telegram ID: 739016616). Чат прямой, существующий канал с Фениксом.</p>
-  <p><strong>Предметная область:</strong> три категории — инвалидность, ВБД, участники СВО. Все 89 регионов РФ.</p>
+  <p><strong>Предметная область:</strong> категории социальной поддержки со <strong>стартовым набором</strong> из трёх категорий и возможностью расширения списка Ириной. Все 89 регионов РФ.</p>
   <p><strong>Периодичность:</strong> раз в квартал, запуск вручную Ириной. Без cron.</p>
 
-  <h3>Описание предметной области</h3>
-  <p><strong>Мера социальной поддержки</strong> — установленная законом или иным нормативным актом форма помощи государства гражданам определённых категорий. Для целей агента анализируются федеральный и региональный уровни, с фокусом на региональные меры.</p>
-
-  <h3>Три категории</h3>
-  <p><strong>1. Люди с инвалидностью</strong> — 181-ФЗ. Группы I/II/III, дети-инвалиды. Регионально: доплаты к ЕДВ, компенсации ЖКУ, транспорт, ТСР.</p>
-  <p><strong>2. Ветераны боевых действий (ВБД)</strong> — 5-ФЗ. Три категории ВБД. Регионально: доплаты к ЕДВ, ЖКУ, транспорт, земля.</p>
-  <p><strong>3. Участники СВО и члены их семей</strong> — указы Президента, законы о статусе военнослужащих. Категории: мобилизованные, контрактники, добровольцы. Отдельно — меры для детей участников СВО.</p>
+  <h3>Категории — динамический список</h3>
+  <p>Стартовый набор из трёх категорий. Список хранится в <code>knowledge/research/categories.json</code>. Ирина может добавлять новые через социального консультанта (см. Этап 5).</p>
+  <p><strong>1. Люди с инвалидностью</strong> — 181-ФЗ. Группы I/II/III, дети-инвалиды.</p>
+  <p><strong>2. Ветераны боевых действий (ВБД)</strong> — 5-ФЗ. Три категории ВБД.</p>
+  <p><strong>3. Участники СВО и члены их семей</strong> — указы Президента, законы о статусе военнослужащих. Подгруппы: мобилизованные, контрактники, добровольцы, дети участников СВО.</p>
 
   <h3>Источники информации (по региону)</h3>
   <ul>
@@ -85,6 +85,9 @@
   <h3>Отличие от социального консультанта</h3>
   <p>Консультант отвечает на конкретные вопросы (SLA 120с). Исследователь собирает полные перечни мер — многочасовая задача. Целевое время на регион ~10 минут. Если сбор активно идёт — продлевать. Жёсткий cutoff: 30 минут (защита от реального зависания).</p>
 
+  <h3>Накопительный результат <span class="new-badge">v1.2</span></h3>
+  <p>Каждая следующая версия Excel-файла надстраивается над предыдущей. Изменения маркируются: 🆕 новое / ❌ отменено / ✏️ изменено / ▬ без изменений.</p>
+
   <h3>Модель</h3>
   <p>deepseek/deepseek-v4-flash (основная), deepseek/deepseek-v4-pro (fallback). После тестового прогона — решение об оптимальной модели.</p>
 </section>
@@ -95,10 +98,11 @@
   <h3>Этап 1. Подготовка инфраструктуры</h3>
   <ul class="req-list">
     <li class="req-item"><span class="req-num">1.</span> Создать workspace <code>/home/user1/phoenix/social-research-agent/</code></li>
-    <li class="req-item"><span class="req-num">2.</span> Создать структуру <code>knowledge/research/prompts/</code> с тремя шаблонами (invalidy.md, vbd.md, svo.md) — уже создана</li>
-    <li class="req-item"><span class="req-num">3.</span> Создать папки для результатов — уже созданы</li>
-    <li class="req-item"><span class="req-num">4.</span> Создать <code>SKILL.md</code> с алгоритмом работы</li>
-    <li class="req-item"><span class="req-num">5.</span> Создать <code>AGENTS.md</code> с правилами и ограничениями</li>
+    <li class="req-item"><span class="req-num">2.</span> Создать структуру каталогов: <code>prompts/</code>, папки результатов под каждую категорию</li>
+    <li class="req-item"><span class="req-num">3.</span> Создать <code>knowledge/research/categories.json</code> — динамический список категорий</li>
+    <li class="req-item"><span class="req-num">4.</span> Создать промпты для стартовых категорий (invalidy.md, vbd.md, svo.md)</li>
+    <li class="req-item"><span class="req-num">5.</span> Создать <code>SKILL.md</code> с алгоритмом работы</li>
+    <li class="req-item"><span class="req-num">6.</span> Создать <code>AGENTS.md</code> с правилами и ограничениями</li>
   </ul>
 
   <h3>Этап 2. Конфигурация агента</h3>
@@ -109,104 +113,112 @@
     <li>tools: web_search, web_fetch, write, read, exec, sessions_send</li>
   </ul>
   <ul class="req-list">
-    <li class="req-item"><span class="req-num">6.</span> Добавить агента в agents.list</li>
-    <li class="req-item"><span class="req-num">7.</span> Обновить main.subagents.allowAgents</li>
-    <li class="req-item"><span class="req-num">8.</span> Обновить agentToAgent.allow</li>
+    <li class="req-item"><span class="req-num">7.</span> Добавить агента в agents.list</li>
+    <li class="req-item"><span class="req-num">8.</span> Обновить main.subagents.allowAgents</li>
+    <li class="req-item"><span class="req-num">9.</span> Обновить agentToAgent.allow</li>
   </ul>
 
   <h3>Этап 3. Маршрутизация</h3>
   <ul class="req-list">
-    <li class="req-item"><span class="req-num">9.</span> Триггер: «Собери меры поддержки по всем категориям и всем регионам»</li>
-    <li class="req-item"><span class="req-num">10.</span> Main распознаёт триггер и sender_id=739016616 → sessions_spawn</li>
-    <li class="req-item"><span class="req-num">11.</span> Другие пользователи — отказ</li>
-    <li class="req-item"><span class="req-num">12.</span> Main передаёт агенту запрос и информацию об отправителе</li>
+    <li class="req-item"><span class="req-num">10.</span> Триггер: «Собери меры поддержки по всем категориям и всем регионам»</li>
+    <li class="req-item"><span class="req-num">11.</span> Main распознаёт триггер и sender_id=739016616 → sessions_spawn</li>
+    <li class="req-item"><span class="req-num">12.</span> Другие пользователи — отказ</li>
+    <li class="req-item"><span class="req-num">13.</span> Main передаёт агенту запрос и информацию об отправителе</li>
   </ul>
 
   <h3>Этап 4. Логика работы</h3>
 
   <h4>Подзадача 1. Подготовка</h4>
   <ul class="req-list">
-    <li class="req-item"><span class="req-num">13.</span> Прочитать список 89 регионов РФ</li>
-    <li class="req-item"><span class="req-num">14.</span> Порядок категорий: инвалиды → ВБД → СВО</li>
-    <li class="req-item"><span class="req-num">15.</span> Перед каждой категорией прочитать шаблон из <code>prompts/</code></li>
+    <li class="req-item"><span class="req-num">14.</span> Прочитать <code>categories.json</code> — актуальный список категорий</li>
+    <li class="req-item"><span class="req-num">15.</span> Проверить наличие промпта для каждой категории (нет промпта → лог ошибки, пропустить)</li>
+    <li class="req-item"><span class="req-num">16.</span> Прочитать список 89 регионов РФ</li>
+    <li class="req-item"><span class="req-num">17.</span> Порядок: категории из <code>categories.json</code> последовательно, внутри — регионы по алфавиту</li>
   </ul>
 
   <h4>Подзадача 2. Обработка региона</h4>
   <ul class="req-list">
-    <li class="req-item"><span class="req-num">16.</span> Заменить <code>{REGION}</code> в шаблоне на название региона</li>
-    <li class="req-item"><span class="req-num">17.</span> web_search по источникам из шаблона</li>
-    <li class="req-item"><span class="req-num">18.</span> Заполнить форму из 11 полей: название, категория, размер, периодичность, условия, где оформить, документы, как получить, тип меры, категория льготы, НПА-основание</li>
-    <li class="req-item"><span class="req-num">19.</span> Для СВО — детализировать получателя (мобилизованный/контрактник/доброволец)</li>
-    <li class="req-item"><span class="req-num">20.</span> Для СВО — отдельно выделить меры для детей</li>
-    <li class="req-item"><span class="req-num">21.</span> Сохранить Excel: <code>knowledge/research/{категория}/{регион}.xlsx</code></li>
+    <li class="req-item"><span class="req-num">18.</span> Заменить <code>{REGION}</code> в шаблоне на название региона</li>
+    <li class="req-item"><span class="req-num">19.</span> web_search по источникам из шаблона</li>
+    <li class="req-item"><span class="req-num">20.</span> Заполнить форму из 11 полей: название, категория, размер, периодичность, условия, где оформить, документы, как получить, тип меры, категория льготы, НПА-основание</li>
+    <li class="req-item"><span class="req-num">21.</span> Детализировать категорию получателя согласно <code>subgroups</code> из <code>categories.json</code></li>
+    <li class="req-item"><span class="req-num">22.</span> Сохранить Excel: <code>knowledge/research/{id}/{регион}.xlsx</code></li>
   </ul>
 
   <h4>Подзадача 3. Правила заполнения</h4>
   <ul class="req-list">
-    <li class="req-item"><span class="req-num">22.</span> Поле не найдено → «Не указано в найденных источниках»</li>
-    <li class="req-item"><span class="req-num">23.</span> Не додумывать, не экстраполировать</li>
-    <li class="req-item"><span class="req-num">24.</span> Суммы — с годом актуальности</li>
-    <li class="req-item"><span class="req-num">25.</span> НПА — с номером и датой</li>
+    <li class="req-item"><span class="req-num">23.</span> Поле не найдено → «Не указано в найденных источниках»</li>
+    <li class="req-item"><span class="req-num">24.</span> Не додумывать, не экстраполировать</li>
+    <li class="req-item"><span class="req-num">25.</span> Суммы — с годом актуальности</li>
+    <li class="req-item"><span class="req-num">26.</span> НПА — с номером и датой</li>
   </ul>
 
   <h4>Подзадача 4. Параллельность и сводка</h4>
   <ul class="req-list">
-    <li class="req-item"><span class="req-num">26.</span> Не более 4 регионов параллельно</li>
-    <li class="req-item"><span class="req-num">27.</span> После категории — сводный Excel: <code>summary-{категория}.xlsx</code></li>
-    <li class="req-item"><span class="req-num">28.</span> Уведомить Ирину о завершении</li>
+    <li class="req-item"><span class="req-num">27.</span> Не более 4 регионов параллельно</li>
+    <li class="req-item"><span class="req-num">28.</span> После категории — сводный накопительный Excel: <code>summary-{id}.xlsx</code></li>
+    <li class="req-item"><span class="req-num">29.</span> Уведомить Ирину о завершении всех категорий</li>
   </ul>
 
   <h4>Подзадача 5. Логирование</h4>
   <ul class="req-list">
-    <li class="req-item"><span class="req-num">29.</span> При старте задачи создать файл лога <code>memory/research-log-YYYY-MM-DD.md</code> (дата запуска в имени)</li>
-    <li class="req-item"><span class="req-num">30.</span> Перед созданием нового лога — проверить старые логи (<code>memory/research-log-*.md</code>). Если их > 3 — удалить самые старые (ротация)</li>
-    <li class="req-item"><span class="req-num">31.</span> Формат записи в лог — метка времени и категория:
-      <ul>
-        <li>Прогресс: <code>[HH:MM] [категория] Регион — старт, регион N/89</code></li>
-        <li>Действия: <code>[HH:MM] [категория] Регион — web_search: "запрос" → K результатов</code></li>
-        <li>URL источников: <code>[HH:MM] [категория] Регион — источник: https://...</code></li>
-        <li>Итог по региону: <code>[HH:MM] [категория] Регион — завершено: N мер, K источников, время X мин</code></li>
-        <li>Предупреждения: <code>[HH:MM] [категория] Регион — ⚠️ поле "Размер" не найдено</code></li>
-      </ul>
-    </li>
-    <li class="req-item"><span class="req-num">32.</span> При мягком превышении времени (> 10 мин) — записать причину продления в лог</li>
-    <li class="req-item"><span class="req-num">33.</span> При жёстком cutoff (30 мин) — записать в лог и пометить регион как пропущенный</li>
-    <li class="req-item"><span class="req-num">34.</span> В конце лога — итоговая сводка: всего регионов, обработано, пропущено, общее время</li>
+    <li class="req-item"><span class="req-num">30.</span> Создать <code>memory/research-log-YYYY-MM-DD.md</code></li>
+    <li class="req-item"><span class="req-num">31.</span> Ротация: хранить ≤ 3 последних лога, удалять старые</li>
+    <li class="req-item"><span class="req-num">32.</span> Формат: <code>[HH:MM] [категория] Регион — действие</code>. Фиксировать: прогресс, поисковые запросы, URL источников, итоги, предупреждения</li>
+    <li class="req-item"><span class="req-num">33.</span> Мягкое превышение (> 10 мин) → записать причину продления</li>
+    <li class="req-item"><span class="req-num">34.</span> Жёсткий cutoff (30 мин) → записать и пометить регион пропущенным</li>
+    <li class="req-item"><span class="req-num">35.</span> Итоговая сводка: всего категорий, регионов, обработано, пропущено, общее время</li>
   </ul>
 
   <h4>Подзадача 6. Обработка ошибок</h4>
   <ul class="req-list">
-    <li class="req-item"><span class="req-num">35.</span> Ошибка региона (таймаут 30 мин, капча) → записать причину в лог, продолжить</li>
-    <li class="req-item"><span class="req-num">36.</span> Уведомить Ирину о пропущенных: «Не обработано регионов: {M}. Детали в research-log-YYYY-MM-DD.md»</li>
+    <li class="req-item"><span class="req-num">36.</span> Ошибка региона (таймаут 30 мин, капча) → записать причину в лог, продолжить</li>
+    <li class="req-item"><span class="req-num">37.</span> Уведомить Ирину о пропущенных: «Не обработано регионов: {M}. Детали в research-log-YYYY-MM-DD.md»</li>
   </ul>
 
-  <h3>Этап 5. Управление шаблонами</h3>
+  <h4>Подзадача 7. Накопительный Excel <span class="new-badge">v1.2</span></h4>
   <ul class="req-list">
-    <li class="req-item"><span class="req-num">37.</span> Шаблоны в <code>prompts/{категория}.md</code></li>
-    <li class="req-item"><span class="req-num">38.</span> Ирина правит через консультанта: «Улучши описание запроса для [категория]»</li>
-    <li class="req-item"><span class="req-num">39.</span> Консультант обновляет файл в prompts/</li>
-    <li class="req-item"><span class="req-num">40.</span> Следующий запуск — актуальная версия</li>
-    <li class="req-item"><span class="req-num">41.</span> Версионирование через git</li>
+    <li class="req-item"><span class="req-num">38.</span> При создании сводного Excel — проверить существование предыдущей версии</li>
+    <li class="req-item"><span class="req-num">39.</span> Сравнить построчно (ключ: название меры + категория получателя + НПА)</li>
+    <li class="req-item"><span class="req-num">40.</span> Проставить статус: 🆕 новое / ❌ отменено / ✏️ изменено / ▬ без изменений</li>
+    <li class="req-item"><span class="req-num">41.</span> Для ✏️ — указать, какие поля изменились</li>
+    <li class="req-item"><span class="req-num">42.</span> Сохранить с колонкой «Статус» и цветовой индикацией</li>
+  </ul>
+
+  <h3>Этап 5. Управление категориями и шаблонами <span class="new-badge">v1.2</span></h3>
+  <ul class="req-list">
+    <li class="req-item"><span class="req-num">43.</span> Исследователь читает <code>categories.json</code> при каждом запуске (не хардкод)</li>
+    <li class="req-item"><span class="req-num">44.</span> Ирина добавляет категорию через консультанта. Триггер: «добавь категорию», «новая категория», «расширь список»</li>
+    <li class="req-item"><span class="req-num">45.</span> Если не хватает деталей — консультант уточняет в диалоге: название, базовый НПА, подгруппы</li>
+    <li class="req-item"><span class="req-num">46.</span> После уточнения: создать промпт + дописать в <code>categories.json</code> + создать папку результатов</li>
+    <li class="req-item"><span class="req-num">47.</span> Ирина может улучшать шаблоны: «Улучши описание запроса для [категория]»</li>
+    <li class="req-item"><span class="req-num">48.</span> Консультант обновляет файл в <code>prompts/</code></li>
+    <li class="req-item"><span class="req-num">49.</span> Все изменения в <code>categories.json</code> и <code>prompts/</code> версионируются через git</li>
   </ul>
 
   <h3>Этап 6. Тестирование</h3>
   <ul class="req-list">
-    <li class="req-item"><span class="req-num">42.</span> Тест 1: Москва, инвалиды — Excel, ≥ 80% заполнено</li>
-    <li class="req-item"><span class="req-num">43.</span> Тест 2: сравнение v4-flash vs v4-pro, выбор модели</li>
-    <li class="req-item"><span class="req-num">44.</span> Тест 3: Москва, все три категории — 3 Excel</li>
-    <li class="req-item"><span class="req-num">45.</span> Тест 4: 3 региона, 1 категория — среднее время на регион ~10 минут (не жёсткий cutoff), 3 Excel-файла</li>
-    <li class="req-item"><span class="req-num">46.</span> Тест 5: проверка логов — лог создан, формат соответствует Требованию 31, старые логи ротируются (≤ 3 файлов)</li>
+    <li class="req-item"><span class="req-num">50.</span> Тест 1: Москва, инвалиды — Excel, ≥ 80% заполнено</li>
+    <li class="req-item"><span class="req-num">51.</span> Тест 2: сравнение v4-flash vs v4-pro, выбор модели</li>
+    <li class="req-item"><span class="req-num">52.</span> Тест 3: Москва, все стартовые категории — Excel на каждую</li>
+    <li class="req-item"><span class="req-num">53.</span> Тест 4: 3 региона, 1 категория — среднее время ~10 мин</li>
+    <li class="req-item"><span class="req-num">54.</span> Тест 5: логи — формат, ротация (≤ 3 файлов)</li>
+    <li class="req-item"><span class="req-num">55.</span> Тест 6: накопительный Excel — маркировка 🆕/❌/✏️ <span class="new-badge">v1.2</span></li>
+    <li class="req-item"><span class="req-num">56.</span> Тест 7: добавление категории через консультанта <span class="new-badge">v1.2</span></li>
   </ul>
 
-  <h3>Этап 7. Приёмка</h3>
+  <h3>Этап 7. Документирование и приёмка <span class="new-badge">v1.2</span></h3>
   <ul class="req-list">
-    <li class="req-item"><span class="req-num">47.</span> ≥ 80% полей Excel заполнены</li>
-    <li class="req-item"><span class="req-num">48.</span> Excel открывается, структура по форме</li>
-    <li class="req-item"><span class="req-num">49.</span> Сводный Excel корректен</li>
-    <li class="req-item"><span class="req-num">50.</span> Триггер только от Ирины</li>
-    <li class="req-item"><span class="req-num">51.</span> Изменение промпта → новый запуск с новой версией</li>
-    <li class="req-item"><span class="req-num">52.</span> Логи: формат соответствует Требованию 31, ротация работает (≤ 3 файлов)</li>
-    <li class="req-item"><span class="req-num">53.</span> Отчёт Кириллу</li>
+    <li class="req-item"><span class="req-num">57.</span> Инструкция для Ирины: запуск, категории, шаблоны, результаты, накопительный Excel, логи</li>
+    <li class="req-item"><span class="req-num">58.</span> ≥ 80% полей Excel заполнены</li>
+    <li class="req-item"><span class="req-num">59.</span> Excel открывается, структура по форме</li>
+    <li class="req-item"><span class="req-num">60.</span> Сводный Excel в накопительном режиме (статусы изменений)</li>
+    <li class="req-item"><span class="req-num">61.</span> Триггер только от Ирины</li>
+    <li class="req-item"><span class="req-num">62.</span> Добавление категории: диалог → <code>categories.json</code> → промпт</li>
+    <li class="req-item"><span class="req-num">63.</span> Изменение промпта → новый запуск с новой версией</li>
+    <li class="req-item"><span class="req-num">64.</span> Логи: формат + ротация</li>
+    <li class="req-item"><span class="req-num">65.</span> Инструкция для Ирины покрывает все сценарии</li>
+    <li class="req-item"><span class="req-num">66.</span> Итоговый отчёт Кириллу</li>
   </ul>
 </section>
 
@@ -220,11 +232,13 @@
     <li>НЕ додумывать данные — «Не указано в найденных источниках»</li>
     <li>НЕ экстраполировать с других регионов</li>
     <li>Шаблоны читать перед каждой категорией (не кэшировать)</li>
+    <li>Категории читать из <code>categories.json</code> при каждом запуске (не хардкодить) <span class="new-badge">v1.2</span></li>
     <li>Модель: v4-flash → v4-pro. После Теста 2 — зафиксировать</li>
-    <li>Целевое время на регион ~10 минут. Если сбор активно идёт — продлевать (с записью причины в лог). Жёсткий cutoff: 30 минут (защита от зависания)</li>
-    <li>Результаты — локально на Фениксе</li>
+    <li>Целевое время на регион ~10 минут. Если сбор активно идёт — продлевать. Жёсткий cutoff: 30 минут</li>
+    <li>Результаты — локально на Фениксе в <code>knowledge/research/</code></li>
     <li>Конфиг — через SSH, не TUI</li>
     <li>Перезапуск — safe-restart.sh</li>
+    <li>Накопительный Excel: не удалять старые данные, только дополнять и маркировать изменения <span class="new-badge">v1.2</span></li>
   </ol>
 </section>
 
@@ -233,20 +247,23 @@
   <ul class="checklist">
     <li><strong>Тест 1</strong> (Москва, инвалиды): ≥ 80% полей Excel заполнены, структура по форме</li>
     <li><strong>Тест 2</strong> (сравнение моделей): данные собраны, модель выбрана</li>
-    <li><strong>Тест 3</strong> (Москва, все категории): 3 Excel-файла, структура по форме</li>
-    <li><strong>Тест 4</strong> (3 региона): 3 Excel-файла, среднее время на регион ~10 минут (не жёсткий cutoff)</li>
-    <li><strong>Тест 5</strong> (логи): лог создан, формат по Требованию 31, ротация работает (≤ 3 файлов)</li>
+    <li><strong>Тест 3</strong> (Москва, все категории): Excel-файлы на каждую, структура по форме</li>
+    <li><strong>Тест 4</strong> (3 региона): 3 Excel-файла, среднее время ~10 мин</li>
+    <li><strong>Тест 5</strong> (логи): лог создан, формат по Требованию 32, ротация ≤ 3 файлов</li>
+    <li><strong>Тест 6</strong> (накопительный Excel) <span class="new-badge">v1.2</span>: повторный прогон — маркировка 🆕/❌/✏️ работает</li>
+    <li><strong>Тест 7</strong> (категории) <span class="new-badge">v1.2</span>: Ирина добавляет категорию → следующий запуск обрабатывает и её</li>
     <li>Триггер срабатывает только от Ирины, другие — отказ</li>
     <li>Изменение промпта → новый запуск с новой версией</li>
     <li>После завершения — уведомление Ирине с перечнем файлов</li>
-    <li>Пропущенные регионы зафиксированы в логе research-log-YYYY-MM-DD.md</li>
-    <li>Сводный Excel создан для каждой категории</li>
+    <li>Пропущенные регионы зафиксированы в логе</li>
+    <li>Сводный Excel создан для каждой категории в накопительном режиме</li>
+    <li>Инструкция для Ирины готова и покрывает все сценарии <span class="new-badge">v1.2</span></li>
   </ul>
 </section>
 
 </div>
 <footer>
-  ТЗ v1.1 · 2026-08-07 · Лунтик 🦞 · <a href="https://nasledstvo2026.github.io/Phoenix/">nasledstvo2026.github.io/Phoenix</a>
+  ТЗ v1.2 · 2026-08-07 · Лунтик 🦞 · <a href="https://nasledstvo2026.github.io/Phoenix/">nasledstvo2026.github.io/Phoenix</a>
 </footer>
 </body>
 </html>
