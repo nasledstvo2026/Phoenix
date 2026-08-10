@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Инструкция: предложения-триггеры — Феникс 🔥</title>
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Page-specific: таблица триггеров в glass-стиле портала */
+    .trig-wrap {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 16px;
+      overflow-x: auto;
+    }
+    .trig-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .trig-table th {
+      text-align: left;
+      font-weight: 700;
+      color: var(--text);
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--glass-border);
+      white-space: nowrap;
+    }
+    .trig-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--glass-border);
+      color: var(--text-dim);
+      line-height: 1.5;
+      vertical-align: top;
+    }
+    .trig-table tr:last-child td { border-bottom: none; }
+    .trig-table .phrase {
+      color: var(--text);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .trig-table .tag-green { color: var(--green); }
+    .trig-table .tag-orange { color: var(--orange); }
+    .trig-table .tag-cyan { color: var(--cyan); }
+    .trig-table .tag-red { color: var(--red); }
+    .warn {
+      border-left: 3px solid var(--orange);
+      background: rgba(255,144,0,.06);
+      padding: 12px 16px;
+      border-radius: 0 12px 12px 0;
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+    .warn strong { color: var(--orange); }
+    .ok {
+      border-left: 3px solid var(--green);
+      background: rgba(126,231,135,.06);
+      padding: 12px 16px;
+      border-radius: 0 12px 12px 0;
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+    .ok strong { color: var(--green); }
+    @media (max-width: 600px) {
+      .trig-table .phrase { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <a href="social.html" class="back">← Назад к «Социальный консультант»</a>
+  <div class="hero">
+    <h1 class="page-title">📖 Инструкция: предложения-триггеры</h1>
+    <p class="sub">Как запускать сбор мер социальной поддержки по регионам РФ · «Социальный исследователь»</p>
+    <p class="date">Актуально на 10.08.2026 · ТЗ v1.5</p>
+  </div>
+
+  <!-- Что такое триггеры -->
+  <div class="section">
+    <h2>📌 Что такое предложения-триггеры</h2>
+    <div class="item">
+      <div class="title">Точные фразы для запуска сбора</div>
+      <div class="body">
+        Предложения-триггеры — это заранее заданные фразы, по которым запускается агент «Социальный исследователь»: он собирает перечни мер социальной поддержки (выплаты, льготы, услуги) по регионам РФ и складывает их в Excel-файлы.
+      </div>
+    </div>
+    <div class="item highlight">
+      <div class="title">Два условия срабатывания</div>
+      <div class="body">
+        <strong>1.</strong> Сообщение отправлено Ириной (@irina_mltsva). Другие пользователи получают отказ.<br>
+        <strong>2.</strong> Текст совпадает <strong>точно</strong> — без опечаток, лишних слов и знаков препинания. Любое изменение → триггер не сработает.
+      </div>
+    </div>
+  </div>
+
+  <!-- Триггеры запуска -->
+  <div class="section">
+    <h2>🚀 Триггеры запуска сбора</h2>
+    <div class="trig-wrap">
+      <table class="trig-table">
+        <tr>
+          <th>Точная фраза</th>
+          <th>Что произойдёт</th>
+        </tr>
+        <tr>
+          <td class="phrase">«Собери меры поддержки для Москвы по категории инвалидность»</td>
+          <td><span class="tag-cyan">Тестовый запуск:</span> только Москва, категория «Инвалидность» (invalidy). Время ~10 мин.</td>
+        </tr>
+        <tr>
+          <td class="phrase">«Собери меры поддержки по всем категориям и всем регионам»</td>
+          <td><span class="tag-green">Полный сбор:</span> все категории × все 89 регионов. Несколько часов. По завершении — уведомление с перечнем файлов.</td>
+        </tr>
+        <tr>
+          <td class="phrase">«Тест 3 все категории Москва»</td>
+          <td><span class="tag-orange">Тест:</span> только Москва, все 3 категории (инвалидность, ВБД, СВО). Без сводного Excel.</td>
+        </tr>
+        <tr>
+          <td class="phrase">«Тест 4 три региона инвалидность»</td>
+          <td><span class="tag-orange">Тест:</span> категория «Инвалидность», регионы: Москва, Санкт-Петербург, Московская область. Без сводного Excel.</td>
+        </tr>
+      </table>
+    </div>
+    <div class="warn">⚠️ <strong>Внимание:</strong> тестовые триггеры (Тест 3, Тест 4) используются для проверки системы. Для рабочих запусков предназначены первые две фразы.</div>
+  </div>
+
+  <!-- Что происходит после отправки -->
+  <div class="section">
+    <h2>💬 Что происходит после отправки</h2>
+    <div class="item">
+      <div class="title">1. Распознавание</div>
+      <div class="body">Маршрутизатор распознаёт точную фразу и запускает «Социального исследователя» в отдельной сессии.</div>
+    </div>
+    <div class="item">
+      <div class="title">2. Сбор</div>
+      <div class="body">Регионы обрабатываются строго по одному (целевое время ~10 минут на регион, жёсткий лимит 30 минут). Поиск идёт по официальным сайтам регионов, региональным НПА, garant.ru, consultant.ru, sfr.gov.ru.</div>
+    </div>
+    <div class="item">
+      <div class="title">3. Результат</div>
+      <div class="body">Excel-файлы по регионам в папках категорий + сводный накопительный файл <code>summary-*.xlsx</code> (14 колонок, изменения помечаются 🆕 / ❌ / ✏️ / ▬). Файлы для отправки — в <code>output/</code>.</div>
+    </div>
+    <div class="item">
+      <div class="title">4. Уведомление</div>
+      <div class="body">По завершении приходит сообщение: «Сбор завершён. Категорий: K, обработано регионов: N. Файлы: [список]». Необработанные регионы (таймауты, недоступность источников) перечисляются отдельно — детали в логе <code>research-log-ГГГГ-ММ-ДД.md</code>.</div>
+    </div>
+  </div>
+
+  <!-- Правила -->
+  <div class="section">
+    <h2>⚠️ Правила и ограничения</h2>
+    <div class="item">
+      <div class="title">Только Ирина</div>
+      <div class="body">Триггеры срабатывают исключительно от Ирины (sender_id 739016616). Остальные пользователи получают отказ: «Функция доступна только авторизованному аналитику».</div>
+    </div>
+    <div class="item">
+      <div class="title">Точное совпадение</div>
+      <div class="body">Фраза должна совпадать буква в букву. Если текст изменён или есть опечатка — сбор не запустится, а сообщение будет обработано социальным консультантом как обычный вопрос.</div>
+    </div>
+    <div class="item">
+      <div class="title">Остальные сообщения → консультант</div>
+      <div class="body">Вопросы о выплатах и льготах («Какие выплаты положены инвалиду II группы?») уходят «Социальному консультанту» и не запускают сбор.</div>
+    </div>
+    <div class="item">
+      <div class="title">Полный сбор — это долго</div>
+      <div class="body">Прогон 89 регионов занимает несколько часов. Запускать повторно стоит только при необходимости (рекомендуемая периодичность — раз в квартал).</div>
+    </div>
+    <div class="item">
+      <div class="title">Логи</div>
+      <div class="body">Ход сбора фиксируется в <code>research-log-ГГГГ-ММ-ДД.md</code> (хранится не более 3 последних логов, старые удаляются автоматически).</div>
+    </div>
+  </div>
+
+  <!-- Категории и шаблоны -->
+  <div class="section">
+    <h2>🆕 Добавление категорий и улучшение шаблонов</h2>
+    <div class="item">
+      <div class="title">Новая категория</div>
+      <div class="body">Фразы «Добавь категорию», «Новая категория», «Расширь список категорий» → диалог с консультантом: название категории, базовый нормативный документ, подгруппы (если есть).</div>
+    </div>
+    <div class="item">
+      <div class="title">Улучшение шаблона</div>
+      <div class="body">«Улучши описание запроса для [категория] — [что изменить]» → обновление шаблона сбора; следующий запуск использует новую версию.</div>
+    </div>
+    <div class="warn">⚠️ <strong>Статус на 10.08.2026:</strong> функционал добавления категорий и улучшения шаблонов (Этап 5 ТЗ) <strong>отложен</strong> — консультант пока обрабатывает такие запросы в обычном режиме. Разделы заработают после реализации.</div>
+  </div>
+
+  <!-- Ссылки -->
+  <div class="section">
+    <h2>📚 Связанные документы</h2>
+    <div class="links-section" style="margin:0;padding:0;max-width:none;">
+      <div class="link-item">
+        <a href="socissledtz.html">ТЗ «Социальный исследователь»</a>
+        <span class="ref">socissledtz.html · v1.5</span>
+      </div>
+      <div class="link-item">
+        <a href="socialtz.html">ТЗ «Социальный консультант»</a>
+        <span class="ref">socialtz.html</span>
+      </div>
+      <div class="link-item">
+        <a href="social.html">Социальный консультант — главная раздела</a>
+        <span class="ref">social.html</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    📖 Инструкция: предложения-триггеры · Феникс 🔥 · Август 2026 · <a href="https://nasledstvo2026.github.io/Phoenix/">nasledstvo2026.github.io/Phoenix</a>
+  </div>
+</div>
+</body>
+</html>
