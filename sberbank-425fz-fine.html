@@ -9,6 +9,23 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 2rem; }
   .container { max-width: 1100px; margin: 0 auto; }
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--blue);
+    text-decoration: none;
+    padding: 10px 20px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: border-color .2s, background .2s;
+    margin-bottom: 1.5rem;
+  }
+  .back-btn:hover { border-color: var(--blue); background: #222636; }
+  .back-arrow { font-size: 16px; }
   h1 { font-size: 1.8rem; margin-bottom: 0.3rem; color: #fff; }
   h2 { font-size: 1.3rem; margin: 2rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); color: #fff; }
   h3 { font-size: 1.05rem; margin: 1.2rem 0 0.6rem; color: var(--blue); }
@@ -54,6 +71,8 @@
 </head>
 <body>
 <div class="container">
+
+<a href="425fz.html" class="back-btn"><span class="back-arrow">←</span> Назад</a>
 
 <h1>💰 Расчёт штрафа Сбербанка за 1 день неисполнения 425-ФЗ (с учётом ст. 112/114 НК РФ)</h1>
 <p class="subtitle">Дата вступления в силу: <strong>01.01.2027</strong> &nbsp;|&nbsp; Федеральный закон от 28.11.2025 № 425-ФЗ &nbsp;|&nbsp; Расчёт на 03.08.2026 &nbsp;|&nbsp; <span class="tag tag-purple">v2 — с отягчающими</span></p>
