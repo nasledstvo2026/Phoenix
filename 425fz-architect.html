@@ -72,6 +72,16 @@
     .example .a .a-label { font-size: 11px; color: #2dd4bf; font-weight: 600; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
     .example .a .ref { color: #2dd4bf; font-size: 12px; margin-top: 8px; }
     .badge-pass { display: inline-block; background: rgba(63,185,80,0.12); color: #3fb950; padding: 2px 10px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+    .rag-flow { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 12px; }
+    @media (max-width: 640px) { .rag-flow { grid-template-columns: 1fr; } }
+    .rag-step { background: #111827; border: 1px solid #1e293b; border-radius: 10px; padding: 16px; }
+    .rag-step .k { font-size: 11px; color: #818cf8; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 6px; }
+    .rag-step h4 { color: #e5e7eb; font-size: 14px; margin-bottom: 8px; }
+    .rag-step p { font-size: 13px; color: #94a3b8; line-height: 1.6; }
+    .rag-note { background: rgba(15,118,110,.06); border-left: 3px solid #0f766e; border-radius: 0 6px 6px 0; padding: 14px 16px; margin-top: 12px; font-size: 13px; color: #cbd5e1; }
+    .rag-note strong { color: #2dd4bf; }
+    .rag-note ul { margin: 8px 0 0 18px; color: #94a3b8; }
+    .rag-note li { margin: 5px 0; }
   </style>
 </head>
 <body>
@@ -241,6 +251,37 @@
   <p><strong>Зона 3 — Embedding-поиск.</strong> law-search API на отдельном systemd-сервисе принимает REST-запросы. Векторный индекс FAISS (2981 чанк, время поиска ~45 мс) построен на эмбеддингах multilingual-e5-small (384 измерения, ONNX-рантайм). На входе работает препроцессинг: раскрытие аббревиатур по словарю tz-abbrev-dict.md для повышения точности поиска.</p>
 
   <p><strong>Зона 4 — Инфраструктура.</strong> Холодный рестарт гейтвея через safe-restart.sh (12 секунд, systemd-run таймер гарантирует перезапуск). Гейтвей и law-search — независимые systemd-юниты; law-search переживает рестарт гейтвея. Тяжёлые задачи агентов изолируются через sessions_spawn isolated для предотвращения переполнения контекста.</p>
+
+  <h2>🧠 RAG — фактологическая подпорка ответа</h2>
+
+  <p>Федор строит ответ по схеме <strong>RAG</strong> (Retrieval-Augmented Generation): извлекает релевантные нормы из векторного индекса, дополняет ими контекст и генерирует ответ со ссылками на конкретные статьи.</p>
+
+  <div class="rag-flow">
+    <div class="rag-step">
+      <div class="k">1 · Retrieval</div>
+      <h4>Извлечение</h4>
+      <p>law-search API (порт 8765): FAISS-индекс — 2981 чанк НК РФ и 425-ФЗ, эмбеддинги multilingual-e5-small (384d), семантический поиск по косинусу. Раскрытие аббревиатур (ПНО, СМЭВ-3, ЕНС). Порог 0.80.</p>
+    </div>
+    <div class="rag-step">
+      <div class="k">2 · Augmented</div>
+      <h4>Дополнение</h4>
+      <p>Найденные фрагменты (snippet + полный текст + источник + статья) добавляются в контекст LLM как фактическая база.</p>
+    </div>
+    <div class="rag-step">
+      <div class="k">3 · Generation</div>
+      <h4>Генерация</h4>
+      <p>DeepSeek V4 Pro/Flash пишет ответ со ссылкой на конкретную норму — статью, пункт, документ.</p>
+    </div>
+  </div>
+
+  <div class="rag-note">
+    <strong>Гибрид, а не чистый RAG:</strong>
+    <ul>
+      <li>Курируемые факты SKILL.md приоритетнее векторного поиска</li>
+      <li>Верификация fz425-verifier — guardrail перед ответом (вердикт «ПРИНЯТ»)</li>
+      <li>Fallback в интернет: consultant.ru / garant.ru / nalog.gov.ru</li>
+    </ul>
+  </div>
 
   <hr>
 
