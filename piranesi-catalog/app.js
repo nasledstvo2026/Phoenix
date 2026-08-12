@@ -49,12 +49,20 @@
     return item.title || "Без названия";
   }
 
+  function fmtTechnique(item) {
+    if (item.techniques && item.techniques.length) {
+      const en = item.techniques.find(t => t.lang === "en") || item.techniques[0];
+      return en.text;
+    }
+    if (item.technique) return item.technique;
+    return "";
+  }
+
   function fmtMeta(item) {
     const parts = [];
     if (item.date) parts.push(item.date);
-    if (item.technique_text) parts.push(item.technique_text);
-    else if (item.technique) parts.push(item.technique);
-    if (item.dimensions) parts.push(item.dimensions);
+    const tech = fmtTechnique(item);
+    if (tech) parts.push(tech);
     if (item.identifier) parts.push("№ " + item.identifier);
     return parts;
   }
@@ -178,9 +186,7 @@
         if (meta.length) {
           html += '<div class="item-meta">' + meta.map(esc).join(' · ') + '</div>';
         }
-        if (it.description) {
-          html += '<div class="item-desc">' + esc(it.description.substring(0, 120)) + (it.description.length > 120 ? '…' : '') + '</div>';
-        }
+
         html += '</div></div>';
         cardIdx++;
       }
