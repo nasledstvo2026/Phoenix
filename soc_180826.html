@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>18 августа 2026 — Феникс 🔥</title>
+  <title>Сводный отчет по мерам социальной поддержки по всем регионам РФ</title>
   <link rel="stylesheet" href="theme.css">
   <link rel="stylesheet" href="style.css">
   <style>
@@ -55,6 +55,11 @@
     .f-label select:focus { border-color: var(--blue); }
     .f-count { margin-left: auto; font-size: 12px; color: var(--text-faint); }
     .tbl-total { font-size: 13px; color: var(--text-dim); margin: 0 0 20px; }
+    .st-badge { display: inline-block; padding: 2px 9px; border-radius: 6px; font-weight: 600; font-size: 12px; white-space: nowrap; }
+    .st-badge.st-new { color: var(--green); }
+    .st-badge.st-chg { color: var(--yellow); }
+    .st-badge.st-off { color: var(--red); }
+    .st-badge.st-same { color: var(--text-faint); }
     @media (max-width: 600px) {
       .data-table { font-size: 12px; }
       .f-count { margin-left: 0; }
@@ -69,9 +74,21 @@
 <div class="container">
   <a href="social.html" class="back">← Назад к «Социальный консультант»</a>
   <div class="hero">
-    <h1 class="page-title">📅 18 августа 2026</h1>
-    <p class="sub">Сводный отчёт по мерам социальной поддержки · «Социальный исследователь»</p>
+    <h1 class="page-title">Сводный отчет по мерам социальной поддержки по всем регионам РФ</h1>
+    <p class="sub">«Социальный исследователь» · сбор мер поддержки</p>
     <p class="date">Сформировано 18.08.2026 · 3 категории · 89 регионов</p>
+  </div>
+
+  <div class="section">
+    <h2>🔤 Обозначения статусов</h2>
+    <div class="item">
+      <div class="body">
+        <span class="st-badge st-new">🆕 Новое</span> — мера появилась в сводке впервые (новая для категории и региона).<br>
+        <span class="st-badge st-chg">✏️ Изменено</span> — мера изменилась по сравнению с прошлой сводкой; суть изменения — в колонке «Что изменилось».<br>
+        <span class="st-badge st-off">❌ Отменено</span> — мера отменена и больше не действует.<br>
+        <span class="st-badge st-same">▬ Без изменений</span> — мера действует, изменений с прошлой сводки нет.
+      </div>
+    </div>
   </div>
 
   <div class="section">
