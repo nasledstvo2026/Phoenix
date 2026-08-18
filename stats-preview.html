@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Сводная статистика (превью) — Феникс 🔥</title>
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 8px; }
+    .stat-card {
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      border-radius: 16px; padding: 20px 18px;
+      backdrop-filter: blur(20px) saturate(1.4); -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      box-shadow: 0 4px 24px rgba(0,0,0,.3);
+    }
+    .stat-card .num { font-size: 30px; font-weight: 800; color: var(--text); letter-spacing: -0.5px; }
+    .stat-card .lbl { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+    .stat-card.accent { border-color: rgba(88,166,255,.4); }
+    .chart-card {
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      border-radius: 16px; padding: 20px; margin-bottom: 16px;
+      backdrop-filter: blur(20px) saturate(1.4); -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      box-shadow: 0 4px 24px rgba(0,0,0,.3);
+    }
+    .chart-card h3 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 14px; }
+    .bar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 9px; }
+    .bar-label { width: 190px; flex-shrink: 0; font-size: 13px; color: var(--text-dim); text-align: right; }
+    .bar-track { flex: 1; height: 14px; background: rgba(255,255,255,.06); border-radius: 7px; overflow: hidden; }
+    .bar-fill { display: block; height: 100%; border-radius: 7px;
+      background: linear-gradient(90deg, #58a6ff, #bc8cff); }
+    .bar-val { width: 130px; flex-shrink: 0; font-size: 13px; color: var(--text); font-weight: 600; }
+    .bar-val i { color: var(--text-faint); font-style: normal; font-weight: 400; }
+    .region-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .region-table th { text-align: left; color: var(--text); padding: 8px 10px; border-bottom: 1px solid var(--glass-border); font-weight: 700; }
+    .region-table td { padding: 8px 10px; border-bottom: 1px solid var(--glass-border); color: var(--text-dim); }
+    .region-table td:first-child { color: var(--text-faint); width: 40px; }
+    .region-table td:last-child { text-align: right; color: var(--text); font-weight: 600; }
+    @media (max-width: 600px) {
+      .bar-label { width: 110px; }
+      .bar-val { width: 90px; font-size: 12px; }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="soc_180826.html" class="back">← К сводному отчёту</a>
+  <div class="hero">
+    <h1 class="page-title">📊 Сводная статистика</h1>
+    <p class="sub">По собранным данным · превью-версия</p>
+    <p class="date">3 категории · 89 регионов · 7 071 мер</p>
+  </div>
+
+  <div class="section">
+    <div class="stats-grid">
+      <div class="stat-card accent"><div class="num">7 071</div><div class="lbl">Всего мер поддержки</div></div>
+      <div class="stat-card"><div class="num">3</div><div class="lbl">Категории</div></div>
+      <div class="stat-card"><div class="num">89</div><div class="lbl">Регионов</div></div>
+      <div class="stat-card"><div class="num">5 026</div><div class="lbl">Уникальных НПА</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="chart-card">
+      <h3>🏷️ Меры по категориям</h3>
+      <div class="bar-row"><span class="bar-label">Инвалидность</span><span class="bar-track"><span class="bar-fill" style="width:47.9%"></span></span><span class="bar-val">1,779 <i>(25.2%)</i></span></div>
+<div class="bar-row"><span class="bar-label">ВБД</span><span class="bar-track"><span class="bar-fill" style="width:42.5%"></span></span><span class="bar-val">1,579 <i>(22.3%)</i></span></div>
+<div class="bar-row"><span class="bar-label">СВО</span><span class="bar-track"><span class="bar-fill" style="width:100.0%"></span></span><span class="bar-val">3,713 <i>(52.5%)</i></span></div>
+    </div>
+
+    <div class="chart-card">
+      <h3>💰 Тип меры</h3>
+      <div class="bar-row"><span class="bar-label">денежная</span><span class="bar-track"><span class="bar-fill" style="width:100.0%"></span></span><span class="bar-val">3,044 <i>(43.0%)</i></span></div>
+<div class="bar-row"><span class="bar-label">льгота</span><span class="bar-track"><span class="bar-fill" style="width:61.0%"></span></span><span class="bar-val">1,856 <i>(26.2%)</i></span></div>
+<div class="bar-row"><span class="bar-label">услуга</span><span class="bar-track"><span class="bar-fill" style="width:42.1%"></span></span><span class="bar-val">1,283 <i>(18.1%)</i></span></div>
+<div class="bar-row"><span class="bar-label">натуральная помощь</span><span class="bar-track"><span class="bar-fill" style="width:12.0%"></span></span><span class="bar-val">366 <i>(5.2%)</i></span></div>
+<div class="bar-row"><span class="bar-label">комбинированная</span><span class="bar-track"><span class="bar-fill" style="width:16.4%"></span></span><span class="bar-val">498 <i>(7.0%)</i></span></div>
+<div class="bar-row"><span class="bar-label">иное</span><span class="bar-track"><span class="bar-fill" style="width:1.5%"></span></span><span class="bar-val">3 <i>(0.0%)</i></span></div>
+<div class="bar-row"><span class="bar-label">не указано</span><span class="bar-track"><span class="bar-fill" style="width:1.5%"></span></span><span class="bar-val">21 <i>(0.3%)</i></span></div>
+      <p class="tbl-total" style="margin-top:10px;">Нормализовано из 221 исходного варианта записи.</p>
+    </div>
+
+    <div class="chart-card">
+      <h3>🎯 Категория льготы</h3>
+      <div class="bar-row"><span class="bar-label">иное / не указано</span><span class="bar-track"><span class="bar-fill" style="width:100.0%"></span></span><span class="bar-val">2,178 <i>(30.8%)</i></span></div>
+<div class="bar-row"><span class="bar-label">смешанная</span><span class="bar-track"><span class="bar-fill" style="width:73.0%"></span></span><span class="bar-val">1,590 <i>(22.5%)</i></span></div>
+<div class="bar-row"><span class="bar-label">ЖКУ</span><span class="bar-track"><span class="bar-fill" style="width:32.6%"></span></span><span class="bar-val">710 <i>(10.0%)</i></span></div>
+<div class="bar-row"><span class="bar-label">образование</span><span class="bar-track"><span class="bar-fill" style="width:29.8%"></span></span><span class="bar-val">650 <i>(9.2%)</i></span></div>
+<div class="bar-row"><span class="bar-label">транспорт</span><span class="bar-track"><span class="bar-fill" style="width:23.1%"></span></span><span class="bar-val">503 <i>(7.1%)</i></span></div>
+<div class="bar-row"><span class="bar-label">налоги</span><span class="bar-track"><span class="bar-fill" style="width:19.9%"></span></span><span class="bar-val">433 <i>(6.1%)</i></span></div>
+<div class="bar-row"><span class="bar-label">медицина</span><span class="bar-track"><span class="bar-fill" style="width:16.5%"></span></span><span class="bar-val">360 <i>(5.1%)</i></span></div>
+<div class="bar-row"><span class="bar-label">жильё</span><span class="bar-track"><span class="bar-fill" style="width:9.9%"></span></span><span class="bar-val">215 <i>(3.0%)</i></span></div>
+<div class="bar-row"><span class="bar-label">ТСР</span><span class="bar-track"><span class="bar-fill" style="width:9.7%"></span></span><span class="bar-val">211 <i>(3.0%)</i></span></div>
+<div class="bar-row"><span class="bar-label">питание</span><span class="bar-track"><span class="bar-fill" style="width:7.5%"></span></span><span class="bar-val">163 <i>(2.3%)</i></span></div>
+    </div>
+
+    <div class="chart-card">
+      <h3>⏱️ Периодичность</h3>
+      <div class="bar-row"><span class="bar-label">единовременно</span><span class="bar-track"><span class="bar-fill" style="width:100.0%"></span></span><span class="bar-val">1,704 <i>(24.1%)</i></span></div>
+<div class="bar-row"><span class="bar-label">ежемесячно</span><span class="bar-track"><span class="bar-fill" style="width:96.5%"></span></span><span class="bar-val">1,645 <i>(23.3%)</i></span></div>
+<div class="bar-row"><span class="bar-label">иное</span><span class="bar-track"><span class="bar-fill" style="width:82.0%"></span></span><span class="bar-val">1,398 <i>(19.8%)</i></span></div>
+<div class="bar-row"><span class="bar-label">ежегодно</span><span class="bar-track"><span class="bar-fill" style="width:60.6%"></span></span><span class="bar-val">1,032 <i>(14.6%)</i></span></div>
+<div class="bar-row"><span class="bar-label">по необходимости</span><span class="bar-track"><span class="bar-fill" style="width:44.2%"></span></span><span class="bar-val">753 <i>(10.6%)</i></span></div>
+<div class="bar-row"><span class="bar-label">по обращению</span><span class="bar-track"><span class="bar-fill" style="width:31.2%"></span></span><span class="bar-val">531 <i>(7.5%)</i></span></div>
+<div class="bar-row"><span class="bar-label">ежеквартально</span><span class="bar-track"><span class="bar-fill" style="width:1.5%"></span></span><span class="bar-val">6 <i>(0.1%)</i></span></div>
+    </div>
+
+    <div class="chart-card">
+      <h3>🗺️ Регионы — топ-10 по числу мер</h3>
+      <p class="tbl-total">В среднем 79.4 мер на регион (разброс 48–139).</p>
+      <table class="region-table">
+        <tr><th>#</th><th>Регион</th><th>Мер</th></tr>
+        <tr><td>1</td><td>Ленинградская область</td><td>139</td></tr><tr><td>2</td><td>Ямало-Ненецкий автономный округ</td><td>138</td></tr><tr><td>3</td><td>Тульская область</td><td>125</td></tr><tr><td>4</td><td>Амурская область</td><td>114</td></tr><tr><td>5</td><td>Рязанская область</td><td>114</td></tr><tr><td>6</td><td>Чукотский автономный округ</td><td>109</td></tr><tr><td>7</td><td>Тамбовская область</td><td>108</td></tr><tr><td>8</td><td>Республика Марий Эл</td><td>103</td></tr><tr><td>9</td><td>Хабаровский край</td><td>102</td></tr><tr><td>10</td><td>Ростовская область</td><td>100</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="footer">
+    📊 Сводная статистика · превью · Феникс 🔥 · <a href="https://nasledstvo2026.github.io/Phoenix/">nasledstvo2026.github.io/Phoenix</a>
+  </div>
+</div>
+</body>
+</html>
