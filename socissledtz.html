@@ -604,6 +604,23 @@
 <tr><td><strong>build_summary.py</strong></td><td>не LLM</td><td>Python, бесплатно</td></tr>
 </table>
 <p><strong>Локальные модели (Qwen3-8B и пр.) НЕ используются:</strong> на CPU vps2 прогон занял бы 5+ дней (вместо ~1 суток) при качестве ниже flash — риск пропусков мер в данных для Ирины. Смена модели — не рычаг экономии (расход определяет объём токенов, а не тариф: 1.5 млрд токенов × $0.14/1M = ~7 000 ₽).</p>
+<h3>Результаты внедрения (20.08.2026)</h3>
+<p><strong>Внесённые изменения (конфиг openclaw.json, hot-reload применён):</strong></p>
+<ul>
+<li><code>irina-router</code>: <code>contextTokens: 32000</code>, <code>thinkingDefault: medium</code></li>
+<li><code>social-research-agent</code>: <code>contextTokens: 131072</code>, <code>thinkingDefault: medium</code></li>
+<li>SKILL.md / AGENTS.md исследователя + AGENTS.md оркестратора: финальный ответ субагента — одна строка «Готово: N мер, файл: &lt;путь&gt;», без данных мер</li>
+</ul>
+<p><strong>Результаты тест-кейсов (test-cases-optimization.md, 5/5 ✅; тестовый прогон — Республика Ингушетия, invalidy, вывод во /tmp, удалён по завершении):</strong></p>
+<table>
+<tr><th>Тест</th><th>Результат</th><th>Факт</th></tr>
+<tr><td>ТК-1 Hot-reload</td><td>✅</td><td>config hot reload applied</td></tr>
+<tr><td>ТК-2 Контекст оркестратора</td><td>✅ (конфигурационно)</td><td>32K применён; контроль роста — при первом штатном прогоне</td></tr>
+<tr><td>ТК-3 Краткий announce</td><td>✅</td><td>одна строка, данных мер нет</td></tr>
+<tr><td>ТК-4 Качество на medium</td><td>✅</td><td>13 мер ≥ эталон 11 (invalidy), заполненность 100%, runtime 9 мин</td></tr>
+<tr><td>ТК-5 Стоимость/модель</td><td>✅</td><td>flash; 110K токенов ≈ 1.9 ₽ за субагента</td></tr>
+</table>
+<p><strong>Оценка полного прогона после оптимизации:</strong> субагенты 267 × ~1.9 ₽ ≈ 510 ₽ + оркестратор (контекст 32K) ≈ 400–900 ₽ → <strong>~900–1 500 ₽ вместо ~7 000 ₽</strong>. Тестовые данные никуда не попали (эталон не изменён, /tmp удалён).</p>
 <h3>Доступ к запуску (актуально на 19.08.2026)</h3>
 <ul>
 <li>Запуск по триггерам сбора — <strong>только Кирилл</strong> (Telegram ID 346428630): Кирилл → main → <code>sessions_send(irina-router)</code>.</li>
@@ -617,6 +634,10 @@
 <section>
 <h2>5. История версий</h2>
 <ul>
+<li><strong>v1.12</strong> (2026-08-20) — Внедрение удешевления:</li>
+<li>Конфиг: contextTokens irina-router 32K / social-research-agent 128K; thinkingDefault medium (обоим)</li>
+<li>SKILL.md/AGENTS.md: короткий announce субагентов (одна строка)</li>
+<li>Тест-кейсы 5/5 ✅: качество на medium не просело (13 ≥ 11), announce короткий, flash, ~1.9 ₽/субагент → полный прогон ~900–1 500 ₽</li>
 <li><strong>v1.11</strong> (2026-08-19) — Карта моделей:</li>
 <li>Раздел 4.1: зафиксирован выбор LLM: flash везде, pro — только fallback (оркестратору flash жёстко), локальные модели не используются (скорость и качество)</li>
 <li><strong>v1.10</strong> (2026-08-19) — Учтён квартальный режим:</li>
