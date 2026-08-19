@@ -214,8 +214,8 @@
     <div class="meta-card">
       <span>👤 <strong>Автор:</strong> Лунтик 🦞</span>
       <span class="status-badge accepted">✅ Согласовано</span>
-      <span>📅 <strong>Дата:</strong> 2026-08-10</span>
-      <span>🏷️ <strong>Версия:</strong> 1.5</span>
+      <span>📅 <strong>Дата:</strong> 2026-08-19</span>
+      <span>🏷️ <strong>Версия:</strong> 1.11</span>
     </div>
     <br>
     <a class="back" href="social.html">← Назад к «Социальный консультант»</a>
@@ -226,443 +226,445 @@
 
 <div class="container">
 
-<!-- 0. Статус реализации -->
 <section>
-  <h2>0. Статус реализации — 10.08.2026</h2>
-  <p><strong>ТЗ согласовано 10.08.2026 (v1.5)</strong> — приведено в соответствие с реальной архитектурой: последовательная обработка (1 регион), relay-паттерн irina-router, запрет sessions_spawn, 4 триггера, структура промптов, build_summary.py, двухуровневое логирование, output/, сводный Excel на 14 колонок.</p>
-
+  <h2>0. Статус реализации — 19.08.2026</h2>
+  <p><strong>ТЗ обновлено 19.08.2026 (v1.11)</strong> — доступ по триггеру только Кирилл; полный сбор выполнен (273 файла, 16–18.08.2026); проведён анализ стоимости (~7 000 ₽, корневая причина — раздутый контекст оркестратора) и сформирован подход к удешевлению; зафиксирована карта моделей.</p>
   <table>
     <tr><th>Этап</th><th>Статус</th><th>Комментарий</th></tr>
-    <tr><td>1. Подготовка инфраструктуры</td><td>✅ Готово</td><td>workspace <code>social-research-agent/</code>, каталоги, <code>categories.json</code>, промпты <code>invalidy/vbd/svo</code>, SKILL.md, AGENTS.md, <code>build_summary.py</code></td></tr>
-    <tr><td>2. Конфигурация агентов</td><td>✅ Готово</td><td><code>social-research-agent</code> + <code>irina-router</code> в конфиге, binding Ирины (739016616)</td></tr>
-    <tr><td>3. Маршрутизация</td><td>✅ Готово</td><td>4 точных триггера, relay-паттерн через irina-router</td></tr>
-    <tr><td>6. Тестирование</td><td>🧪 Частично</td><td>Тест 1 / 3 / 4 ✅ (09.08.2026); Тест 2 / 5 / 6 ❌ не выполнены; Тест 7 🚫 исключён из плана</td></tr>
-    <tr><td>7. Приёмка</td><td>🧪 Частично</td><td>Инструкция для Ирины ✅, триггер от Ирины ✅, сводный Excel ✅ (summary-invalidy.xlsx: 30 строк, 14 колонок); системные проверки заполненности 80% полей ❌</td></tr>
+    <tr><td>1. Подготовка инфраструктуры</td><td>✅ Готово</td><td>workspace, каталоги, <code>categories.json</code>, промпты <code>invalidy/vbd/svo</code>, SKILL.md, AGENTS.md, <code>build_summary.py</code></td></tr>
+    <tr><td>2. Конфигурация агентов</td><td>✅ Готово</td><td><code>social-research-agent</code> + <code>irina-router</code>; карта моделей: flash везде, pro — только fallback</td></tr>
+    <tr><td>3. Маршрутизация</td><td>✅ Готово (изменено 19.08)</td><td>Binding Ирины (739016616) → irina-router снят; запуск по триггеру — ТОЛЬКО Кирилл; «Федор» не затронут</td></tr>
+    <tr><td>6. Тестирование</td><td>🧪 Частично</td><td>Тест 1/3/4 ✅; Тест 2/5/6 ❌; Тест 7 🚫; полный сбор (89×3) выполнен 16–18.08: 273 файла</td></tr>
+    <tr><td>7. Приёмка</td><td>🧪 Частично</td><td>Инструкция для Ирины ✅, сводные Excel ✅; системные проверки 80% полей ❌</td></tr>
   </table>
 
-  <h3>Ключевые архитектурные решения (v1.5)</h3>
+  <h3>Ключевые изменения v1.9–v1.11 (19.08.2026)</h3>
   <ul>
-    <li><strong>Последовательная обработка:</strong> строго 1 регион одновременно (параллельные spawn конфликтуют на session-файле — EmbeddedAttemptSessionTakeoverError)</li>
-    <li><strong>Relay-паттерн:</strong> исследователь запущен через <code>sessions_spawn(context="isolated")</code>; при недоступности exec/read/web_search отправляет команды irina-router через sessions_send</li>
-    <li><strong>Запрет sessions_spawn</strong> внутри исследователя — он одиночный агент</li>
-    <li><strong>4 триггера</strong> (Тест 1, целевой, Тест 3, Тест 4) — все с <code>context="isolated", cleanup="delete"</code></li>
-    <li><strong>Сводный накопительный Excel:</strong> 14 колонок (Статус, Что изменилось, 11 полей меры, Регион), маркировка 🆕/❌/✏️/▬</li>
-    <li><strong>Двухуровневое логирование:</strong> основной лог <code>memory/research-log-YYYY-MM-DD.md</code> (ротация ≤ 3) + посессионные логи <code>knowledge/research/logs/</code></li>
+    <li><strong>Запуск по триггеру — только Кирилл</strong> (346428630): binding Ирины на irina-router снят, остальным на триггеры сбора — отказ «Эта функция доступна только владельцу»; «Федор» доступен всем, как раньше</li>
+    <li><strong>Квартальный пересбор — штатный режим:</strong> меры «скип готовых» и «запрет повторов» отклонены, полный пересбор всех 89×3 при каждом квартальном прогоне (накопительный Excel 🆕/❌/✏️/▬)</li>
+    <li><strong>Анализ стоимости (раздел 4.1):</strong> ~7 000 ₽ за полный сбор; корневая причина — раздутый контекст оркестратора (1.2 млрд токенов, 80% расходов); план удешевления: контекст оркестратора 1M→32K, краткие announce субагентов, thinking medium, кэш DeepSeek → ~1 000–1 500 ₽ за прогон</li>
+    <li><strong>Карта моделей:</strong> flash везде (оркестратору — жёстко), pro — только fallback, локальные модели не используются</li>
   </ul>
 </section>
 
-<!-- 1. Контекст -->
+
+
 <section>
-  <h2>1. Контекст задачи</h2>
-
-  <p>Создать на OpenClaw-инстансе «Феникс» (<code>213.171.25.85</code>) агента «Социальный исследователь» (<code>social-research-agent</code>) для сбора структурированных перечней мер социальной поддержки по всем регионам РФ.</p>
-
-  <div class="context-block">
-    <p><strong>Целевая аудитория:</strong> Ирина (@irina_mltsva, Telegram ID: 739016616). Чат прямой, существующий канал с Фениксом. Новый бот/канал не создавать.</p>
-    <p><strong>Предметная область:</strong> категории социальной поддержки (стартовый набор: инвалидность, ВБД, участники СВО) с возможностью расширения списка Ириной. Все 89 регионов РФ.</p>
-    <p><strong>Периодичность:</strong> раз в квартал, запуск вручную Ириной. Без cron.</p>
-  </div>
-
-  <h3>Описание предметной области</h3>
-  <p><strong>Мера социальной поддержки</strong> — установленная законом или иным нормативным актом форма помощи государства гражданам определённых категорий. Мера может быть выражена в деньгах, льготах, услугах или натуральной помощи.</p>
-
-  <h4>Уровни законодательства</h4>
-  <p>Меры поддержки устанавливаются на двух уровнях — федеральном и региональном. Для целей агента анализируются оба уровня, <strong>с фокусом на региональные меры</strong> (федеральные уже покрыты social-consult-agent).</p>
-
-  <h4>Категории — динамический список</h4>
-  <p>Стартовый набор из трёх категорий, с возможностью добавления новых Ириной через социального консультанта (см. Этап 5):</p>
-  <ul>
-    <li><strong>1. Люди с инвалидностью.</strong> Базовый документ: Федеральный закон № 181-ФЗ «О социальной защите инвалидов». Меры различаются по группам (I, II, III), есть специфические меры для детей-инвалидов.</li>
-    <li><strong>2. Ветераны боевых действий (ВБД).</strong> Базовый документ: Федеральный закон № 5-ФЗ «О ветеранах». Три категории ВБД (по подпунктам ст. 3).</li>
-    <li><strong>3. Участники СВО и члены их семей.</strong> Базовый пакет: указы Президента РФ, федеральные законы о статусе военнослужащих. Категории получателей: мобилизованные, контрактники, добровольцы. Отдельно выделяются меры для детей участников СВО.</li>
-  </ul>
-
-  <h4>Хранение категорий</h4>
-  <p>Список категорий хранится в <code>knowledge/research/categories.json</code>:</p>
-  <pre><code>{
-  "categories": [
-    {"id": "invalidy", "name": "Инвалидность", "base_doc": "Федеральный закон № 181-ФЗ «О социальной защите инвалидов»", "subgroups": ["I группа", "II группа", "III группа", "дети-инвалиды"]},
-    {"id": "vbd", "name": "Ветераны боевых действий", "base_doc": "Федеральный закон № 5-ФЗ «О ветеранах»", "subgroups": ["пп.1 ст.3 (Афганистан, Сирия и др.)", "пп.2 ст.3 (Чечня и др.)", "пп.3 ст.3 (другие локальные конфликты)"]},
-    {"id": "svo", "name": "Участники СВО и члены их семей", "base_doc": "Указы Президента РФ, федеральные законы о статусе военнослужащих", "subgroups": ["мобилизованные", "контрактники", "добровольцы", "дети участников СВО"]}
+<h2>1. Контекст задачи</h2>
+<p>Создать на OpenClaw-инстансе «Феникс» (213.171.25.85) агента «Социальный исследователь» (social-research-agent) для сбора структурированных перечней мер социальной поддержки по всем регионам РФ.</p>
+<p><strong>Целевая аудитория:</strong> Ирина (@irina_mltsva, Telegram ID: 739016616) и Кирилл (Telegram ID: 346428630). Чат прямой, существующий канал с Фениксом. Новый бот/канал не создавать.</p>
+<p><strong>Предметная область:</strong> категории социальной поддержки (стартовый набор: инвалидность, ВБД, участники СВО) с возможностью расширения списка Ириной. Все 89 регионов РФ.</p>
+<p><strong>Периодичность:</strong> раз в квартал, запуск вручную Ириной или Кириллом. Без cron.</p>
+<h3>Описание предметной области</h3>
+<p><strong>Мера социальной поддержки</strong> — установленная законом или иным нормативным актом форма помощи государства гражданам определённых категорий. Мера может быть выражена в деньгах, льготах, услугах или натуральной помощи.</p>
+<p><strong>Уровни законодательства:</strong> меры поддержки устанавливаются на двух уровнях — федеральном и региональном. Для целей агента анализируются оба уровня, с фокусом на региональные меры (федеральные уже покрыты social-consult-agent).</p>
+<p><strong>Категории — динамический список:</strong> Стартовый набор из трёх категорий, с возможностью добавления новых Ириной через социального консультанта (см. Этап 5):</p>
+<p><strong>1. Люди с инвалидностью</strong> Базовый документ: Федеральный закон № 181-ФЗ «О социальной защите инвалидов». Меры различаются по группам (I, II, III), есть специфические меры для детей-инвалидов.</p>
+<p><strong>2. Ветераны боевых действий (ВБД)</strong> Базовый документ: Федеральный закон № 5-ФЗ «О ветеранах». Три категории ВБД (по подпунктам ст. 3).</p>
+<p><strong>3. Участники СВО и члены их семей</strong> Базовый пакет: указы Президента РФ, федеральные законы о статусе военнослужащих. Категории получателей: мобилизованные, контрактники, добровольцы. Отдельно выделяются меры для детей участников СВО.</p>
+<p><strong>Хранение категорий:</strong> список категорий хранится в <code>knowledge/research/categories.json</code>:</p>
+<pre><code>
+{
+  &quot;categories&quot;: [
+    {&quot;id&quot;: &quot;invalidy&quot;, &quot;name&quot;: &quot;Инвалидность&quot;, &quot;base_doc&quot;: &quot;Федеральный закон № 181-ФЗ «О социальной защите инвалидов»&quot;, &quot;subgroups&quot;: [&quot;I группа&quot;, &quot;II группа&quot;, &quot;III группа&quot;, &quot;дети-инвалиды&quot;]},
+    {&quot;id&quot;: &quot;vbd&quot;, &quot;name&quot;: &quot;Ветераны боевых действий&quot;, &quot;base_doc&quot;: &quot;Федеральный закон № 5-ФЗ «О ветеранах»&quot;, &quot;subgroups&quot;: [&quot;пп.1 ст.3 (Афганистан, Сирия и др.)&quot;, &quot;пп.2 ст.3 (Чечня и др.)&quot;, &quot;пп.3 ст.3 (другие локальные конфликты)&quot;]},
+    {&quot;id&quot;: &quot;svo&quot;, &quot;name&quot;: &quot;Участники СВО и члены их семей&quot;, &quot;base_doc&quot;: &quot;Указы Президента РФ, федеральные законы о статусе военнослужащих&quot;, &quot;subgroups&quot;: [&quot;мобилизованные&quot;, &quot;контрактники&quot;, &quot;добровольцы&quot;, &quot;дети участников СВО&quot;]}
   ]
-}</code></pre>
-
-  <h4>Источники информации (по региону)</h4>
-  <ul>
-    <li>Официальный сайт региона (правительство, губернатор)</li>
-    <li>Сайт регионального министерства/департамента труда и социальной защиты</li>
-    <li>Региональные законы и постановления</li>
-    <li>garant.ru, consultant.ru — тексты НПА</li>
-    <li>sfr.gov.ru — информация СФР по региону</li>
-  </ul>
-
-  <h4>Отличие от социального консультанта</h4>
-  <p>Консультант отвечает на конкретные вопросы (SLA 120 с). Исследователь собирает полные перечни мер — это многочасовая задача. Целевое время на регион ~10 минут. Если сбор активно идёт — продлевать. Жёсткий cutoff: 30 минут (защита от реального зависания).</p>
-
-  <h4>Связь с существующей архитектурой Феникса</h4>
-  <ul>
-    <li>✅ <strong>Уже есть:</strong> main, fz425-agent, fz425-verifier, social-consult-agent, social-verify-agent</li>
-    <li>🆕 <strong>Добавляем:</strong> social-research-agent, irina-router</li>
-    <li>⚠️ Конфликты не ожидаются — агенты изолированы по workspace и trigger</li>
-    <li>Шаблоны запросов (промпты) создаются динамически при добавлении категорий</li>
-    <li>Папки для результатов создаются автоматически под каждую категорию</li>
-  </ul>
-
-  <h4>Накопительный результат</h4>
-  <p>Каждая следующая версия Excel-файла надстраивается над предыдущей. Изменения маркируются: 🆕 новое / ❌ отменено / ✏️ изменено / ▬ без изменений (см. Этап 4, Подзадача 7).</p>
-
-  <h4>Автономность</h4>
-  <p><strong>Феникс не зависит от Лунтика в runtime.</strong> Все скиллы и БЗ создаются и хранятся локально на Фениксе.</p>
-
-  <h4>Модель</h4>
-  <p><code>deepseek/deepseek-v4-flash</code> (основная), <code>deepseek/deepseek-v4-pro</code> (fallback).</p>
+}
+</code></pre>
+<p><strong>Источники информации (по региону):</strong></p>
+<ul>
+<li>Официальный сайт региона (правительство, губернатор)</li>
+<li>Сайт регионального министерства/департамента труда и социальной защиты</li>
+<li>Региональные законы и постановления</li>
+<li>garant.ru, consultant.ru — тексты НПА</li>
+<li>sfr.gov.ru — информация СФР по региону</li>
+</ul>
+<p><strong>Отличие от социального консультанта:</strong> консультант отвечает на конкретные вопросы (SLA 120с). Исследователь собирает полные перечни мер — это многочасовая задача. Целевое время на регион ~10 минут. Если сбор активно идёт — продлевать. Жёсткий cutoff: 30 минут (защита от реального зависания).</p>
+<p><strong>Связь с существующей архитектурой Феникса:</strong></p>
+<ul>
+<li>Уже есть: main, fz425-agent, fz425-verifier, social-consult-agent, social-verify-agent</li>
+<li>Добавляем: social-research-agent, irina-router</li>
+<li>Конфликты не ожидаются — агенты изолированы по workspace и trigger</li>
+<li>Шаблоны запросов (промпты) создаются динамически при добавлении категорий</li>
+<li>Папки для результатов создаются автоматически под каждую категорию</li>
+</ul>
+<p><strong>Накопительный результат:</strong> каждая следующая версия Excel-файла надстраивается над предыдущей. Изменения маркируются: 🆕 новое / ❌ отменено / ✏️ изменено / ▬ без изменений (см. Этап 4, Подзадача 7).</p>
+<p><strong>Автономность:</strong> Феникс не зависит от Лунтика в runtime. Все скиллы и БЗ создаются и хранятся локально на Фениксе.</p>
+<p><strong>Модель:</strong> deepseek/deepseek-v4-flash (основная), deepseek/deepseek-v4-pro (fallback).</p>
 </section>
 
-<!-- 2. Функциональные требования -->
+
 <section>
-  <h2>2. Функциональные требования</h2>
-  <p><strong>Всего требований: 71</strong></p>
-
-  <h3>Этап 1. Подготовка инфраструктуры (Феникс)</h3>
-  <ul class="req-list">
-    <li class="req-item"><span class="req-num">1.</span> Создать workspace <code>/home/user1/phoenix/social-research-agent/</code></li>
-    <li class="req-item"><span class="req-num">2.</span> Создать структуру каталогов:
-      <ul>
-        <li><code>knowledge/research/prompts/</code> — шаблоны запросов (по одному .md на категорию, структуру см. в Требовании 4)</li>
-        <li><code>knowledge/research/{id}/</code> — папки результатов (создаются автоматически под каждую категорию из <code>categories.json</code>)</li>
-        <li><code>knowledge/research/logs/</code> — посессионные логи тестовых прогонов</li>
-        <li><code>output/</code> — timestamped деливераблы для отправки Ирине</li>
-        <li><code>memory/</code> — основные логи исследователя (research-log-YYYY-MM-DD.md)</li>
-      </ul>
-    </li>
-    <li class="req-item"><span class="req-num">3.</span> Создать <code>knowledge/research/categories.json</code> — динамический список категорий (см. формат в разделе «Контекст»)</li>
-    <li class="req-item"><span class="req-num">4.</span> Создать промпты для стартовых категорий: <code>invalidy.md</code>, <code>vbd.md</code>, <code>svo.md</code>. <strong>Структура каждого промпта:</strong>
-      <ul>
-        <li>Заголовок: «Промпт: Меры поддержки для [категория] — регион {REGION}»</li>
-        <li>Задача: описание цели сбора</li>
-        <li>Категории получателей: перечень подгрупп из <code>categories.json</code></li>
-        <li>Базовый федеральный документ</li>
-        <li>Источники для поиска (5 конкретных направлений: сайт правительства региона, сайт соцзащиты, garant.ru, consultant.ru, sfr.gov.ru — с placeholder {REGION})</li>
-        <li>Формат результата: перечень 11 полей с кратким описанием каждого</li>
-      </ul>
-    </li>
-    <li class="req-item"><span class="req-num">5.</span> Создать <code>SKILL.md</code> для social-research-agent с алгоритмом работы (включая запрет sessions_spawn, relay-паттерн, последовательную обработку)</li>
-    <li class="req-item"><span class="req-num">6.</span> Создать <code>AGENTS.md</code> для social-research-agent с правилами и ограничениями</li>
-    <li class="req-item"><span class="req-num">6.1</span> Создать <code>build_summary.py</code> в <code>knowledge/research/</code> — скрипт сборки сводного накопительного Excel. Принимает аргументом <code>{id}</code> категории, читает все региональные Excel из <code>knowledge/research/{id}/</code>, сравнивает с предыдущей версией <code>summary-{id}.xlsx</code>, проставляет статусы 🆕/❌/✏️/▬ и условное форматирование</li>
-  </ul>
-
-  <h3>Этап 2. Конфигурация агента (Феникс)</h3>
-  <ul class="req-list">
-    <li class="req-item"><span class="req-num">7.</span> Добавить <code>social-research-agent</code> в agents.list openclaw.json со следующей конфигурацией:
-      <pre><code>{
-  "id": "social-research-agent",
-  "description": "Социальный исследователь: сбор перечней мер поддержки по регионам РФ",
-  "workspace": "/home/user1/phoenix/social-research-agent/",
-  "model": {
-    "primary": "deepseek/deepseek-v4-flash",
-    "fallbacks": ["deepseek/deepseek-v4-pro"]
-  },
-  "tools": {
-    "allow": ["web_search", "web_fetch", "write", "read", "exec", "sessions_send"]
+<h2>2. Функциональные требования</h2>
+<h3>Этап 1. Подготовка инфраструктуры (Феникс)</h3>
+<ul>
+<li>Требование 1: Создать workspace <code>/home/user1/phoenix/social-research-agent/</code></li>
+<li>Требование 2: Создать структуру каталогов:</li>
+<li><code>knowledge/research/prompts/</code> — шаблоны запросов (по одному .md на категорию, структуру см. в Требовании 4)</li>
+<li><code>knowledge/research/{id}/</code> — папки результатов (создаются автоматически под каждую категорию из <code>categories.json</code>)</li>
+<li><code>knowledge/research/logs/</code> — посессионные логи тестовых прогонов</li>
+<li><code>output/</code> — timestamped деливераблы для отправки инициатору запуска</li>
+<li><code>memory/</code> — основные логи исследователя (research-log-YYYY-MM-DD.md)</li>
+<li>Требование 3: Создать <code>knowledge/research/categories.json</code> — динамический список категорий (см. формат в разделе «Контекст»)</li>
+<li>Требование 4: Создать промпты для стартовых категорий: <code>invalidy.md</code>, <code>vbd.md</code>, <code>svo.md</code>. <strong>Структура каждого промпта:</strong></li>
+<li>Заголовок: «Промпт: Меры поддержки для [категория] — регион {REGION}»</li>
+<li>Задача: описание цели сбора</li>
+<li>Категории получателей: перечень подгрупп из <code>categories.json</code></li>
+<li>Базовый федеральный документ</li>
+<li>Источники для поиска (5 конкретных направлений: сайт правительства региона, сайт соцзащиты, garant.ru, consultant.ru, sfr.gov.ru — с placeholder {REGION})</li>
+<li>Формат результата: перечень 11 полей с кратким описанием каждого</li>
+<li>Требование 5: Создать <code>SKILL.md</code> для social-research-agent с алгоритмом работы (включая запрет sessions_spawn, relay-паттерн, последовательную обработку)</li>
+<li>Требование 6: Создать <code>AGENTS.md</code> для social-research-agent с правилами и ограничениями</li>
+<li>Требование 6.1: Создать <code>build_summary.py</code> в <code>knowledge/research/</code> — скрипт сборки сводного накопительного Excel. Принимает аргументом <code>{id}</code> категории, читает все региональные Excel из <code>knowledge/research/{id}/</code>, сравнивает с предыдущей версией <code>summary-{id}.xlsx</code>, проставляет статусы 🆕/❌/✏️/▬ и условное форматирование</li>
+</ul>
+<h3>Этап 2. Конфигурация агента (Феникс)</h3>
+<ul>
+<li>Требование 7: Добавить <code>social-research-agent</code> в agents.list openclaw.json со следующей конфигурацией:</li>
+</ul>
+<pre><code>
+  {
+    &quot;id&quot;: &quot;social-research-agent&quot;,
+    &quot;description&quot;: &quot;Социальный исследователь: сбор перечней мер поддержки по регионам РФ&quot;,
+    &quot;workspace&quot;: &quot;/home/user1/phoenix/social-research-agent/&quot;,
+    &quot;model&quot;: {
+      &quot;primary&quot;: &quot;deepseek/deepseek-v4-flash&quot;,
+      &quot;fallbacks&quot;: [&quot;deepseek/deepseek-v4-pro&quot;]
+    },
+    &quot;tools&quot;: {
+      &quot;allow&quot;: [&quot;web_search&quot;, &quot;web_fetch&quot;, &quot;write&quot;, &quot;read&quot;, &quot;exec&quot;, &quot;sessions_send&quot;]
+    },
+    &quot;contextPruning&quot;: {
+      &quot;mode&quot;: &quot;cache-ttl&quot;,
+      &quot;minPrunableToolChars&quot;: 50000
+    },
+    &quot;contextLimits&quot;: {
+      &quot;toolResultMaxChars&quot;: 100000
+    }
   }
-}</code></pre>
-    </li>
-    <li class="req-item"><span class="req-num">8.</span> Обновить <code>main.subagents.allowAgents</code> — добавить <code>social-research-agent</code></li>
-    <li class="req-item"><span class="req-num">9.</span> Обновить <code>agentToAgent.allow</code> — добавить <code>social-research-agent</code> и <code>irina-router</code></li>
-  </ul>
-
-  <h3>Этап 2.1 — Агент-роутер irina-router (Феникс)</h3>
-  <ul class="req-list">
-    <li class="req-item"><span class="req-num">7.1</span> Создать агента <code>irina-router</code> — выделенный маршрутизатор для Ирины</li>
-    <li class="req-item"><span class="req-num">7.2</span> Конфигурация irina-router:
-      <pre><code>{
-  "id": "irina-router",
-  "description": "Маршрутизатор сообщений Ирины: триггеры → social-research-agent, остальное → social-consult-agent",
-  "workspace": "/home/user1/phoenix/irina-router/",
-  "model": {
-    "primary": "deepseek/deepseek-v4-flash",
-    "fallbacks": ["deepseek/deepseek-v4-pro"]
-  },
-  "tools": {
-    "allow": ["sessions_send", "sessions_spawn", "web_search", "web_fetch", "write", "read", "exec"]
+</code></pre>
+<ul>
+<li>Требование 8: Обновить <code>main.subagents.allowAgents</code> — добавить <code>social-research-agent</code></li>
+<li>Требование 9: Обновить <code>agentToAgent.allow</code> — добавить <code>social-research-agent</code> и <code>irina-router</code></li>
+</ul>
+<h3>Этап 2.1 — Агент-роутер irina-router (Феникс)</h3>
+<ul>
+<li>Требование 7.1: Создать агента <code>irina-router</code> — выделенный маршрутизатор для Ирины</li>
+<li>Требование 7.2: Конфигурация irina-router:</li>
+</ul>
+<pre><code>
+  {
+    &quot;id&quot;: &quot;irina-router&quot;,
+    &quot;description&quot;: &quot;Маршрутизатор сообщений Ирины: триггеры → social-research-agent; не-триггер → social-consult-agent&quot;,
+    &quot;workspace&quot;: &quot;/home/user1/phoenix/irina-router/&quot;,
+    &quot;model&quot;: {
+      &quot;primary&quot;: &quot;deepseek/deepseek-v4-flash&quot;,
+      &quot;fallbacks&quot;: [&quot;deepseek/deepseek-v4-pro&quot;]
+    },
+    &quot;tools&quot;: {
+      &quot;allow&quot;: [&quot;sessions_send&quot;, &quot;sessions_spawn&quot;, &quot;read&quot;, &quot;write&quot;, &quot;exec&quot;]
+    }
   }
-}</code></pre>
-      <p><strong>Обоснование расширенного набора инструментов:</strong> Субагенты с <code>context="isolated"</code> не имеют рабочих exec/read/web_search. Исследователь отправляет роутеру команды (EXEC_COMMAND, WEB_SEARCH_REQUEST) → роутер выполняет их и возвращает результат текстом (relay-паттерн).</p>
-    </li>
-    <li class="req-item"><span class="req-num">7.3</span> AGENTS.md содержит ТОЛЬКО алгоритм сравнения строк с четырьмя триггерами и перенаправления (без самодеятельности, без интерпретации)</li>
-  </ul>
-
-  <h3>Этап 3. Маршрутизация (Феникс)</h3>
-  <ul class="req-list">
-    <li class="req-item"><span class="req-num">10.</span> Binding: sender_id=739016616 (Ирина) → <code>irina-router</code> (прямая маршрутизация, минуя main)</li>
-    <li class="req-item"><span class="req-num">11.</span> Четыре точных триггера (все с <code>context="isolated"</code>, <code>cleanup="delete"</code>):
-      <table>
-        <tr><th>Триггер (точная фраза)</th><th>Task для исследователя</th></tr>
-        <tr><td>«Собери меры поддержки для Москвы по категории инвалидность»</td><td>ТОЛЬКО Москва, ТОЛЬКО invalidy</td></tr>
-        <tr><td>«Собери меры поддержки по всем категориям и всем регионам»</td><td>ВСЕ категории и 89 регионов</td></tr>
-        <tr><td>«Тест 3 все категории Москва»</td><td>ТОЛЬКО Москва, все 3 категории, без build_summary</td></tr>
-        <tr><td>«Тест 4 три региона инвалидность»</td><td>ТОЛЬКО invalidy, регионы: Москва, Санкт-Петербург, Московская область, без build_summary</td></tr>
-      </table>
-    </li>
-    <li class="req-item"><span class="req-num">12.</span> Все остальные сообщения Ирины → <code>sessions_send("social-consult-agent")</code></li>
-    <li class="req-item"><span class="req-num">13.</span> Причина архитектурного решения: AGENTS.md main-агента игнорировался из-за длинного контекста сессии. Выделенный роутер с минимальным контекстом решает проблему.</li>
-  </ul>
-
-  <h3>Этап 4. Логика работы исследователя</h3>
-
-  <h4>Подзадача 0. Архитектурные ограничения</h4>
-  <ul class="req-list">
-    <li class="req-item"><span class="req-num">13.1</span> <strong>sessions_spawn ЗАПРЕЩЁН.</strong> Исследователь — одиночный агент. Вся работа (web_search, web_fetch, exec python, Excel) делается в собственном процессе.</li>
-    <li class="req-item"><span class="req-num">13.2</span> <strong>Последовательная обработка — строго 1 регион одновременно.</strong> Параллельные spawn одного агента конфликтуют на session-файле (EmbeddedAttemptSessionTakeoverError).</li>
-    <li class="req-item"><span class="req-num">13.3</span> <strong>Relay-паттерн:</strong> исследователь запущен через <code>sessions_spawn(context="isolated")</code>. Инструменты exec/read/web_search могут быть недоступны в изолированном контексте. В этом случае исследователь отправляет команды irina-router'у через sessions_send, роутер выполняет их и возвращает результат.</li>
-  </ul>
-
-  <h4>Подзадача 1. Подготовка</h4>
-  <ul class="req-list">
-    <li class="req-item"><span class="req-num">14.</span> Прочитать <code>knowledge/research/categories.json</code> — получить актуальный список категорий и их параметры</li>
-    <li class="req-item"><span class="req-num">15.</span> Для каждой категории из списка — проверить наличие промпта в <code>prompts/{id}.md</code>. Если нет — записать в лог ошибку, пропустить категорию</li>
-    <li class="req-item"><span class="req-num">16.</span> Прочитать <code>knowledge/research/regions.md</code> — список 89 регионов РФ</li>
-    <li class="req-item"><span class="req-num">17.</span> Порядок обработки: все категории из <code>categories.json</code> последовательно, внутри категории — регионы по алфавиту, строго по одному</li>
-  </ul>
-
-  <h4>Подзадача 2. Обработка региона</h4>
-  <ul class="req-list">
-    <li class="req-item"><span class="req-num">18.</span> Для каждого региона заменить <code>{REGION}</code> в шаблоне на название региона</li>
-    <li class="req-item"><span class="req-num">19.</span> Выполнить web_search по источникам из шаблона (до 5 запросов: сайт правительства региона, сайт соцзащиты, garant.ru, consultant.ru, sfr.gov.ru)</li>
-    <li class="req-item"><span class="req-num">20.</span> Выполнить web_fetch верхних URL (до 5)</li>
-    <li class="req-item"><span class="req-num">21.</span> Извлечь меры поддержки и заполнить форму из 11 полей:
-      <table>
-        <tr><th>№</th><th>Поле</th></tr>
-        <tr><td>1</td><td>Название меры</td></tr>
-        <tr><td>2</td><td>Категория получателя</td></tr>
-        <tr><td>3</td><td>Размер меры</td></tr>
-        <tr><td>4</td><td>Периодичность</td></tr>
-        <tr><td>5</td><td>Условия предоставления</td></tr>
-        <tr><td>6</td><td>Где оформить</td></tr>
-        <tr><td>7</td><td>Список документов</td></tr>
-        <tr><td>8</td><td>Как получить</td></tr>
-        <tr><td>9</td><td>Тип меры</td></tr>
-        <tr><td>10</td><td>Категория льготы</td></tr>
-        <tr><td>11</td><td>Нормативный акт-основание</td></tr>
-      </table>
-    </li>
-    <li class="req-item"><span class="req-num">22.</span> Учитывать подгруппы из <code>categories.json</code>: детализировать категорию получателя согласно <code>subgroups</code> категории</li>
-    <li class="req-item"><span class="req-num">23.</span> Сохранить результат в Excel-файл через exec python3 + openpyxl: <code>knowledge/research/{id}/{Регион}.xlsx</code>. Лист: «Регион», 11 колонок. Сохранять после КАЖДОГО региона (не копить в памяти)</li>
-  </ul>
-
-  <h4>Подзадача 3. Правила заполнения</h4>
-  <ul class="req-list">
-    <li class="req-item"><span class="req-num">24.</span> Если поле не найдено — указать «Не указано в найденных источниках»</li>
-    <li class="req-item"><span class="req-num">25.</span> Не додумывать данные, не экстраполировать с других регионов</li>
-    <li class="req-item"><span class="req-num">26.</span> Размеры выплат указывать с годом актуальности (например, «27 401 ₽/мес (2026)»)</li>
-    <li class="req-item"><span class="req-num">27.</span> НПА-основание — с номером и датой, если источник позволяет</li>
-  </ul>
-
-  <h4>Подзадача 4. Сводка и уведомление</h4>
-  <ul class="req-list">
-    <li class="req-item"><span class="req-num">28.</span> После обработки всех регионов по категории — запустить <code>python3 knowledge/research/build_summary.py {id}</code> для создания/обновления сводного накопительного Excel</li>
-    <li class="req-item"><span class="req-num">29.</span> Сводный Excel сохраняется в <code>knowledge/research/summary-{id}.xlsx</code> и содержит <strong>14 колонок</strong>: Статус, Что изменилось, 11 полей меры, Регион</li>
-    <li class="req-item"><span class="req-num">30.</span> По завершении всех категорий — уведомить Ирину через sessions_send: «Сбор завершён. Категорий: {K}, обработано регионов: {N}. Файлы: [список]»</li>
-  </ul>
-
-  <h4>Подзадача 5. Деливераблы для отправки</h4>
-  <ul class="req-list">
-    <li class="req-item"><span class="req-num">31.</span> Готовые файлы для отправки Ирине сохранять в <code>output/</code> с форматом имени: <code>{номер}_{Регион}_{id}_YYYYMMDD_HHMMSS.xlsx</code></li>
-    <li class="req-item"><span class="req-num">32.</span> После завершения — отправить файлы из <code>output/</code> Ирине через MEDIA</li>
-  </ul>
-
-  <h4>Подзадача 6. Логирование (два уровня)</h4>
-  <ul class="req-list">
-    <li class="req-item"><span class="req-num">33.</span> <strong>Основной лог</strong> — <code>memory/research-log-YYYY-MM-DD.md</code> (дата запуска в имени). Создаётся при старте задачи.</li>
-    <li class="req-item"><span class="req-num">34.</span> Перед созданием нового основного лога — проверить старые логи в <code>memory/research-log-*.md</code>. Если их &gt; 3 — удалить самые старые (ротация)</li>
-    <li class="req-item"><span class="req-num">35.</span> Формат записи в основной лог — метка времени и категория в начале строки:
-      <pre><code>[HH:MM] [категория] Регион — старт, регион N/89
-[HH:MM] [категория] Регион — web_search: "запрос" → K результатов
-[HH:MM] [категория] Регион — источник: https://...
-[HH:MM] [категория] Регион — завершено: N мер, K источников, время X мин
-[HH:MM] [категория] Регион — ⚠️ поле "Размер" не найдено</code></pre>
-    </li>
-    <li class="req-item"><span class="req-num">36.</span> <strong>Посессионные логи</strong> — <code>knowledge/research/logs/</code> (log_*_тестN.txt, _status_*.txt). Для отладки отдельных тестовых прогонов. Ротация не применяется.</li>
-    <li class="req-item"><span class="req-num">37.</span> При мягком превышении времени (&gt; 10 мин) — записать в лог причину продления</li>
-    <li class="req-item"><span class="req-num">38.</span> При жёстком cutoff (30 мин) — записать в лог и пометить регион как пропущенный</li>
-    <li class="req-item"><span class="req-num">39.</span> В конце основного лога — итоговая сводка: всего категорий, регионов, обработано, пропущено, общее время</li>
-  </ul>
-
-  <h4>Подзадача 7. Обработка ошибок</h4>
-  <ul class="req-list">
-    <li class="req-item"><span class="req-num">40.</span> Если регион не обработан (таймаут 30 мин, капча, недоступность источников) — записать причину в лог и продолжить со следующим</li>
-    <li class="req-item"><span class="req-num">41.</span> После завершения — уведомить Ирину о пропущенных: «Не обработано регионов: {M}. Детали в research-log-YYYY-MM-DD.md»</li>
-  </ul>
-
-  <h4>Подзадача 8. Накопительный Excel (build_summary.py)</h4>
-  <ul class="req-list">
-    <li class="req-item"><span class="req-num">42.</span> При запуске <code>build_summary.py {id}</code> — проверить, существует ли предыдущая версия <code>summary-{id}.xlsx</code></li>
-    <li class="req-item"><span class="req-num">43.</span> Если предыдущая версия существует — прочитать её, сравнить построчно с новыми данными. <strong>Ключ сопоставления:</strong> название меры + категория получателя + НПА-основание</li>
-    <li class="req-item"><span class="req-num">44.</span> Проставить статус изменения для каждой строки:
-      <ul>
-        <li>🆕 <strong>Новое</strong> — мера отсутствовала в предыдущей версии (зелёная строка)</li>
-        <li>❌ <strong>Отменено</strong> — мера была в предыдущей версии, но не найдена в текущем сборе (красная строка)</li>
-        <li>✏️ <strong>Изменено</strong> — мера есть в обеих версиях, но изменились значения полей (жёлтая строка)</li>
-        <li>▬ <strong>Без изменений</strong> — мера идентична в обеих версиях</li>
-      </ul>
-    </li>
-    <li class="req-item"><span class="req-num">45.</span> Для строк со статусом ✏️ — в колонке «Что изменилось» перечислить конкретные поля, которые поменялись</li>
-    <li class="req-item"><span class="req-num">46.</span> Сохранить итоговый Excel (14 колонок) с условным форматированием: зелёный/красный/жёлтый fill для 🆕/❌/✏️</li>
-    <li class="req-item"><span class="req-num">47.</span> Старые строки не удалять — только дополнять и маркировать изменения</li>
-  </ul>
-
-  <h3>Этап 5. Управление категориями и шаблонами</h3>
-  <ul class="req-list">
-    <li class="req-item"><span class="req-num">48.</span> Исследователь при каждом запуске читает актуальный <code>categories.json</code> — жёсткий список из трёх категорий отсутствует</li>
-    <li class="req-item"><span class="req-num">49.</span> Ирина может добавить новую категорию через социального консультанта. Триггер — ключевые слова: «добавь категорию», «новая категория», «расширь список категорий»</li>
-    <li class="req-item"><span class="req-num">50.</span> Если в запросе не хватает деталей — консультант уточняет у Ирины в диалоге: название категории, базовый нормативный документ, подгруппы (если есть)</li>
-    <li class="req-item"><span class="req-num">51.</span> После уточнения консультант:
-      <ul>
-        <li>Создаёт шаблон запроса в <code>prompts/{id}.md</code> (по структуре из Требования 4)</li>
-        <li>Дописывает категорию в <code>categories.json</code></li>
-        <li>Создаёт папку для результатов <code>knowledge/research/{id}/</code></li>
-      </ul>
-    </li>
-    <li class="req-item"><span class="req-num">52.</span> Ирина может улучшать существующие шаблоны через консультанта: «Улучши описание запроса для [категория] — [что изменить]»</li>
-    <li class="req-item"><span class="req-num">53.</span> Social-consult-agent обновляет соответствующий файл в <code>prompts/</code></li>
-    <li class="req-item"><span class="req-num">54.</span> Все изменения в <code>categories.json</code> и <code>prompts/</code> версионируются через git (репозиторий Феникса)</li>
-  </ul>
-
-  <h3>Этап 6. Тестирование (Феникс)</h3>
-  <ul class="req-list">
-    <li class="req-item"><span class="req-num">55.</span> <span class="tag-done">✅ Тест 1</span> — один регион (Москва), одна категория (инвалиды). Выполнен 09.08.2026: 15+ мер, Excel корректен, 11 колонок.</li>
-    <li class="req-item"><span class="req-num">56.</span> <span class="tag-fail">❌ Тест 2</span> — сравнение моделей: прогон Москвы на v4-flash и v4-pro, сравнить точность заполнения. <strong>Не выполнен.</strong></li>
-    <li class="req-item"><span class="req-num">57.</span> <span class="tag-done">✅ Тест 3</span> — один регион (Москва), все стартовые категории. Выполнен 09.08.2026: Excel на каждую категорию (invalidy, vbd, svo).</li>
-    <li class="req-item"><span class="req-num">58.</span> <span class="tag-done">✅ Тест 4</span> — три региона (Москва, Санкт-Петербург, Московская область), одна категория (инвалидность). Выполнен 09.08.2026: 3 Excel-файла, 107 записей.</li>
-    <li class="req-item"><span class="req-num">59.</span> <span class="tag-fail">❌ Тест 5</span> — проверка логов: формат соответствует Требованию 35, ротация работает (≤ 3 файлов основного лога). <strong>Не проверен.</strong></li>
-    <li class="req-item"><span class="req-num">60.</span> <span class="tag-fail">❌ Тест 6</span> — накопительный Excel: прогнать один регион дважды с разными данными, проверить маркировку 🆕/❌/✏️. <strong>Не проверен.</strong></li>
-    <li class="req-item"><span class="req-num">61.</span> <span class="tag-skip">🚫 Тест 7</span> — добавление категории: исключён из плана 10.08.2026. Функционал Этапа 5 (управление категориями) отложен.</li>
-  </ul>
-
-  <h3>Этап 7. Документирование и приёмка</h3>
-  <ul class="req-list">
-    <li class="req-item"><span class="req-num">62.</span> <span class="tag-done">✅</span> Подготовлена инструкция для Ирины (README-для-Ирины.md), включающая:
-      <ul>
-        <li>Как запустить сбор (точная триггер-фраза)</li>
-        <li>Как добавить новую категорию (ключевые слова → диалог с консультантом)</li>
-        <li>Как улучшить шаблон запроса для категории</li>
-        <li>Где смотреть результаты (пути к Excel-файлам)</li>
-        <li>Как читать накопительный Excel (условные обозначения 🆕/❌/✏️/▬)</li>
-        <li>Где смотреть логи и что в них искать</li>
-      </ul>
-    </li>
-    <li class="req-item"><span class="req-num">63.</span> <span class="tag-fail">❌</span> Проверить, что 80% полей Excel заполнены (не «Не указано»). <strong>Не проверено системно.</strong></li>
-    <li class="req-item"><span class="req-num">64.</span> <span class="tag-fail">❌</span> Проверить, что Excel открывается и структура соответствует форме. <strong>Не проверено</strong> (только summary-invalidy просмотрен: 30 строк, 14 колонок, Статус + Что изменилось на месте).</li>
-    <li class="req-item"><span class="req-num">65.</span> <span class="tag-fail">❌</span> Проверить, что сводный Excel создаётся корректно в накопительном режиме (статусы изменений). <strong>Не проверено.</strong></li>
-    <li class="req-item"><span class="req-num">66.</span> <span class="tag-done">✅</span> Триггер работает только от Ирины — подтверждено binding'ом sender_id=739016616 → irina-router.</li>
-    <li class="req-item"><span class="req-num">67.</span> <span class="tag-fail">❌</span> Проверить, что добавление категории через консультанта работает (диалог → <code>categories.json</code> → новый промпт). <strong>Не проверено.</strong></li>
-    <li class="req-item"><span class="req-num">68.</span> <span class="tag-fail">❌</span> Проверить, что при изменении промпта следующий запуск использует новую версию. <strong>Не проверено.</strong></li>
-    <li class="req-item"><span class="req-num">69.</span> <span class="tag-fail">❌</span> Проверить логи: формат соответствует Требованию 35, ротация работает (≤ 3 файлов). <strong>Не проверено.</strong></li>
-    <li class="req-item"><span class="req-num">70.</span> <span class="tag-done">✅</span> Инструкция для Ирины покрывает все сценарии использования.</li>
-    <li class="req-item"><span class="req-num">71.</span> Предоставить итоговый отчёт Кириллу (данный документ).</li>
-  </ul>
+</code></pre>
+<p><strong>Обоснование набора инструментов:</strong> irina-router — оркестратор. <code>sessions_spawn</code> (запуск subagent-ов), <code>sessions_send</code> (пересылка не-триггерных сообщений и уведомления), <code>read</code> (проверка готовности/логов), <code>write</code> + <code>exec</code> (блокировка от параллельного запуска через mkdir/rmdir и запуск <code>build_summary.py</code>). Все инструменты поиска и обработки данных — у subagent-ов social-research-agent.</p>
+<ul>
+<li>Требование 7.3: AGENTS.md содержит алгоритм сравнения строк с четырьмя триггерами, оркестрацию subagent-ов по регионам и перенаправление (без самодеятельности, без интерпретации). Для целевого триггера: итерация по списку 89 регионов, <code>sessions_spawn</code> на каждый регион × категорию (полный пересбор — квартальный режим; пропуск только файлов, уже пересобранных в текущем прогоне, — защита от дублей при рестарте), ожидание через <code>sessions_yield</code>, логирование прогресса.</li>
+</ul>
+<h3>Этап 3. Маршрутизация (Феникс)</h3>
+<ul>
+<li>Требование 10: Binding: sender_id=739016616 (Ирина) → <code>irina-router</code> (прямая маршрутизация, минуя main); sender_id=346428630 (Кирилл) → <code>main</code> (прямой доступ). Запуск пайплайна Кириллом — через триггер-правило в main (Требование 11.1).</li>
+<li>Требование 11: Четыре точных триггера. Все subagent-ы запускаются с <code>context=&quot;isolated&quot;</code>, <code>cleanup=&quot;delete&quot;</code>:</li>
+<li><strong>Тест 1:</strong> «Собери меры поддержки для Москвы по категории инвалидность» → ОДИН <code>sessions_spawn(&quot;social-research-agent&quot;, task=&quot;Москва, invalidy&quot;)</code></li>
+<li><strong>Целевой:</strong> «Собери меры поддержки по всем категориям и всем регионам» → оркестрация: для каждого из 89 регионов × 3 категории (пропуская готовые) → последовательный <code>sessions_spawn(&quot;social-research-agent&quot;, task=&quot;РЕГИОН, КАТЕГОРИЯ&quot;)</code>, ожидание через <code>sessions_yield</code>, после всех регионов категории → <code>build_summary.py {id}</code>, после всех категорий → уведомление инициатору запуска</li>
+<li><strong>Тест 3:</strong> «Тест 3 все категории Москва» → 3 × <code>sessions_spawn</code> последовательно: Москва+invalidy, Москва+vbd, Москва+svo, без build_summary</li>
+<li><strong>Тест 4:</strong> «Тест 4 три региона инвалидность» → 3 × <code>sessions_spawn</code> последовательно: Москва+invalidy, СПб+invalidy, МО+invalidy, без build_summary</li>
+<li>Требование 11.1: <strong>Запуск пайплайна Кириллом.</strong> Кирилл пишет main&#x27;у. main проверяет: если сообщение ТОЧНО равно целевому триггеру «Собери меры поддержки по всем категориям и всем регионам» → <code>sessions_send(agentId=&quot;irina-router&quot;, message=&lt;фраза&gt;)</code> для запуска оркестрации, и отвечает «Запускаю полный сбор…». Прочие сообщения main обрабатывает как обычно.</li>
+<li>Требование 12: Не-триггерные сообщения: Ирина → <code>sessions_send(&quot;social-consult-agent&quot;)</code> (через irina-router); Кирилл → main отвечает напрямую (без релея).</li>
+<li>Требование 13: Причина архитектурного решения: AGENTS.md main-агента игнорировался из-за длинного контекста сессии. Выделенный роутер с минимальным контекстом решает проблему.</li>
+</ul>
+<h3>Этап 4. Логика работы исследователя</h3>
+<h4>Подзадача 0. Архитектура: subagent на каждый регион (v1.6)</h4>
+<p><strong>Причина изменения (инцидент 11.08.2026):</strong> при последовательной обработке регионов в одной сессии social-research-agent накопил 4863 строки истории (8.3 MB). При загрузке OpenClaw обрезал результаты инструментов до лимита 256K символов (maxChars=64000 × 4), и агент перестал видеть вывод своих команд — отказ от работы по правилу «не додумывать».</p>
+<p><strong>Новая архитектура:</strong></p>
+<ul>
+<li>Требование 13.1: <strong>irina-router — оркестратор.</strong> Для каждого региона создаётся отдельный изолированный subagent <code>social-research-agent</code> через <code>sessions_spawn(context=&quot;isolated&quot;, cleanup=&quot;delete&quot;)</code>. Каждый subagent получает задание ровно на ОДИН регион и ОДНУ категорию.</li>
+<li>Требование 13.2: <strong>Гарантия изоляции.</strong> Каждый subagent стартует с чистой сессией (0 строк истории). Переполнение контекста невозможно — после обработки региона subagent завершается и удаляется (<code>cleanup=&quot;delete&quot;</code>).</li>
+<li>Требование 13.3: <strong>Последовательный оркестратор.</strong> irina-router spawn&#x27;ит subagent-ы строго по одному, ждёт завершения через <code>sessions_yield</code>, затем запускает следующий. Параллельные spawn исключены во избежание конфликтов на файлах.</li>
+<li>Требование 13.4: <strong>Инструменты subagent-а.</strong> Каждый subagent имеет полный набор инструментов: <code>web_search</code>, <code>web_fetch</code>, <code>exec</code>, <code>write</code>, <code>read</code>. Relay-паттерн удалён за ненадобностью — subagent работает автономно в своём workspace.</li>
+<li>Требование 13.5: <strong>Страховка contextPruning.</strong> В конфигурацию social-research-agent добавлены <code>contextPruning</code> и <code>contextLimits</code> как дополнительная защита от переполнения даже в пределах одного региона:</li>
+</ul>
+<pre><code>
+  contextPruning: { mode: &quot;cache-ttl&quot;, minPrunableToolChars: 50000 },
+  contextLimits: { toolResultMaxChars: 100000 }
+</code></pre>
+<ul>
+<li>Требование 13.6: <strong>Блокировка от параллельного запуска (mutex).</strong> Перед оркестрацией целевого триггера irina-router берёт атомарную блокировку через <code>exec: mkdir /home/user1/phoenix/social-research-agent/knowledge/research/.run-lock</code>. Если mkdir вернул «File exists» — прогон уже ведёт другой экземпляр, оркестратор завершается без спавна subagent-ов. Снятие блокировки — <code>rmdir</code> после завершения всех регионов (или при фатальной ошибке). Восстановление от зависшего прогона: если последняя запись лога старше 40 минут — снять старый лок (rmdir) и перехватить. Защита от повторения дедлока 14.08.2026 (гонка параллельных экземпляров оркестратора).</li>
+</ul>
+<h4>Подзадача 1. Подготовка</h4>
+<ul>
+<li>Требование 14: Прочитать <code>knowledge/research/categories.json</code> — получить актуальный список категорий и их параметры</li>
+<li>Требование 15: Для каждой категории из списка — проверить наличие промпта в <code>prompts/{id}.md</code>. Если нет — записать в лог ошибку, пропустить категорию</li>
+<li>Требование 16: Прочитать <code>knowledge/research/regions.md</code> — список 89 регионов РФ</li>
+<li>Требование 17: Порядок обработки (irina-router): все категории из <code>categories.json</code> последовательно, внутри категории — регионы по алфавиту. Для каждой пары (категория, регион) — отдельный <code>sessions_spawn</code> social-research-agent. Каждый subagent обрабатывает строго один регион.</li>
+</ul>
+<h4>Подзадача 2. Обработка региона</h4>
+<ul>
+<li>Требование 18: Для каждого региона заменить <code>{REGION}</code> в шаблоне на название региона</li>
+<li>Требование 19: Выполнить web_search по источникам из шаблона (до 5 запросов: сайт правительства региона, сайт соцзащиты, garant.ru, consultant.ru, sfr.gov.ru)</li>
+<li>Требование 20: Выполнить web_fetch верхних URL (до 5)</li>
+<li>Требование 21: Извлечь меры поддержки и заполнить форму из 11 полей:</li>
+<li>Название меры</li>
+<li>Категория получателя</li>
+<li>Размер меры</li>
+<li>Периодичность</li>
+<li>Условия предоставления</li>
+<li>Где оформить</li>
+<li>Список документов</li>
+<li>Как получить</li>
+<li>Тип меры</li>
+<li>Категория льготы</li>
+<li>Нормативный акт-основание</li>
+<li>Требование 22: Учитывать подгруппы из <code>categories.json</code>: детализировать категорию получателя согласно <code>subgroups</code> категории</li>
+<li>Требование 23: Сохранить результат в Excel-файл через exec python3 + openpyxl: <code>knowledge/research/{id}/{Регион}.xlsx</code>. Лист: «Регион», 11 колонок. Сохранять после КАЖДОГО региона (не копить в памяти).</li>
+</ul>
+<h4>Подзадача 3. Правила заполнения</h4>
+<ul>
+<li>Требование 24: Если поле не найдено — указать «Не указано в найденных источниках»</li>
+<li>Требование 25: Не додумывать данные, не экстраполировать с других регионов</li>
+<li>Требование 26: Размеры выплат указывать с годом актуальности (например, «27 401 ₽/мес (2026)»)</li>
+<li>Требование 27: НПА-основание — с номером и датой, если источник позволяет</li>
+</ul>
+<h4>Подзадача 4. Сводка и уведомление</h4>
+<ul>
+<li>Требование 28: После обработки всех регионов по категории — запустить <code>python3 knowledge/research/build_summary.py {id}</code> для создания/обновления сводного накопительного Excel</li>
+<li>Требование 29: Сводный Excel сохраняется в <code>knowledge/research/summary-{id}.xlsx</code> и содержит <strong>14 колонок</strong>: Статус, Что изменилось, 11 полей меры, Регион</li>
+<li>Требование 30: По завершении всех категорий — уведомить инициатора запуска (Ирину или Кирилла) через sessions_send: «Сбор завершён. Категорий: {K}, обработано регионов: {N}. Файлы: [список]»</li>
+</ul>
+<h4>Подзадача 5. Деливераблы для отправки</h4>
+<ul>
+<li>Требование 31: Готовые файлы для отправки инициатору запуска сохранять в <code>output/</code> с форматом имени: <code>{номер}_{Регион}_{id}_YYYYMMDD_HHMMSS.xlsx</code></li>
+<li>Требование 32: После завершения — отправить файлы из <code>output/</code> инициатору запуска через MEDIA</li>
+</ul>
+<h4>Подзадача 6. Логирование (два уровня)</h4>
+<ul>
+<li>Требование 33: <strong>Основной лог</strong> — <code>memory/research-log-YYYY-MM-DD.md</code> (дата запуска в имени). Создаётся при старте задачи.</li>
+<li>Требование 34: Перед созданием нового основного лога — проверить старые логи в <code>memory/research-log-*.md</code>. Если их &gt; 3 — удалить самые старые (ротация)</li>
+<li>Требование 35: Формат записи в основной лог — метка времени и категория в начале строки:</li>
+<li>Прогресс: <code>[HH:MM] [категория] Регион — старт, регион N/89</code></li>
+<li>Действия: <code>[HH:MM] [категория] Регион — web_search: &quot;запрос&quot; → K результатов</code></li>
+<li>URL источников: <code>[HH:MM] [категория] Регион — источник: https://...</code></li>
+<li>Итог по региону: <code>[HH:MM] [категория] Регион — завершено: N мер, K источников, время X мин</code></li>
+<li>Предупреждения: <code>[HH:MM] [категория] Регион — ⚠️ поле &quot;Размер&quot; не найдено</code></li>
+<li>Требование 36: <strong>Посессионные логи</strong> — <code>knowledge/research/logs/</code> (log_*_тестN.txt, _status_*.txt). Для отладки отдельных тестовых прогонов. Ротация не применяется.</li>
+<li>Требование 37: При мягком превышении времени (&gt; 10 мин) — записать в лог причину продления</li>
+<li>Требование 38: При жёстком cutoff (30 мин) — записать в лог и пометить регион как пропущенный</li>
+<li>Требование 39: В конце основного лога — итоговая сводка: всего категорий, регионов, обработано, пропущено, общее время</li>
+</ul>
+<h4>Подзадача 7. Обработка ошибок</h4>
+<ul>
+<li>Требование 40: Если регион не обработан (таймаут 30 мин, капча, недоступность источников) — записать причину в лог и продолжить со следующим</li>
+<li>Требование 41: После завершения — уведомить инициатора запуска о пропущенных: «Не обработано регионов: {M}. Детали в research-log-YYYY-MM-DD.md»</li>
+</ul>
+<h4>Подзадача 8. Накопительный Excel (build_summary.py)</h4>
+<ul>
+<li>Требование 42: При запуске <code>build_summary.py {id}</code> — проверить, существует ли предыдущая версия <code>summary-{id}.xlsx</code></li>
+<li>Требование 43: Если предыдущая версия существует — прочитать её, сравнить построчно с новыми данными. <strong>Ключ сопоставления:</strong> название меры + категория получателя + НПА-основание</li>
+<li>Требование 44: Проставить статус изменения для каждой строки:</li>
+<li>🆕 <strong>Новое</strong> — мера отсутствовала в предыдущей версии (зелёная строка)</li>
+<li>❌ <strong>Отменено</strong> — мера была в предыдущей версии, но не найдена в текущем сборе (красная строка)</li>
+<li>✏️ <strong>Изменено</strong> — мера есть в обеих версиях, но изменились значения полей (жёлтая строка)</li>
+<li>▬ <strong>Без изменений</strong> — мера идентична в обеих версиях</li>
+<li>Требование 45: Для строк со статусом ✏️ — в колонке «Что изменилось» перечислить конкретные поля, которые поменялись</li>
+<li>Требование 46: Сохранить итоговый Excel (14 колонок) с условным форматированием: зелёный/красный/жёлтый fill для 🆕/❌/✏️</li>
+<li>Требование 47: Старые строки не удалять — только дополнять и маркировать изменения</li>
+</ul>
+<h3>Этап 5. Управление категориями и шаблонами</h3>
+<ul>
+<li>Требование 48: Исследователь при каждом запуске читает актуальный <code>categories.json</code> — жёсткий список из трёх категорий отсутствует</li>
+<li>Требование 49: Ирина может добавить новую категорию через социального консультанта. Триггер — ключевые слова: «добавь категорию», «новая категория», «расширь список категорий»</li>
+<li>Требование 50: Если в запросе не хватает деталей — консультант уточняет у Ирины в диалоге: название категории, базовый нормативный документ, подгруппы (если есть)</li>
+<li>Требование 51: После уточнения консультант:</li>
+<li>Создаёт шаблон запроса в <code>prompts/{id}.md</code> (по структуре из Требования 4)</li>
+<li>Дописывает категорию в <code>categories.json</code></li>
+<li>Создаёт папку для результатов <code>knowledge/research/{id}/</code></li>
+<li>Требование 52: Ирина может улучшать существующие шаблоны через консультанта: «Улучши описание запроса для [категория] — [что изменить]»</li>
+<li>Требование 53: Social-consult-agent обновляет соответствующий файл в <code>prompts/</code></li>
+<li>Требование 54: Все изменения в <code>categories.json</code> и <code>prompts/</code> версионируются через git (репозиторий Феникса)</li>
+</ul>
+<h3>Этап 6. Тестирование (Феникс)</h3>
+<ul>
+<li>Требование 55: ✅ Тест 1 — один регион (Москва), одна категория (инвалиды). Выполнен 09.08.2026: 15+ мер, Excel корректен, 11 колонок.</li>
+<li>Требование 56: ❌ Тест 2 — сравнение моделей: прогон Москвы на v4-flash и v4-pro, сравнить точность заполнения. <strong>Не выполнен.</strong></li>
+<li>Требование 57: ✅ Тест 3 — один регион (Москва), все стартовые категории. Выполнен 09.08.2026: Excel на каждую категорию (invalidy, vbd, svo).</li>
+<li>Требование 58: ✅ Тест 4 — три региона (Москва, Санкт-Петербург, Московская область), одна категория (инвалидность). Выполнен 09.08.2026: 3 Excel-файла, 107 записей.</li>
+<li>Требование 59: ❌ Тест 5 — проверка логов: формат соответствует Требованию 35, ротация работает (≤ 3 файлов основного лога). <strong>Не проверен.</strong></li>
+<li>Требование 60: ❌ Тест 6 — накопительный Excel: прогнать один регион дважды с разными данными, проверить маркировку 🆕/❌/✏️. <strong>Не проверен.</strong></li>
+<li>Требование 61: 🚫 Тест 7 — добавление категории: исключён из плана 10.08.2026. Функционал Этапа 5 (управление категориями) отложен.</li>
+</ul>
+<h3>Этап 7. Документирование и приёмка</h3>
+<ul>
+<li>Требование 62: ✅ Подготовлена инструкция для Ирины (README-для-Ирины.md), включающая:</li>
+<li>Как запустить сбор (точная триггер-фраза)</li>
+<li>Как добавить новую категорию (ключевые слова → диалог с консультантом)</li>
+<li>Как улучшить шаблон запроса для категории</li>
+<li>Где смотреть результаты (пути к Excel-файлам)</li>
+<li>Как читать накопительный Excel (условные обозначения 🆕/❌/✏️/▬)</li>
+<li>Где смотреть логи и что в них искать</li>
+<li>Требование 63: ❌ Проверить, что 80% полей Excel заполнены (не «Не указано»). <strong>Не проверено системно.</strong></li>
+<li>Требование 64: ❌ Проверить, что Excel открывается и структура соответствует форме. <strong>Не проверено (только summary-invalidy просмотрен: 30 строк, 14 колонок, Статус + Что изменилось на месте).</strong></li>
+<li>Требование 65: ❌ Проверить, что сводный Excel создаётся корректно в накопительном режиме (статусы изменений). <strong>Не проверено.</strong></li>
+<li>Требование 66: ✅ Триггер работает ТОЛЬКО от Кирилла (346428630 → main → irina-router). Binding Ирины на irina-router снят 19.08.2026; триггеры сбора от Ирины и других пользователей → отказ</li>
+<li>Требование 67: ❌ Проверить, что добавление категории через консультанта работает (диалог → <code>categories.json</code> → новый промпт). <strong>Не проверено.</strong></li>
+<li>Требование 68: ❌ Проверить, что при изменении промпта следующий запуск использует новую версию. <strong>Не проверено.</strong></li>
+<li>Требование 69: ❌ Проверить логи: формат соответствует Требованию 35, ротация работает (≤ 3 файлов). <strong>Не проверено.</strong></li>
+<li>Требование 70: ✅ Инструкция для Ирины покрывает все сценарии использования.</li>
+<li>Требование 71: Предоставить итоговый отчёт Кириллу (данный документ).</li>
+</ul>
 </section>
 
-<!-- 3. Ограничения -->
+
 <section>
-  <h2>3. Ограничения и правила</h2>
-  <ol class="constraint-list">
-    <li>НЕ трогать fz425-agent и fz425-verifier — работают штатно</li>
-    <li>НЕ трогать social-consult-agent и social-verify-agent — работают штатно</li>
-    <li>Запуск только по триггер-фразе от Ирины (sender_id=739016616). Без cron</li>
-    <li>Последовательная обработка — строго 1 регион одновременно (архитектурное ограничение: параллельные spawn конфликтуют на session-файле)</li>
-    <li>НЕ додумывать данные — если поле не найдено, «Не указано в найденных источниках»</li>
-    <li>НЕ экстраполировать данные с одного региона на другой</li>
-    <li>Шаблоны читать из файлов перед каждой категорией (не кэшировать между запусками)</li>
-    <li>Категории читать из <code>categories.json</code> при каждом запуске (не хардкодить)</li>
-    <li>Модель: v4-flash основная, v4-pro fallback</li>
-    <li>Целевое время на регион ~10 минут. Если сбор активно идёт — продлевать (с записью причины в лог). Жёсткий cutoff: 30 минут (защита от зависания)</li>
-    <li>Результаты сохранять локально на Фениксе в <code>knowledge/research/</code></li>
-    <li>Конфигурацию Феникса править через SSH, не через TUI</li>
-    <li>Перезапуск Феникса — только через safe-restart.sh</li>
-    <li>Накопительный Excel: не удалять старые данные, только дополнять и маркировать изменения</li>
-    <li>sessions_spawn ЗАПРЕЩЁН в социальном исследователе — он одиночный агент</li>
-    <li>Субагенты исследователя запускаются через <code>sessions_spawn(context="isolated", cleanup="delete")</code> — relay-паттерн для обхода ограничений изолированного контекста</li>
-  </ol>
+<h2>3. Ограничения и правила</h2>
+<ul>
+<li>Ограничение 1: НЕ трогать fz425-agent и fz425-verifier — работают штатно</li>
+<li>Ограничение 2: НЕ трогать social-consult-agent и social-verify-agent — работают штатно</li>
+<li>Ограничение 3: Запуск только по триггер-фразе от Кирилла (346428630). Ирина и другие пользователи на триггеры сбора получают отказ «Эта функция доступна только владельцу» (binding Ирины на irina-router снят 19.08.2026). Без cron</li>
+<li>Ограничение 4: Последовательная обработка — строго 1 subagent одновременно. Параллельные spawn одного агента конфликтуют на файлах (EmbeddedAttemptSessionTakeoverError). Каждый subagent изолирован и обрабатывает ровно 1 регион.</li>
+<li>Ограничение 5: НЕ додумывать данные — если поле не найдено, «Не указано в найденных источниках»</li>
+<li>Ограничение 6: НЕ экстраполировать данные с одного региона на другой</li>
+<li>Ограничение 7: Шаблоны читать из файлов перед каждой категорией (не кэшировать между запусками)</li>
+<li>Ограничение 8: Категории читать из <code>categories.json</code> при каждом запуске (не хардкодить)</li>
+<li>Ограничение 9: Модель: v4-flash основная, v4-pro fallback</li>
+<li>Ограничение 10: Целевое время на регион ~10 минут. Если сбор активно идёт — продлевать (с записью причины в лог). Жёсткий cutoff: 30 минут (защита от зависания)</li>
+<li>Ограничение 11: Результаты сохранять локально на Фениксе в <code>knowledge/research/</code></li>
+<li>Ограничение 12: Конфигурацию Феникса править через SSH, не через TUI</li>
+<li>Ограничение 13: Перезапуск Феникса — только через safe-restart.sh</li>
+<li>Ограничение 14: Накопительный Excel: не удалять старые данные, только дополнять и маркировать изменения</li>
+<li>Ограничение 15: Каждый subagent social-research-agent обрабатывает строго ОДИН регион — после сохранения Excel завершается</li>
+<li>Ограничение 16: Subagent-ы запускаются через <code>sessions_spawn(context=&quot;isolated&quot;, cleanup=&quot;delete&quot;)</code>. Каждый имеет полный набор инструментов в своём workspace — никаких relay-обходов не требуется.</li>
+</ul>
 </section>
 
-<!-- 4. Критерии приемки -->
+
 <section>
-  <h2>4. Критерии приёмки</h2>
-  <ul class="checklist">
-    <li class="done"><strong>Тест 1</strong> (Москва, инвалиды): ≥ 80% полей Excel заполнены, структура соответствует форме — ✅ 09.08.2026</li>
-    <li class="pending"><strong>Тест 2</strong> (сравнение моделей): данные собраны на обеих моделях, выбрана оптимальная</li>
-    <li class="done"><strong>Тест 3</strong> (Москва, все категории): Excel-файлы на каждую категорию, структура по форме — ✅ 09.08.2026</li>
-    <li class="done"><strong>Тест 4</strong> (3 региона): 3 Excel-файла, 107 записей — ✅ 09.08.2026</li>
-    <li class="pending"><strong>Тест 5</strong> (логи): лог создан, формат по Требованию 35, ротация работает (≤ 3 файлов)</li>
-    <li class="pending"><strong>Тест 6</strong> (накопительный Excel): повторный прогон — маркировка 🆕/❌/✏️ работает корректно</li>
-    <li class="skip"><strong>Тест 7</strong> — исключён из плана (10.08.2026)</li>
-    <li class="done">Триггер срабатывает только от Ирины, другие пользователи получают отказ</li>
-    <li class="pending">При изменении промпта следующий запуск использует новую версию</li>
-    <li class="pending">После завершения — уведомление Ирине с перечнем файлов (функция есть, не тестировалась на полном прогоне)</li>
-    <li class="done">Пропущенные регионы зафиксированы в логе research-log-YYYY-MM-DD.md — ✅ лог содержит информацию о skip/ошибках</li>
-    <li class="done">Сводный Excel создан для каждой категории в накопительном режиме (summary-invalidy.xlsx: 30 строк, 14 колонок)</li>
-    <li class="done">Инструкция для Ирины готова и покрывает все сценарии использования</li>
-  </ul>
+<h2>4. Критерии приёмки</h2>
+<ul>
+<li>[x] Тест 1 (Москва, инвалиды): ≥ 80% полей Excel заполнены, структура соответствует форме — ✅ 09.08.2026</li>
+<li>[ ] Тест 2 (сравнение моделей): данные собраны на обеих моделях, выбрана оптимальная</li>
+<li>[x] Тест 3 (Москва, все категории): Excel-файлы на каждую категорию, структура по форме — ✅ 09.08.2026</li>
+<li>[x] Тест 4 (3 региона): 3 Excel-файла, 107 записей — ✅ 09.08.2026</li>
+<li>[ ] Тест 5 (логи): лог создан, формат по Требованию 35, ротация работает (≤ 3 файлов)</li>
+<li>[ ] Тест 6 (накопительный Excel): повторный прогон — маркировка 🆕/❌/✏️ работает корректно</li>
+<li>[x] 🚫 Тест 7 — исключён из плана (10.08.2026)</li>
+<li>[x] Триггер срабатывает только от Кирилла (346428630); Ирина и другие пользователи получают отказ</li>
+<li>[ ] При изменении промпта следующий запуск использует новую версию</li>
+<li>[ ] После завершения — уведомление инициатору запуска с перечнем файлов (функция есть, не тестировалась на полном прогоне)</li>
+<li>[x] Пропущенные регионы зафиксированы в логе research-log-YYYY-MM-DD.md — ✅ лог содержит информацию о skip/ошибках</li>
+<li>[x] Сводный Excel создан для каждой категории в накопительном режиме (summary-invalidy.xlsx: 30 строк, 14 колонок)</li>
+<li>[x] Инструкция для Ирины готова и покрывает все сценарии использования</li>
+</ul>
 </section>
 
-<!-- 5. История версий -->
+
 <section>
-  <h2>5. История версий</h2>
-  <table>
-    <tr><th>Версия</th><th>Дата</th><th>Изменения</th></tr>
-    <tr>
-      <td><strong>v1.5</strong></td>
-      <td>2026-08-10</td>
-      <td>Приведение ТЗ в соответствие с реальной архитектурой:
-        <ul>
-          <li>Параллельность ≤4 → строго 1 регион (Ограничение 4, Требование 13.2)</li>
-          <li>irina-router tools: добавлены web_search/web_fetch/write/read/exec + обоснование relay-паттерна (Требование 7.2, Требование 13.3)</li>
-          <li>Запрет sessions_spawn в исследователе (Требование 13.1, Ограничение 15)</li>
-          <li>2 триггера → 4 триггера (Требование 11: добавлены Тест 3 и Тест 4)</li>
-          <li>Структура каталогов: добавлены logs/, output/, build_summary.py (Требование 2, Требование 6.1)</li>
-          <li>Сводный Excel: 13 колонок → 14 (+Регион) (Требование 29)</li>
-          <li>Логирование: два уровня — основной + посессионный (Требования 33–36)</li>
-          <li>Параметры spawn: context="isolated", cleanup="delete" (Требование 11)</li>
-          <li>Структура промпта зафиксирована (Требование 4)</li>
-          <li>output/ и формат имён деливераблов (Требования 31–32)</li>
-          <li>Статусы тестов обновлены (Тесты 1, 3, 4 выполнены; 2, 5, 6, 7 — нет)</li>
-          <li>Нумерация требований обновлена</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td><strong>v1.4</strong></td>
-      <td>2026-08-08</td>
-      <td>Выделенный агент-роутер irina-router, binding Ирины напрямую в irina-router (минуя main)</td>
-    </tr>
-    <tr>
-      <td><strong>v1.3</strong></td>
-      <td>—</td>
-      <td>Перенос поиска на Феникс</td>
-    </tr>
-    <tr>
-      <td><strong>v1.2</strong></td>
-      <td>—</td>
-      <td>Уточнение предметной области, структура categories.json</td>
-    </tr>
-    <tr>
-      <td><strong>v1.1</strong></td>
-      <td>—</td>
-      <td>Добавление накопительного Excel, логирования, критериев приёмки</td>
-    </tr>
-    <tr>
-      <td><strong>v1.0</strong></td>
-      <td>—</td>
-      <td>Первая версия</td>
-    </tr>
-  </table>
+<h2>4.1. Анализ стоимости полного сбора и удешевление (19.08.2026)</h2>
+<h3>Факты (по данным сессий OpenClaw)</h3>
+<table>
+<tr><th>Показатель</th><th>Значение</th></tr>
+<tr><td>API-вызовов за все прогоны</td><td>12 048</td></tr>
+<tr><td>Токенов суммарно (по максимумам сессий)</td><td>~1.5 млрд</td></tr>
+<tr><td>Из них — оркестратор irina-router (17.08, прогон №2)</td><td><strong>1.197 млрд (80%)</strong></td></tr>
+<tr><td>— оркестратор irina-router (16.08, прогон №1)</td><td>309 млн</td></tr>
+<tr><td>— все субагенты social-research-agent (сбор данных)</td><td>&lt; 1 млн на сессию</td></tr>
+<tr><td>Тарифы V4 Flash</td><td>$0.14 вход / $0.28 выход за 1M</td></tr>
+<tr><td>Итоговая стоимость полного сбора</td><td>~7 000 ₽</td></tr>
+</table>
+<h3>Корневая причина: раздутый контекст оркестратора</h3>
+<p>Деньги сожрал НЕ сам сбор данных (субагенты дёшевы и изолированы), а <strong>оркестратор irina-router</strong>:</p>
+<ul>
+<li>Сессия 17.08: <strong>3302 вызова × средний контекст ~363K токенов</strong> = 1.2 млрд входных токенов</li>
+<li>Контекст рос, потому что announce-результаты субагентов (содержимое Excel) накапливались в истории оркестратора</li>
+<li><code>contextTokens: 1000000</code> не ограничивал рост — каждый следующий вызов отправлял в API весь накопленный контекст</li>
+<li>Повторные запуски (12 триггеров за 14–17.08) умножали расход</li>
+</ul>
+<h3>Подход к удешевлению (ожидаемый эффект: 5–8× при сохранении полного пересбора)</h3>
+<p>Квартальный пересбор — штатный режим работы пайплайна (обновление мер + маркировка 🆕/❌/✏️ в накопительном Excel). Поэтому меры «пропускать готовые файлы» и «запрещать повторные прогоны» НЕ применяются — экономия достигается только снижением стоимости каждого отдельного прогона:</p>
+<p><strong>contextTokens оркестратора: 1M → 32K.</strong> Контекст будет обрезаться, вызовы подешевеют в разы. Прогресс оркестратор ведёт в лог-файле (Требование 35), а не в контексте — потеря истории некритична. Это устраняет главный источник расхода (1.2 млрд токенов за прогон).</p>
+<p><strong>Субагенты возвращают только подтверждение</strong> («готово: N мер, файл сохранён»), а не содержимое данных — announce не раздувает контекст оркестратора.</p>
+<p><strong>thinkingLevel: high → medium</strong> для irina-router (оркестрации не нужны глубокие рассуждения) и для субагентов сбора.</p>
+<p><strong>Кэш DeepSeek</strong>: повторяющийся системный префикс и промпты категорий кэшируются автоматически (cache hit в 5–10 раз дешевле) — при коротком контексте эффект кэша максимален.</p>
+<p><strong>Защита от параллельных запусков</strong> — только mutex (Требование 13.6). Частота прогонов (раз в квартал) — на усмотрение владельца, автоматических запретов на пересборку нет.</p>
+<p><strong>Ожидаемая стоимость полного прогона после оптимизации: ~1 000–1 500 ₽ вместо ~7 000 ₽</strong> (оркестратор: 267 субагентов × ~12 вызовов × ~25K токенов ≈ 80 млн токенов; субагенты: ~70–140K токенов на регион).</p>
+<h3>Карта моделей (зафиксировано 19.08.2026)</h3>
+<table>
+<tr><th>Роль</th><th>Модель</th><th>Обоснование</th></tr>
+<tr><td><strong>irina-router</strong> (оркестратор)</td><td><strong>flash жёстко</strong> (pro — только fallback при недоступности flash)</td><td>Оркестратор не анализирует данные — только спавн/проверки/лог. pro здесь бессмысленна (×12 дороже). Сессия 18.08 случайно ушла на pro (140K токенов) — больше не допускать</td></tr>
+<tr><td><strong>social-research-agent</strong> (сборщики)</td><td><strong>flash + pro fallback</strong></td><td>flash собирает качественно (273 файла), pro — страховка для проблемных регионов</td></tr>
+<tr><td><strong>main</strong> (триггер)</td><td>flash</td><td>Простая маршрутизация</td></tr>
+<tr><td><strong>build_summary.py</strong></td><td>не LLM</td><td>Python, бесплатно</td></tr>
+</table>
+<p><strong>Локальные модели (Qwen3-8B и пр.) НЕ используются:</strong> на CPU vps2 прогон занял бы 5+ дней (вместо ~1 суток) при качестве ниже flash — риск пропусков мер в данных для Ирины. Смена модели — не рычаг экономии (расход определяет объём токенов, а не тариф: 1.5 млрд токенов × $0.14/1M = ~7 000 ₽).</p>
+<h3>Доступ к запуску (актуально на 19.08.2026)</h3>
+<ul>
+<li>Запуск по триггерам сбора — <strong>только Кирилл</strong> (Telegram ID 346428630): Кирилл → main → <code>sessions_send(irina-router)</code>.</li>
+<li>Ирина (739016616) и любые другие пользователи → на триггеры сбора отказ: «Эта функция доступна только владельцу». Обычные консультации Ирины работают как раньше (через social-consult-agent).</li>
+<li>Binding Ирины → irina-router удалён из openclaw.json (бэкап: <code>openclaw.json.bak-pre-triggers-owner-*</code>).</li>
+<li>«Федор» (fz425-agent) к этому ограничению НЕ относится — доступен всем пользователям, как раньше.</li>
+</ul>
+</section>
+
+
+<section>
+<h2>5. История версий</h2>
+<ul>
+<li><strong>v1.11</strong> (2026-08-19) — Карта моделей:</li>
+<li>Раздел 4.1: зафиксирован выбор LLM: flash везде, pro — только fallback (оркестратору flash жёстко), локальные модели не используются (скорость и качество)</li>
+<li><strong>v1.10</strong> (2026-08-19) — Учтён квартальный режим:</li>
+<li>Квартальный пересбор — штатный режим (суть решения); меры «скип готовых» и «запрет повторных прогонов» убраны из раздела 4.1</li>
+<li>Экономия только за счёт стоимости прогона: контекст оркестратора 32K, краткие announce субагентов, thinking medium, кэш (раздел 4.1, Требование 7.3)</li>
+<li>Оценка стоимости прогона после оптимизации: ~1 000–1 500 ₽ вместо ~7 000 ₽</li>
+<li><strong>v1.9</strong> (2026-08-19) — Ограничение запуска и анализ стоимости:</li>
+<li>Запуск по триггеру — только Кирилл; binding Ирины на irina-router снят; остальным — отказ (Ограничение 3, Требование 66)</li>
+<li>Раздел 4.1: анализ стоимости полного сбора (~7 000 ₽, корень — раздутый контекст оркестратора 1.2 млрд токенов) и подход к удешевлению 10–20× (контекст 32K, краткие announce, скип готовых, thinking medium, запрет повторов готового)</li>
+<li><strong>v1.8</strong> (2026-08-14) — Упрощение доступа Кирилла (без релея):</li>
+<li>Кирилл → main напрямую; целевой триггер в main → sessions_send(irina-router) (Требование 11.1)</li>
+<li>отказ от релея не-триггерных сообщений Кирилла через irina-router (был многоступенчатый протокол)</li>
+<li><strong>v1.7</strong> (2026-08-14) — Доступ Кирилла и защита от дедлока:</li>
+<li>Кирилл (346428630) добавлен как пользователь пайплайна: binding irina-router (Требование 10), не-триггер → main (Требование 12)</li>
+<li>mutex-блокировка от параллельного запуска оркестратора (Требование 13.6) — фикс дедлока 14.08.2026</li>
+<li>irina-router tools.allow += write, exec (Требование 7.2)</li>
+<li><strong>v1.6</strong> (2026-08-11) — Архитектурный фикс после инцидента переполнения контекста:</li>
+<li>Переход на subagent-ы per-регион: каждый регион — изолированная сессия (Требования 13.1–13.5)</li>
+<li>Удаление relay-паттерна — subagent-ы автономны (Требование 13.4)</li>
+<li>Упрощение irina-router до чистого оркестратора (Требование 7.2)</li>
+<li>contextPruning + contextLimits как страховка (Требование 13.5, Этап 2)</li>
+<li>Обновление триггеров: оркестрация регионов через последовательные spawn (Требование 11)</li>
+<li>Обновление ограничений 4, 15, 16</li>
+<li><strong>v1.5</strong> (2026-08-10) — Приведение ТЗ в соответствие с реальной архитектурой:</li>
+<li>Параллельность ≤4 → строго 1 регион (Ограничение 4, Требование 13.2)</li>
+<li>irina-router tools: добавлены web_search/web_fetch/write/read/exec + обоснование relay-паттерна (Требование 7.2, Требование 13.3)</li>
+<li>Запрет sessions_spawn в исследователе (Требование 13.1, Ограничение 15)</li>
+<li>2 триггера → 4 триггера (Требование 11: добавлены Тест 3 и Тест 4)</li>
+<li>Структура каталогов: добавлены logs/, output/, build_summary.py (Требование 2, Требование 6.1)</li>
+<li>Сводный Excel: 13 колонок → 14 (+Регион) (Требование 29)</li>
+<li>Логирование: два уровня — основной + посессионный (Требования 33-36)</li>
+<li>Параметры spawn: context=&quot;isolated&quot;, cleanup=&quot;delete&quot; (Требование 11)</li>
+<li>Структура промпта зафиксирована (Требование 4)</li>
+<li>output/ и формат имён деливераблов (Требования 31-32)</li>
+<li>Статусы тестов обновлены (Тесты 1,3,4 выполнены; 2,5,6,7 — нет)</li>
+<li>Нумерация требований обновлена</li>
+<li><strong>v1.4</strong> (2026-08-08) — Выделенный агент-роутер irina-router, binding Ирины напрямую в irina-router (минуя main)</li>
+<li><strong>v1.3</strong> — Перенос поиска на Феникс</li>
+<li><strong>v1.2</strong> — Уточнение предметной области, структура categories.json</li>
+<li><strong>v1.1</strong> — Добавление накопительного Excel, логирования, критериев приёмки</li>
+<li><strong>v1.0</strong> — Первая версия</li>
+</ul>
 </section>
 
 </div>
 
 <footer>
-  ТЗ v1.5 · согласовано 2026-08-10 · Феникс 🔥 · <a href="https://nasledstvo2026.github.io/Phoenix/social.html">Социальный консультант</a>
+  ТЗ v1.11 · ред. 2026-08-19 · Феникс 🔥 · <a href="https://nasledstvo2026.github.io/Phoenix/social.html">Социальный консультант</a>
 </footer>
 
 </body>
