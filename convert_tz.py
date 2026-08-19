@@ -127,7 +127,7 @@ body = md_to_html(md)
 
 # --- секция 0: статус реализации ---
 status = '''<section>
-  <h2>0. Статус реализации — 19.08.2026</h2>
+  <h2>0. Статус реализации — 20.08.2026</h2>
   <p><strong>ТЗ обновлено 19.08.2026 (v1.11)</strong> — доступ по триггеру только Кирилл; полный сбор выполнен (273 файла, 16–18.08.2026); проведён анализ стоимости (~7 000 ₽, корневая причина — раздутый контекст оркестратора) и сформирован подход к удешевлению; зафиксирована карта моделей.</p>
   <table>
     <tr><th>Этап</th><th>Статус</th><th>Комментарий</th></tr>
@@ -164,8 +164,8 @@ page = f'''<!DOCTYPE html>
     <div class="meta-card">
       <span>👤 <strong>Автор:</strong> Лунтик 🦞</span>
       <span class="status-badge accepted">✅ Согласовано</span>
-      <span>📅 <strong>Дата:</strong> 2026-08-19</span>
-      <span>🏷️ <strong>Версия:</strong> 1.11</span>
+      <span>📅 <strong>Дата:</strong> 2026-08-20</span>
+      <span>🏷️ <strong>Версия:</strong> 1.12</span>
     </div>
     <br>
     <a class="back" href="social.html">← Назад к «Социальный консультант»</a>
@@ -183,7 +183,7 @@ page = f'''<!DOCTYPE html>
 </div>
 
 <footer>
-  ТЗ v1.11 · ред. 2026-08-19 · Феникс 🔥 · <a href="https://nasledstvo2026.github.io/Phoenix/social.html">Социальный консультант</a>
+  ТЗ v1.12 · ред. 2026-08-20 · Феникс 🔥 · <a href="https://nasledstvo2026.github.io/Phoenix/social.html">Социальный консультант</a>
 </footer>
 
 </body>
