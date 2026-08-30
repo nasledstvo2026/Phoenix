@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>АСВ — статус работ · 30.08.2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+     background:#f1f5f9;color:#0f172a;padding:28px;-webkit-font-smoothing:antialiased}
+.page{max-width:1460px;margin:0 auto;background:#fff;border-radius:16px;padding:32px;
+      box-shadow:0 4px 24px rgba(15,23,42,.08)}
+h1{font-size:22px;font-weight:700;letter-spacing:-.01em}
+h1 .sub{display:block;font-size:13px;font-weight:500;color:#64748b;margin-top:4px}
+.hdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px}
+.chip{background:#eef2ff;color:#4338ca;font-size:12px;font-weight:600;padding:6px 12px;
+      border-radius:999px;white-space:nowrap}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:20px 0 26px}
+.kpi{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:16px 18px}
+.kpi .v{font-size:28px;font-weight:800;letter-spacing:-.02em}
+.kpi .l{font-size:12px;color:#64748b;margin-top:4px;line-height:1.35}
+.kpi .v.red{color:#dc2626}.kpi .v.amb{color:#d97706}.kpi .v.grn{color:#16a34a}.kpi .v.blu{color:#2563eb}
+.section{font-size:13px;font-weight:700;color:#475569;text-transform:uppercase;
+         letter-spacing:.06em;margin:28px 0 12px}
+.legend{display:flex;gap:20px;align-items:center;font-size:12.5px;color:#475569;margin-bottom:10px;flex-wrap:wrap}
+.legend .it{display:flex;align-items:center;gap:6px}
+.sw{width:14px;height:6px;border-radius:3px;display:inline-block}
+.sw.plan{background:#94a3b8}
+.sw.over{background:#dc2626;opacity:.6}
+.dot{width:9px;height:9px;border-radius:50%;background:#dc2626;display:inline-block}
+.gantt{overflow-x:auto;border:1px solid #e2e8f0;border-radius:12px}
+.gantt svg{display:block}
+.taskname{font-size:12.5px;font-weight:600;color:#0f172a;line-height:1.25;display:flex;
+          align-items:center;gap:6px;height:100%}
+.rel{color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:5px;flex-shrink:0}
+.stagelbl{font-size:10.5px;font-weight:600;fill:#475569}
+.bar-plan{fill:#94a3b8;opacity:.85}
+.bar-fact{cursor:default}
+.over{fill:#dc2626;opacity:.55}
+.late{stroke:#dc2626;stroke-width:1.5}
+.plus{font-size:9px;font-weight:800;fill:#dc2626}
+.rowband{fill:transparent}.rowband.alt{fill:#f8fafc}
+.sep{fill:#eef2f7}
+.mon{position:absolute;font-size:11px;font-weight:600;color:#94a3b8;text-align:center;
+     border-left:1px solid #e2e8f0;padding-top:2px;top:0;height:26px}
+.grid{stroke:#eef2f7;stroke-width:1}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:#f8fafc;text-align:left;padding:10px 12px;font-size:11.5px;color:#64748b;
+   text-transform:uppercase;letter-spacing:.04em;border-bottom:2px solid #e2e8f0}
+td{padding:9px 12px;border-bottom:1px solid #eef2f7;vertical-align:top}
+.td-task{font-weight:600}.td-stage{color:#334155;white-space:nowrap}
+.sdot{width:9px;height:9px;border-radius:3px;display:inline-block;margin-right:7px}
+.mono{font-family:'SF Mono',ui-monospace,Menlo,Consolas,monospace;font-size:12px;white-space:nowrap}
+.bdg{font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap;display:inline-block}
+.foot{margin-top:20px;font-size:11.5px;color:#94a3b8}
+</style></head>
+<body><div class="page">
+
+<div class="hdr">
+  <h1>АСВ · Статус работ и отклонения по срокам
+    <span class="sub">Один гант-бар на функциональность · этапы (СА → DEV → ИФТ → ПСИ → ПРОМ) · по состоянию на 30.08.2026</span>
+  </h1>
+  <div class="chip">План vs Факт</div>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="v blu">5</div><div class="l">Функциональностей<br>(релизы 1 и 2)</div></div>
+  <div class="kpi"><div class="v">25</div><div class="l">Этапов<br>план/факт</div></div>
+  <div class="kpi"><div class="v red">14</div><div class="l">Этапов с задержкой<br>(факт &gt; плана)</div></div>
+  <div class="kpi"><div class="v amb">+221</div><div class="l">Суммарное отклонение<br>по завершению, дн.</div></div>
+  <div class="kpi"><div class="v red">+38</div><div class="l">Макс. задержка<br>ИФТ · Формирование еженедельного отчёта по прил. 4 и 21</div></div>
+</div>
+
+<div class="section">Диаграмма Ганта</div>
+<div class="legend">
+  <span class="it"><span class="sw plan"></span> Плановый срок</span>
+  <span class="it"><span class="sw over"></span> Задержка (факт &gt; план)</span>
+  <span class="it"><span class="dot"></span> Граница планового срока</span>
+  <span class="it" style="margin-left:8px;color:#94a3b8">Этапы:</span>
+  <span class="it"><span class="sw" style="background:#6366f1"></span>СА</span><span class="it"><span class="sw" style="background:#0ea5e9"></span>DEV</span><span class="it"><span class="sw" style="background:#f59e0b"></span>ИФТ</span><span class="it"><span class="sw" style="background:#a855f7"></span>ПСИ</span><span class="it"><span class="sw" style="background:#10b981"></span>ПРОМ</span>
+</div>
+<div class="gantt" style="position:relative">
+  <svg width="1418" height="356" viewBox="0 0 1418 356">
+    <g transform="translate(0,26)"><g><rect x="0" y="0" width="1418" height="66" class="rowband "/><rect x="0" y="65" width="1418" height="1" class="sep"/><foreignObject x="8" y="0" width="284" height="66"><div class="taskname"><span class="rel" style="background:#2563eb">R1</span> Загрузка реестра по API</div></foreignObject><circle cx="305" cy="7" r="3" fill="#6366f1"/><text x="312" y="11.5" class="stagelbl">СА</text><rect x="641.5964912280701" y="10.5" width="241.75438596491227" height="3" rx="1.5" class="bar-plan"/><rect x="641.5964912280701" y="4" width="274.29824561403507" height="6" rx="3" fill="#6366f1" class="bar-fact"><title>Загрузка реестра по API · СА: 01.06.26 – 29.07.26 (план 01.06.26 – 22.07.26)</title></rect><rect x="878.7017543859649" y="4" width="32.54385964912281" height="6" rx="3" class="over"><title>Задержка +7 дн.</title></rect><line x1="878.7017543859649" y1="3" x2="878.7017543859649" y2="14" class="late"/><text x="915.2456140350877" y="9.5" class="plus">+7</text><circle cx="305" cy="19" r="3" fill="#0ea5e9"/><text x="312" y="23.5" class="stagelbl">DEV</text><rect x="660.1929824561403" y="22.5" width="246.4035087719298" height="3" rx="1.5" class="bar-plan"/><rect x="641.5964912280701" y="16" width="274.29824561403507" height="6" rx="3" fill="#0ea5e9" class="bar-fact"><title>Загрузка реестра по API · DEV: 01.06.26 – 29.07.26 (план 05.06.26 – 27.07.26)</title></rect><rect x="901.9473684210526" y="16" width="9.298245614035087" height="6" rx="3" class="over"><title>Задержка +2 дн.</title></rect><line x1="901.9473684210526" y1="15" x2="901.9473684210526" y2="26" class="late"/><circle cx="305" cy="31" r="3" fill="#f59e0b"/><text x="312" y="35.5" class="stagelbl">ИФТ</text><rect x="934.4912280701755" y="34.5" width="106.9298245614035" height="3" rx="1.5" class="bar-plan"/><rect x="934.4912280701755" y="28" width="153.42105263157893" height="6" rx="3" fill="#f59e0b" class="bar-fact"><title>Загрузка реестра по API · ИФТ: 03.08.26 – 04.09.26 (план 03.08.26 – 25.08.26)</title></rect><rect x="1036.7719298245615" y="28" width="46.49122807017544" height="6" rx="3" class="over"><title>Задержка +10 дн.</title></rect><line x1="1036.7719298245615" y1="27" x2="1036.7719298245615" y2="38" class="late"/><text x="1087.2631578947367" y="33.5" class="plus">+10</text><circle cx="305" cy="43" r="3" fill="#a855f7"/><text x="312" y="47.5" class="stagelbl">ПСИ</text><rect x="1041.421052631579" y="46.5" width="92.98245614035088" height="3" rx="1.5" class="bar-plan"/><rect x="1097.2105263157896" y="40" width="69.73684210526315" height="6" rx="3" fill="#a855f7" class="bar-fact"><title>Загрузка реестра по API · ПСИ: 07.09.26 – 21.09.26 (план 26.08.26 – 14.09.26)</title></rect><rect x="1129.7543859649122" y="40" width="32.54385964912281" height="6" rx="3" class="over"><title>Задержка +7 дн.</title></rect><line x1="1129.7543859649122" y1="39" x2="1129.7543859649122" y2="50" class="late"/><text x="1166.298245614035" y="45.5" class="plus">+7</text><circle cx="305" cy="55" r="3" fill="#10b981"/><text x="312" y="59.5" class="stagelbl">ПРОМ</text><rect x="1134.4035087719299" y="58.5" width="74.3859649122807" height="3" rx="1.5" class="bar-plan"/><rect x="1166.9473684210525" y="52" width="41.84210526315789" height="6" rx="3" fill="#10b981" class="bar-fact"><title>Загрузка реестра по API · ПРОМ: 22.09.26 – 30.09.26 (план 15.09.26 – 30.09.26)</title></rect></g><g><rect x="0" y="66" width="1418" height="66" class="rowband alt"/><rect x="0" y="131" width="1418" height="1" class="sep"/><foreignObject x="8" y="66" width="284" height="66"><div class="taskname"><span class="rel" style="background:#0d9488">R2</span> Загрузка реестра по почте</div></foreignObject><circle cx="305" cy="73" r="3" fill="#6366f1"/><text x="312" y="77.5" class="stagelbl">СА</text><rect x="641.5964912280701" y="76.5" width="283.59649122807014" height="3" rx="1.5" class="bar-plan"/><rect x="641.5964912280701" y="70" width="446.31578947368416" height="6" rx="3" fill="#6366f1" class="bar-fact"><title>Загрузка реестра по почте · СА: 01.06.26 – 04.09.26 (план 01.06.26 – 31.07.26)</title></rect><rect x="920.5438596491227" y="70" width="162.71929824561403" height="6" rx="3" class="over"><title>Задержка +35 дн.</title></rect><line x1="920.5438596491227" y1="69" x2="920.5438596491227" y2="80" class="late"/><text x="1087.2631578947367" y="75.5" class="plus">+35</text><circle cx="305" cy="85" r="3" fill="#0ea5e9"/><text x="312" y="89.5" class="stagelbl">DEV</text><rect x="934.4912280701755" y="88.5" width="139.4736842105263" height="3" rx="1.5" class="bar-plan"/><rect x="934.4912280701755" y="82" width="199.91228070175438" height="6" rx="3" fill="#0ea5e9" class="bar-fact"><title>Загрузка реестра по почте · DEV: 03.08.26 – 14.09.26 (план 03.08.26 – 01.09.26)</title></rect><rect x="1069.3157894736842" y="82" width="60.43859649122807" height="6" rx="3" class="over"><title>Задержка +13 дн.</title></rect><line x1="1069.3157894736842" y1="81" x2="1069.3157894736842" y2="92" class="late"/><text x="1133.7543859649122" y="87.5" class="plus">+13</text><circle cx="305" cy="97" r="3" fill="#f59e0b"/><text x="312" y="101.5" class="stagelbl">ИФТ</text><rect x="1134.4035087719299" y="100.5" width="69.73684210526315" height="3" rx="1.5" class="bar-plan"/><rect x="1134.4035087719299" y="94" width="92.98245614035088" height="6" rx="3" fill="#f59e0b" class="bar-fact"><title>Загрузка реестра по почте · ИФТ: 15.09.26 – 04.10.26 (план 15.09.26 – 29.09.26)</title></rect><rect x="1199.4912280701756" y="94" width="23.24561403508772" height="6" rx="3" class="over"><title>Задержка +5 дн.</title></rect><line x1="1199.4912280701756" y1="93" x2="1199.4912280701756" y2="104" class="late"/><text x="1226.7368421052631" y="99.5" class="plus">+5</text><circle cx="305" cy="109" r="3" fill="#a855f7"/><text x="312" y="113.5" class="stagelbl">ПСИ</text><rect x="1204.140350877193" y="112.5" width="69.73684210526315" height="3" rx="1.5" class="bar-plan"/><rect x="1204.140350877193" y="106" width="69.73684210526315" height="6" rx="3" fill="#a855f7" class="bar-fact"><title>Загрузка реестра по почте · ПСИ: 30.09.26 – 14.10.26 (план 30.09.26 – 14.10.26)</title></rect><circle cx="305" cy="121" r="3" fill="#10b981"/><text x="312" y="125.5" class="stagelbl">ПРОМ</text><rect x="1273.877192982456" y="124.5" width="27.89473684210526" height="3" rx="1.5" class="bar-plan"/><rect x="1273.877192982456" y="118" width="27.89473684210526" height="6" rx="3" fill="#10b981" class="bar-fact"><title>Загрузка реестра по почте · ПРОМ: 15.10.26 – 20.10.26 (план 15.10.26 – 20.10.26)</title></rect></g><g><rect x="0" y="132" width="1418" height="66" class="rowband "/><rect x="0" y="197" width="1418" height="1" class="sep"/><foreignObject x="8" y="132" width="284" height="66"><div class="taskname"><span class="rel" style="background:#0d9488">R2</span> Поиск и детальная информация в РМ ОЦ</div></foreignObject><circle cx="305" cy="139" r="3" fill="#6366f1"/><text x="312" y="143.5" class="stagelbl">СА</text><rect x="469.57894736842104" y="142.5" width="423.0701754385965" height="3" rx="1.5" class="bar-plan"/><rect x="469.57894736842104" y="136" width="423.0701754385965" height="6" rx="3" fill="#6366f1" class="bar-fact"><title>Поиск и детальная информация в РМ ОЦ · СА: 25.04.26 – 24.07.26 (план 25.04.26 – 24.07.26)</title></rect><circle cx="305" cy="151" r="3" fill="#0ea5e9"/><text x="312" y="155.5" class="stagelbl">DEV</text><rect x="888.0" y="154.5" width="158.0701754385965" height="3" rx="1.5" class="bar-plan"/><rect x="934.4912280701755" y="148" width="144.12280701754386" height="6" rx="3" fill="#0ea5e9" class="bar-fact"><title>Поиск и детальная информация в РМ ОЦ · DEV: 03.08.26 – 02.09.26 (план 24.07.26 – 26.08.26)</title></rect><rect x="1041.421052631579" y="148" width="32.54385964912281" height="6" rx="3" class="over"><title>Задержка +7 дн.</title></rect><line x1="1041.421052631579" y1="147" x2="1041.421052631579" y2="158" class="late"/><text x="1077.9649122807018" y="153.5" class="plus">+7</text><circle cx="305" cy="163" r="3" fill="#f59e0b"/><text x="312" y="167.5" class="stagelbl">ИФТ</text><rect x="1134.4035087719299" y="166.5" width="69.73684210526315" height="3" rx="1.5" class="bar-plan"/><rect x="1134.4035087719299" y="160" width="69.73684210526315" height="6" rx="3" fill="#f59e0b" class="bar-fact"><title>Поиск и детальная информация в РМ ОЦ · ИФТ: 15.09.26 – 29.09.26 (план 15.09.26 – 29.09.26)</title></rect><circle cx="305" cy="175" r="3" fill="#a855f7"/><text x="312" y="179.5" class="stagelbl">ПСИ</text><rect x="1204.140350877193" y="178.5" width="69.73684210526315" height="3" rx="1.5" class="bar-plan"/><rect x="1204.140350877193" y="172" width="69.73684210526315" height="6" rx="3" fill="#a855f7" class="bar-fact"><title>Поиск и детальная информация в РМ ОЦ · ПСИ: 30.09.26 – 14.10.26 (план 30.09.26 – 14.10.26)</title></rect><circle cx="305" cy="187" r="3" fill="#10b981"/><text x="312" y="191.5" class="stagelbl">ПРОМ</text><rect x="1273.877192982456" y="190.5" width="27.89473684210526" height="3" rx="1.5" class="bar-plan"/><rect x="1273.877192982456" y="184" width="27.89473684210526" height="6" rx="3" fill="#10b981" class="bar-fact"><title>Поиск и детальная информация в РМ ОЦ · ПРОМ: 15.10.26 – 20.10.26 (план 15.10.26 – 20.10.26)</title></rect></g><g><rect x="0" y="198" width="1418" height="66" class="rowband alt"/><rect x="0" y="263" width="1418" height="1" class="sep"/><foreignObject x="8" y="198" width="284" height="66"><div class="taskname"><span class="rel" style="background:#0d9488">R2</span> Формирование еженедельного отчёта по прил. 4 и 21</div></foreignObject><circle cx="305" cy="205" r="3" fill="#6366f1"/><text x="312" y="209.5" class="stagelbl">СА</text><rect x="976.3333333333333" y="208.5" width="46.49122807017544" height="3" rx="1.5" class="bar-plan"/><rect x="1064.6666666666665" y="202" width="23.24561403508772" height="6" rx="3" fill="#6366f1" class="bar-fact"><title>Формирование еженедельного отчёта по прил. 4 и 21 · СА: 31.08.26 – 04.09.26 (план 12.08.26 – 21.08.26)</title></rect><rect x="1064.6666666666665" y="202" width="18.596491228070175" height="6" rx="3" class="over"><title>Задержка +14 дн.</title></rect><line x1="1018.1754385964912" y1="201" x2="1018.1754385964912" y2="212" class="late"/><text x="1087.2631578947367" y="207.5" class="plus">+14</text><circle cx="305" cy="217" r="3" fill="#0ea5e9"/><text x="312" y="221.5" class="stagelbl">DEV</text><rect x="1032.122807017544" y="220.5" width="55.78947368421052" height="3" rx="1.5" class="bar-plan"/><rect x="1087.9122807017543" y="214" width="79.03508771929825" height="6" rx="3" fill="#0ea5e9" class="bar-fact"><title>Формирование еженедельного отчёта по прил. 4 и 21 · DEV: 05.09.26 – 21.09.26 (план 24.08.26 – 04.09.26)</title></rect><rect x="1087.9122807017543" y="214" width="74.3859649122807" height="6" rx="3" class="over"><title>Задержка +17 дн.</title></rect><line x1="1083.2631578947367" y1="213" x2="1083.2631578947367" y2="224" class="late"/><text x="1166.298245614035" y="219.5" class="plus">+17</text><circle cx="305" cy="229" r="3" fill="#f59e0b"/><text x="312" y="233.5" class="stagelbl">ИФТ</text><rect x="1134.4035087719299" y="232.5" width="69.73684210526315" height="3" rx="1.5" class="bar-plan"/><rect x="1134.4035087719299" y="226" width="246.4035087719298" height="6" rx="3" fill="#f59e0b" class="bar-fact"><title>Формирование еженедельного отчёта по прил. 4 и 21 · ИФТ: 15.09.26 – 06.11.26 (план 15.09.26 – 29.09.26)</title></rect><rect x="1199.4912280701756" y="226" width="176.66666666666666" height="6" rx="3" class="over"><title>Задержка +38 дн.</title></rect><line x1="1199.4912280701756" y1="225" x2="1199.4912280701756" y2="236" class="late"/><text x="1380.157894736842" y="231.5" class="plus">+38</text><circle cx="305" cy="241" r="3" fill="#a855f7"/><text x="312" y="245.5" class="stagelbl">ПСИ</text><rect x="1204.140350877193" y="244.5" width="69.73684210526315" height="3" rx="1.5" class="bar-plan"/><rect x="1204.140350877193" y="238" width="69.73684210526315" height="6" rx="3" fill="#a855f7" class="bar-fact"><title>Формирование еженедельного отчёта по прил. 4 и 21 · ПСИ: 30.09.26 – 14.10.26 (план 30.09.26 – 14.10.26)</title></rect><circle cx="305" cy="253" r="3" fill="#10b981"/><text x="312" y="257.5" class="stagelbl">ПРОМ</text><rect x="1273.877192982456" y="256.5" width="27.89473684210526" height="3" rx="1.5" class="bar-plan"/><rect x="1273.877192982456" y="250" width="27.89473684210526" height="6" rx="3" fill="#10b981" class="bar-fact"><title>Формирование еженедельного отчёта по прил. 4 и 21 · ПРОМ: 15.10.26 – 20.10.26 (план 15.10.26 – 20.10.26)</title></rect></g><g><rect x="0" y="264" width="1418" height="66" class="rowband "/><rect x="0" y="329" width="1418" height="1" class="sep"/><foreignObject x="8" y="264" width="284" height="66"><div class="taskname"><span class="rel" style="background:#0d9488">R2</span> Формирование и отправка отчётов по выплатам и переплатам в АСВ</div></foreignObject><circle cx="305" cy="271" r="3" fill="#6366f1"/><text x="312" y="275.5" class="stagelbl">СА</text><rect x="934.4912280701755" y="274.5" width="69.73684210526315" height="3" rx="1.5" class="bar-plan"/><rect x="934.4912280701755" y="268" width="134.82456140350877" height="6" rx="3" fill="#6366f1" class="bar-fact"><title>Формирование и отправка отчётов по выплатам и переплатам в АСВ · СА: 03.08.26 – 31.08.26 (план 03.08.26 – 17.08.26)</title></rect><rect x="999.578947368421" y="268" width="65.08771929824562" height="6" rx="3" class="over"><title>Задержка +14 дн.</title></rect><line x1="999.578947368421" y1="267" x2="999.578947368421" y2="278" class="late"/><text x="1068.6666666666665" y="273.5" class="plus">+14</text><circle cx="305" cy="283" r="3" fill="#0ea5e9"/><text x="312" y="287.5" class="stagelbl">DEV</text><rect x="980.9824561403509" y="286.5" width="74.3859649122807" height="3" rx="1.5" class="bar-plan"/><rect x="1073.9649122807018" y="280" width="46.49122807017544" height="6" rx="3" fill="#0ea5e9" class="bar-fact"><title>Формирование и отправка отчётов по выплатам и переплатам в АСВ · DEV: 02.09.26 – 11.09.26 (план 13.08.26 – 28.08.26)</title></rect><rect x="1073.9649122807018" y="280" width="41.84210526315789" height="6" rx="3" class="over"><title>Задержка +14 дн.</title></rect><line x1="1050.719298245614" y1="279" x2="1050.719298245614" y2="290" class="late"/><text x="1119.8070175438597" y="285.5" class="plus">+14</text><circle cx="305" cy="295" r="3" fill="#f59e0b"/><text x="312" y="299.5" class="stagelbl">ИФТ</text><rect x="1134.4035087719299" y="298.5" width="69.73684210526315" height="3" rx="1.5" class="bar-plan"/><rect x="1134.4035087719299" y="292" width="246.4035087719298" height="6" rx="3" fill="#f59e0b" class="bar-fact"><title>Формирование и отправка отчётов по выплатам и переплатам в АСВ · ИФТ: 15.09.26 – 06.11.26 (план 15.09.26 – 29.09.26)</title></rect><rect x="1199.4912280701756" y="292" width="176.66666666666666" height="6" rx="3" class="over"><title>Задержка +38 дн.</title></rect><line x1="1199.4912280701756" y1="291" x2="1199.4912280701756" y2="302" class="late"/><text x="1380.157894736842" y="297.5" class="plus">+38</text><circle cx="305" cy="307" r="3" fill="#a855f7"/><text x="312" y="311.5" class="stagelbl">ПСИ</text><rect x="1204.140350877193" y="310.5" width="69.73684210526315" height="3" rx="1.5" class="bar-plan"/><rect x="1204.140350877193" y="304" width="69.73684210526315" height="6" rx="3" fill="#a855f7" class="bar-fact"><title>Формирование и отправка отчётов по выплатам и переплатам в АСВ · ПСИ: 30.09.26 – 14.10.26 (план 30.09.26 – 14.10.26)</title></rect><circle cx="305" cy="319" r="3" fill="#10b981"/><text x="312" y="323.5" class="stagelbl">ПРОМ</text><rect x="1273.877192982456" y="322.5" width="27.89473684210526" height="3" rx="1.5" class="bar-plan"/><rect x="1273.877192982456" y="316" width="27.89473684210526" height="6" rx="3" fill="#10b981" class="bar-fact"><title>Формирование и отправка отчётов по выплатам и переплатам в АСВ · ПРОМ: 15.10.26 – 20.10.26 (план 15.10.26 – 20.10.26)</title></rect></g></g>
+    <line x1="358.0" y1="0" x2="358.0" y2="330" class="grid"/><line x1="497.4736842105263" y1="0" x2="497.4736842105263" y2="330" class="grid"/><line x1="641.5964912280701" y1="0" x2="641.5964912280701" y2="330" class="grid"/><line x1="781.0701754385965" y1="0" x2="781.0701754385965" y2="330" class="grid"/><line x1="925.1929824561403" y1="0" x2="925.1929824561403" y2="330" class="grid"/><line x1="1069.3157894736842" y1="0" x2="1069.3157894736842" y2="330" class="grid"/><line x1="1208.7894736842104" y1="0" x2="1208.7894736842104" y2="330" class="grid"/><line x1="1352.9122807017543" y1="0" x2="1352.9122807017543" y2="330" class="grid"/>
+    <line x1="358" y1="0" x2="358" y2="356" stroke="#cbd5e1"/>
+  </svg>
+  <div style="position:absolute;top:0;left:0;right:0;height:26px;overflow:hidden">
+    <div class="mon" style="left:358.0px;width:139.4736842105263px">апр’26</div><div class="mon" style="left:497.4736842105263px;width:144.12280701754386px">май’26</div><div class="mon" style="left:641.5964912280701px;width:139.4736842105263px">июн’26</div><div class="mon" style="left:781.0701754385965px;width:144.12280701754386px">июл’26</div><div class="mon" style="left:925.1929824561403px;width:144.12280701754386px">авг’26</div><div class="mon" style="left:1069.3157894736842px;width:139.4736842105263px">сен’26</div><div class="mon" style="left:1208.7894736842104px;width:144.12280701754386px">окт’26</div><div class="mon" style="left:1352.9122807017543px;width:139.4736842105263px">ноя’26</div>
+  </div>
+</div>
+
+<div class="section">Детализация отклонений по этапам</div>
+<table>
+  <thead><tr>
+    <th>Функциональность</th><th>Этап</th><th>План</th><th>Факт</th><th>Откл., дн.</th><th>Статус</th>
+  </tr></thead>
+  <tbody>
+        <tr>
+          <td class="td-task"><span class="rel" style="background:#2563eb">R1</span> Загрузка реестра по API</td>
+          <td class="td-stage"><span class="sdot" style="background:#6366f1"></span>СА</td>
+          <td class="mono">01.06.26 – 22.07.26</td>
+          <td class="mono">01.06.26 – 29.07.26</td>
+          <td class="mono">+7</td>
+          <td><span class="bdg" style="background:#ffedd5;color:#ea580c">+7 дн.</span></td>
+        </tr>
+        <tr>
+          <td class="td-task"><span class="rel" style="background:#2563eb">R1</span> Загрузка реестра по API</td>
+          <td class="td-stage"><span class="sdot" style="background:#0ea5e9"></span>DEV</td>
+          <td class="mono">05.06.26 – 27.07.26</td>
+          <td class="mono">01.06.26 – 29.07.26</td>
+          <td class="mono">+2</td>
+          <td><span class="bdg" style="background:#fef3c7;color:#d97706">+2 дн.</span></td>
+        </tr>
+        <tr>
+          <td class="td-task"><span class="rel" style="background:#2563eb">R1</span> Загрузка реестра по API</td>
+          <td class="td-stage"><span class="sdot" style="background:#f59e0b"></span>ИФТ</td>
+          <td class="mono">03.08.26 – 25.08.26</td>
+          <td class="mono">03.08.26 – 04.09.26</td>
+          <td class="mono">+10</td>
+          <td><span class="bdg" style="background:#ffedd5;color:#ea580c">+10 дн.</span></td>
+        </tr>
+        <tr>
+          <td class="td-task"><span class="rel" style="background:#2563eb">R1</span> Загрузка реестра по API</td>
+          <td class="td-stage"><span class="sdot" style="background:#a855f7"></span>ПСИ</td>
+          <td class="mono">26.08.26 – 14.09.26</td>
+          <td class="mono">07.09.26 – 21.09.26</td>
+          <td class="mono">+7</td>
+          <td><span class="bdg" style="background:#ffedd5;color:#ea580c">+7 дн.</span></td>
+        </tr>
+        <tr>
+          <td class="td-task"><span class="rel" style="background:#2563eb">R1</span> Загрузка реестра по API</td>
+          <td class="td-stage"><span class="sdot" style="background:#10b981"></span>ПРОМ</td>
+          <td class="mono">15.09.26 – 30.09.26</td>
+          <td class="mono">22.09.26 – 30.09.26</td>
+          <td class="mono">0</td>
+          <td><span class="bdg" style="background:#dcfce7;color:#16a34a">в срок</span></td>
+        </tr>
+        <tr>
+          <td class="td-task"><span class="rel" style="background:#0d9488">R2</span> Загрузка реестра по почте</td>
+          <td class="td-stage"><span class="sdot" style="background:#6366f1"></span>СА</td>
+          <td class="mono">01.06.26 – 31.07.26</td>
+          <td class="mono">01.06.26 – 04.09.26</td>
+          <td class="mono">+35</td>
+          <td><span class="bdg" style="background:#fee2e2;color:#dc2626">+35 дн.</span></td>
+        </tr>
+        <tr>
+          <td class="td-task"><span class="rel" style="background:#0d9488">R2</span> Загрузка реестра по почте</td>
+          <td class="td-stage"><span class="sdot" style="background:#0ea5e9"></span>DEV</td>
+          <td class="mono">03.08.26 – 01.09.26</td>
+          <td class="mono">03.08.26 – 14.09.26</td>
+          <td class="mono">+13</td>
+          <td><span class="bdg" style="background:#ffedd5;color:#ea580c">+13 дн.</span></td>
+        </tr>
+        <tr>
+          <td class="td-task"><span class="rel" style="background:#0d9488">R2</span> Загрузка реестра по почте</td>
+          <td class="td-stage"><span class="sdot" style="background:#f59e0b"></span>ИФТ</td>
+          <td class="mono">15.09.26 – 29.09.26</td>
+          <td class="mono">15.09.26 – 04.10.26</td>
+          <td class="mono">+5</td>
+          <td><span class="bdg" style="background:#fef3c7;color:#d97706">+5 дн.</span></td>
+        </tr>
+        <tr>
+          <td class="td-task"><span class="rel" style="background:#0d9488">R2</span> Загрузка реестра по почте</td>
+          <td class="td-stage"><span class="sdot" style="background:#a855f7"></span>ПСИ</td>
+          <td class="mono">30.09.26 – 14.10.26</td>
+          <td class="mono">30.09.26 – 14.10.26</td>
+          <td class="mono">0</td>
+          <td><span class="bdg" style="background:#dcfce7;color:#16a34a">в срок</span></td>
+        </tr>
+        <tr>
+          <td class="td-task"><span class="rel" style="background:#0d9488">R2</span> Загрузка реестра по почте</td>
+          <td class="td-stage"><span class="sdot" style="background:#10b981"></span>ПРОМ</td>
+          <td class="mono">15.10.26 – 20.10.26</td>
+          <td class="mono">15.10.26 – 20.10.26</td>
+          <td class="mono">0</td>
+          <td><span class="bdg" style="background:#dcfce7;color:#16a34a">в срок</span></td>
+        </tr>
+        <tr>
+          <td class="td-task"><span class="rel" style="background:#0d9488">R2</span> Поиск и детальная информация в РМ ОЦ</td>
+          <td class="td-stage"><span class="sdot" style="background:#6366f1"></span>СА</td>
+          <td class="mono">25.04.26 – 24.07.26</td>
+          <td class="mono">25.04.26 – 24.07.26</td>
+          <td class="mono">0</td>
+          <td><span class="bdg" style="background:#dcfce7;color:#16a34a">в срок</span></td>
+        </tr>
+        <tr>
+          <td class="td-task"><span class="rel" style="background:#0d9488">R2</span> Поиск и детальная информация в РМ ОЦ</td>
+          <td class="td-stage"><span class="sdot" style="background:#0ea5e9"></span>DEV</td>
+          <td class="mono">24.07.26 – 26.08.26</td>
+          <td class="mono">03.08.26 – 02.09.26</td>
+          <td class="mono">+7</td>
+          <td><span class="bdg" style="background:#ffedd5;color:#ea580c">+7 дн.</span></td>
+        </tr>
+        <tr>
+          <td class="td-task"><span class="rel" style="background:#0d9488">R2</span> Поиск и детальная информация в РМ ОЦ</td>
+          <td class="td-stage"><span class="sdot" style="background:#f59e0b"></span>ИФТ</td>
+          <td class="mono">15.09.26 – 29.09.26</td>
+          <td class="mono">15.09.26 – 29.09.26</td>
+          <td class="mono">0</td>
+          <td><span class="bdg" style="background:#dcfce7;color:#16a34a">в срок</span></td>
+        </tr>
+        <tr>
+          <td class="td-task"><span class="rel" style="background:#0d9488">R2</span> Поиск и детальная информация в РМ ОЦ</td>
+          <td class="td-stage"><span class="sdot" style="background:#a855f7"></span>ПСИ</td>
+          <td class="mono">30.09.26 – 14.10.26</td>
+          <td class="mono">30.09.26 – 14.10.26</td>
+          <td class="mono">0</td>
+          <td><span class="bdg" style="background:#dcfce7;color:#16a34a">в срок</span></td>
+        </tr>
+        <tr>
+          <td class="td-task"><span class="rel" style="background:#0d9488">R2</span> Поиск и детальная информация в РМ ОЦ</td>
+          <td class="td-stage"><span class="sdot" style="background:#10b981"></span>ПРОМ</td>
+          <td class="mono">15.10.26 – 20.10.26</td>
+          <td class="mono">15.10.26 – 20.10.26</td>
+          <td class="mono">0</td>
+          <td><span class="bdg" style="background:#dcfce7;color:#16a34a">в срок</span></td>
+        </tr>
+        <tr>
+          <td class="td-task"><span class="rel" style="background:#0d9488">R2</span> Формирование еженедельного отчёта по прил. 4 и 21</td>
+          <td class="td-stage"><span class="sdot" style="background:#6366f1"></span>СА</td>
+          <td class="mono">12.08.26 – 21.08.26</td>
+          <td class="mono">31.08.26 – 04.09.26</td>
+          <td class="mono">+14</td>
+          <td><span class="bdg" style="background:#ffedd5;color:#ea580c">+14 дн.</span></td>
+        </tr>
+        <tr>
+          <td class="td-task"><span class="rel" style="background:#0d9488">R2</span> Формирование еженедельного отчёта по прил. 4 и 21</td>
+          <td class="td-stage"><span class="sdot" style="background:#0ea5e9"></span>DEV</td>
+          <td class="mono">24.08.26 – 04.09.26</td>
+          <td class="mono">05.09.26 – 21.09.26</td>
+          <td class="mono">+17</td>
+          <td><span class="bdg" style="background:#fee2e2;color:#dc2626">+17 дн.</span></td>
+        </tr>
+        <tr>
+          <td class="td-task"><span class="rel" style="background:#0d9488">R2</span> Формирование еженедельного отчёта по прил. 4 и 21</td>
+          <td class="td-stage"><span class="sdot" style="background:#f59e0b"></span>ИФТ</td>
+          <td class="mono">15.09.26 – 29.09.26</td>
+          <td class="mono">15.09.26 – 06.11.26</td>
+          <td class="mono">+38</td>
+          <td><span class="bdg" style="background:#fee2e2;color:#dc2626">+38 дн.</span></td>
+        </tr>
+        <tr>
+          <td class="td-task"><span class="rel" style="background:#0d9488">R2</span> Формирование еженедельного отчёта по прил. 4 и 21</td>
+          <td class="td-stage"><span class="sdot" style="background:#a855f7"></span>ПСИ</td>
+          <td class="mono">30.09.26 – 14.10.26</td>
+          <td class="mono">30.09.26 – 14.10.26</td>
+          <td class="mono">0</td>
+          <td><span class="bdg" style="background:#dcfce7;color:#16a34a">в срок</span></td>
+        </tr>
+        <tr>
+          <td class="td-task"><span class="rel" style="background:#0d9488">R2</span> Формирование еженедельного отчёта по прил. 4 и 21</td>
+          <td class="td-stage"><span class="sdot" style="background:#10b981"></span>ПРОМ</td>
+          <td class="mono">15.10.26 – 20.10.26</td>
+          <td class="mono">15.10.26 – 20.10.26</td>
+          <td class="mono">0</td>
+          <td><span class="bdg" style="background:#dcfce7;color:#16a34a">в срок</span></td>
+        </tr>
+        <tr>
+          <td class="td-task"><span class="rel" style="background:#0d9488">R2</span> Формирование и отправка отчётов по выплатам и переплатам в АСВ</td>
+          <td class="td-stage"><span class="sdot" style="background:#6366f1"></span>СА</td>
+          <td class="mono">03.08.26 – 17.08.26</td>
+          <td class="mono">03.08.26 – 31.08.26</td>
+          <td class="mono">+14</td>
+          <td><span class="bdg" style="background:#ffedd5;color:#ea580c">+14 дн.</span></td>
+        </tr>
+        <tr>
+          <td class="td-task"><span class="rel" style="background:#0d9488">R2</span> Формирование и отправка отчётов по выплатам и переплатам в АСВ</td>
+          <td class="td-stage"><span class="sdot" style="background:#0ea5e9"></span>DEV</td>
+          <td class="mono">13.08.26 – 28.08.26</td>
+          <td class="mono">02.09.26 – 11.09.26</td>
+          <td class="mono">+14</td>
+          <td><span class="bdg" style="background:#ffedd5;color:#ea580c">+14 дн.</span></td>
+        </tr>
+        <tr>
+          <td class="td-task"><span class="rel" style="background:#0d9488">R2</span> Формирование и отправка отчётов по выплатам и переплатам в АСВ</td>
+          <td class="td-stage"><span class="sdot" style="background:#f59e0b"></span>ИФТ</td>
+          <td class="mono">15.09.26 – 29.09.26</td>
+          <td class="mono">15.09.26 – 06.11.26</td>
+          <td class="mono">+38</td>
+          <td><span class="bdg" style="background:#fee2e2;color:#dc2626">+38 дн.</span></td>
+        </tr>
+        <tr>
+          <td class="td-task"><span class="rel" style="background:#0d9488">R2</span> Формирование и отправка отчётов по выплатам и переплатам в АСВ</td>
+          <td class="td-stage"><span class="sdot" style="background:#a855f7"></span>ПСИ</td>
+          <td class="mono">30.09.26 – 14.10.26</td>
+          <td class="mono">30.09.26 – 14.10.26</td>
+          <td class="mono">0</td>
+          <td><span class="bdg" style="background:#dcfce7;color:#16a34a">в срок</span></td>
+        </tr>
+        <tr>
+          <td class="td-task"><span class="rel" style="background:#0d9488">R2</span> Формирование и отправка отчётов по выплатам и переплатам в АСВ</td>
+          <td class="td-stage"><span class="sdot" style="background:#10b981"></span>ПРОМ</td>
+          <td class="mono">15.10.26 – 20.10.26</td>
+          <td class="mono">15.10.26 – 20.10.26</td>
+          <td class="mono">0</td>
+          <td><span class="bdg" style="background:#dcfce7;color:#16a34a">в срок</span></td>
+        </tr></tbody>
+</table>
+
+<div class="foot">Отклонение = дата фактического завершения минус плановая дата завершения этапа. «+» — задержка, «−» — опережение. Цвет дорожки = этап, серая линия = плановый срок, красный хвост = просрочка. Источник: АСВ_статус_работ_300826.xlsx.</div>
+
+</div></body></html>
