@@ -210,13 +210,19 @@ def word_count(text: str) -> int:
 
 
 def merge_small_chunks(chunks: list[dict], min_words: int = 100) -> list[dict]:
-    """Склеить мелкие статьи (< min_words) со следующей."""
+    """Склеить ЛИШЬ две Соседние МЕЛКИЕ статьи (< min_words).
+
+    Мелкую статью НЕ приклеиваем к крупной соседней — иначе самостоятельные
+    нормы теряют отдельный чанк и выпадают из индекса (инцидент 26.09.2026:
+    ст. 12 229-ФЗ «Виды исполнительных документов» влилась в чанк «11+12").
+    """
     result = []
     i = 0
     while i < len(chunks):
         chunk = chunks[i]
         wc = word_count(chunk['text'])
-        if wc < min_words and i + 1 < len(chunks):
+        if (wc < min_words and i + 1 < len(chunks)
+                and word_count(chunks[i + 1]['text']) < min_words):
             next_chunk = chunks[i + 1]
             merged = {
                 "article": f"{chunk['article']}+{next_chunk['article']}",

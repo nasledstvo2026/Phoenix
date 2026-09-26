@@ -19,6 +19,7 @@
 Порт 8765, только localhost.
 """
 import json
+import re
 import sys
 from collections import defaultdict, deque
 from contextlib import asynccontextmanager
@@ -75,6 +76,7 @@ ABBREV = {
     "гк": "гражданский кодекс",
     "упк": "уголовно-процессуальный кодекс",
     "ип": "исполнительное производство",
+    "ид": "исполнительный документ",
     "фз": "федеральный закон",
 }
 
@@ -82,7 +84,8 @@ ABBREV = {
 def expand_query(q: str) -> str:
     qx = q.lower()
     for abbr, full in ABBREV.items():
-        qx = qx.replace(abbr, full)
+        # только по границам слов: иначе «ид» ломает «виды» и т.п.
+        qx = re.sub(r"(?<![а-яёa-z])" + re.escape(abbr) + r"(?![а-яёa-z])", full, qx)
     return f"{q} ({qx})" if qx != q.lower() else q
 
 
