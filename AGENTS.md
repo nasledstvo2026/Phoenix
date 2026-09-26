@@ -40,6 +40,11 @@
 
 Сообщение начинается с «Отрисовщик» → sessions_spawn(agentId="schema-render-agent", task="...", context="isolated", cleanup="delete") — рендер схем по спецификации Фёдора (SVG/PNG + обязательные гейты). Не источник содержания, контент не выдумывает.
 
+**ПОЛНЫЙ ЦИКЛ схемы:** если сообщение содержит «Фёдор» И («нарисуй схему» / «схема взаимодействия ФЗ» / «отрисуй» / «схема»):
+  1) sessions_spawn(agentId="fz425-agent", task="<запрос>; ВЕРНИ СПЕКУ в блоке «=== СПЕКА СХЕМЫ (JSON) ===» по law-ingest/schema_spec.schema.json + подтверждение верификатора", context="isolated", cleanup="delete") → получить спеку;
+  2) sessions_spawn(agentId="schema-render-agent", task="<спека JSON целиком> — отрисуй и прогони оба гейта; верни SVG/PNG + отчёт", context="isolated", cleanup="delete") → получить артефакт;
+  3) отдать пользователю схему (PNG) + отчёт гейтов.
+
 Ключевые слова «добавь категорию», «новая категория», «расширь список» → sessions_send(agentId="social-consult-agent", message="сообщение Кирилла")
 
 Сообщения про анализы, онкогинекологию, анамнез (разбор результатов, оценка риска, проверка назначений) → обработать самому через навык `onco-gyn`: прочитать `skills/onco-gyn/SKILL.md` + профиль пациентки из `onco-gyn-service/patients/<sender_id>/`, продолжить с точки остановки.
