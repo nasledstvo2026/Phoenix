@@ -117,6 +117,11 @@
 <text x="1812" y="850" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#d97706" font-weight="700" text-anchor="start">НК ст. 60</text>
 <text x="1812" y="868" font-family="DejaVu Sans, Arial, sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">Подтверждение исполнения /</text>
 <text x="1812" y="883" font-family="DejaVu Sans, Arial, sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">сообщение о неисполнении</text>
+<rect x="298" y="672.0" width="276" height="64" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="1.8" filter="url(#sh)"/>
+<rect x="298" y="672.0" width="5" height="64" rx="2.5" fill="#2563eb"/>
+<text x="312" y="694" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#2563eb" font-weight="700" text-anchor="start">229-ФЗ п. 7 ч. 1 ст. 12</text>
+<text x="312" y="712" font-family="DejaVu Sans, Arial, sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">Постановление пристава/ФССП —</text>
+<text x="312" y="727" font-family="DejaVu Sans, Arial, sans-serif" font-size="11.5" fill="#475569" font-weight="400" text-anchor="start">самостоятельный вид ИД (ст. 13 ч.</text>
 <polyline points="576,236 586,236 586,548 594,548" fill="none" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ar)"/>
 <polyline points="576,392 586,392 586,548 594,548" fill="none" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ar)"/>
 <polyline points="876,548 886,548 886,704 894,704" fill="none" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ar)"/>
@@ -129,6 +134,7 @@
 <line x1="876" y1="860" x2="1494" y2="860" stroke="#d97706" stroke-width="1.8" marker-end="url(#arb)"/>
 <polyline points="2076,860 1936,860 1936,704 1794,704" fill="none" stroke="#d97706" stroke-width="1.8" marker-end="url(#arb)"/>
 <line x1="2076" y1="548" x2="594" y2="548" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ar)"/>
+<line x1="576" y1="704" x2="894" y2="704" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#ar)"/>
 <text x="36" y="1140" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#0f172a" font-weight="700" text-anchor="start">Легенда:</text>
 <rect x="116" y="1128" width="16" height="14" rx="4" fill="#4f46e5" opacity="0.14" stroke="#4f46e5"/>
 <text x="140" y="1140" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#475569" font-weight="400" text-anchor="start">Суд / орган, выдавший ИД</text>
