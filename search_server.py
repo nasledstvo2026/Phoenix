@@ -37,7 +37,30 @@ INDEX: faiss.Index = None
 CHUNKS: list = None
 LAWS: dict = None
 NAMES: dict = None
-GRAPH: dict = None  # {"nodes","out","in","stats","alias"}
+GRAPH: dict = None  # {"nodes","out","in","stats","alias","edges_all","legal","legal_meta"}
+LEGAL: dict = None  # {(from,to): entry} — курируемый слой юридического смысла
+
+# Автосемантика по типу связи (curated=False) — базовый «юридический смысл»
+AUTO_LEGAL = {
+    "amends": {"role_from": "изменяющий акт", "role_to": "изменяемая норма",
+               "meaning": "Акт-источник изменяет норму-цель (новая редакция, дополнение или отмена).",
+               "effect": "редакция", "priority": "none"},
+    "refers": {"role_from": "ссылающаяся норма", "role_to": "норма, задающая порядок/условия",
+               "meaning": "Норма применяется в порядке и на условиях, установленных нормой-целью.",
+               "effect": "процедура", "priority": "none"},
+    "procedure": {"role_from": "процедурная норма", "role_to": "этап сквозной процедуры",
+                  "meaning": "Этап сквозной процедуры регулируется нормой-целью (в т.ч. другого акта).",
+                  "effect": "процедура", "priority": "none"},
+    "delegates": {"role_from": "бланкетная норма", "role_to": "подзаконное регулирование",
+                  "meaning": "Условия/порядок определяются подзаконным актом (Правительство, уполномоченный орган).",
+                  "effect": "делегирование", "priority": "none"},
+    "defines": {"role_from": "определяющая норма", "role_to": "определяемое понятие",
+                "meaning": "Терминологическая связь: понятие определяется нормой-целью.",
+                "effect": "термин", "priority": "none"},
+    "supersedes": {"role_from": "переходная норма", "role_to": "норма общего действия",
+                   "meaning": "Особый порядок применения во времени (переходное положение).",
+                   "effect": "переходное", "priority": "lex_specialis"},
+}
 
 ABBREV = {
     "пно": "поручение налогового органа",
@@ -88,6 +111,14 @@ def _load_graph() -> dict:
             "stats": g.get("stats", {}), "alias": alias, "edges_all": g["edges"]}
 
 
+def _load_legal():
+    p = DATA / "legal_map.json"
+    if not p.exists():
+        return {}, {}
+    d = json.loads(p.read_text(encoding="utf-8"))
+    return {(e["from"], e["to"]): e for e in d.get("entries", [])}, d
+
+
 def resolve_node(nid: str) -> str:
     if GRAPH is None:
         raise HTTPException(503, "граф не загружен")
@@ -102,10 +133,17 @@ def resolve_node(nid: str) -> str:
 def edge_view(e: dict, other_key: str) -> dict:
     other = e[other_key]
     n = GRAPH["nodes"].get(other, {})
+    legal = dict(AUTO_LEGAL.get(e["type"], {}))
+    cu = (LEGAL or {}).get((e["from"], e["to"]))
+    if cu:
+        legal.update({k: v for k, v in cu.items() if k not in ("from", "to", "type")})
+        legal["curated"] = True
+    else:
+        legal["curated"] = False
     return {"node": other, "law": n.get("law"), "article": n.get("article"),
             "title": n.get("title", ""), "type": e["type"], "weight": e.get("weight"),
             "confidence": e.get("confidence"), "paragraph": e.get("paragraph"),
-            "cross": e.get("cross"), "evidence": e.get("evidence")}
+            "cross": e.get("cross"), "evidence": e.get("evidence"), "legal": legal}
 
 
 @asynccontextmanager
@@ -119,8 +157,13 @@ async def lifespan(app: FastAPI):
     LAWS = {l["code"]: l for l in reg["laws"]}
     NAMES = {l["code"]: (l["number"] if l["kind"] != "codex" else l["title"]) for l in reg["laws"]}
     GRAPH = _load_graph()
+    global LEGAL
+    LEGAL, _meta = _load_legal()
+    GRAPH["legal"] = LEGAL
+    GRAPH["legal_meta"] = _meta
     print(f"✅ Готово: {INDEX.ntotal} чанков, {len(LAWS)} актов, "
-          f"граф {GRAPH['stats'].get('nodes')} узлов / {GRAPH['stats'].get('edges')} рёбер",
+          f"граф {GRAPH['stats'].get('nodes')} узлов / {GRAPH['stats'].get('edges')} рёбер, "
+          f"курируемых трактовок {len(LEGAL)}",
           file=sys.stderr)
     yield
     print("🛑 Сервер остановлен", file=sys.stderr)
@@ -188,7 +231,32 @@ async def health():
 # ─────────────────────────────── ГРАФ ───────────────────────────────
 @app.get("/graph/stats")
 async def graph_stats():
-    return {"graph_file": GRAPH["path"], **GRAPH["stats"]}
+    return {"graph_file": GRAPH["path"], "curated_entries": len(LEGAL or {}),
+            "legal_status": (GRAPH.get("legal_meta") or {}).get("status"),
+            **GRAPH["stats"]}
+
+
+@app.get("/legal")
+async def legal(
+    node: str = Query(None, description="узел LAW:ART — трактовки, где он участвует"),
+    law: str = Query(None, description="фильтр по коду закона"),
+    status: str = Query(None, description="draft | confirmed"),
+):
+    nid = resolve_node(node) if node else None
+    out = []
+    for (a, b), e in (LEGAL or {}).items():
+        if nid and nid not in (a, b):
+            continue
+        if law and not (a.split(":")[0] == law or b.split(":")[0] == law):
+            continue
+        if status and e.get("status") != status:
+            continue
+        out.append({**e,
+                    "from_title": GRAPH["nodes"].get(a, {}).get("title", ""),
+                    "to_title": GRAPH["nodes"].get(b, {}).get("title", "")})
+    meta = GRAPH.get("legal_meta") or {}
+    return {"total": len(out), "status": meta.get("status"),
+            "disclaimer": meta.get("disclaimer"), "entries": out}
 
 
 @app.get("/graph/search")

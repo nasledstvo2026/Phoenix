@@ -1,21 +1,21 @@
 {
   "version": "2.0",
   "stats": {
-    "nodes": 564,
-    "edges": 751,
+    "nodes": 528,
+    "edges": 686,
     "by_type": {
       "amends": 57,
-      "refers": 429,
-      "procedure": 250,
+      "refers": 384,
+      "procedure": 230,
       "delegates": 7,
       "supersedes": 3,
       "defines": 5
     },
-    "cross_law_edges": 751,
-    "unresolved_refs": 890,
-    "stub_nodes": 344,
+    "cross_law_edges": 686,
+    "unresolved_refs": 1881,
+    "stub_nodes": 306,
     "confidence_mean": 0.786,
-    "conf_ge_0_9": 3
+    "conf_ge_0_9": 4
   },
   "nodes": [
     {
@@ -85,17 +85,6 @@
       "deg_in": 0
     },
     {
-      "id": "FZ-127:129.1",
-      "law": "FZ-127",
-      "article": "129.1",
-      "title": "Погашение учредителями (участниками) должника, собственником имущества должника - унитарного предприятия и (или) третьим лицом задолженности",
-      "in_corpus": true,
-      "chunks": 3,
-      "in_core": false,
-      "deg_out": 0,
-      "deg_in": 1
-    },
-    {
       "id": "FZ-127:13",
       "law": "FZ-127",
       "article": "13",
@@ -137,7 +126,7 @@
       "chunks": 2,
       "in_core": false,
       "deg_out": 0,
-      "deg_in": 9
+      "deg_in": 6
     },
     {
       "id": "FZ-127:163",
@@ -206,17 +195,6 @@
       "deg_in": 0
     },
     {
-      "id": "FZ-127:184.3",
-      "law": "FZ-127",
-      "article": "184.3",
-      "title": "-1. Особенности функционирования временной администрации страховой организации при осуществлении мер по предупреждению банкротства страховой",
-      "in_corpus": true,
-      "chunks": 17,
-      "in_core": false,
-      "deg_out": 1,
-      "deg_in": 0
-    },
-    {
       "id": "FZ-127:184.5",
       "law": "FZ-127",
       "article": "184.5",
@@ -246,7 +224,7 @@
       "in_corpus": true,
       "chunks": 26,
       "in_core": false,
-      "deg_out": 3,
+      "deg_out": 2,
       "deg_in": 0
     },
     {
@@ -289,17 +267,6 @@
       "title": "Особенности банкротства кредитных кооперативов",
       "in_corpus": true,
       "chunks": 1,
-      "in_core": false,
-      "deg_out": 1,
-      "deg_in": 0
-    },
-    {
-      "id": "FZ-127:189.49",
-      "law": "FZ-127",
-      "article": "189.49",
-      "title": "Участие Банка России или Агентства в осуществлении мер по предупреждению банкротства банка (часть 1/7)",
-      "in_corpus": true,
-      "chunks": 7,
       "in_core": false,
       "deg_out": 1,
       "deg_in": 0
@@ -470,17 +437,6 @@
       "deg_in": 0
     },
     {
-      "id": "FZ-127:213.28",
-      "law": "FZ-127",
-      "article": "213.28",
-      "title": "Завершение расчетов с кредиторами и освобождение гражданина от обязательств (часть 1/2)",
-      "in_corpus": true,
-      "chunks": 2,
-      "in_core": false,
-      "deg_out": 1,
-      "deg_in": 0
-    },
-    {
       "id": "FZ-127:223.2",
       "law": "FZ-127",
       "article": "223.2",
@@ -555,7 +511,7 @@
       "chunks": 3,
       "in_core": false,
       "deg_out": 1,
-      "deg_in": 1
+      "deg_in": 0
     },
     {
       "id": "FZ-127:25+25.1",
@@ -588,7 +544,7 @@
       "chunks": 4,
       "in_core": false,
       "deg_out": 0,
-      "deg_in": 2
+      "deg_in": 1
     },
     {
       "id": "FZ-127:43+44",
@@ -690,17 +646,6 @@
       "deg_in": 1
     },
     {
-      "id": "FZ-127:74",
-      "law": "FZ-127",
-      "article": "74",
-      "title": "Решение первого собрания кредиторов о процедурах, применяемых в деле о банкротстве",
-      "in_corpus": true,
-      "chunks": 1,
-      "in_core": false,
-      "deg_out": 0,
-      "deg_in": 1
-    },
-    {
       "id": "FZ-127:87",
       "law": "FZ-127",
       "article": "87",
@@ -753,7 +698,18 @@
       "chunks": 1,
       "in_core": false,
       "deg_out": 0,
-      "deg_in": 5
+      "deg_in": 2
+    },
+    {
+      "id": "FZ-229:101",
+      "law": "FZ-229",
+      "article": "101",
+      "title": "Виды доходов, на которые не может быть обращено взыскание (часть 1/3)",
+      "in_corpus": true,
+      "chunks": 3,
+      "in_core": false,
+      "deg_out": 0,
+      "deg_in": 3
     },
     {
       "id": "FZ-229:103",
@@ -776,17 +732,6 @@
       "in_core": false,
       "deg_out": 1,
       "deg_in": 0
-    },
-    {
-      "id": "FZ-229:104.5",
-      "law": "FZ-229",
-      "article": "104.5",
-      "title": "Приостановление, прекращение, окончание исполнительного производства в отношении иностранного государства и его имущества",
-      "in_corpus": true,
-      "chunks": 1,
-      "in_core": false,
-      "deg_out": 0,
-      "deg_in": 1
     },
     {
       "id": "FZ-229:111",
@@ -841,18 +786,29 @@
       "chunks": 4,
       "in_core": false,
       "deg_out": 0,
-      "deg_in": 2
+      "deg_in": 3
     },
     {
-      "id": "FZ-229:30",
+      "id": "FZ-229:261",
       "law": "FZ-229",
-      "article": "30",
-      "title": "Возбуждение исполнительного производства (часть 1/7)",
-      "in_corpus": true,
-      "chunks": 7,
+      "article": "261",
+      "title": "",
+      "in_corpus": false,
+      "chunks": 0,
       "in_core": false,
-      "deg_out": 1,
-      "deg_in": 0
+      "deg_out": 0,
+      "deg_in": 1
+    },
+    {
+      "id": "FZ-229:288",
+      "law": "FZ-229",
+      "article": "288",
+      "title": "",
+      "in_corpus": false,
+      "chunks": 0,
+      "in_core": false,
+      "deg_out": 0,
+      "deg_in": 1
     },
     {
       "id": "FZ-229:31",
@@ -874,7 +830,18 @@
       "chunks": 4,
       "in_core": false,
       "deg_out": 0,
-      "deg_in": 3
+      "deg_in": 2
+    },
+    {
+      "id": "FZ-229:343.1",
+      "law": "FZ-229",
+      "article": "343.1",
+      "title": "",
+      "in_corpus": false,
+      "chunks": 0,
+      "in_core": false,
+      "deg_out": 0,
+      "deg_in": 1
     },
     {
       "id": "FZ-229:40",
@@ -907,7 +874,7 @@
       "chunks": 1,
       "in_core": false,
       "deg_out": 0,
-      "deg_in": 1
+      "deg_in": 2
     },
     {
       "id": "FZ-229:64",
@@ -919,17 +886,6 @@
       "in_core": false,
       "deg_out": 2,
       "deg_in": 1
-    },
-    {
-      "id": "FZ-229:64.1",
-      "law": "FZ-229",
-      "article": "64.1",
-      "title": "Рассмотрение заявлений, ходатайств лиц, участвующих в исполнительном производстве",
-      "in_corpus": true,
-      "chunks": 1,
-      "in_core": false,
-      "deg_out": 0,
-      "deg_in": 2
     },
     {
       "id": "FZ-229:69.1",
@@ -954,23 +910,12 @@
       "deg_in": 0
     },
     {
-      "id": "FZ-229:72.1",
+      "id": "FZ-229:83",
       "law": "FZ-229",
-      "article": "72.1",
-      "title": "Особенности обращения взыскания на денежные средства должника, находящиеся на залоговом банковском счете и на номинальном банковском счете",
+      "article": "83",
+      "title": "Наложение ареста на дебиторскую задолженность",
       "in_corpus": true,
       "chunks": 1,
-      "in_core": false,
-      "deg_out": 0,
-      "deg_in": 1
-    },
-    {
-      "id": "FZ-229:82.1",
-      "law": "FZ-229",
-      "article": "82.1",
-      "title": "Наложение ареста на цифровые валюты и (или) цифровые права (часть 1/3)",
-      "in_corpus": true,
-      "chunks": 3,
       "in_core": false,
       "deg_out": 0,
       "deg_in": 2
@@ -1016,7 +961,7 @@
       "in_corpus": true,
       "chunks": 33,
       "in_core": true,
-      "deg_out": 25,
+      "deg_out": 24,
       "deg_in": 0
     },
     {
@@ -1082,19 +1027,8 @@
       "in_corpus": true,
       "chunks": 2,
       "in_core": false,
-      "deg_out": 5,
+      "deg_out": 4,
       "deg_in": 0
-    },
-    {
-      "id": "FZ-425:164",
-      "law": "FZ-425",
-      "article": "164",
-      "title": "",
-      "in_corpus": false,
-      "chunks": 0,
-      "in_core": false,
-      "deg_out": 0,
-      "deg_in": 1
     },
     {
       "id": "FZ-425:17",
@@ -1149,7 +1083,7 @@
       "chunks": 0,
       "in_core": false,
       "deg_out": 0,
-      "deg_in": 3
+      "deg_in": 1
     },
     {
       "id": "FZ-425:19",
@@ -1170,7 +1104,7 @@
       "in_corpus": true,
       "chunks": 58,
       "in_core": false,
-      "deg_out": 73,
+      "deg_out": 72,
       "deg_in": 0
     },
     {
@@ -1196,17 +1130,6 @@
       "deg_in": 2
     },
     {
-      "id": "FZ-425:201",
-      "law": "FZ-425",
-      "article": "201",
-      "title": "",
-      "in_corpus": false,
-      "chunks": 0,
-      "in_core": false,
-      "deg_out": 0,
-      "deg_in": 1
-    },
-    {
       "id": "FZ-425:201.15",
       "law": "FZ-425",
       "article": "201.15",
@@ -1229,17 +1152,6 @@
       "deg_in": 0
     },
     {
-      "id": "FZ-425:210",
-      "law": "FZ-425",
-      "article": "210",
-      "title": "",
-      "in_corpus": false,
-      "chunks": 0,
-      "in_core": false,
-      "deg_out": 0,
-      "deg_in": 1
-    },
-    {
       "id": "FZ-425:23+24",
       "law": "FZ-425",
       "article": "23+24",
@@ -1247,7 +1159,7 @@
       "in_corpus": true,
       "chunks": 3,
       "in_core": false,
-      "deg_out": 4,
+      "deg_out": 3,
       "deg_in": 0
     },
     {
@@ -1372,17 +1284,6 @@
       "deg_in": 2
     },
     {
-      "id": "FZ-425:333.45",
-      "law": "FZ-425",
-      "article": "333.45",
-      "title": "",
-      "in_corpus": false,
-      "chunks": 0,
-      "in_core": false,
-      "deg_out": 0,
-      "deg_in": 1
-    },
-    {
       "id": "FZ-425:333.57+333.58",
       "law": "FZ-425",
       "article": "333.57+333.58",
@@ -1504,17 +1405,6 @@
       "deg_in": 1
     },
     {
-      "id": "FZ-425:49",
-      "law": "FZ-425",
-      "article": "49",
-      "title": "",
-      "in_corpus": false,
-      "chunks": 0,
-      "in_core": false,
-      "deg_out": 0,
-      "deg_in": 1
-    },
-    {
       "id": "FZ-425:64",
       "law": "FZ-425",
       "article": "64",
@@ -1534,7 +1424,7 @@
       "chunks": 1,
       "in_core": false,
       "deg_out": 2,
-      "deg_in": 2
+      "deg_in": 1
     },
     {
       "id": "FZ-425:76",
@@ -1601,6 +1491,17 @@
       "in_core": false,
       "deg_out": 1,
       "deg_in": 0
+    },
+    {
+      "id": "GK-2:10",
+      "law": "GK-2",
+      "article": "10",
+      "title": "",
+      "in_corpus": false,
+      "chunks": 0,
+      "in_core": false,
+      "deg_out": 0,
+      "deg_in": 1
     },
     {
       "id": "GK-2:1008+1009",
@@ -1678,28 +1579,6 @@
       "in_core": false,
       "deg_out": 0,
       "deg_in": 2
-    },
-    {
-      "id": "GK-2:12.1",
-      "law": "GK-2",
-      "article": "12.1",
-      "title": "",
-      "in_corpus": false,
-      "chunks": 0,
-      "in_core": false,
-      "deg_out": 0,
-      "deg_in": 2
-    },
-    {
-      "id": "GK-2:1202",
-      "law": "GK-2",
-      "article": "1202",
-      "title": "",
-      "in_corpus": false,
-      "chunks": 0,
-      "in_core": false,
-      "deg_out": 0,
-      "deg_in": 1
     },
     {
       "id": "GK-2:1225",
@@ -1821,17 +1700,6 @@
       "in_core": false,
       "deg_out": 1,
       "deg_in": 0
-    },
-    {
-      "id": "GK-2:53",
-      "law": "GK-2",
-      "article": "53",
-      "title": "",
-      "in_corpus": false,
-      "chunks": 0,
-      "in_core": false,
-      "deg_out": 0,
-      "deg_in": 1
     },
     {
       "id": "GK-2:53.1",
@@ -2043,6 +1911,17 @@
       "deg_in": 0
     },
     {
+      "id": "GK-2:80",
+      "law": "GK-2",
+      "article": "80",
+      "title": "",
+      "in_corpus": false,
+      "chunks": 0,
+      "in_core": false,
+      "deg_out": 0,
+      "deg_in": 1
+    },
+    {
       "id": "GK-2:811",
       "law": "GK-2",
       "article": "811",
@@ -2054,32 +1933,10 @@
       "deg_in": 0
     },
     {
-      "id": "GK-2:818+819",
-      "law": "GK-2",
-      "article": "818+819",
-      "title": "Новация долга в заемное обязательство | Кредитный договор",
-      "in_corpus": true,
-      "chunks": 1,
-      "in_core": false,
-      "deg_out": 1,
-      "deg_in": 0
-    },
-    {
       "id": "GK-2:821.1+822",
       "law": "GK-2",
       "article": "821.1+822",
       "title": "Требование кредитора о досрочном возврате кредита | Товарный кредит",
-      "in_corpus": true,
-      "chunks": 1,
-      "in_core": false,
-      "deg_out": 1,
-      "deg_in": 0
-    },
-    {
-      "id": "GK-2:834",
-      "law": "GK-2",
-      "article": "834",
-      "title": "Договор банковского вклада",
       "in_corpus": true,
       "chunks": 1,
       "in_core": false,
@@ -2179,17 +2036,6 @@
       "law": "GK-2",
       "article": "900+901",
       "title": "Обязанность хранителя возвратить вещь | Основания ответственности хранителя",
-      "in_corpus": true,
-      "chunks": 1,
-      "in_core": false,
-      "deg_out": 1,
-      "deg_in": 0
-    },
-    {
-      "id": "GK-2:907+908",
-      "law": "GK-2",
-      "article": "907+908",
-      "title": "Договор складского хранения | Хранение товаров складом общего пользования",
       "in_corpus": true,
       "chunks": 1,
       "in_core": false,
@@ -2304,7 +2150,7 @@
       "chunks": 2,
       "in_core": false,
       "deg_out": 0,
-      "deg_in": 2
+      "deg_in": 1
     },
     {
       "id": "NK-1:10+11",
@@ -2336,7 +2182,7 @@
       "in_corpus": true,
       "chunks": 4,
       "in_core": false,
-      "deg_out": 0,
+      "deg_out": 1,
       "deg_in": 1
     },
     {
@@ -2347,7 +2193,7 @@
       "in_corpus": true,
       "chunks": 10,
       "in_core": false,
-      "deg_out": 3,
+      "deg_out": 2,
       "deg_in": 0
     },
     {
@@ -2359,7 +2205,7 @@
       "chunks": 7,
       "in_core": false,
       "deg_out": 6,
-      "deg_in": 3
+      "deg_in": 2
     },
     {
       "id": "NK-1:105.16",
@@ -2436,7 +2282,7 @@
       "chunks": 6,
       "in_core": false,
       "deg_out": 1,
-      "deg_in": 37
+      "deg_in": 36
     },
     {
       "id": "NK-1:105.30",
@@ -2491,7 +2337,7 @@
       "chunks": 13,
       "in_core": false,
       "deg_out": 5,
-      "deg_in": 7
+      "deg_in": 6
     },
     {
       "id": "NK-1:114",
@@ -2523,7 +2369,7 @@
       "in_corpus": true,
       "chunks": 1,
       "in_core": false,
-      "deg_out": 2,
+      "deg_out": 1,
       "deg_in": 0
     },
     {
@@ -2623,7 +2469,7 @@
       "chunks": 10,
       "in_core": false,
       "deg_out": 1,
-      "deg_in": 12
+      "deg_in": 11
     },
     {
       "id": "NK-1:25.12",
@@ -2634,7 +2480,7 @@
       "chunks": 4,
       "in_core": false,
       "deg_out": 3,
-      "deg_in": 6
+      "deg_in": 5
     },
     {
       "id": "NK-1:25.13",
@@ -2678,7 +2524,7 @@
       "chunks": 1,
       "in_core": false,
       "deg_out": 1,
-      "deg_in": 1
+      "deg_in": 0
     },
     {
       "id": "NK-1:25.17",
@@ -2700,7 +2546,7 @@
       "chunks": 2,
       "in_core": false,
       "deg_out": 0,
-      "deg_in": 10
+      "deg_in": 9
     },
     {
       "id": "NK-1:25.3",
@@ -2744,7 +2590,7 @@
       "chunks": 2,
       "in_core": false,
       "deg_out": 5,
-      "deg_in": 5
+      "deg_in": 1
     },
     {
       "id": "NK-1:26",
@@ -2766,7 +2612,7 @@
       "chunks": 1,
       "in_core": false,
       "deg_out": 0,
-      "deg_in": 13
+      "deg_in": 11
     },
     {
       "id": "NK-1:3",
@@ -2778,17 +2624,6 @@
       "in_core": false,
       "deg_out": 0,
       "deg_in": 1
-    },
-    {
-      "id": "NK-1:33+34",
-      "law": "NK-1",
-      "article": "33+34",
-      "title": "Обязанности должностных лиц налоговых органов | Полномочия таможенных органов и обязанности их должностных лиц в области налогообложения и с",
-      "in_corpus": true,
-      "chunks": 1,
-      "in_core": false,
-      "deg_out": 1,
-      "deg_in": 0
     },
     {
       "id": "NK-1:44",
@@ -2824,17 +2659,6 @@
       "deg_in": 1
     },
     {
-      "id": "NK-1:52",
-      "law": "NK-1",
-      "article": "52",
-      "title": "Порядок исчисления налога, сбора, страховых взносов (часть 1/3)",
-      "in_corpus": true,
-      "chunks": 3,
-      "in_core": false,
-      "deg_out": 1,
-      "deg_in": 0
-    },
-    {
       "id": "NK-1:56.1",
       "law": "NK-1",
       "article": "56.1",
@@ -2843,17 +2667,6 @@
       "chunks": 12,
       "in_core": false,
       "deg_out": 9,
-      "deg_in": 0
-    },
-    {
-      "id": "NK-1:58",
-      "law": "NK-1",
-      "article": "58",
-      "title": "Порядок уплаты налогов, сборов, страховых взносов (часть 1/8)",
-      "in_corpus": true,
-      "chunks": 8,
-      "in_core": false,
-      "deg_out": 1,
       "deg_in": 0
     },
     {
@@ -2901,6 +2714,17 @@
       "deg_in": 2
     },
     {
+      "id": "NK-1:73",
+      "law": "NK-1",
+      "article": "73",
+      "title": "Залог имущества (часть 1/2)",
+      "in_corpus": true,
+      "chunks": 2,
+      "in_core": false,
+      "deg_out": 1,
+      "deg_in": 0
+    },
+    {
       "id": "NK-1:74.1",
       "law": "NK-1",
       "article": "74.1",
@@ -2909,7 +2733,7 @@
       "chunks": 5,
       "in_core": false,
       "deg_out": 0,
-      "deg_in": 8
+      "deg_in": 5
     },
     {
       "id": "NK-1:76",
@@ -2919,7 +2743,7 @@
       "in_corpus": true,
       "chunks": 11,
       "in_core": false,
-      "deg_out": 0,
+      "deg_out": 1,
       "deg_in": 1
     },
     {
@@ -2952,8 +2776,8 @@
       "in_corpus": true,
       "chunks": 5,
       "in_core": false,
-      "deg_out": 4,
-      "deg_in": 11
+      "deg_out": 3,
+      "deg_in": 9
     },
     {
       "id": "NK-1:80",
@@ -2974,7 +2798,7 @@
       "in_corpus": true,
       "chunks": 10,
       "in_core": false,
-      "deg_out": 11,
+      "deg_out": 9,
       "deg_in": 0
     },
     {
@@ -2986,7 +2810,7 @@
       "chunks": 19,
       "in_core": false,
       "deg_out": 6,
-      "deg_in": 1
+      "deg_in": 0
     },
     {
       "id": "NK-1:86",
@@ -3044,17 +2868,6 @@
       "deg_in": 0
     },
     {
-      "id": "NK-1:93.1",
-      "law": "NK-1",
-      "article": "93.1",
-      "title": "Истребование документов (информации) о налогоплательщике, плательщике сборов, плательщике страховых взносов и налоговом агенте или информаци",
-      "in_corpus": true,
-      "chunks": 5,
-      "in_core": false,
-      "deg_out": 1,
-      "deg_in": 0
-    },
-    {
       "id": "NK-2:145.1",
       "law": "NK-2",
       "article": "145.1",
@@ -3075,17 +2888,6 @@
       "in_core": false,
       "deg_out": 0,
       "deg_in": 1
-    },
-    {
-      "id": "NK-2:147",
-      "law": "NK-2",
-      "article": "147",
-      "title": "Место реализации товаров (часть 1/2)",
-      "in_corpus": true,
-      "chunks": 2,
-      "in_core": false,
-      "deg_out": 1,
-      "deg_in": 0
     },
     {
       "id": "NK-2:154",
@@ -3151,7 +2953,7 @@
       "chunks": 3,
       "in_core": false,
       "deg_out": 0,
-      "deg_in": 2
+      "deg_in": 1
     },
     {
       "id": "NK-2:169",
@@ -3195,7 +2997,7 @@
       "chunks": 3,
       "in_core": false,
       "deg_out": 1,
-      "deg_in": 7
+      "deg_in": 6
     },
     {
       "id": "NK-2:176.1",
@@ -3205,8 +3007,8 @@
       "in_corpus": true,
       "chunks": 13,
       "in_core": false,
-      "deg_out": 6,
-      "deg_in": 3
+      "deg_out": 5,
+      "deg_in": 2
     },
     {
       "id": "NK-2:177",
@@ -3253,17 +3055,6 @@
       "deg_in": 0
     },
     {
-      "id": "NK-2:181",
-      "law": "NK-2",
-      "article": "181",
-      "title": "Подакцизные товары (часть 1/7)",
-      "in_corpus": true,
-      "chunks": 7,
-      "in_core": false,
-      "deg_out": 0,
-      "deg_in": 4
-    },
-    {
       "id": "NK-2:182",
       "law": "NK-2",
       "article": "182",
@@ -3273,17 +3064,6 @@
       "in_core": false,
       "deg_out": 1,
       "deg_in": 10
-    },
-    {
-      "id": "NK-2:184",
-      "law": "NK-2",
-      "article": "184",
-      "title": "Особенности освобождения от налогообложения при реализации подакцизных товаров (часть 1/7)",
-      "in_corpus": true,
-      "chunks": 7,
-      "in_core": false,
-      "deg_out": 2,
-      "deg_in": 0
     },
     {
       "id": "NK-2:186.1",
@@ -3348,7 +3128,7 @@
       "in_corpus": true,
       "chunks": 46,
       "in_core": false,
-      "deg_out": 5,
+      "deg_out": 4,
       "deg_in": 2
     },
     {
@@ -3359,7 +3139,7 @@
       "in_corpus": true,
       "chunks": 29,
       "in_core": false,
-      "deg_out": 2,
+      "deg_out": 1,
       "deg_in": 0
     },
     {
@@ -3370,7 +3150,7 @@
       "in_corpus": true,
       "chunks": 13,
       "in_core": false,
-      "deg_out": 4,
+      "deg_out": 3,
       "deg_in": 2
     },
     {
@@ -3381,7 +3161,7 @@
       "in_corpus": true,
       "chunks": 6,
       "in_core": false,
-      "deg_out": 1,
+      "deg_out": 0,
       "deg_in": 1
     },
     {
@@ -3426,7 +3206,7 @@
       "chunks": 10,
       "in_core": false,
       "deg_out": 1,
-      "deg_in": 5
+      "deg_in": 3
     },
     {
       "id": "NK-2:211",
@@ -3469,7 +3249,7 @@
       "in_corpus": true,
       "chunks": 28,
       "in_core": false,
-      "deg_out": 4,
+      "deg_out": 3,
       "deg_in": 0
     },
     {
@@ -3535,7 +3315,7 @@
       "in_corpus": true,
       "chunks": 44,
       "in_core": false,
-      "deg_out": 3,
+      "deg_out": 2,
       "deg_in": 0
     },
     {
@@ -3557,7 +3337,7 @@
       "in_corpus": true,
       "chunks": 8,
       "in_core": false,
-      "deg_out": 1,
+      "deg_out": 0,
       "deg_in": 1
     },
     {
@@ -3601,7 +3381,7 @@
       "in_corpus": true,
       "chunks": 26,
       "in_core": false,
-      "deg_out": 3,
+      "deg_out": 2,
       "deg_in": 0
     },
     {
@@ -3613,7 +3393,7 @@
       "chunks": 6,
       "in_core": false,
       "deg_out": 1,
-      "deg_in": 10
+      "deg_in": 9
     },
     {
       "id": "NK-2:224",
@@ -3679,7 +3459,7 @@
       "chunks": 3,
       "in_core": false,
       "deg_out": 0,
-      "deg_in": 5
+      "deg_in": 3
     },
     {
       "id": "NK-2:227.2",
@@ -3691,6 +3471,17 @@
       "in_core": false,
       "deg_out": 0,
       "deg_in": 2
+    },
+    {
+      "id": "NK-2:229",
+      "law": "NK-2",
+      "article": "229",
+      "title": "Налоговая декларация (часть 1/3)",
+      "in_corpus": true,
+      "chunks": 3,
+      "in_core": false,
+      "deg_out": 1,
+      "deg_in": 0
     },
     {
       "id": "NK-2:230",
@@ -3712,7 +3503,7 @@
       "chunks": 2,
       "in_core": false,
       "deg_out": 0,
-      "deg_in": 4
+      "deg_in": 3
     },
     {
       "id": "NK-2:231.1+232",
@@ -3777,7 +3568,7 @@
       "in_corpus": true,
       "chunks": 35,
       "in_core": false,
-      "deg_out": 10,
+      "deg_out": 8,
       "deg_in": 3
     },
     {
@@ -3792,17 +3583,6 @@
       "deg_in": 1
     },
     {
-      "id": "NK-2:256",
-      "law": "NK-2",
-      "article": "256",
-      "title": "Амортизируемое имущество (часть 1/4)",
-      "in_corpus": true,
-      "chunks": 4,
-      "in_core": false,
-      "deg_out": 1,
-      "deg_in": 0
-    },
-    {
       "id": "NK-2:261",
       "law": "NK-2",
       "article": "261",
@@ -3811,7 +3591,7 @@
       "chunks": 7,
       "in_core": false,
       "deg_out": 0,
-      "deg_in": 2
+      "deg_in": 1
     },
     {
       "id": "NK-2:262",
@@ -4001,17 +3781,6 @@
       "deg_in": 1
     },
     {
-      "id": "NK-2:282.1",
-      "law": "NK-2",
-      "article": "282.1",
-      "title": "Особенности налогообложения при осуществлении операций займа ценными бумагами и операций с ценными бумагами в рамках обеспечительного платеж",
-      "in_corpus": true,
-      "chunks": 5,
-      "in_core": false,
-      "deg_out": 1,
-      "deg_in": 0
-    },
-    {
       "id": "NK-2:282.3",
       "law": "NK-2",
       "article": "282.3",
@@ -4041,7 +3810,7 @@
       "in_corpus": true,
       "chunks": 34,
       "in_core": false,
-      "deg_out": 8,
+      "deg_out": 6,
       "deg_in": 7
     },
     {
@@ -4052,7 +3821,7 @@
       "in_corpus": true,
       "chunks": 7,
       "in_core": false,
-      "deg_out": 2,
+      "deg_out": 1,
       "deg_in": 2
     },
     {
@@ -4085,7 +3854,7 @@
       "in_corpus": true,
       "chunks": 5,
       "in_core": false,
-      "deg_out": 3,
+      "deg_out": 2,
       "deg_in": 0
     },
     {
@@ -4096,7 +3865,7 @@
       "in_corpus": true,
       "chunks": 3,
       "in_core": false,
-      "deg_out": 3,
+      "deg_out": 2,
       "deg_in": 4
     },
     {
@@ -4144,6 +3913,17 @@
       "deg_in": 3
     },
     {
+      "id": "NK-2:287",
+      "law": "NK-2",
+      "article": "287",
+      "title": "Сроки и порядок уплаты налога и налога в виде авансовых платежей (часть 1/2)",
+      "in_corpus": true,
+      "chunks": 2,
+      "in_core": false,
+      "deg_out": 1,
+      "deg_in": 0
+    },
+    {
       "id": "NK-2:288",
       "law": "NK-2",
       "article": "288",
@@ -4173,7 +3953,7 @@
       "in_corpus": true,
       "chunks": 2,
       "in_core": false,
-      "deg_out": 3,
+      "deg_out": 1,
       "deg_in": 0
     },
     {
@@ -4243,17 +4023,6 @@
       "deg_in": 1
     },
     {
-      "id": "NK-2:294",
-      "law": "NK-2",
-      "article": "294",
-      "title": "Особенности определения расходов страховых организаций (страховщиков) (часть 1/3)",
-      "in_corpus": true,
-      "chunks": 3,
-      "in_core": false,
-      "deg_out": 0,
-      "deg_in": 1
-    },
-    {
       "id": "NK-2:296",
       "law": "NK-2",
       "article": "296",
@@ -4261,7 +4030,7 @@
       "in_corpus": true,
       "chunks": 2,
       "in_core": false,
-      "deg_out": 2,
+      "deg_out": 1,
       "deg_in": 0
     },
     {
@@ -4284,7 +4053,7 @@
       "chunks": 1,
       "in_core": false,
       "deg_out": 0,
-      "deg_in": 2
+      "deg_in": 1
     },
     {
       "id": "NK-2:306",
@@ -4295,7 +4064,7 @@
       "chunks": 6,
       "in_core": false,
       "deg_out": 1,
-      "deg_in": 3
+      "deg_in": 1
     },
     {
       "id": "NK-2:309.1",
@@ -4316,7 +4085,7 @@
       "in_corpus": true,
       "chunks": 14,
       "in_core": false,
-      "deg_out": 5,
+      "deg_out": 4,
       "deg_in": 2
     },
     {
@@ -4353,17 +4122,6 @@
       "deg_in": 3
     },
     {
-      "id": "NK-2:315",
-      "law": "NK-2",
-      "article": "315",
-      "title": "Порядок составления расчета налоговой базы (часть 1/2)",
-      "in_corpus": true,
-      "chunks": 2,
-      "in_core": false,
-      "deg_out": 0,
-      "deg_in": 2
-    },
-    {
       "id": "NK-2:316",
       "law": "NK-2",
       "article": "316",
@@ -4372,7 +4130,7 @@
       "chunks": 1,
       "in_core": false,
       "deg_out": 0,
-      "deg_in": 3
+      "deg_in": 2
     },
     {
       "id": "NK-2:321",
@@ -4395,6 +4153,17 @@
       "in_core": false,
       "deg_out": 0,
       "deg_in": 2
+    },
+    {
+      "id": "NK-2:325",
+      "law": "NK-2",
+      "article": "325",
+      "title": "Порядок ведения налогового учета расходов на освоение природных ресурсов (часть 1/5)",
+      "in_corpus": true,
+      "chunks": 5,
+      "in_core": false,
+      "deg_out": 1,
+      "deg_in": 0
     },
     {
       "id": "NK-2:325.1",
@@ -4461,6 +4230,17 @@
       "in_core": false,
       "deg_out": 0,
       "deg_in": 1
+    },
+    {
+      "id": "NK-2:333.28",
+      "law": "NK-2",
+      "article": "333.28",
+      "title": "Размеры государственной пошлины за совершение действий, связанных с приобретением гражданства Российской Федерации или выходом из гражданств",
+      "in_corpus": true,
+      "chunks": 4,
+      "in_core": false,
+      "deg_out": 1,
+      "deg_in": 0
     },
     {
       "id": "NK-2:333.31",
@@ -4558,7 +4338,7 @@
       "in_corpus": true,
       "chunks": 2,
       "in_core": false,
-      "deg_out": 1,
+      "deg_out": 0,
       "deg_in": 1
     },
     {
@@ -4590,17 +4370,6 @@
       "title": "Налоговые ставки | Порядок исчисления налога (часть 1/2)",
       "in_corpus": true,
       "chunks": 2,
-      "in_core": false,
-      "deg_out": 1,
-      "deg_in": 0
-    },
-    {
-      "id": "NK-2:333.7",
-      "law": "NK-2",
-      "article": "333.7",
-      "title": "Порядок представления сведений организациями и индивидуальными предпринимателями",
-      "in_corpus": true,
-      "chunks": 1,
       "in_core": false,
       "deg_out": 1,
       "deg_in": 0
@@ -4723,7 +4492,7 @@
       "in_corpus": true,
       "chunks": 12,
       "in_core": false,
-      "deg_out": 1,
+      "deg_out": 2,
       "deg_in": 0
     },
     {
@@ -4822,7 +4591,7 @@
       "in_corpus": true,
       "chunks": 3,
       "in_core": false,
-      "deg_out": 2,
+      "deg_out": 1,
       "deg_in": 1
     },
     {
@@ -4855,17 +4624,6 @@
       "in_corpus": true,
       "chunks": 6,
       "in_core": false,
-      "deg_out": 2,
-      "deg_in": 0
-    },
-    {
-      "id": "NK-2:346.18",
-      "law": "NK-2",
-      "article": "346.18",
-      "title": "Налоговая база (часть 1/3)",
-      "in_corpus": true,
-      "chunks": 3,
-      "in_core": false,
       "deg_out": 1,
       "deg_in": 0
     },
@@ -4876,17 +4634,6 @@
       "title": "Порядок исчисления и уплаты налога (часть 1/6)",
       "in_corpus": true,
       "chunks": 6,
-      "in_core": false,
-      "deg_out": 1,
-      "deg_in": 0
-    },
-    {
-      "id": "NK-2:346.3",
-      "law": "NK-2",
-      "article": "346.3",
-      "title": "Порядок и условия начала и прекращения применения единого сельскохозяйственного налога (часть 1/5)",
-      "in_corpus": true,
-      "chunks": 5,
       "in_core": false,
       "deg_out": 1,
       "deg_in": 0
@@ -4909,6 +4656,17 @@
       "title": "Особенности определения налоговой базы, исчисления и уплаты налога на прибыль организаций при выполнении соглашений (часть 1/5)",
       "in_corpus": true,
       "chunks": 5,
+      "in_core": false,
+      "deg_out": 1,
+      "deg_in": 0
+    },
+    {
+      "id": "NK-2:346.40",
+      "law": "NK-2",
+      "article": "346.40",
+      "title": "Особенности представления налоговых деклараций при выполнении соглашений",
+      "in_corpus": true,
+      "chunks": 1,
       "in_core": false,
       "deg_out": 1,
       "deg_in": 0
@@ -5285,7 +5043,7 @@
       "chunks": 1,
       "in_core": false,
       "deg_out": 0,
-      "deg_in": 3
+      "deg_in": 2
     },
     {
       "id": "NK-2:420",
@@ -5350,7 +5108,7 @@
       "in_corpus": true,
       "chunks": 7,
       "in_core": false,
-      "deg_out": 2,
+      "deg_out": 1,
       "deg_in": 3
     },
     {
@@ -5363,17 +5121,6 @@
       "in_core": false,
       "deg_out": 3,
       "deg_in": 3
-    },
-    {
-      "id": "NK-2:432",
-      "law": "NK-2",
-      "article": "432",
-      "title": "Порядок исчисления и уплаты страховых взносов, уплачиваемых плательщиками, не производящими выплат и иных вознаграждений физическим лицам (ч",
-      "in_corpus": true,
-      "chunks": 2,
-      "in_core": false,
-      "deg_out": 0,
-      "deg_in": 1
     },
     {
       "id": "UPK:103",
@@ -5406,7 +5153,7 @@
       "chunks": 1,
       "in_core": false,
       "deg_out": 0,
-      "deg_in": 11
+      "deg_in": 10
     },
     {
       "id": "UPK:115.1",
@@ -5424,17 +5171,6 @@
       "law": "UPK",
       "article": "117+118",
       "title": "Денежное взыскание | Порядок наложения денежного взыскания и обращения залога в доход государства",
-      "in_corpus": true,
-      "chunks": 1,
-      "in_core": false,
-      "deg_out": 1,
-      "deg_in": 0
-    },
-    {
-      "id": "UPK:119",
-      "law": "UPK",
-      "article": "119",
-      "title": "Лица, имеющие право заявить ходатайство",
       "in_corpus": true,
       "chunks": 1,
       "in_core": false,
@@ -5464,34 +5200,12 @@
       "deg_in": 0
     },
     {
-      "id": "UPK:141",
-      "law": "UPK",
-      "article": "141",
-      "title": "Заявление о преступлении",
-      "in_corpus": true,
-      "chunks": 1,
-      "in_core": false,
-      "deg_out": 1,
-      "deg_in": 0
-    },
-    {
       "id": "UPK:151",
       "law": "UPK",
       "article": "151",
       "title": "Подследственность (часть 1/7)",
       "in_corpus": true,
       "chunks": 7,
-      "in_core": false,
-      "deg_out": 4,
-      "deg_in": 0
-    },
-    {
-      "id": "UPK:153.1+154",
-      "law": "UPK",
-      "article": "153.1+154",
-      "title": "Возбуждение и соединение уголовных дел при выявлении нового преступления в ходе предварительного расследования | Выделение уголовного дела (",
-      "in_corpus": true,
-      "chunks": 2,
       "in_core": false,
       "deg_out": 1,
       "deg_in": 0
@@ -5582,18 +5296,7 @@
       "chunks": 1,
       "in_core": false,
       "deg_out": 0,
-      "deg_in": 6
-    },
-    {
-      "id": "UPK:212",
-      "law": "UPK",
-      "article": "212",
-      "title": "Основания прекращения уголовного дела и уголовного преследования",
-      "in_corpus": true,
-      "chunks": 1,
-      "in_core": false,
-      "deg_out": 1,
-      "deg_in": 0
+      "deg_in": 5
     },
     {
       "id": "UPK:213",
@@ -5695,17 +5398,6 @@
       "deg_in": 0
     },
     {
-      "id": "UPK:267+268",
-      "law": "UPK",
-      "article": "267+268",
-      "title": "Разъяснение подсудимому его прав | Разъяснение потерпевшему, гражданскому истцу и гражданскому ответчику их прав",
-      "in_corpus": true,
-      "chunks": 1,
-      "in_core": false,
-      "deg_out": 1,
-      "deg_in": 0
-    },
-    {
       "id": "UPK:274+275",
       "law": "UPK",
       "article": "274+275",
@@ -5750,39 +5442,6 @@
       "deg_in": 1
     },
     {
-      "id": "UPK:288+289",
-      "law": "UPK",
-      "article": "288+289",
-      "title": "Следственный эксперимент | Предъявление для опознания",
-      "in_corpus": true,
-      "chunks": 1,
-      "in_core": false,
-      "deg_out": 1,
-      "deg_in": 0
-    },
-    {
-      "id": "UPK:299",
-      "law": "UPK",
-      "article": "299",
-      "title": "Вопросы, разрешаемые судом при постановлении приговора (часть 1/2)",
-      "in_corpus": true,
-      "chunks": 2,
-      "in_core": false,
-      "deg_out": 2,
-      "deg_in": 0
-    },
-    {
-      "id": "UPK:30",
-      "law": "UPK",
-      "article": "30",
-      "title": "Состав суда (часть 1/3)",
-      "in_corpus": true,
-      "chunks": 3,
-      "in_core": false,
-      "deg_out": 1,
-      "deg_in": 0
-    },
-    {
       "id": "UPK:302",
       "law": "UPK",
       "article": "302",
@@ -5816,34 +5475,12 @@
       "deg_in": 0
     },
     {
-      "id": "UPK:317+317.1",
-      "law": "UPK",
-      "article": "317+317.1",
-      "title": "Пределы обжалования приговора | Порядок заявления ходатайства о заключении досудебного соглашения о сотрудничестве",
-      "in_corpus": true,
-      "chunks": 1,
-      "in_core": false,
-      "deg_out": 1,
-      "deg_in": 0
-    },
-    {
       "id": "UPK:317.7",
       "law": "UPK",
       "article": "317.7",
       "title": "Порядок проведения судебного заседания и постановления приговора в отношении подсудимого, с которым заключено досудебное соглашение о сотруд",
       "in_corpus": true,
       "chunks": 2,
-      "in_core": false,
-      "deg_out": 1,
-      "deg_in": 0
-    },
-    {
-      "id": "UPK:318",
-      "law": "UPK",
-      "article": "318",
-      "title": "Возбуждение уголовного дела частного обвинения",
-      "in_corpus": true,
-      "chunks": 1,
       "in_core": false,
       "deg_out": 1,
       "deg_in": 0
@@ -5981,17 +5618,6 @@
       "deg_in": 4
     },
     {
-      "id": "UPK:392+393",
-      "law": "UPK",
-      "article": "392+393",
-      "title": "Обязательность приговора, определения, постановления суда | Порядок обращения к исполнению приговора, определения, постановления суда (часть",
-      "in_corpus": true,
-      "chunks": 2,
-      "in_core": false,
-      "deg_out": 1,
-      "deg_in": 0
-    },
-    {
       "id": "UPK:397",
       "law": "UPK",
       "article": "397",
@@ -5999,7 +5625,7 @@
       "in_corpus": true,
       "chunks": 3,
       "in_core": false,
-      "deg_out": 3,
+      "deg_out": 2,
       "deg_in": 0
     },
     {
@@ -6010,7 +5636,7 @@
       "in_corpus": true,
       "chunks": 1,
       "in_core": false,
-      "deg_out": 2,
+      "deg_out": 1,
       "deg_in": 2
     },
     {
@@ -6021,7 +5647,7 @@
       "in_corpus": true,
       "chunks": 3,
       "in_core": false,
-      "deg_out": 1,
+      "deg_out": 0,
       "deg_in": 1
     },
     {
@@ -6055,7 +5681,7 @@
       "chunks": 1,
       "in_core": false,
       "deg_out": 1,
-      "deg_in": 1
+      "deg_in": 0
     },
     {
       "id": "UPK:415",
@@ -6077,7 +5703,7 @@
       "chunks": 1,
       "in_core": false,
       "deg_out": 0,
-      "deg_in": 8
+      "deg_in": 6
     },
     {
       "id": "UPK:427",
@@ -6113,17 +5739,6 @@
       "deg_in": 2
     },
     {
-      "id": "UPK:446.1+446.2",
-      "law": "UPK",
-      "article": "446.1+446.2",
-      "title": "Порядок прекращения уголовного дела или уголовного преследования с назначением меры уголовно-правового характера в виде судебного штрафа | П",
-      "in_corpus": true,
-      "chunks": 3,
-      "in_core": false,
-      "deg_out": 1,
-      "deg_in": 0
-    },
-    {
       "id": "UPK:448",
       "law": "UPK",
       "article": "448",
@@ -6131,7 +5746,7 @@
       "in_corpus": true,
       "chunks": 4,
       "in_core": false,
-      "deg_out": 2,
+      "deg_out": 1,
       "deg_in": 0
     },
     {
@@ -6177,17 +5792,6 @@
       "in_core": false,
       "deg_out": 0,
       "deg_in": 1
-    },
-    {
-      "id": "UPK:47",
-      "law": "UPK",
-      "article": "47",
-      "title": "Обвиняемый (часть 1/3)",
-      "in_corpus": true,
-      "chunks": 3,
-      "in_core": false,
-      "deg_out": 1,
-      "deg_in": 0
     },
     {
       "id": "UPK:6+6.1",
@@ -6355,18 +5959,6 @@
       "paragraph": "2",
       "cross": true,
       "evidence": "жания: \\\"Требование об уплате задолженности, направленное реорганизованной организации, ее правопреемнику не направляется.\\\"; 30\\) в пункте 2 статьи 74.1: а) в абзаце третьем слова"
-    },
-    {
-      "from": "FZ-425:1",
-      "to": "NK-1:79",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": "1",
-      "cross": true,
-      "evidence": "тренных статьями 198 - 199.2 Уголовного кодекса Российской Федерации, зачету в установленном настоящей статьей порядке не подлежат.\\\"; 35\\) в статье 79: а) в пункте 1: абзац первый"
     },
     {
       "from": "FZ-425:1",
@@ -6883,18 +6475,6 @@
       "paragraph": "24",
       "cross": true,
       "evidence": "ьи 250 слова \\\"установленного пунктом 27.3 статьи 200\\\" заменить словами \\\"установленного пунктами 27.3 и 27.4 статьи 200\\\"; 49\\) в пункте 1 статьи 251: а) подпункт 9.1 признать ут"
-    },
-    {
-      "from": "FZ-425:2",
-      "to": "FZ-229:64.1",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "а строительство и (или) реконструкцию объектов инфраструктуры воздушного транспорта, полученного в соответствии с порядком, предусмотренным статьей 64.1 Воздушного кодекса Российск"
     },
     {
       "from": "FZ-425:2",
@@ -8206,18 +7786,6 @@
     },
     {
       "from": "FZ-425:15+16",
-      "to": "NK-1:84",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": "1",
-      "cross": true,
-      "evidence": " информационном регистре, содержащем сведения о населении Российской Федерации\\\", и (или) его персональные данные, предусмотренные пунктом 1 статьи 84 Налогового кодекса Российской"
-    },
-    {
-      "from": "FZ-425:15+16",
       "to": "NK-2:362",
       "type": "refers",
       "weight": 1,
@@ -8335,18 +7903,6 @@
       "paragraph": "6",
       "cross": true,
       "evidence": "9 части второй Налогового кодекса Российской Федерации\\\" (Собрание законодательства Российской Федерации, 2011, N 47, ст. 6609); 9\\) пункт 6 статьи 3 Федерального закона от 23 июля"
-    },
-    {
-      "from": "FZ-425:23+24",
-      "to": "NK-1:1",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": "19",
-      "cross": true,
-      "evidence": " Федерального закона от 11 июня 2021 года N 199-ФЗ \\\"О внесении изменений в части первую и вторую Налогового кодекса Российской Федерации и статьи 1 и 2 Федерального закона \\\"О про"
     },
     {
       "from": "FZ-425:23+24",
@@ -8916,13 +8472,13 @@
       "from": "NK-1:5",
       "to": "NK-2:288.5",
       "type": "refers",
-      "weight": 6,
+      "weight": 4,
       "confidence": 0.8,
       "origin": "auto",
       "direction": "directed",
       "paragraph": null,
       "cross": true,
-      "evidence": "от 02.08.2019 N 269-ФЗ) Положения настоящего пункта не применяются в отношении налога на прибыль организаций, исчисляемого в соответствии со статьей 288.5 настоящего Кодекса. (абза"
+      "evidence": "твие настоящего пункта. Положения настоящего пункта не применяются в отношении налога на прибыль организаций, исчисляемого в соответствии со статьей 288.5 настоящего Кодекса. (абза"
     },
     {
       "from": "NK-1:5",
@@ -9192,7 +8748,7 @@
       "from": "NK-1:25.13",
       "to": "NK-2:309.1",
       "type": "procedure",
-      "weight": 9,
+      "weight": 8,
       "confidence": 0.8,
       "origin": "auto",
       "direction": "directed",
@@ -9251,20 +8807,8 @@
     {
       "from": "NK-1:25.15",
       "to": "NK-2:309.1",
-      "type": "refers",
-      "weight": 3,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "нтролируемой иностранной компании в целях настоящего Кодекса признается сумма прибыли (убытка) этой компании, рассчитанная в соответствии со статьей 309.1 настоящего Кодекса. Прибы"
-    },
-    {
-      "from": "NK-1:25.15",
-      "to": "NK-2:309.1",
       "type": "procedure",
-      "weight": 2,
+      "weight": 1,
       "confidence": 0.8,
       "origin": "auto",
       "direction": "directed",
@@ -9283,6 +8827,18 @@
       "paragraph": null,
       "cross": true,
       "evidence": "кие организации, если контролирующее лицо этой контролируемой иностранной компании имеет фактическое право на такие доходы с учетом положений статьи 312 настоящего Кодекса. (в ред."
+    },
+    {
+      "from": "NK-1:25.15",
+      "to": "NK-2:309.1",
+      "type": "refers",
+      "weight": 2,
+      "confidence": 0.8,
+      "origin": "auto",
+      "direction": "directed",
+      "paragraph": "1",
+      "cross": true,
+      "evidence": "P1870) или [четвертом пункта 1](#P1873) настоящей статьи, величину, равную сумме прибыли указанной компании, рассчитанной в соответствии со статьей 309.1 настоящего Кодекса, если у"
     },
     {
       "from": "NK-1:25.15",
@@ -9321,16 +8877,16 @@
       "evidence": "ния о защите и поощрении капиталовложений - в случае, если указанное соглашение расторгается по основаниям, предусмотренным частями 13 и 14 статьи 11 Федерального закона \\\"О защите"
     },
     {
-      "from": "NK-1:33+34",
-      "to": "FZ-229:33",
-      "type": "procedure",
+      "from": "NK-1:44",
+      "to": "FZ-229:14",
+      "type": "refers",
       "weight": 1,
-      "confidence": 0.8,
+      "confidence": 0.65,
       "origin": "auto",
       "direction": "directed",
-      "paragraph": null,
+      "paragraph": "3",
       "cross": true,
-      "evidence": "07.1999 N 154-ФЗ, от 29.07.2004 N 95-ФЗ, от 27.11.2010 N 306-ФЗ) 2\\. Должностные лица таможенных органов несут обязанности, предусмотренные [статьей 33](#P2197) настоящего Кодекса,"
+      "evidence": "ая, если в отношении такого физического лица возбуждено производство по делу о банкротстве. Задолженность по налогам, указанным в [пункте 3 статьи 14](#P741) и [пунктах 1](#P748) и"
     },
     {
       "from": "NK-1:44",
@@ -9343,30 +8899,6 @@
       "paragraph": "3",
       "cross": true,
       "evidence": " возбуждено производство по делу о банкротстве. Задолженность по налогам, указанным в [пункте 3 статьи 14](#P741) и [пунктах 1](#P748) и [2 статьи 15](#P749) настоящего Кодекса, ум"
-    },
-    {
-      "from": "NK-1:44",
-      "to": "FZ-425:49",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.7,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": " 4\\) с ликвидацией организации-налогоплательщика после проведения всех расчетов с бюджетной системой Российской Федерации в соответствии со [статьей 49](#P2705) настоящего Кодекса;"
-    },
-    {
-      "from": "NK-1:52",
-      "to": "FZ-127:15",
-      "type": "procedure",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": "3",
-      "cross": true,
-      "evidence": "н от 31.07.2025 N 287-ФЗ. 2.1. Перерасчет сумм ранее исчисленных налогов, указанных в [пункте 3 статьи 14](#P741) и [пунктах 1](#P748) и [2 статьи 15](#P749) настоящего Кодекса, ос"
     },
     {
       "from": "NK-1:56.1",
@@ -9477,18 +9009,6 @@
       "evidence": "та 2 в отношении таких расходов), расходы на научные исследования и (или) опытно-конструкторские разработки, определяемые в соответствии со статьей 262 настоящего Кодекса (без прим"
     },
     {
-      "from": "NK-1:58",
-      "to": "NK-2:227.1",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "пошлины, не указанной в [абзаце третьем](#P2994) настоящего пункта, налога на доходы физических лиц, уплачиваемого в порядке, установленном статьей 227.1 настоящего Кодекса, налога"
-    },
-    {
       "from": "NK-1:59",
       "to": "FZ-229:14",
       "type": "refers",
@@ -9553,12 +9073,36 @@
       "to": "FZ-425:64",
       "type": "procedure",
       "weight": 1,
-      "confidence": 0.7,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": "7",
       "cross": true,
       "evidence": "го налогового кредита, не допускается. (в ред. Федерального закона от 28.11.2025 N 425-ФЗ) По основанию, указанному в [подпункте 7 пункта 2 статьи 64](#P3244) настоящего Кодекса, м"
+    },
+    {
+      "from": "NK-1:73",
+      "to": "FZ-229:101",
+      "type": "refers",
+      "weight": 1,
+      "confidence": 0.65,
+      "origin": "auto",
+      "direction": "directed",
+      "paragraph": "7",
+      "cross": true,
+      "evidence": "но наложением ареста на имущество в соответствии с настоящим [Кодексом](#P3724), либо вступления в силу решения, предусмотренного [пунктом 7 статьи 101](#P5171) настоящего Кодекса,"
+    },
+    {
+      "from": "NK-1:76",
+      "to": "FZ-229:101",
+      "type": "procedure",
+      "weight": 2,
+      "confidence": 0.65,
+      "origin": "auto",
+      "direction": "directed",
+      "paragraph": "3",
+      "cross": true,
+      "evidence": "ешения о взыскании задолженности, если иное не предусмотрено [пунктами 3](#P3635) и [3.2](#P3652) настоящей статьи и [подпунктом 2 пункта 10 статьи 101](#P5204) настоящего Кодекса."
     },
     {
       "from": "NK-1:77",
@@ -9583,18 +9127,6 @@
       "paragraph": null,
       "cross": true,
       "evidence": "атьей 229 настоящего Кодекса; заявления о возврате излишне уплаченных сумм налога на доходы физических лиц, уплачиваемого в соответствии со статьей 227.1 настоящего Кодекса, налога"
-    },
-    {
-      "from": "NK-1:79",
-      "to": "NK-2:176.1",
-      "type": "refers",
-      "weight": 3,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "го налоговым органом решения о возмещении (полностью или частично) суммы налога на добавленную стоимость или суммы акциза в соответствии со статьей 176.1 или 203.1 настоящего Кодек"
     },
     {
       "from": "NK-1:79",
@@ -9694,18 +9226,6 @@
     },
     {
       "from": "NK-1:83",
-      "to": "NK-2:419",
-      "type": "refers",
-      "weight": 2,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": " 29.05.2024 N 100-ФЗ) 4.7. Постановка на учет (снятие с учета) в налоговом органе международной организации, признаваемой в соответствии со статьей 419 настоящего Кодекса плательщи"
-    },
-    {
-      "from": "NK-1:83",
       "to": "NK-2:362",
       "type": "refers",
       "weight": 1,
@@ -9727,18 +9247,6 @@
       "paragraph": "3.1",
       "cross": true,
       "evidence": "ии сведений, сообщаемых органами и лицами, указанными в [статье 85](#P4347), пунктах 3.1 и 3.4 статьи 362, пункте 4.1 статьи 382, пункте 2.1 статьи 408 настоящего Кодекса, пункте 6"
-    },
-    {
-      "from": "NK-1:83",
-      "to": "NK-2:227.1",
-      "type": "procedure",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "еден Федеральным законом от 03.07.2016 N 243-ФЗ) 7.3. Постановка на учет (снятие с учета) физического лица (за исключением лиц, указанных в статье 227.1 настоящего Кодекса), не явл"
     },
     {
       "from": "NK-1:83",
@@ -9793,7 +9301,7 @@
       "to": "FZ-425:83",
       "type": "procedure",
       "weight": 1,
-      "confidence": 0.7,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": "4.6",
@@ -9839,18 +9347,6 @@
     {
       "from": "NK-1:88",
       "to": "NK-2:221.1",
-      "type": "procedure",
-      "weight": 5,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": "2",
-      "cross": true,
-      "evidence": "ая проверка проводится по месту нахождения налогового органа на основе налоговых деклараций (расчетов) или заявления, указанного в пункте 2 статьи 221.1 настоящего Кодекса, и докум"
-    },
-    {
-      "from": "NK-1:88",
-      "to": "NK-2:221.1",
       "type": "refers",
       "weight": 1,
       "confidence": 0.8,
@@ -9859,6 +9355,18 @@
       "paragraph": "2",
       "cross": true,
       "evidence": "оговый орган, в который он в соответствии с настоящим Кодексом представил налоговую декларацию (расчет) или заявление, указанное в пункте 2 статьи 221.1 настоящего Кодекса, так и в"
+    },
+    {
+      "from": "NK-1:88",
+      "to": "NK-2:221.1",
+      "type": "procedure",
+      "weight": 1,
+      "confidence": 0.8,
+      "origin": "auto",
+      "direction": "directed",
+      "paragraph": "2",
+      "cross": true,
+      "evidence": "рки. Срок проведения камеральной налоговой проверки может быть продлен до трех месяцев со дня представления заявления, указанного в пункте 2 статьи 221.1 настоящего Кодекса. (абзац"
     },
     {
       "from": "NK-1:88",
@@ -9937,7 +9445,7 @@
       "to": "FZ-425:46",
       "type": "procedure",
       "weight": 1,
-      "confidence": 0.7,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": null,
@@ -9945,23 +9453,11 @@
       "evidence": "логовой проверки. (пп. 4 введен Федеральным законом от 28.11.2025 N 425-ФЗ) Должностное лицо налогового органа, принявшего предусмотренное [статьей 46](#P2509) настоящего Кодекса р"
     },
     {
-      "from": "NK-1:93.1",
-      "to": "FZ-127:129.1",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "ообщение (несвоевременное сообщение) истребуемой информации признается налоговым правонарушением и влечет ответственность, предусмотренную [статьей 129.1](#P7257) настоящего Кодекс"
-    },
-    {
       "from": "NK-1:100.1+101",
       "to": "FZ-425:76",
       "type": "refers",
       "weight": 1,
-      "confidence": 0.7,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": null,
@@ -9969,22 +9465,22 @@
       "evidence": "ерального закона от 28.11.2025 N 425-ФЗ) 2\\) приостановление операций по счетам в банке, по счетам цифрового рубля в порядке, установленном [статьей 76](#P3604) настоящего Кодекса."
     },
     {
-      "from": "NK-1:102",
-      "to": "NK-2:174.3",
+      "from": "NK-1:101.4",
+      "to": "FZ-229:101",
       "type": "refers",
       "weight": 1,
-      "confidence": 0.8,
+      "confidence": 0.65,
       "origin": "auto",
       "direction": "directed",
       "paragraph": null,
       "cross": true,
-      "evidence": "твенной власти субъектов Российской Федерации, органы местного самоуправления для осуществления оценки налоговых расходов в соответствии со статьей 174.3 Бюджетного кодекса Российс"
+      "evidence": "установлена настоящим Кодексом (за исключением налоговых правонарушений, дела о выявлении которых рассматриваются в порядке, установленном [статьей 101](#P5101) настоящего Кодекса)"
     },
     {
       "from": "NK-1:102",
       "to": "NK-2:219.1",
       "type": "procedure",
-      "weight": 2,
+      "weight": 1,
       "confidence": 0.8,
       "origin": "auto",
       "direction": "directed",
@@ -10031,18 +9527,6 @@
     {
       "from": "NK-1:105.14",
       "to": "NK-2:275.2",
-      "type": "procedure",
-      "weight": 3,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": "1",
-      "cross": true,
-      "evidence": "N 302-ФЗ; 6\\) сделка удовлетворяет одновременно следующим условиям: одна из сторон сделки является налогоплательщиком, указанным в пункте 1 статьи 275.2 настоящего Кодекса, и учиты"
-    },
-    {
-      "from": "NK-1:105.14",
-      "to": "NK-2:275.2",
       "type": "refers",
       "weight": 3,
       "confidence": 0.8,
@@ -10051,6 +9535,18 @@
       "paragraph": "1",
       "cross": true,
       "evidence": "щего Кодекса, и учитывает доходы (расходы) по такой сделке при определении налоговой базы по налогу на прибыль организаций в соответствии со статьей 275.2 настоящего Кодекса; любая"
+    },
+    {
+      "from": "NK-1:105.14",
+      "to": "NK-2:275.2",
+      "type": "procedure",
+      "weight": 1,
+      "confidence": 0.8,
+      "origin": "auto",
+      "direction": "directed",
+      "paragraph": "1",
+      "cross": true,
+      "evidence": "е является налогоплательщиком, указанным в пункте 1 статьи 275.2 настоящего Кодекса, либо является налогоплательщиком, указанным в пункте 1 статьи 275.2 настоящего Кодекса, но не у"
     },
     {
       "from": "NK-1:105.14",
@@ -10117,7 +9613,7 @@
       "to": "FZ-425:105.27",
       "type": "refers",
       "weight": 1,
-      "confidence": 0.7,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": "2",
@@ -10129,7 +9625,7 @@
       "to": "FZ-425:112",
       "type": "refers",
       "weight": 1,
-      "confidence": 0.7,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": "2",
@@ -10147,18 +9643,6 @@
       "paragraph": null,
       "cross": true,
       "evidence": "ия налогоплательщиком инвестиционных налоговых вычетов и (или) налоговых вычетов на долгосрочные сбережения граждан в порядке, установленном статьей 221.1 настоящего Кодекса, (в ре"
-    },
-    {
-      "from": "NK-1:126.3",
-      "to": "NK-2:221.1",
-      "type": "procedure",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": "3.1",
-      "cross": true,
-      "evidence": " законом от 31.07.2023 N 389-ФЗ) 1\\. Представление организациями и индивидуальными предпринимателями, указанными в абзаце первом пункта 3.1 статьи 221.1 настоящего Кодекса, налогов"
     },
     {
       "from": "NK-1:126.3",
@@ -10207,18 +9691,6 @@
       "paragraph": "2",
       "cross": true,
       "evidence": "усматривающему оказание финансовых услуг, за исключением операций, осуществляемых в целях, предусмотренных абзацами вторым - пятым пункта 2 статьи 855 Гражданского кодекса Российск"
-    },
-    {
-      "from": "NK-2:147",
-      "to": "FZ-425:164",
-      "type": "procedure",
-      "weight": 1,
-      "confidence": 0.7,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": "1.2",
-      "cross": true,
-      "evidence": "м от 29.05.2024 N 100-ФЗ; в ред. Федерального закона от 28.11.2025 N 425-ФЗ) 3\\) товар является товаром, указанным в [подпункте 1.2 пункта 1 статьи 164](#P1543) настоящего Кодекса,"
     },
     {
       "from": "NK-2:154",
@@ -10285,7 +9757,7 @@
       "to": "FZ-425:145",
       "type": "refers",
       "weight": 1,
-      "confidence": 0.7,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": null,
@@ -10296,13 +9768,13 @@
       "from": "NK-2:172",
       "to": "FZ-425:171",
       "type": "procedure",
-      "weight": 2,
-      "confidence": 0.7,
+      "weight": 1,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
-      "paragraph": "5",
+      "paragraph": "6",
       "cross": true,
-      "evidence": "ФЗ) (п. 3 в ред. Федерального закона от 22.07.2005 N 119-ФЗ) 4\\. Вычеты сумм налога, указанных в [абзацах первом](#P2874) и [втором пункта 5 статьи 171](#P2875) настоящего Кодекса,"
+      "evidence": "ФЗ) (п. 4 в ред. Федерального закона от 14.07.2022 N 324-ФЗ) 5\\. Вычеты сумм налога, указанных в [абзацах первом](#P2883) и [втором пункта 6 статьи 171](#P2885) настоящего Кодекса,"
     },
     {
       "from": "NK-2:174.2",
@@ -10354,39 +9826,27 @@
     },
     {
       "from": "NK-2:176.1",
-      "to": "FZ-127:74",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.65,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "ьный закон от 19.12.2023 N 611-ФЗ; 5\\) налогоплательщики, обязанность которых по уплате налога обеспечена поручительством в соответствии со статьей 74 настоящего Кодекса, предусмат"
-    },
-    {
-      "from": "NK-2:176.1",
-      "to": "NK-1:74.1",
-      "type": "refers",
-      "weight": 3,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "23). 4\\. Требования к указанной в настоящей статье банковской гарантии, порядок ее представления гарантом устанавливаются в соответствии со статьей 74.1 настоящего Кодекса с учетом"
-    },
-    {
-      "from": "NK-2:176.1",
       "to": "NK-1:79",
       "type": "procedure",
-      "weight": 2,
+      "weight": 1,
       "confidence": 0.8,
       "origin": "auto",
       "direction": "directed",
       "paragraph": "9",
       "cross": true,
       "evidence": "ают на себя обязательство вернуть в бюджет излишне полученные ими в заявительном порядке суммы (включая проценты, предусмотренные пунктом 9 статьи 79 настоящего Кодекса (в случае и"
+    },
+    {
+      "from": "NK-2:176.1",
+      "to": "NK-1:74.1",
+      "type": "refers",
+      "weight": 1,
+      "confidence": 0.8,
+      "origin": "auto",
+      "direction": "directed",
+      "paragraph": null,
+      "cross": true,
+      "evidence": "я составления акта камеральной налоговой проверки (дополнения к акту камеральной налоговой проверки) налоговый орган: 1\\) в соответствии со статьей 74.1 настоящего Кодекса уведомля"
     },
     {
       "from": "NK-2:176.1",
@@ -10473,30 +9933,6 @@
       "evidence": "я и реализации (за исключением организаций общественного питания), в результате которого получается подакцизный товар, в отношении которого [статьей 193](#P4684) настоящего Кодекса"
     },
     {
-      "from": "NK-2:184",
-      "to": "NK-1:74.1",
-      "type": "procedure",
-      "weight": 2,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "27.11.2017 N 353-ФЗ. 1.1. Требования к указанной в настоящей статье банковской гарантии и порядок ее представления гарантом устанавливаются статьей 74.1 настоящего Кодекса и примен"
-    },
-    {
-      "from": "NK-2:184",
-      "to": "NK-1:74.1",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": ", обеспеченной банковской гарантией. (в ред. Федерального закона от 27.11.2017 N 353-ФЗ) Налоговый орган обязан уведомить в соответствии со статьей 74.1 настоящего Кодекса гаранта,"
-    },
-    {
       "from": "NK-2:186.1",
       "to": "UPK:193",
       "type": "procedure",
@@ -10561,7 +9997,7 @@
       "to": "FZ-425:182",
       "type": "procedure",
       "weight": 1,
-      "confidence": 0.7,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": "38",
@@ -10572,20 +10008,20 @@
       "from": "NK-2:200",
       "to": "UPK:193",
       "type": "refers",
-      "weight": 7,
+      "weight": 6,
       "confidence": 0.8,
       "origin": "auto",
       "direction": "directed",
       "paragraph": "8",
       "cross": true,
-      "evidence": " К~ТВР~, (абзац введен Федеральным законом от 27.11.2023 N 539-ФЗ) где V~НС~ - значение показателя, определяемое в соответствии с [пунктом 8 статьи 193](#P4923) настоящего Кодекса;"
+      "evidence": "о](#P5578) и [сорок шестого](#P5582) настоящего пункта, к сумме значений показателей V~СВ~ и V~ПБ~, определенных в соответствии с [пунктом 8 статьи 193](#P4923) настоящего Кодекса,"
     },
     {
       "from": "NK-2:200",
       "to": "FZ-425:179.7",
       "type": "refers",
       "weight": 1,
-      "confidence": 0.7,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": "5",
@@ -10597,7 +10033,7 @@
       "to": "FZ-425:257",
       "type": "defines",
       "weight": 1,
-      "confidence": 0.7,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": "1",
@@ -10617,35 +10053,11 @@
       "evidence": "ением методов, которые установлены главой 14.3 настоящего Кодекса. Для целей настоящего пункта рыночная цена определяется с учетом положений статьи 105.3 настоящего Кодекса. При эт"
     },
     {
-      "from": "NK-2:200",
-      "to": "FZ-425:201",
-      "type": "procedure",
-      "weight": 1,
-      "confidence": 0.7,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": "28.1",
-      "cross": true,
-      "evidence": "введен Федеральным законом от 28.11.2025 N 425-ФЗ) 27.5. Вычету подлежит при условии представления документов, предусмотренных [пунктом 28.1 статьи 201](#P6058) настоящего Кодекса,"
-    },
-    {
-      "from": "NK-2:201",
-      "to": "FZ-425:182",
-      "type": "procedure",
-      "weight": 1,
-      "confidence": 0.7,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": "20.1",
-      "cross": true,
-      "evidence": "0.2020 N 321-ФЗ, от 14.07.2022 N 267-ФЗ, от 28.11.2025 N 425-ФЗ) 4\\) в случае совершения операций, предусмотренных [подпунктом 20.1 пункта 1 статьи 182](#P4215) настоящего Кодекса,"
-    },
-    {
       "from": "NK-2:201",
       "to": "FZ-425:200",
       "type": "procedure",
-      "weight": 3,
-      "confidence": 0.7,
+      "weight": 1,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": "11.1",
@@ -10657,7 +10069,7 @@
       "to": "FZ-425:200",
       "type": "procedure",
       "weight": 1,
-      "confidence": 0.7,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": "27.3",
@@ -10666,33 +10078,9 @@
     },
     {
       "from": "NK-2:203.1",
-      "to": "NK-1:79",
-      "type": "procedure",
-      "weight": 3,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": "9",
-      "cross": true,
-      "evidence": " налогоплательщик принимает на себя обязательство вернуть в бюджет излишне полученные им суммы, включая проценты, предусмотренные пунктом 9 статьи 79 настоящего Кодекса (в случае и"
-    },
-    {
-      "from": "NK-2:203.1",
-      "to": "NK-1:74.1",
-      "type": "procedure",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "такое превышение. (абзац введен Федеральным законом от 31.07.2023 N 389-ФЗ) 3\\. К банковской гарантии применяются требования, установленные статьей 74.1 настоящего Кодекса для прин"
-    },
-    {
-      "from": "NK-2:203.1",
       "to": "NK-1:74.1",
       "type": "refers",
-      "weight": 5,
+      "weight": 4,
       "confidence": 0.8,
       "origin": "auto",
       "direction": "directed",
@@ -10701,16 +10089,16 @@
       "evidence": "ния одного из решений, указанных в [абзацах третьем](#P6268) - [пятом](#P6270) настоящего пункта, налоговый орган обязан: в соответствии со статьей 74.1 настоящего Кодекса уведомит"
     },
     {
-      "from": "NK-2:204",
-      "to": "FZ-425:182",
-      "type": "refers",
-      "weight": 2,
-      "confidence": 0.7,
+      "from": "NK-2:203.1",
+      "to": "NK-1:79",
+      "type": "procedure",
+      "weight": 1,
+      "confidence": 0.8,
       "origin": "auto",
       "direction": "directed",
-      "paragraph": "41",
+      "paragraph": "9",
       "cross": true,
-      "evidence": ".2025 N 425-ФЗ) 3.4. При совершении операций, признаваемых объектом налогообложения в соответствии с [подпунктами 41](#P4264) и [42 пункта 1 статьи 182](#P4267) настоящего Кодекса,"
+      "evidence": " отмене (полностью или частично) решения о возмещении суммы налога излишне полученные им суммы (включая проценты, предусмотренные пунктом 9 статьи 79 настоящего Кодекса (в случае и"
     },
     {
       "from": "NK-2:205",
@@ -10798,18 +10186,6 @@
     },
     {
       "from": "NK-2:214.1",
-      "to": "FZ-127:4.1",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": "1",
-      "cross": true,
-      "evidence": ".2014 N 460-ФЗ, от 03.07.2016 N 242-ФЗ) 5\\) с производными финансовыми инструментами и иными инструментами, которые предусмотрены пунктом 1 статьи 4.1 Федерального закона \\\"О рынке"
-    },
-    {
-      "from": "NK-2:214.1",
       "to": "NK-1:105.3",
       "type": "procedure",
       "weight": 6,
@@ -10870,18 +10246,6 @@
     },
     {
       "from": "NK-2:216+217",
-      "to": "UPK:210",
-      "type": "procedure",
-      "weight": 2,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": "8",
-      "cross": true,
-      "evidence": "его пункта не применяются в отношении указанных в настоящем пункте доходов в размере части налоговой базы, указанной в [подпункте 8 пункта 6 статьи 210](#P6712) настоящего Кодекса,"
-    },
-    {
-      "from": "NK-2:216+217",
       "to": "FZ-127:232",
       "type": "refers",
       "weight": 1,
@@ -10905,18 +10269,6 @@
       "evidence": "руктуры без образования юридического лица), но не выше рыночной стоимости такого имущества и (или) имущественных прав, определяемой с учетом статьи 105.3 настоящего Кодекса на дату"
     },
     {
-      "from": "NK-2:217.1",
-      "to": "FZ-229:10",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": " Федеральным законом от 08.08.2024 N 259-ФЗ) В случае продажи доли в объекте недвижимого имущества, приобретенной в соответствии с частью 4 статьи 10 Федерального закона от 29 дека"
-    },
-    {
       "from": "NK-2:220",
       "to": "NK-1:105.3",
       "type": "procedure",
@@ -10927,18 +10279,6 @@
       "paragraph": null,
       "cross": true,
       "evidence": "кой иностранной организации (структуры без образования юридического лица), но не выше их рыночной стоимости, определяемой с учетом положений статьи 105.3 настоящего Кодекса на дату"
-    },
-    {
-      "from": "NK-2:220",
-      "to": "FZ-229:10",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "акона от 31.07.2023 N 389-ФЗ) При получении дохода от продажи доли в объекте недвижимого имущества, приобретенной в соответствии с частью 4 статьи 10 Федерального закона от 29 дека"
     },
     {
       "from": "NK-2:220",
@@ -10968,7 +10308,7 @@
       "from": "NK-2:224",
       "to": "UPK:210",
       "type": "procedure",
-      "weight": 17,
+      "weight": 16,
       "confidence": 0.8,
       "origin": "auto",
       "direction": "directed",
@@ -11035,6 +10375,18 @@
       "paragraph": "1",
       "cross": true,
       "evidence": "овой базы, определяемой в соответствии с [пунктами 1](#P7666) - [6 статьи 214.11](#P7696) настоящего Кодекса и с учетом положений [пункта 6 статьи 223](#P9064) настоящего Кодекса н"
+    },
+    {
+      "from": "NK-2:229",
+      "to": "FZ-229:83",
+      "type": "refers",
+      "weight": 1,
+      "confidence": 0.65,
+      "origin": "auto",
+      "direction": "directed",
+      "paragraph": null,
+      "cross": true,
+      "evidence": "тавлять налоговую декларацию, вправе представить такую декларацию в налоговый орган по месту жительства. Лица, отнесенные в соответствии со статьей 83 настоящего Кодекса к категори"
     },
     {
       "from": "NK-2:230",
@@ -11112,7 +10464,7 @@
       "from": "NK-2:251",
       "to": "UPK:11",
       "type": "refers",
-      "weight": 5,
+      "weight": 2,
       "confidence": 0.8,
       "origin": "auto",
       "direction": "directed",
@@ -11137,7 +10489,7 @@
       "to": "FZ-425:3",
       "type": "refers",
       "weight": 1,
-      "confidence": 0.9,
+      "confidence": 0.92,
       "origin": "auto",
       "direction": "directed",
       "paragraph": null,
@@ -11155,30 +10507,6 @@
       "paragraph": null,
       "cross": true,
       "evidence": "ние этими акциями (долями в уставном капитале), полученного (в том числе частично) безвозмездно налогоплательщиком в соответствии с частью 6 статьи 7 указанного Федерального закона"
-    },
-    {
-      "from": "NK-2:251",
-      "to": "FZ-229:64.1",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "а строительство и (или) реконструкцию объектов инфраструктуры воздушного транспорта, полученного в соответствии с порядком, предусмотренным статьей 64.1 Воздушного кодекса Российск"
-    },
-    {
-      "from": "NK-2:251",
-      "to": "NK-1:105.14",
-      "type": "procedure",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": "6",
-      "cross": true,
-      "evidence": "ьным законом от 30.11.2016 N 401-ФЗ) 55\\) в виде безвозмездно полученных услуг, являющихся предметом сделок, указанных в подпункте 6 пункта 4 статьи 105.14 настоящего Кодекса; (пп."
     },
     {
       "from": "NK-2:251",
@@ -11209,7 +10537,7 @@
       "to": "FZ-425:201.15",
       "type": "refers",
       "weight": 1,
-      "confidence": 0.7,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": null,
@@ -11227,18 +10555,6 @@
       "paragraph": null,
       "cross": true,
       "evidence": "нений в отдельные законодательные акты Российской Федерации\\\", либо фондами, учрежденными субъектами Российской Федерации в соответствии со статьей 21.1 Федерального закона от 30 д"
-    },
-    {
-      "from": "NK-2:256",
-      "to": "NK-1:25.18",
-      "type": "procedure",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "от 23.11.2020 N 374-ФЗ) 14\\) объекты основных средств, в отношении которых применен или будет применен налоговый вычет для СЗПК, указанный в статье 25.18 настоящего Кодекса. (пп. 1"
     },
     {
       "from": "NK-2:264",
@@ -11305,7 +10621,7 @@
       "to": "FZ-425:286.1",
       "type": "procedure",
       "weight": 1,
-      "confidence": 0.7,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": "1",
@@ -11329,7 +10645,7 @@
       "to": "FZ-425:265",
       "type": "procedure",
       "weight": 1,
-      "confidence": 0.7,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": "19.16",
@@ -11341,7 +10657,7 @@
       "to": "FZ-425:288.5",
       "type": "procedure",
       "weight": 1,
-      "confidence": 0.7,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": null,
@@ -11365,7 +10681,7 @@
       "to": "FZ-425:284",
       "type": "procedure",
       "weight": 1,
-      "confidence": 0.7,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": "1",
@@ -11376,7 +10692,7 @@
       "from": "NK-2:274",
       "to": "NK-1:105.3",
       "type": "procedure",
-      "weight": 3,
+      "weight": 2,
       "confidence": 0.8,
       "origin": "auto",
       "direction": "directed",
@@ -11433,30 +10749,6 @@
       "evidence": "имость акций (долей в уставном капитале) организации, созданной в судебном порядке, полученных налогоплательщиком в соответствии с частью 2 статьи 11 Федерального закона от 4 авгус"
     },
     {
-      "from": "NK-2:282.1",
-      "to": "UPK:11",
-      "type": "refers",
-      "weight": 4,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "ов вкладчиков и кредиторов банков на основании статей 3 и 3.1 Федерального закона от 29 декабря 2014 года N 451-ФЗ \\\"О внесении изменений в статью 11 Федерального закона \\\"О страхо"
-    },
-    {
-      "from": "NK-2:284",
-      "to": "NK-1:25.16",
-      "type": "procedure",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": "2",
-      "cross": true,
-      "evidence": "Федеральным законом от 02.08.2019 N 269-ФЗ) Для налогоплательщиков - участников специальных инвестиционных контрактов, указанных в пункте 2 статьи 25.16 настоящего Кодекса, законам"
-    },
-    {
       "from": "NK-2:284",
       "to": "NK-1:11.1",
       "type": "procedure",
@@ -11467,18 +10759,6 @@
       "paragraph": "5",
       "cross": true,
       "evidence": "занной с добычей углеводородного сырья на новом морском месторождении углеводородного сырья, указанном в абзаце втором подпункта 5 пункта 1 статьи 11.1 настоящего Кодекса, применяе"
-    },
-    {
-      "from": "NK-2:284",
-      "to": "NK-1:25.9",
-      "type": "procedure",
-      "weight": 2,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": "1",
-      "cross": true,
-      "evidence": "ального закона от 29.11.2024 N 416-ФЗ) (п. 1.4 введен Федеральным законом от 30.09.2013 N 268-ФЗ) 1.5. Для указанных в подпункте 1 пункта 1 статьи 25.9 настоящего Кодекса организац"
     },
     {
       "from": "NK-2:284",
@@ -11496,7 +10776,7 @@
       "from": "NK-2:284",
       "to": "NK-1:24.2",
       "type": "procedure",
-      "weight": 6,
+      "weight": 5,
       "confidence": 0.8,
       "origin": "auto",
       "direction": "directed",
@@ -11542,18 +10822,6 @@
     },
     {
       "from": "NK-2:284.2+284.3",
-      "to": "NK-1:25.9",
-      "type": "procedure",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": "1",
-      "cross": true,
-      "evidence": "ного закона от 23.05.2016 N 144-ФЗ) 1\\. Налогоплательщик - участник регионального инвестиционного проекта, указанный в подпункте 1 пункта 1 статьи 25.9 настоящего Кодекса (далее та"
-    },
-    {
-      "from": "NK-2:284.2+284.3",
       "to": "NK-1:25.8",
       "type": "refers",
       "weight": 2,
@@ -11578,21 +10846,9 @@
     },
     {
       "from": "NK-2:284.3",
-      "to": "NK-1:25.9",
-      "type": "procedure",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": "2",
-      "cross": true,
-      "evidence": "ным законом от 23.05.2016 N 144-ФЗ) 1\\. Налогоплательщик - участник регионального инвестиционного проекта, указанный в подпункте 2 пункта 1 статьи 25.9 настоящего Кодекса (далее та"
-    },
-    {
-      "from": "NK-2:284.3",
       "to": "NK-1:25.8",
       "type": "procedure",
-      "weight": 3,
+      "weight": 2,
       "confidence": 0.8,
       "origin": "auto",
       "direction": "directed",
@@ -11628,25 +10884,13 @@
       "from": "NK-2:284.6+284.7",
       "to": "NK-1:24.2",
       "type": "procedure",
-      "weight": 3,
+      "weight": 2,
       "confidence": 0.8,
       "origin": "auto",
       "direction": "directed",
       "paragraph": "1.1",
       "cross": true,
       "evidence": "даты регистрации такой компании в качестве международной компании (до или после даты подачи организацией заявления, указанного в пункте 1.1 статьи 24.2 настоящего Кодекса), а также"
-    },
-    {
-      "from": "NK-2:284.10",
-      "to": "NK-1:24.2",
-      "type": "procedure",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": "1.1",
-      "cross": true,
-      "evidence": "овой компании; 7\\) утратил силу. - Федеральный закон от 26.03.2022 N 66-ФЗ; 8\\) международная компания (организация, указанная в пункте 1.1 статьи 24.2 настоящего Кодекса) отвечает"
     },
     {
       "from": "NK-2:284.10",
@@ -11673,16 +10917,16 @@
       "evidence": "артнером и (или) его дочерними обществами, в которых доля его прямого и (или) косвенного участия, определенная в соответствии с положениями статьи 105.2 настоящего Кодекса, составл"
     },
     {
-      "from": "NK-2:288.2",
-      "to": "NK-1:25.9",
+      "from": "NK-2:287",
+      "to": "FZ-229:288",
       "type": "procedure",
       "weight": 1,
-      "confidence": 0.8,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
-      "paragraph": "1",
+      "paragraph": null,
       "cross": true,
-      "evidence": ") (введена Федеральным законом от 30.09.2013 N 267-ФЗ) 1\\. Участники региональных инвестиционных проектов, указанные в подпункте 1 пункта 1 статьи 25.9 настоящего Кодекса, исчисляю"
+      "evidence": " N 229-ФЗ, от 14.07.2022 N 263-ФЗ) 3\\. Особенности уплаты налога налогоплательщиками, имеющими обособленные подразделения, устанавливаются [статьей 288](#P14165) настоящего Кодекса"
     },
     {
       "from": "NK-2:288.2",
@@ -11695,18 +10939,6 @@
       "paragraph": "1",
       "cross": true,
       "evidence": "кса. 4\\. При прекращении статуса участника регионального инвестиционного проекта по основаниям, указанным в подпунктах 1, 3, 4 и 5 пункта 4 статьи 25.12 настоящего Кодекса, при усл"
-    },
-    {
-      "from": "NK-2:288.2",
-      "to": "NK-1:25.12",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": "2",
-      "cross": true,
-      "evidence": "а от 19.11.2021 N 371-ФЗ) 2\\) при прекращении статуса участника регионального инвестиционного проекта в соответствии с подпунктом 2 пункта 4 статьи 25.12 настоящего Кодекса. 6\\. Пр"
     },
     {
       "from": "NK-2:288.3",
@@ -11737,7 +10969,7 @@
       "to": "FZ-425:105.16",
       "type": "refers",
       "weight": 1,
-      "confidence": 0.7,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": "2",
@@ -11767,18 +10999,6 @@
       "paragraph": null,
       "cross": true,
       "evidence": " по обязательному пенсионному страхованию, которые осуществляются за счет собственных средств фонда и сформированы в порядке, установленном статьей 20.1 Федерального закона от 7 ма"
-    },
-    {
-      "from": "NK-2:296",
-      "to": "FZ-127:15",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "62-ФЗ) 3.5) средства, подлежащие оплате фондом в качестве гарантийных взносов в фонд гарантирования пенсионных накоплений в соответствии со статьей 15 Федерального закона от 28 дек"
     },
     {
       "from": "NK-2:301",
@@ -11878,18 +11098,6 @@
     },
     {
       "from": "NK-2:310",
-      "to": "FZ-425:7",
-      "type": "refers",
-      "weight": 2,
-      "confidence": 0.65,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": " 292-ФЗ \\\"О внесении изменений в отдельные законодательные акты Российской Федерации, признании утратившим силу абзаца шестого части первой статьи 7 Закона Российской Федерации \\\"О"
-    },
-    {
-      "from": "NK-2:310",
       "to": "NK-1:24.2",
       "type": "refers",
       "weight": 1,
@@ -11905,7 +11113,7 @@
       "to": "FZ-425:289",
       "type": "procedure",
       "weight": 1,
-      "confidence": 0.7,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": null,
@@ -11973,11 +11181,23 @@
       "evidence": "ного) налога, на открытый в банке счет налогоплательщика (его уполномоченного представителя) в порядке, аналогичном порядку, установленному статьей 79 настоящего Кодекса для сумм н"
     },
     {
+      "from": "NK-2:325",
+      "to": "FZ-229:261",
+      "type": "procedure",
+      "weight": 1,
+      "confidence": 0.72,
+      "origin": "auto",
+      "direction": "directed",
+      "paragraph": "10",
+      "cross": true,
+      "evidence": "ден Федеральным законом от 27.07.2010 N 229-ФЗ) 7\\. Расходы на выполнение работ по освоению природных ресурсов, предусмотренные [пунктом 10 статьи 261](#P10966) настоящего Кодекса,"
+    },
+    {
       "from": "NK-2:325.1",
       "to": "FZ-425:343.1",
       "type": "refers",
       "weight": 1,
-      "confidence": 0.7,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": null,
@@ -12021,16 +11241,16 @@
       "evidence": "и\\\", имеющие лицензии и иные разрешительные документы на добычу (вылов) водных биологических ресурсов, действующие в порядке, установленном статьей 12 Федерального конституционного"
     },
     {
-      "from": "NK-2:333.7",
-      "to": "NK-1:11.3",
+      "from": "NK-2:333.28",
+      "to": "FZ-229:5",
       "type": "refers",
       "weight": 1,
-      "confidence": 0.8,
+      "confidence": 0.65,
       "origin": "auto",
       "direction": "directed",
       "paragraph": null,
       "cross": true,
-      "evidence": "ализованным разрешениям на добычу объектов животного мира при формировании сальдо единого налогового счета осуществляется в соответствии со статьей 11.3 настоящего Кодекса при усло"
+      "evidence": "трацию иностранного гражданина или лица без гражданства по месту жительства в Российской Федерации, за исключением лиц, указанных в части 3 статьи 5 Федерального закона от 23 мая 2"
     },
     {
       "from": "NK-2:333.35",
@@ -12109,7 +11329,7 @@
       "to": "FZ-425:250",
       "type": "procedure",
       "weight": 1,
-      "confidence": 0.7,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": "18",
@@ -12117,23 +11337,11 @@
       "evidence": "еральным законом от 28.11.2025 N 425-ФЗ) 7\\) при списании кредиторской задолженности по основаниям, предусмотренным [пунктом 18 части второй статьи 250](#P9953) настоящего Кодекса,"
     },
     {
-      "from": "NK-2:333.51",
-      "to": "FZ-425:333.45",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.7,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": "5",
-      "cross": true,
-      "evidence": "025 N 425-ФЗ) Положения настоящего пункта не применяются при определении налоговой базы по участкам недр, указанным в [подпункте 5 пункта 1 статьи 333.45](#P21302) настоящего Кодек"
-    },
-    {
       "from": "NK-2:333.59+333.60",
       "to": "FZ-425:333.58",
       "type": "refers",
       "weight": 1,
-      "confidence": 0.7,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": "1",
@@ -12145,7 +11353,7 @@
       "to": "FZ-425:333.58",
       "type": "refers",
       "weight": 2,
-      "confidence": 0.7,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": "1",
@@ -12204,7 +11412,7 @@
       "from": "NK-2:342.3",
       "to": "NK-1:25.8",
       "type": "procedure",
-      "weight": 4,
+      "weight": 3,
       "confidence": 0.8,
       "origin": "auto",
       "direction": "directed",
@@ -12253,7 +11461,7 @@
       "to": "FZ-425:3.1",
       "type": "defines",
       "weight": 1,
-      "confidence": 0.7,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": "3",
@@ -12265,7 +11473,7 @@
       "to": "FZ-425:3.1",
       "type": "defines",
       "weight": 1,
-      "confidence": 0.7,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": "3",
@@ -12274,10 +11482,22 @@
     },
     {
       "from": "NK-2:343",
+      "to": "FZ-229:343.1",
+      "type": "refers",
+      "weight": 1,
+      "confidence": 0.72,
+      "origin": "auto",
+      "direction": "directed",
+      "paragraph": null,
+      "cross": true,
+      "evidence": "едпринимателя. (в ред. Федерального закона от 27.07.2010 N 229-ФЗ) 4\\. При применении налогоплательщиком налогового вычета, установленного [статьей 343.1](#P23154) настоящего Кодек"
+    },
+    {
+      "from": "NK-2:343",
       "to": "FZ-425:343.9",
       "type": "refers",
       "weight": 1,
-      "confidence": 0.7,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": null,
@@ -12381,18 +11601,6 @@
       "evidence": "а, налоговый вычет для организации, признаваемой налогоплательщиком - участником соглашения о защите и поощрении капиталовложений, предусмотренный статьей 25.18 настоящего Кодекса."
     },
     {
-      "from": "NK-2:346.3",
-      "to": "GK-2:12.1",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.7,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "ого закона от 30 ноября 1994 года N 52-ФЗ \\\"О введении в действие части первой Гражданского кодекса Российской Федерации\\\" с учетом части 4 статьи 12.1 Федерального конституционног"
-    },
-    {
       "from": "NK-2:346.6",
       "to": "NK-1:105.3",
       "type": "procedure",
@@ -12421,7 +11629,7 @@
       "to": "FZ-425:19",
       "type": "refers",
       "weight": 1,
-      "confidence": 0.9,
+      "confidence": 0.92,
       "origin": "auto",
       "direction": "directed",
       "paragraph": null,
@@ -12429,40 +11637,16 @@
       "evidence": ".11.2025 N 425-ФЗ) Налогоплательщики - организации, сведения о которых внесены в единый государственный реестр юридических лиц на основании статьи 19 Федерального закона от 30 нояб"
     },
     {
-      "from": "NK-2:346.13",
-      "to": "GK-2:12.1",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.7,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "ого закона от 30 ноября 1994 года N 52-ФЗ \\\"О введении в действие части первой Гражданского кодекса Российской Федерации\\\" с учетом части 4 статьи 12.1 Федерального конституционног"
-    },
-    {
       "from": "NK-2:346.16",
       "to": "FZ-425:252",
       "type": "procedure",
       "weight": 1,
-      "confidence": 0.7,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": "1",
       "cross": true,
       "evidence": "ФЗ) 2\\. Расходы, указанные в [пункте 1](#P24147) настоящей статьи, принимаются при условии их соответствия критериям, указанным в [пункте 1 статьи 252](#P10403) настоящего Кодекса."
-    },
-    {
-      "from": "NK-2:346.17",
-      "to": "GK-2:1202",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.7,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "вании Федерального закона от 30 ноября 1994 года N 52-ФЗ \\\"О введении в действие части первой Гражданского кодекса Российской Федерации\\\" и статьи 1202 части третьей Гражданского к"
     },
     {
       "from": "NK-2:346.17",
@@ -12475,18 +11659,6 @@
       "paragraph": "7",
       "cross": true,
       "evidence": "ащими уплате в данном налоговом периоде в том числе в случае, если срок уплаты таких страховых взносов приходится в соответствии с пунктом 7 статьи 6.1 настоящего Кодекса на первый"
-    },
-    {
-      "from": "NK-2:346.18",
-      "to": "NK-1:105.3",
-      "type": "procedure",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "ого закона от 21.07.2005 N 101-ФЗ) 4\\. Доходы, полученные в натуральной форме, учитываются по рыночным ценам, определяемым с учетом положений статьи 105.3 настоящего Кодекса. (п. 4"
     },
     {
       "from": "NK-2:346.21",
@@ -12525,11 +11697,23 @@
       "evidence": "с содержанием и эксплуатацией имущества, которое было передано государством в безвозмездное пользование налогоплательщику в соответствии со статьей 11 Федерального закона \\\"О согла"
     },
     {
+      "from": "NK-2:346.40",
+      "to": "FZ-229:83",
+      "type": "refers",
+      "weight": 1,
+      "confidence": 0.92,
+      "origin": "auto",
+      "direction": "directed",
+      "paragraph": null,
+      "cross": true,
+      "evidence": "торых он состоит на учете, по его местонахождению. (в ред. Федерального закона от 27.07.2010 N 229-ФЗ) Налогоплательщики, в соответствии со статьей 83 настоящего Кодекса отнесенные"
+    },
+    {
       "from": "NK-2:346.44+346.45",
       "to": "FZ-425:346.43",
       "type": "refers",
       "weight": 1,
-      "confidence": 0.7,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": "5",
@@ -12649,7 +11833,7 @@
       "to": "FZ-425:419",
       "type": "procedure",
       "weight": 1,
-      "confidence": 0.7,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": "1",
@@ -12694,22 +11878,10 @@
     },
     {
       "from": "NK-2:430",
-      "to": "FZ-425:210",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.7,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "онов от 04.08.2023 N 427-ФЗ, от 28.11.2025 N 425-ФЗ) 1\\) для плательщиков, уплачивающих налог на доходы физических лиц, - в соответствии со [статьей 210](#P6651) настоящего Кодекса"
-    },
-    {
-      "from": "NK-2:430",
       "to": "FZ-425:346.15",
       "type": "refers",
       "weight": 2,
-      "confidence": 0.7,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": null,
@@ -12733,7 +11905,7 @@
       "to": "FZ-425:419",
       "type": "procedure",
       "weight": 1,
-      "confidence": 0.7,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": "1",
@@ -13125,18 +12297,6 @@
       "evidence": "айма, в случаях, когда заемщик не возвращает в срок сумму займа, на эту сумму подлежат уплате проценты в размере, предусмотренном пунктом 1 статьи 395 настоящего Кодекса, со дня, к"
     },
     {
-      "from": "GK-2:818+819",
-      "to": "UPK:414",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "ред. Федерального закона от 26.07.2017 N 212-ФЗ) 2\\. Замена долга заемным обязательством осуществляется с соблюдением требований о новации (статья 414) и совершается в форме, преду"
-    },
-    {
       "from": "GK-2:821.1+822",
       "to": "UPK:465",
       "type": "refers",
@@ -13147,18 +12307,6 @@
       "paragraph": null,
       "cross": true,
       "evidence": "качестве, о таре и (или) об упаковке предоставляемых вещей должны исполняться в соответствии с правилами о договоре купли-продажи товаров ([статьи 465](#P119) - [485](#P268)), если"
-    },
-    {
-      "from": "GK-2:834",
-      "to": "UPK:426",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "ного закона от 26.07.2017 N 212-ФЗ) 2\\. Договор банковского вклада, в котором вкладчиком является гражданин, признается публичным договором (статья 426). 3\\. К отношениям банка и в"
     },
     {
       "from": "GK-2:835",
@@ -13267,18 +12415,6 @@
       "paragraph": null,
       "cross": true,
       "evidence": "ственности хранителя 1\\. Хранитель отвечает за утрату, недостачу или повреждение вещей, принятых на хранение, по основаниям, предусмотренным статьей 401 настоящего Кодекса. Професс"
-    },
-    {
-      "from": "GK-2:907+908",
-      "to": "UPK:426",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "аконов от 10.01.2003 N 15-ФЗ, от 23.05.2018 N 116-ФЗ) 2\\. Договор складского хранения, заключаемый товарным складом общего пользования, признается публичным договором (статья 426)."
     },
     {
       "from": "GK-2:919+920",
@@ -13509,18 +12645,6 @@
       "evidence": "ения уголовного преследования в отношении всех подозреваемых или обвиняемых, за исключением случаев, предусмотренных [пунктом 1 части первой статьи 27](#P521) настоящего Кодекса. ("
     },
     {
-      "from": "UPK:30",
-      "to": "NK-2:231",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "ловного кодекса Российской Федерации, при наличии ходатайства обвиняемого, заявленного до назначения судебного заседания в соответствии со [статьей 231](#P4009) настоящего Кодекса;"
-    },
-    {
       "from": "UPK:40",
       "to": "NK-2:157",
       "type": "refers",
@@ -13531,18 +12655,6 @@
       "paragraph": null,
       "cross": true,
       "evidence": "ожных следственных действий по уголовным делам, по которым производство предварительного следствия обязательно, - в порядке, установленном [статьей 157](#P2830) настоящего Кодекса;"
-    },
-    {
-      "from": "UPK:47",
-      "to": "NK-1:27",
-      "type": "procedure",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": " Федерального закона от 30.12.2015 N 440-ФЗ) 15\\) возражать против прекращения уголовного дела по основаниям, предусмотренным [частью второй статьи 27](#P518) настоящего Кодекса; 1"
     },
     {
       "from": "UPK:81",
@@ -13617,18 +12729,6 @@
       "evidence": "порядка в судебном заседании на них может быть наложено денежное взыскание в размере до двух тысяч пятисот рублей в порядке, установленном [статьей 118](#P2274) настоящего Кодекса."
     },
     {
-      "from": "UPK:119",
-      "to": "NK-2:208",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": "3.1",
-      "cross": true,
-      "evidence": "8.07.2012 N 143-ФЗ) 1.1. Правом заявить ходатайство о приостановлении производства по уголовному делу на основании [пункта 3.1 части первой статьи 208](#P3489), [пункта 5 части пер"
-    },
-    {
       "from": "UPK:125.1",
       "to": "NK-1:27",
       "type": "procedure",
@@ -13653,30 +12753,6 @@
       "evidence": "тренным [пунктами 1](#P480), [2](#P483), [5](#P490) и [6 части первой статьи 24](#P492) и [пунктами 1](#P521) и [4](#P524) - [6 части первой статьи 27](#P530) настоящего Кодекса; ("
     },
     {
-      "from": "UPK:141",
-      "to": "NK-2:306",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "тьей 143](#P2581) настоящего Кодекса. 6\\. Заявитель предупреждается об уголовной ответственности за заведомо ложный донос в соответствии со статьей 306 Уголовного кодекса Российско"
-    },
-    {
-      "from": "UPK:151",
-      "to": "NK-2:294",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "нов принудительного исполнения Российской Федерации - по уголовным делам о преступлениях, предусмотренных статьями 157 и 177, частью первой статьи 294, статьей 297, частью первой с"
-    },
-    {
       "from": "UPK:151",
       "to": "NK-2:311",
       "type": "refers",
@@ -13687,42 +12763,6 @@
       "paragraph": null,
       "cross": true,
       "evidence": "ой Федерации - по уголовным делам о преступлениях, предусмотренных статьями 157 и 177, частью первой статьи 294, статьей 297, частью первой статьи 311, статьями 312 и 315 Уголовног"
-    },
-    {
-      "from": "UPK:151",
-      "to": "NK-2:168",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "ателями органов государственного пожарного надзора федеральной противопожарной службы - по уголовным делам о преступлениях, предусмотренных статьей 168, частью первой статьи 219, ч"
-    },
-    {
-      "from": "UPK:151",
-      "to": "NK-2:261",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "деральной противопожарной службы - по уголовным делам о преступлениях, предусмотренных статьей 168, частью первой статьи 219, частью первой статьи 261 Уголовного кодекса Российской"
-    },
-    {
-      "from": "UPK:153.1+154",
-      "to": "NK-2:208",
-      "type": "procedure",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": "1",
-      "cross": true,
-      "evidence": "мых или обвиняемых по уголовным делам о преступлениях, совершенных в соучастии, в случаях, указанных в [пунктах 1](#P3484) - [4 части первой статьи 208](#P3491) настоящего Кодекса;"
     },
     {
       "from": "UPK:170",
@@ -13764,7 +12804,7 @@
       "from": "UPK:209",
       "to": "NK-2:208",
       "type": "procedure",
-      "weight": 4,
+      "weight": 2,
       "confidence": 0.8,
       "origin": "auto",
       "direction": "directed",
@@ -13773,22 +12813,10 @@
       "evidence": "рых наложен арест. В случае приостановления предварительного следствия по основаниям, предусмотренным [пунктами 3](#P3487) - [4 части первой статьи 208](#P3491) настоящего Кодекса,"
     },
     {
-      "from": "UPK:212",
-      "to": "NK-1:27",
-      "type": "procedure",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": "1",
-      "cross": true,
-      "evidence": "рекращения уголовного дела по основаниям, предусмотренным [пунктами 1](#P480) и [2 части первой статьи 24](#P483) и [пунктом 1 части первой статьи 27](#P521) настоящего Кодекса, сл"
-    },
-    {
       "from": "UPK:213",
       "to": "NK-1:27",
       "type": "refers",
-      "weight": 2,
+      "weight": 1,
       "confidence": 0.8,
       "origin": "auto",
       "direction": "directed",
@@ -13869,18 +12897,6 @@
       "evidence": "30) настоящего Кодекса; 2\\) в случае отказа обвинителя от обвинения в соответствии с [частью седьмой статьи 246](#P4264) или [частью третьей статьи 249](#P4298) настоящего Кодекса;"
     },
     {
-      "from": "UPK:267+268",
-      "to": "FZ-229:82.1",
-      "type": "procedure",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "0-ФЗ) Председательствующий разъясняет подсудимому его права в судебном заседании, предусмотренные [статьей 47](#P1102) настоящего Кодекса и статьей 82.1 Уголовного кодекса Российск"
-    },
-    {
       "from": "UPK:274+275",
       "to": "NK-2:275",
       "type": "refers",
@@ -13915,42 +12931,6 @@
       "paragraph": null,
       "cross": true,
       "evidence": "я 277. Допрос потерпевшего 1\\. Потерпевший допрашивается в порядке, установленном частями [второй](#P4538) - [шестой статьи 278](#P4542) и [статьей 278.1](#P4546) настоящего Кодекс"
-    },
-    {
-      "from": "UPK:288+289",
-      "to": "NK-2:181",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "овления суда. (в ред. Федерального закона от 30.10.2018 N 376-ФЗ) 2\\. Суд производит следственный эксперимент в соответствии с требованиями [статьи 181](#P3155) настоящего Кодекса."
-    },
-    {
-      "from": "UPK:299",
-      "to": "FZ-127:15",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": " основания для изменения категории преступления, в совершении которого обвиняется подсудимый, на менее тяжкую в соответствии с частью шестой статьи 15 Уголовного кодекса Российской"
-    },
-    {
-      "from": "UPK:299",
-      "to": "FZ-229:72.1",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "ФЗ; 7.2) нуждается ли подсудимый в прохождении лечения от наркомании и медицинской и (или) социальной реабилитации в порядке, установленном статьей 72.1 Уголовного кодекса Российск"
     },
     {
       "from": "UPK:302",
@@ -13989,18 +12969,6 @@
       "evidence": "головного дела, о чем делается соответствующая запись в протоколе ознакомления с материалами уголовного дела в соответствии с [частью второй статьи 218](#P3645) настоящего Кодекса;"
     },
     {
-      "from": "UPK:317+317.1",
-      "to": "NK-2:316",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "Статья 317. Пределы обжалования приговора (в ред. Федерального закона от 29.12.2010 N 433-ФЗ) Приговор, постановленный в соответствии со [статьей 316](#P4942) настоящего Кодекса,"
-    },
-    {
       "from": "UPK:317.7",
       "to": "NK-2:316",
       "type": "refers",
@@ -14011,18 +12979,6 @@
       "paragraph": null,
       "cross": true,
       "evidence": "овление приговора в отношении подсудимого, с которым заключено досудебное соглашение о сотрудничестве, проводятся в порядке, установленном [статьей 316](#P4942) настоящего Кодекса,"
-    },
-    {
-      "from": "UPK:318",
-      "to": "NK-2:306",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "дается уголовное дело частного обвинения. Заявитель предупреждается об уголовной ответственности за заведомо ложный донос в соответствии со статьей 306 Уголовного кодекса Российско"
     },
     {
       "from": "UPK:329",
@@ -14133,52 +13089,28 @@
       "evidence": "а. Судья, оставшийся при особом мнении, вправе изложить его в письменной форме в совещательной комнате с соблюдением требований [части пятой статьи 301](#P4742) настоящего Кодекса."
     },
     {
-      "from": "UPK:392+393",
-      "to": "NK-2:315",
+      "from": "UPK:397",
+      "to": "GK-2:80",
       "type": "refers",
       "weight": 1,
-      "confidence": 0.8,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": null,
       "cross": true,
-      "evidence": "рритории Российской Федерации. 2\\. Неисполнение приговора, определения, постановления суда влечет за собой ответственность, предусмотренную статьей 315 Уголовного кодекса Российско"
+      "evidence": "4.2 введен Федеральным законом от 29.02.2012 N 14-ФЗ) 5\\) о замене неотбытой части наказания более мягким видом наказания в соответствии со статьей 80 Уголовного кодекса Российской"
     },
     {
       "from": "UPK:397",
-      "to": "NK-1:79",
-      "type": "refers",
-      "weight": 2,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "и 140 Уголовно-исполнительного кодекса Российской Федерации; 4\\) об условно-досрочном освобождении от отбывания наказания в соответствии со статьей 79 Уголовного кодекса Российской"
-    },
-    {
-      "from": "UPK:397",
-      "to": "FZ-229:10",
+      "to": "GK-2:10",
       "type": "refers",
       "weight": 1,
-      "confidence": 0.8,
+      "confidence": 0.72,
       "origin": "auto",
       "direction": "directed",
       "paragraph": null,
       "cross": true,
       "evidence": "13\\) об освобождении от наказания или о смягчении наказания вследствие издания уголовного закона, имеющего обратную силу, в соответствии со статьей 10 Уголовного кодекса Российской"
-    },
-    {
-      "from": "UPK:397",
-      "to": "FZ-229:82.1",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "ации; (п. 17.1 введен Федеральным законом от 21.02.2010 N 16-ФЗ) 17.2) об отмене отсрочки отбывания наказания осужденному в соответствии со статьей 82.1 Уголовного кодекса Российск"
     },
     {
       "from": "UPK:398",
@@ -14191,30 +13123,6 @@
       "paragraph": null,
       "cross": true,
       "evidence": "рому впервые назначено наказание в виде лишения свободы за совершение преступлений, предусмотренных частью первой статьи 228, частью первой статьи 231 и статьей 233 Уголовного коде"
-    },
-    {
-      "from": "UPK:398",
-      "to": "FZ-127:233",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "назначено наказание в виде лишения свободы за совершение преступлений, предусмотренных частью первой статьи 228, частью первой статьи 231 и статьей 233 Уголовного кодекса Российско"
-    },
-    {
-      "from": "UPK:399",
-      "to": "NK-2:432",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": ".1 введен Федеральным законом от 05.05.2014 N 104-ФЗ; в ред. Федерального закона от 23.04.2018 N 96-ФЗ) 6\\) в соответствии с [частью второй статьи 432](#P6570) настоящего Кодекса -"
     },
     {
       "from": "UPK:414",
@@ -14232,25 +13140,13 @@
       "from": "UPK:415",
       "to": "NK-2:413",
       "type": "procedure",
-      "weight": 3,
+      "weight": 2,
       "confidence": 0.8,
       "origin": "auto",
       "direction": "directed",
       "paragraph": "1",
       "cross": true,
       "evidence": "рения других уголовных дел. 3\\. Если в сообщении имеется ссылка на наличие обстоятельств, указанных в [пунктах 1](#P6372) - [3 части третьей статьи 413](#P6374) настоящего Кодекса,"
-    },
-    {
-      "from": "UPK:446.1+446.2",
-      "to": "FZ-229:104.5",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "обжалования постановления и последствия уклонения от уплаты судебного штрафа. Размер судебного штрафа определяется судьей в соответствии со статьей 104.5 Уголовного кодекса Российс"
     },
     {
       "from": "UPK:448",
@@ -14265,18 +13161,6 @@
       "evidence": "е в лишении неприкосновенности указанного лица влечет за собой прекращение уголовного преследования в соответствии с [пунктом 6 части первой статьи 27](#P530) настоящего Кодекса. ("
     },
     {
-      "from": "UPK:448",
-      "to": "NK-2:305",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "87-ФЗ, от 28.12.2010 N 404-ФЗ) 8\\. Не допускается возбуждение в отношении судьи уголовного дела по признакам преступления, предусмотренного статьей 305 Уголовного кодекса Российско"
-    },
-    {
       "from": "FZ-229:9.1",
       "to": "FZ-127:223.2",
       "type": "refers",
@@ -14287,18 +13171,6 @@
       "paragraph": "2",
       "cross": true,
       "evidence": "едоставление которой для целей внесудебного банкротства предусмотрено подпунктом 2 пункта 3.1, или подпунктом 2 пункта 3.2, или пунктом 3.3 статьи 223.2 Федерального закона от 26 о"
-    },
-    {
-      "from": "FZ-229:30",
-      "to": "NK-2:315",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "нитель в постановлении о возбуждении исполнительного производства предупреждает указанных лиц об уголовной ответственности, предусмотренной статьей 315 Уголовного кодекса Российско"
     },
     {
       "from": "FZ-229:31",
@@ -14520,7 +13392,7 @@
       "from": "FZ-127:13",
       "to": "UPK:28",
       "type": "refers",
-      "weight": 2,
+      "weight": 1,
       "confidence": 0.8,
       "origin": "auto",
       "direction": "directed",
@@ -14604,7 +13476,7 @@
       "from": "FZ-127:48",
       "to": "FZ-229:33",
       "type": "refers",
-      "weight": 3,
+      "weight": 2,
       "confidence": 0.8,
       "origin": "auto",
       "direction": "directed",
@@ -14817,18 +13689,6 @@
       "evidence": "5\\. Сообщение о прекращении деятельности временной администрации подлежит опубликованию контрольным органом в порядке, установленном [статьей 28](#P1644) настоящего Федеральн"
     },
     {
-      "from": "FZ-127:184.3",
-      "to": "NK-2:181",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "зации, главным бухгалтером филиала страховой организации производятся в размере, не превышающем минимального размера выплат, установленного статьей 181 Трудового кодекса Российской"
-    },
-    {
       "from": "FZ-127:184.5",
       "to": "UPK:28",
       "type": "refers",
@@ -14851,18 +13711,6 @@
       "paragraph": null,
       "cross": true,
       "evidence": "яющим страховым организациям путем опубликования уведомления о передаче страхового портфеля страховой организации в порядке, установленном [статьей 28](#P1644) настоящего Федеральн"
-    },
-    {
-      "from": "FZ-127:186.1",
-      "to": "NK-2:181",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "бухгалтером филиала негосударственного пенсионного фонда производятся в размере, не превышающем минимального размера выплат, установленного статьей 181 Трудового кодекса Российской"
     },
     {
       "from": "FZ-127:186.1",
@@ -14949,18 +13797,6 @@
       "evidence": "и (участники), члены совета директоров (наблюдательного совета), руководитель кредитной организации, признаваемый таковым в соответствии со статьей 11.1 Федерального закона \\\"О бан"
     },
     {
-      "from": "FZ-127:189.49",
-      "to": "NK-2:181",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.8,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "зации, главным бухгалтером филиала кредитной организации производятся в размере, не превышающем минимального размера выплат, установленного статьей 181 Трудового кодекса Российской"
-    },
-    {
       "from": "FZ-127:189.50",
       "to": "FZ-229:10",
       "type": "refers",
@@ -15000,7 +13836,7 @@
       "from": "FZ-127:189.57",
       "to": "GK-2:447",
       "type": "refers",
-      "weight": 2,
+      "weight": 1,
       "confidence": 0.7,
       "origin": "auto",
       "direction": "directed",
@@ -15036,7 +13872,7 @@
       "from": "FZ-127:201.1",
       "to": "UPK:28",
       "type": "refers",
-      "weight": 3,
+      "weight": 2,
       "confidence": 0.8,
       "origin": "auto",
       "direction": "directed",
@@ -15105,18 +13941,6 @@
       "evidence": "ы с недобросовестностью гражданина-должника и по которым может быть признано необоснованным применение положений абзаца второго части первой статьи 446 Гражданского процессуального"
     },
     {
-      "from": "FZ-127:213.28",
-      "to": "GK-2:53",
-      "type": "refers",
-      "weight": 1,
-      "confidence": 0.7,
-      "origin": "auto",
-      "direction": "directed",
-      "paragraph": null,
-      "cross": true,
-      "evidence": "гражданином убытков, причиненных им юридическому лицу, участником которого был или членом коллегиальных органов которого являлся гражданин (статьи 53 и 53.1 Гражданского кодекса Ро"
-    },
-    {
       "from": "FZ-127:223.2",
       "to": "FZ-229:9",
       "type": "refers",
@@ -15145,7 +13969,7 @@
       "to": "FZ-229:46",
       "type": "refers",
       "weight": 1,
-      "confidence": 0.9,
+      "confidence": 0.92,
       "origin": "auto",
       "direction": "directed",
       "paragraph": "4",
