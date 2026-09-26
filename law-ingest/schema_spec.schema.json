@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Schema Spec — handover Фёдор → Отрисовщик",
+  "description": "Спецификация схемы. Содержание (нормы, связи, этапы, участники) — только из этой спеки и чек-листа; рендерер не имеет права ничего придумывать.",
+  "type": "object",
+  "required": ["kind", "title", "source_norm", "verdict"],
+  "properties": {
+    "kind": { "enum": ["swimlane", "flow", "graph"] },
+    "title": { "type": "string" },
+    "subtitle": { "type": "string" },
+    "source_norm": { "type": "string", "description": "напр. «229-ФЗ, ст. 12, ч. 1 (ред. 04.08.2026)»" },
+    "checklist_ref": { "type": "string", "description": "путь к чек-листу из нормы (напр. law-ingest/id_sources.json)" },
+    "lanes": {
+      "type": "array",
+      "items": { "type": "object", "required": ["id", "title"],
+        "properties": { "id": {"type":"string"}, "title": {"type":"string"}, "highlight": {"type":"boolean"} } }
+    },
+    "stages": {
+      "type": "array",
+      "items": { "type": "object", "required": ["id", "title"],
+        "properties": { "id": {"type":"string"}, "title": {"type":"string"}, "norms": {"type":"string"} } }
+    },
+    "steps": {
+      "type": "array",
+      "items": { "type": "object", "required": ["lane", "stage", "text"],
+        "properties": { "lane": {"type":"string"}, "stage": {"type":"string"}, "norm": {"type":"string"}, "text": {"type":"string"} } }
+    },
+    "relations": {
+      "type": "array",
+      "items": { "type": "object",
+        "properties": { "from": {"type":"string"}, "to": {"type":"string"}, "type": {"type":"string"}, "curated": {"type":"boolean"} } }
+    },
+    "verdict": { "type": "string", "description": "вердикт верификатора, напр. «ПРИНЯТ (fz425-verifier, 4/4)»" }
+  }
+}
