@@ -9,9 +9,11 @@
 """
 from pathlib import Path
 from xml.sax.saxutils import escape
+import json
 
 BASE = Path(__file__).parent
 OUT = BASE / "Fedor_Swimlane_ИД.svg"
+CL = json.loads((BASE / "law-ingest/id_sources.json").read_text(encoding="utf-8"))
 FS = "DejaVu Sans, Arial, sans-serif"
 
 M = 36
@@ -86,7 +88,13 @@ def main():
     col_x0 = M + HDR_W
     W = col_x0 + COL_W * len(STAGES) + M
     grid_top = TITLE_H + STAGE_H
-    H = grid_top + ROW_H * len(LANES) + 120
+    grid_end = grid_top + ROW_H * len(LANES)
+    # панель контрольного перечня (виды ИД из ст.12 ч.1) — генерируется из чек-листа
+    cl_items = CL["items"]
+    CL_COLS = 2
+    cl_rows = (len(cl_items) + CL_COLS - 1) // CL_COLS
+    PANEL_H = 60 + cl_rows * 24
+    H = grid_end + 24 + PANEL_H + 96
 
     s = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" '
          f'font-family="{FS}">',
@@ -156,6 +164,16 @@ def main():
             mx = (sx + ex) / 2
             s.append(f'<polyline points="{sx+2:.0f},{sy:.0f} {mx:.0f},{sy:.0f} {mx:.0f},{ey:.0f} {ex-4:.0f},{ey:.0f}" '
                      f'fill="none" stroke="{col}" stroke-width="1.8" marker-end="url(#{mk})"/>')
+
+    # панель «Виды ИД (ст. 12 ч. 1)» — полный перечень (из law-ingest/id_sources.json)
+    py = grid_end + 24
+    s.append(f'<rect x="{M}" y="{py}" width="{W-2*M}" height="{PANEL_H}" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>')
+    s.append(txt(M + 16, py + 26, f"Виды ИД по ст. 12 ч. 1 229-ФЗ — полный перечень ({len(cl_items)}) · покрытие {len(cl_items)}/{len(cl_items)} · цитаты сверены с корпусом", 13, INK, "700"))
+    col_w2 = (W - 2 * M - 32) // CL_COLS
+    for i, it in enumerate(cl_items):
+        cx = M + 16 + (i % CL_COLS) * (col_w2 + 16)
+        cy = py + 52 + (i // CL_COLS) * 24
+        s.append(txt(cx, cy, f"п. {it['p']} · {it['who']} — {it['doc']}", 12.5, DIM))
 
     # легенда
     ly = H - 74
