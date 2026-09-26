@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="1000" viewBox="0 0 1280 1000" font-family="DejaVu Sans, Arial, sans-serif">
+<defs><filter id="sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.08"/></filter><marker id="a" markerWidth="10" markerHeight="10" refX="7" refY="3.2" orient="auto"><path d="M0,0 L8,3.2 L0,6.4 z" fill="#94a3b8"/></marker><marker id="ar" markerWidth="10" markerHeight="10" refX="7" refY="3.2" orient="auto"><path d="M0,0 L8,3.2 L0,6.4 z" fill="#dc2626"/></marker></defs>
+<rect width="1280" height="1000" fill="#ffffff"/>
+<text x="40" y="46" font-family="DejaVu Sans, Arial, sans-serif" font-size="24" fill="#0f172a" font-weight="700" text-anchor="start">Пайплайн создания схем по ИП (исполнительному производству)</text>
+<text x="40" y="74" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" fill="#475569" font-weight="400" text-anchor="start">Принцип: содержание — только из нормы и спеки; визуал — отдельный агент; отдача — только после гейтов.</text>
+<rect x="260.0" y="96" width="760" height="74" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#sh)"/>
+<rect x="260.0" y="110" width="6" height="46" rx="3" fill="#64748b"/>
+<circle cx="300.0" cy="133.0" r="20" fill="#64748b" opacity="0.14"/>
+<text x="300" y="139" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" fill="#64748b" font-weight="700" text-anchor="middle">1</text>
+<text x="336" y="128" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" fill="#0f172a" font-weight="700" text-anchor="start">НОРМА — корпус</text>
+<text x="336" y="150" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#475569" font-weight="400" text-anchor="start">law_chunks.json + laws.json · единственный источник содержания</text>
+<line x1="640" y1="172" x2="640" y2="200" stroke="#94a3b8" stroke-width="2" marker-end="url(#a)"/>
+<rect x="260.0" y="204" width="760" height="74" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#sh)"/>
+<rect x="260.0" y="218" width="6" height="46" rx="3" fill="#0d9488"/>
+<circle cx="300.0" cy="241.0" r="20" fill="#0d9488" opacity="0.14"/>
+<text x="300" y="247" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" fill="#0d9488" font-weight="700" text-anchor="middle">2</text>
+<text x="336" y="236" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" fill="#0f172a" font-weight="700" text-anchor="start">ЧЕК-ЛИСТ ИЗ НОРМЫ</text>
+<text x="336" y="258" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#475569" font-weight="400" text-anchor="start">law-ingest/id_sources.json — позиции с цитатами (проверяются по корпусу)</text>
+<line x1="640" y1="280" x2="640" y2="308" stroke="#94a3b8" stroke-width="2" marker-end="url(#a)"/>
+<rect x="260.0" y="312" width="760" height="74" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#sh)"/>
+<rect x="260.0" y="326" width="6" height="46" rx="3" fill="#2563eb"/>
+<circle cx="300.0" cy="349.0" r="20" fill="#2563eb" opacity="0.14"/>
+<text x="300" y="355" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" fill="#2563eb" font-weight="700" text-anchor="middle">3</text>
+<text x="336" y="344" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" fill="#0f172a" font-weight="700" text-anchor="start">ФЁДОР (fz425-agent)</text>
+<text x="336" y="366" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#475569" font-weight="400" text-anchor="start">формирует содержание и СПЕКУ (JSON по schema_spec.schema.json)</text>
+<line x1="640" y1="388" x2="640" y2="416" stroke="#94a3b8" stroke-width="2" marker-end="url(#a)"/>
+<rect x="260.0" y="420" width="760" height="74" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#sh)"/>
+<rect x="260.0" y="434" width="6" height="46" rx="3" fill="#7c3aed"/>
+<circle cx="300.0" cy="457.0" r="20" fill="#7c3aed" opacity="0.14"/>
+<text x="300" y="463" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" fill="#7c3aed" font-weight="700" text-anchor="middle">4</text>
+<text x="336" y="452" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" fill="#0f172a" font-weight="700" text-anchor="start">fz425-verifier</text>
+<text x="336" y="474" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#475569" font-weight="400" text-anchor="start">проверяет факты спеки: ПРИНЯТ / ТРЕБУЕТ ДОРАБОТКИ</text>
+<line x1="640" y1="496" x2="640" y2="524" stroke="#94a3b8" stroke-width="2" marker-end="url(#a)"/>
+<rect x="260.0" y="528" width="760" height="74" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#sh)"/>
+<rect x="260.0" y="542" width="6" height="46" rx="3" fill="#d97706"/>
+<circle cx="300.0" cy="565.0" r="20" fill="#d97706" opacity="0.14"/>
+<text x="300" y="571" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" fill="#d97706" font-weight="700" text-anchor="middle">5</text>
+<text x="336" y="560" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" fill="#0f172a" font-weight="700" text-anchor="start">ОТРИСОВЩИК (schema-render-agent)</text>
+<text x="336" y="582" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#475569" font-weight="400" text-anchor="start">генератор build_*.py → SVG → chrome → PNG. Без спеки — ОТКАЗ</text>
+<line x1="640" y1="604" x2="640" y2="632" stroke="#94a3b8" stroke-width="2" marker-end="url(#a)"/>
+<rect x="260.0" y="636" width="760" height="74" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#sh)"/>
+<rect x="260.0" y="650" width="6" height="46" rx="3" fill="#dc2626"/>
+<circle cx="300.0" cy="673.0" r="20" fill="#dc2626" opacity="0.14"/>
+<text x="300" y="679" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" fill="#dc2626" font-weight="700" text-anchor="middle">6</text>
+<text x="336" y="668" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" fill="#0f172a" font-weight="700" text-anchor="start">ГЕЙТ 1 — check_scheme_qa.py</text>
+<text x="336" y="690" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#475569" font-weight="400" text-anchor="start">структура (нужные подписи) + геометрия (наложения/выход, chrome CDP)</text>
+<line x1="640" y1="712" x2="640" y2="740" stroke="#94a3b8" stroke-width="2" marker-end="url(#a)"/>
+<rect x="260.0" y="744" width="760" height="74" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#sh)"/>
+<rect x="260.0" y="758" width="6" height="46" rx="3" fill="#dc2626"/>
+<circle cx="300.0" cy="781.0" r="20" fill="#dc2626" opacity="0.14"/>
+<text x="300" y="787" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" fill="#dc2626" font-weight="700" text-anchor="middle">7</text>
+<text x="336" y="776" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" fill="#0f172a" font-weight="700" text-anchor="start">ГЕЙТ 2 — check_scheme_completeness.py</text>
+<text x="336" y="798" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#475569" font-weight="400" text-anchor="start">покрытие чек-листа + целостность цитат по корпусу</text>
+<line x1="640" y1="820" x2="640" y2="848" stroke="#94a3b8" stroke-width="2" marker-end="url(#a)"/>
+<rect x="260.0" y="852" width="760" height="74" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#sh)"/>
+<rect x="260.0" y="866" width="6" height="46" rx="3" fill="#16a34a"/>
+<circle cx="300.0" cy="889.0" r="20" fill="#16a34a" opacity="0.14"/>
+<text x="300" y="895" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" fill="#16a34a" font-weight="700" text-anchor="middle">8</text>
+<text x="336" y="884" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" fill="#0f172a" font-weight="700" text-anchor="start">main (курьер) → пользователь</text>
+<text x="336" y="906" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#475569" font-weight="400" text-anchor="start">отдача только при ✅ обоих гейтов</text>
+<polyline points="260.0,673 226.0,673 226.0,565 258.0,565" fill="none" stroke="#dc2626" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#ar)"/>
+<text x="218" y="619" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#dc2626" font-weight="700" text-anchor="end">❌ правка</text>
+<polyline points="260.0,781 226.0,781 226.0,565 258.0,565" fill="none" stroke="#dc2626" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#ar)"/>
+<text x="218" y="673" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#dc2626" font-weight="700" text-anchor="end">❌ правка</text>
+<polyline points="260.0,457 226.0,457 226.0,349 258.0,349" fill="none" stroke="#dc2626" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#ar)"/>
+<text x="218" y="403" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#dc2626" font-weight="700" text-anchor="end">ТРЕБУЕТ</text>
+<text x="40" y="986" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#475569" font-weight="400" text-anchor="start">Гейты обязательны: без ✅ обоих схема не отдаётся. Роли не смешиваются: контент ≠ визуал.</text>
+</svg>
