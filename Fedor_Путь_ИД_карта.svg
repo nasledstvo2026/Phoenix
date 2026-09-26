@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1558" viewBox="0 0 1500 1558" font-family="DejaVu Sans, Arial, sans-serif">
+<defs><filter id="sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08"/></filter></defs>
+<rect width="1500" height="1558" fill="#f7f9fc"/>
+<text x="40" y="56" font-family="DejaVu Sans, Arial, sans-serif" font-size="28" fill="#0f172a" font-weight="700" text-anchor="start">Путь исполнительного документа: от возникновения до завершения</text>
+<text x="40" y="86" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" fill="#475569" font-weight="400" text-anchor="start">Каждый этап — через свой ФЗ. Золотым выделена зона ответственности банка.</text>
+<rect x="40" y="118" width="172.8" height="26" rx="13" fill="#0d9488" opacity="0.12"/>
+<circle cx="54" cy="131" r="6" fill="#0d9488"/>
+<text x="66" y="136" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" fill="#475569" font-weight="600" text-anchor="start">старт (источники)</text>
+<rect x="224.8" y="118" width="147.60000000000002" height="26" rx="13" fill="#2563eb" opacity="0.12"/>
+<circle cx="238.8" cy="131" r="6" fill="#2563eb"/>
+<text x="251" y="136" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" fill="#475569" font-weight="600" text-anchor="start">229-ФЗ — этапы</text>
+<rect x="384.40000000000003" y="118" width="189.6" height="26" rx="13" fill="#db2777" opacity="0.12"/>
+<circle cx="398.40000000000003" cy="131" r="6" fill="#db2777"/>
+<text x="410" y="136" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" fill="#475569" font-weight="600" text-anchor="start">425-ФЗ — изменяющий</text>
+<rect x="586.0" y="118" width="248.4" height="26" rx="13" fill="#d97706" opacity="0.12"/>
+<circle cx="600.0" cy="131" r="6" fill="#d97706"/>
+<text x="612" y="136" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" fill="#475569" font-weight="600" text-anchor="start">зона ответственности банка</text>
+<rect x="846.4" y="118" width="114.0" height="26" rx="13" fill="#16a34a" opacity="0.12"/>
+<circle cx="860.4" cy="131" r="6" fill="#16a34a"/>
+<text x="872" y="136" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" fill="#475569" font-weight="600" text-anchor="start">завершение</text>
+<rect x="972.4" y="118" width="206.4" height="26" rx="13" fill="#eab308" opacity="0.12"/>
+<circle cx="986.4" cy="131" r="6" fill="#eab308"/>
+<text x="998" y="136" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" fill="#475569" font-weight="600" text-anchor="start">возврат / прекращение</text>
+<line x1="40" y1="154" x2="1460" y2="154" stroke="#e6ebf3" stroke-width="1.5"/>
+<rect x="40" y="210" width="900" height="214" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#sh)"/><rect x="40" y="224" width="6" height="186" rx="3" fill="#0d9488"/>
+<circle cx="78" cy="244" r="20" fill="#0d9488" opacity="0.14"/>
+<text x="78" y="251" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" fill="#0d9488" font-weight="700" text-anchor="middle">src</text>
+<text x="112" y="250" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" fill="#0f172a" font-weight="700" text-anchor="start">ИСТОЧНИКИ ИД</text>
+<text x="112" y="274" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" fill="#475569" font-weight="400" text-anchor="start">кто выдаёт документ</text>
+<circle cx="120" cy="293" r="3.5" fill="#0d9488"/>
+<text x="132" y="298" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" fill="#475569" font-weight="400" text-anchor="start">Суды (ОЮ, арбитраж) — исполнительный лист</text>
+<circle cx="120" cy="319" r="3.5" fill="#0d9488"/>
+<text x="132" y="324" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" fill="#475569" font-weight="400" text-anchor="start">Мировой судья — судебный приказ</text>
+<circle cx="120" cy="345" r="3.5" fill="#0d9488"/>
+<text x="132" y="350" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" fill="#475569" font-weight="400" text-anchor="start">ФНС (налоговый орган) — постановление о взыскании</text>
+<circle cx="120" cy="371" r="3.5" fill="#0d9488"/>
+<text x="132" y="376" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" fill="#475569" font-weight="400" text-anchor="start">Нотариус — соглашение об алиментах / медиативное</text>
+<circle cx="120" cy="397" r="3.5" fill="#0d9488"/>
+<text x="132" y="402" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" fill="#475569" font-weight="400" text-anchor="start">ФССП, контрольные и гос. органы — акты, постановления</text>
+<line x1="78" y1="424" x2="78" y2="440" stroke="#cbd5e1" stroke-width="2.5"/>
+<rect x="40" y="440" width="900" height="84" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#sh)"/><rect x="40" y="454" width="6" height="56" rx="3" fill="#2563eb"/>
+<circle cx="78" cy="474" r="20" fill="#2563eb" opacity="0.14"/>
+<text x="78" y="481" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" fill="#2563eb" font-weight="700" text-anchor="middle">1</text>
+<text x="112" y="480" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" fill="#0f172a" font-weight="700" text-anchor="start">ВЫДАЧА ИД</text>
+<text x="112" y="504" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" fill="#475569" font-weight="400" text-anchor="start">229-ФЗ: ст. 12 (виды) · ст. 13 (требования)</text>
+<line x1="78" y1="524" x2="78" y2="540" stroke="#cbd5e1" stroke-width="2.5"/>
+<rect x="40" y="540" width="900" height="84" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#sh)"/><rect x="40" y="554" width="6" height="56" rx="3" fill="#2563eb"/>
+<circle cx="78" cy="574" r="20" fill="#2563eb" opacity="0.14"/>
+<text x="78" y="581" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" fill="#2563eb" font-weight="700" text-anchor="middle">2</text>
+<text x="112" y="580" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" fill="#0f172a" font-weight="700" text-anchor="start">ПРЕДЪЯВЛЕНИЕ К ИСПОЛНЕНИЮ</text>
+<text x="112" y="604" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" fill="#475569" font-weight="400" text-anchor="start">229-ФЗ: ст. 21 (сроки) · ст. 22 (перерыв)</text>
+<line x1="78" y1="624" x2="78" y2="640" stroke="#cbd5e1" stroke-width="2.5"/>
+<rect x="40" y="640" width="900" height="84" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#sh)"/><rect x="40" y="654" width="6" height="56" rx="3" fill="#2563eb"/><rect x="872" y="654" width="52" height="24" rx="12" fill="#d97706" opacity="0.14"/><text x="898" y="671" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#d97706" font-weight="700" text-anchor="middle">БАНК</text>
+<circle cx="78" cy="674" r="20" fill="#2563eb" opacity="0.14"/>
+<text x="78" y="681" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" fill="#2563eb" font-weight="700" text-anchor="middle">2б</text>
+<text x="112" y="680" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" fill="#0f172a" font-weight="700" text-anchor="start">НАПРЯМУЮ В БАНК (минуя приставов)</text>
+<text x="112" y="704" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" fill="#475569" font-weight="400" text-anchor="start">229-ФЗ: ст. 8</text>
+<line x1="78" y1="724" x2="78" y2="740" stroke="#cbd5e1" stroke-width="2.5"/>
+<rect x="40" y="740" width="900" height="84" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#sh)"/><rect x="40" y="754" width="6" height="56" rx="3" fill="#2563eb"/>
+<circle cx="78" cy="774" r="20" fill="#2563eb" opacity="0.14"/>
+<text x="78" y="781" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" fill="#2563eb" font-weight="700" text-anchor="middle">3</text>
+<text x="112" y="780" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" fill="#0f172a" font-weight="700" text-anchor="start">ВОЗБУЖДЕНИЕ ИП</text>
+<text x="112" y="804" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" fill="#475569" font-weight="400" text-anchor="start">229-ФЗ: ст. 30 (3 дня); отказ — ст. 31</text>
+<line x1="78" y1="824" x2="78" y2="840" stroke="#cbd5e1" stroke-width="2.5"/>
+<rect x="40" y="840" width="900" height="84" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#sh)"/><rect x="40" y="854" width="6" height="56" rx="3" fill="#2563eb"/>
+<circle cx="78" cy="874" r="20" fill="#2563eb" opacity="0.14"/>
+<text x="78" y="881" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" fill="#2563eb" font-weight="700" text-anchor="middle">4</text>
+<text x="112" y="880" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" fill="#0f172a" font-weight="700" text-anchor="start">ДОБРОВОЛЬНОЕ ИСПОЛНЕНИЕ</text>
+<text x="112" y="904" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" fill="#475569" font-weight="400" text-anchor="start">229-ФЗ: ст. 30 ч. 11–12 (5 дней)</text>
+<line x1="78" y1="924" x2="78" y2="940" stroke="#cbd5e1" stroke-width="2.5"/>
+<rect x="40" y="940" width="900" height="84" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#sh)"/><rect x="40" y="954" width="6" height="56" rx="3" fill="#2563eb"/>
+<circle cx="78" cy="974" r="20" fill="#2563eb" opacity="0.14"/>
+<text x="78" y="981" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" fill="#2563eb" font-weight="700" text-anchor="middle">5</text>
+<text x="112" y="980" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" fill="#0f172a" font-weight="700" text-anchor="start">ПРИНУДИТЕЛЬНОЕ ИСПОЛНЕНИЕ</text>
+<text x="112" y="1004" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" fill="#475569" font-weight="400" text-anchor="start">229-ФЗ: ст. 36 (2 мес.), ст. 64, 68</text>
+<line x1="78" y1="1024" x2="78" y2="1040" stroke="#cbd5e1" stroke-width="2.5"/>
+<rect x="40" y="1040" width="900" height="188" rx="14" fill="#fff7e6" stroke="#e2e8f0" stroke-width="1.5" filter="url(#sh)"/><rect x="40" y="1054" width="6" height="160" rx="3" fill="#d97706"/><rect x="872" y="1054" width="52" height="24" rx="12" fill="#d97706" opacity="0.14"/><text x="898" y="1071" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#d97706" font-weight="700" text-anchor="middle">БАНК</text>
+<circle cx="78" cy="1074" r="20" fill="#d97706" opacity="0.14"/>
+<text x="78" y="1081" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" fill="#d97706" font-weight="700" text-anchor="middle">5б</text>
+<text x="112" y="1080" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" fill="#0f172a" font-weight="700" text-anchor="start">ИСПОЛНЕНИЕ ПОРУЧЕНИЙ ФНС</text>
+<text x="112" y="1104" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" fill="#475569" font-weight="400" text-anchor="start">НК РФ ч.1: ст. 46, 60 · 3 часа (с 01.01.2027) / 1 опер. день</text>
+<circle cx="120" cy="1123" r="3.5" fill="#d97706"/>
+<text x="132" y="1128" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" fill="#475569" font-weight="400" text-anchor="start">Очерёдность списания — ГК РФ ч.2 ст. 855</text>
+<circle cx="120" cy="1149" r="3.5" fill="#d97706"/>
+<text x="132" y="1154" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" fill="#475569" font-weight="400" text-anchor="start">Обязанности банка (НК ст. 60): исполнить · не задерживать · сообщить</text>
+<circle cx="120" cy="1175" r="3.5" fill="#d97706"/>
+<text x="132" y="1180" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" fill="#475569" font-weight="400" text-anchor="start">Розыск счетов — ПНО только по ИНН (с 01.01.2027)</text>
+<circle cx="120" cy="1201" r="3.5" fill="#d97706"/>
+<text x="132" y="1206" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" fill="#475569" font-weight="400" text-anchor="start">Ответственность банка (НК ст. 135): 1/150 ставки, ≤0,2%/день; 30%</text>
+<line x1="78" y1="1228" x2="78" y2="1244" stroke="#cbd5e1" stroke-width="2.5"/>
+<rect x="40" y="1244" width="900" height="84" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#sh)"/><rect x="40" y="1258" width="6" height="56" rx="3" fill="#2563eb"/>
+<circle cx="78" cy="1278" r="20" fill="#2563eb" opacity="0.14"/>
+<text x="78" y="1285" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" fill="#2563eb" font-weight="700" text-anchor="middle">6</text>
+<text x="112" y="1284" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" fill="#0f172a" font-weight="700" text-anchor="start">ОКОНЧАНИЕ ИП</text>
+<text x="112" y="1308" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" fill="#475569" font-weight="400" text-anchor="start">229-ФЗ: ст. 47 (исполнено) / ст. 46 (возврат) / ст. 43 (прекращение)</text>
+<text x="40" y="1350" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" fill="#0f172a" font-weight="700" text-anchor="start">ЗАВЕРШЕНИЕ</text>
+<rect x="40.0" y="1368" width="290.6666666666667" height="76" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#sh)"/><rect x="40.0" y="1382" width="6" height="48" rx="3" fill="#16a34a"/>
+<text x="58" y="1400" font-family="DejaVu Sans, Arial, sans-serif" font-size="14.5" fill="#16a34a" font-weight="700" text-anchor="start">ЗАВЕРШЕНО</text>
+<text x="58" y="1420" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#475569" font-weight="400" text-anchor="start">требования исполнены</text>
+<rect x="344.6666666666667" y="1368" width="290.6666666666667" height="76" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#sh)"/><rect x="344.6666666666667" y="1382" width="6" height="48" rx="3" fill="#d97706"/>
+<text x="363" y="1400" font-family="DejaVu Sans, Arial, sans-serif" font-size="14.5" fill="#d97706" font-weight="700" text-anchor="start">ВОЗВРАТ ИД взыскателю</text>
+<text x="363" y="1420" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#475569" font-weight="400" text-anchor="start">229-ФЗ ст. 46 — взыскание</text>
+<text x="363" y="1436" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#475569" font-weight="400" text-anchor="start">невозможно</text>
+<rect x="649.3333333333334" y="1368" width="290.6666666666667" height="76" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#sh)"/><rect x="649.3333333333334" y="1382" width="6" height="48" rx="3" fill="#94a3b8"/>
+<text x="667" y="1400" font-family="DejaVu Sans, Arial, sans-serif" font-size="14.5" fill="#94a3b8" font-weight="700" text-anchor="start">ПРЕКРАЩЕНИЕ ИП</text>
+<text x="667" y="1420" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#475569" font-weight="400" text-anchor="start">229-ФЗ ст. 43</text>
+<rect x="40" y="1464" width="900" height="40" rx="10" fill="#eef4ff" stroke="#dbe6ff"/>
+<text x="56" y="1489" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" fill="#2563eb" font-weight="600" text-anchor="start">ПОВТОРНОЕ ПРЕДЪЯВЛЕНИЕ — 229-ФЗ ст. 46 ч. 4 (сроки ст. 21) → новый цикл</text>
+<text x="40" y="1534" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#b91c1c" font-weight="400" text-anchor="start">Оговорка: 425-ФЗ меняет порядок взыскания (НК ст. 46/60) с 01.01.2027; ст. 855 ГК РФ в библиотеке отсутствует (узел-заглушка).</text>
+</svg>
