@@ -80,7 +80,7 @@ def esc(s):
 
 def build_svg():
     H = HEADH + ROWH * len(ROWS)
-    p = [f'<svg width="{NAMEW+GW}" height="{H}" viewBox="0 0 {NAMEW+GW} {H}">']
+    p = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{NAMEW+GW}" height="{H}" viewBox="0 0 {NAMEW+GW} {H}" font-family="DejaVu Sans, Arial, sans-serif">']
     # заголовки столбцов
     for j, (num, name, norms) in enumerate(STAGES):
         x = GX + j * COLW
