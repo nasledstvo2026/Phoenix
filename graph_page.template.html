@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Карта взаимосвязей ФЗ — Феникс 🔥</title>
+<style>
+  :root{
+    --bg:#0f172a; --panel:#111c33; --panel2:#16233f; --line:#24334f;
+    --text:#e8eefb; --muted:#93a4c4; --accent:#5eead4; --gold:#fbbf24;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+  header{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;
+    align-items:baseline;gap:14px;flex-wrap:wrap;background:var(--panel)}
+  header h1{font-size:18px;margin:0}
+  header .sub{color:var(--muted);font-size:13px}
+  header .badge{margin-left:auto;font-size:12px;color:var(--gold);
+    border:1px solid var(--gold);border-radius:999px;padding:3px 10px}
+  .wrap{display:flex;height:calc(100% - 58px)}
+  aside{width:290px;min-width:290px;overflow:auto;border-right:1px solid var(--line);
+    background:var(--panel);padding:14px}
+  aside h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);
+    margin:16px 0 6px}
+  .row{display:flex;align-items:center;gap:8px;font-size:13px;padding:3px 0}
+  .row input[type=checkbox]{accent-color:var(--accent)}
+  .swatch{width:12px;height:12px;border-radius:3px;display:inline-block;flex:none}
+  input[type=text]{width:100%;padding:7px 9px;border-radius:8px;border:1px solid var(--line);
+    background:var(--panel2);color:var(--text);font-size:13px}
+  input[type=range]{width:100%}
+  button{cursor:pointer;border:1px solid var(--line);background:var(--panel2);color:var(--text);
+    padding:7px 10px;border-radius:8px;font-size:13px}
+  button:hover{border-color:var(--accent)}
+  button.primary{background:#173a37;border-color:var(--accent);color:var(--accent)}
+  .btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+  main{position:relative;flex:1;min-width:0}
+  #net{position:absolute;inset:0}
+  #details{position:absolute;top:12px;right:12px;width:340px;max-height:calc(100% - 24px);
+    overflow:auto;background:rgba(17,28,51,.96);border:1px solid var(--line);border-radius:12px;
+    padding:14px;font-size:13px;display:none;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+  #details .id{font-weight:700;font-size:14px}
+  #details .law{color:var(--muted);margin:2px 0 8px}
+  #details .refs{margin-top:10px}
+  #details .ref{border-top:1px solid var(--line);padding:7px 0}
+  #details .t{color:var(--muted);font-size:12px}
+  #details .m{margin-top:3px}
+  #details .tag{display:inline-block;font-size:11px;border-radius:999px;padding:1px 7px;
+    border:1px solid var(--line);color:var(--muted);margin-right:5px}
+  #details .draft{color:var(--gold);border-color:var(--gold)}
+  #legend{position:absolute;left:12px;bottom:12px;background:rgba(17,28,51,.92);
+    border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:12px;max-width:340px}
+  #legend .row{padding:1px 0}
+  #hint{position:absolute;left:50%;top:10px;transform:translateX(-50%);
+    background:rgba(17,28,51,.92);border:1px solid var(--line);border-radius:999px;
+    padding:5px 14px;font-size:12px;color:var(--muted)}
+  .muted{color:var(--muted);font-size:12px}
+  a{color:var(--accent)}
+</style>
+</head>
+<body>
+<header>
+  <h1>Карта взаимосвязей федеральных законов</h1>
+  <span class="sub" id="sub"></span>
+  <span class="badge" title="Курируемые трактовки — проект, требует подтверждения юристом">трактовки: проект (draft)</span>
+</header>
+<div class="wrap">
+  <aside>
+    <h3>Поиск узла</h3>
+    <input type="text" id="q" placeholder="напр. 46, 855, FZ-229:47">
+    <div class="btns">
+      <button id="btnFit">Вписать</button>
+      <button id="btnReset">Сброс</button>
+    </div>
+
+    <h3>Законы</h3>
+    <div id="laws"></div>
+
+    <h3>Типы связей</h3>
+    <div id="types"></div>
+
+    <h3>Фильтры</h3>
+    <label class="row"><input type="checkbox" id="crossOnly"> только межзаконные</label>
+    <label class="row"><input type="checkbox" id="coreOnly"> только ядро ИП</label>
+    <label class="row"><input type="checkbox" id="delayed"> отложенный эффект (01.01.2027)</label>
+    <div class="row"><span class="muted">min confidence:&nbsp;<b id="confv">0.00</b></span></div>
+    <input type="range" id="conf" min="0" max="0.95" step="0.05" value="0">
+
+    <h3>Путь между нормами</h3>
+    <input type="text" id="pfrom" placeholder="от: LAW:ART (напр. FZ-425:20)">
+    <div style="height:6px"></div>
+    <input type="text" id="pto" placeholder="до: LAW:ART (напр. FZ-229:46)">
+    <div class="btns">
+      <button class="primary" id="btnPath">Показать путь</button>
+      <button id="btnPathClear">Снять</button>
+    </div>
+
+    <h3>Экспорт</h3>
+    <div class="btns">
+      <button id="btnPng">PNG</button>
+      <button id="btnSvg">SVG</button>
+    </div>
+    <p class="muted" id="disc"></p>
+  </aside>
+
+  <main>
+    <div id="net"></div>
+    <div id="hint">клик по узлу — панель с юридическим смыслом связей</div>
+    <div id="legend"></div>
+    <div id="details"></div>
+  </main>
+</div>
+
+<script src="assets/vis-network.min.js"></script>
+<script>
+const P = /*__PAYLOAD__*/;
+const SHORT = {};
+for (const [code,l] of Object.entries(P.laws)) SHORT[code] = l.number;
+const legalMap = {};
+for (const x of P.legal) legalMap[x.from+"|"+x.to] = x;
+const delayed = new Set(P.delayed);
+const typeNames = {amends:"изменяет",refers:"ссылается",procedure:"процедура",
+  delegates:"бланкетная",defines:"термин",supersedes:"переходная"};
+
+document.getElementById("sub").textContent =
+  `${P.stats.nodes} узлов · ${P.stats.edges} связей · межзаконных ${P.stats.cross_law_edges} · 8 актов`;
+document.getElementById("disc").textContent = P.disclaimer || "";
+
+// ---- nodes/edges ----
+const nodes = P.nodes.map(n => {
+  const [id, law, article, title, core, corpus] = n;
+  const lawColor = (P.laws[law]||{}).color || "#94a3b8";
+  return {id, label:id.replace(":","\n"), title: title, law, article, core, corpus,
+    color:{background:lawColor, border: core ? "#fde68a" : "#0b1220",
+      highlight:{background:lawColor, border:"#fff"}},
+    borderWidth: core ? 3 : 1,
+    shape:"dot", size: 8,
+    font:{color:"#cbd5e1", size:11, face:"monospace"}};
+});
+const edges = P.edges.map((e,i) => {
+  const [from,to,type,conf,cross,par,ev] = e;
+  const col = P.type_colors[type] || "#64748b";
+  const isDelayed = delayed.has(from) || delayed.has(to);
+  return {id:i, from, to, type, conf, cross, par, ev, delayed:isDelayed,
+    color:{color: col, highlight:"#fde68a"},
+    dashes: isDelayed,
+    arrows:{to:{enabled:true, scaleFactor:0.5}},
+    width: type==="amends" ? 2 : (cross ? 1.4 : 0.7),
+    title: `${from} → ${to} · ${typeNames[type]||type} (conf ${conf})`};
+});
+
+const nodesDS = new vis.DataSet(nodes);
+const edgesDS = new vis.DataSet(edges);
+
+const state = {laws:new Set(Object.keys(P.laws)), types:new Set(Object.keys(P.type_colors)),
+  crossOnly:false, coreOnly:false, delayedOnly:false, minConf:0,
+  pathN:new Set(), pathE:new Set()};
+
+function edgePass(e){
+  if(!state.types.has(e.type)) return false;
+  if(state.crossOnly && !e.cross) return false;
+  if((e.conf||0) < state.minConf) return false;
+  if(state.delayedOnly && !e.delayed) return false;
+  if(state.pathE.size && !state.pathE.has(e.id)) return false;
+  return true;
+}
+function nodePass(n){
+  if(!state.laws.has(n.law)) return false;
+  if((state.coreOnly||state.delayedOnly) && !n.core) return false;
+  if(state.pathN.size && !state.pathN.has(n.id)) return false;
+  return true;
+}
+const edgesView = new vis.DataView(edgesDS, {filter: edgePass});
+const nodesView = new vis.DataView(nodesDS, {filter: nodePass});
+
+const container = document.getElementById("net");
+const network = new vis.Network(container, {nodes:nodesView, edges:edgesView}, {
+  nodes:{shape:"dot"},
+  edges:{smooth:{type:"continuous"}},
+  physics:{stabilization:{iterations:200}, barnesHut:{springLength:120, gravitationalConstant:-8000}},
+  interaction:{hover:true, tooltipDelay:120, navigationButtons:false}
+});
+network.once("stabilizationIterationsDone", ()=> network.fit());
+
+// ---- degree → sizes
+const deg = {};
+for(const e of edges){ deg[e.from]=(deg[e.from]||0)+1; deg[e.to]=(deg[e.to]||0)+1; }
+nodesDS.update(nodes.map(n=>({id:n.id, size: 6 + Math.min(deg[n.id]||0,12)*0.9})));
+
+// ---- controls
+function lawBoxes(){
+  const box = document.getElementById("laws"); box.innerHTML="";
+  for(const [code,l] of Object.entries(P.laws)){
+    const d=document.createElement("label"); d.className="row";
+    d.innerHTML=`<input type="checkbox" checked> <span class="swatch" style="background:${l.color}"></span> ${code}`;
+    d.querySelector("input").onchange = ev=>{
+      ev.target.checked ? state.laws.add(code) : state.laws.delete(code); refresh(); };
+    box.appendChild(d);
+  }
+}
+function typeBoxes(){
+  const box=document.getElementById("types"); box.innerHTML="";
+  for(const [t,c] of Object.entries(P.type_colors)){
+    const d=document.createElement("label"); d.className="row";
+    d.innerHTML=`<input type="checkbox" checked> <span class="swatch" style="background:${c}"></span> ${t} — ${typeNames[t]||""}`;
+    d.querySelector("input").onchange = ev=>{
+      ev.target.checked ? state.types.add(t) : state.types.delete(t); refresh(); };
+    box.appendChild(d);
+  }
+}
+function legend(){
+  const el=document.getElementById("legend");
+  let h="<b>Узлы:</b> ";
+  for(const [code,l] of Object.entries(P.laws)) h+=`<span class="swatch" style="background:${l.color}"></span> ${SHORT[code]} `;
+  h+='<div class="row">жёлтая обводка — ядро ИП; пунктир — эффект с 01.01.2027</div>';
+  el.innerHTML=h;
+}
+function refresh(){ edgesView.refresh(); nodesView.refresh(); }
+
+document.getElementById("crossOnly").onchange=e=>{state.crossOnly=e.target.checked;refresh();};
+document.getElementById("coreOnly").onchange=e=>{state.coreOnly=e.target.checked;refresh();};
+document.getElementById("delayed").onchange=e=>{state.delayedOnly=e.target.checked;refresh();};
+document.getElementById("conf").oninput=e=>{state.minConf=+e.target.value;
+  document.getElementById("confv").textContent=(+e.target.value).toFixed(2); refresh();};
+document.getElementById("btnFit").onclick=()=>network.fit({animation:true});
+document.getElementById("btnReset").onclick=()=>{
+  state.pathN.clear(); state.pathE.clear();
+  document.getElementById("q").value=""; document.getElementById("pfrom").value="";
+  document.getElementById("pto").value=""; document.getElementById("details").style.display="none";
+  refresh(); network.fit({animation:true});
+};
+document.getElementById("q").oninput=e=>{
+  const s=e.target.value.trim().toUpperCase(); if(!s) return;
+  const hit=nodes.find(n=>n.id.toUpperCase().includes(s));
+  if(hit){ network.selectNodes([hit.id]); network.focus(hit.id,{scale:1.4,animation:true}); showDetails(hit.id); }
+};
+
+// ---- path (BFS, undirected, over filtered edges)
+function computePath(a,b){
+  const adj={};
+  for(const e of edges){ if(!edgePass(e)) continue;
+    (adj[e.from]=adj[e.from]||[]).push([e.to,e]); (adj[e.to]=adj[e.to]||[]).push([e.from,e]); }
+  if(!adj[a]&&!adj[b]&&a!==b) return null;
+  const prev={[a]:null}, q=[a];
+  while(q.length){ const u=q.shift(); if(u===b) break;
+    for(const [v,e] of (adj[u]||[])){ if(v in prev) continue; prev[v]=[u,e]; q.push(v); } }
+  if(!(b in prev)) return null;
+  const pn=new Set([b]), pe=new Set(); let cur=b;
+  while(prev[cur]){ const [u,e]=prev[cur]; pn.add(u); pe.add(e.id); cur=u; }
+  return {pn,pe};
+}
+document.getElementById("btnPath").onclick=()=>{
+  const a=(document.getElementById("pfrom").value||document.getElementById("pfrom").placeholder.split(" ")[1]||"").trim().toUpperCase();
+  const b=(document.getElementById("pto").value||"").trim().toUpperCase();
+  const na=nodes.find(n=>n.id.toUpperCase()===a), nb=nodes.find(n=>n.id.toUpperCase()===b);
+  if(!na||!nb){ alert("Узлы не найдены. Формат: LAW:ART (например, FZ-425:20)"); return; }
+  const r=computePath(na.id,nb.id);
+  if(!r){ alert("Путь не найден в текущих фильтрах"); return; }
+  state.pathN=r.pn; state.pathE=r.pe; refresh();
+  alert(`Путь: ${r.pn.size} норм, ${r.pe.size} связей`);
+};
+document.getElementById("btnPathClear").onclick=()=>{state.pathN.clear();state.pathE.clear();refresh();};
+
+// ---- details
+function showDetails(id){
+  const n=nodesDS.get(id); if(!n) return;
+  const refs=edges.filter(e=>e.from===id||e.to===id);
+  let h=`<div class="id">${id}</div><div class="law">${SHORT[n.law]||n.law} · ${n.article}` +
+    `${n.core?" · <span class='tag' style='color:#fde68a;border-color:#fde68a'>ядро ИП</span>":""}` +
+    `${n.corpus?"":" · <span class='tag'>нет текста в корпусе</span>"}</div>`;
+  h+=`<div class="muted">${n.title||""}</div><div class="refs"><b>Связи (${refs.length}):</b>`;
+  for(const e of refs.slice(0,40)){
+    const other = e.from===id? e.to : e.from;
+    const dir = e.from===id? "→" : "←";
+    const L=legalMap[e.from+"|"+e.to];
+    h+=`<div class="ref"><div class="t">${dir} ${other} · ${e.type}${e.cross?" · межзаконная":""} · conf ${e.conf}${e.par?" · п."+e.par:""}</div>`;
+    if(L){ h+=`<div class="m">${L.meaning||""}</div>`+
+      `<div class="t"><span class="tag ${L.status==="draft"?"draft":""}">${L.curated?"curated":"auto"}/${L.status||""}</span>`+
+      `effect: ${L.effect||"—"}; приоритет: ${L.priority||"none"}</div>`; }
+    h+=`</div>`;
+  }
+  h+="</div>";
+  const d=document.getElementById("details"); d.innerHTML=h; d.style.display="block";
+}
+network.on("selectNode", p=>{ if(p.nodes.length) showDetails(p.nodes[0]); });
+network.on("deselectNode", ()=>{ document.getElementById("details").style.display="none"; });
+
+// ---- export
+document.getElementById("btnPng").onclick=()=>{
+  const cv=container.querySelector("canvas"); if(!cv) return;
+  const a=document.createElement("a"); a.download="fz-graph.png"; a.href=cv.toDataURL("image/png"); a.click();
+};
+document.getElementById("btnSvg").onclick=()=>{
+  const pos=network.getPositions(); const vn=nodesView.getIds();
+  const vis=new Set(vn); let minx=1e9,miny=1e9,maxx=-1e9,maxy=-1e9;
+  for(const id of vn){const p=pos[id]; if(!p)continue; minx=Math.min(minx,p.x);miny=Math.min(miny,p.y);maxx=Math.max(maxx,p.x);maxy=Math.max(maxy,p.y);}
+  const pad=60,W=(maxx-minx)+2*pad,H=(maxy-miny)+2*pad;
+  let s=`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" font-family="monospace"><rect width="${W}" height="${H}" fill="#0f172a"/>`;
+  for(const e of edgesView.get()){
+    const a=pos[e.from],b=pos[e.to]; if(!a||!b) continue;
+    s+=`<line x1="${a.x-minx+pad}" y1="${a.y-miny+pad}" x2="${b.x-minx+pad}" y2="${b.y-miny+pad}" stroke="${(P.type_colors[e.type]||"#64748b")}" stroke-width="${e.cross?1.2:0.6}" opacity="0.7"/>`;
+  }
+  for(const id of vn){ const p=pos[id]; if(!p)continue; const n=nodesDS.get(id);
+    s+=`<circle cx="${p.x-minx+pad}" cy="${p.y-miny+pad}" r="${n.core?5:3.2}" fill="${(P.laws[n.law]||{}).color||"#94a3b8"}"/>`;
+    if(n.core) s+=`<text x="${p.x-minx+pad+7}" y="${p.y-miny+pad+4}" font-size="11" fill="#cbd5e1">${id}</text>`; }
+  s+="</svg>";
+  const blob=new Blob([s],{type:"image/svg+xml"}); const a=document.createElement("a");
+  a.download="fz-graph.svg"; a.href=URL.createObjectURL(blob); a.click();
+};
+
+lawBoxes(); typeBoxes(); legend();
+</script>
+</body>
+</html>
