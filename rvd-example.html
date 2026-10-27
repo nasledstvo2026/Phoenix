@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Отчёт РВД — пример</title>
+<style>
+  body{font-family:-apple-system,Segoe UI,Arial,sans-serif;max-width:920px;margin:28px auto;padding:0 16px;color:#1a1a1a;line-height:1.5}
+  h1{font-size:22px}
+  h2{font-size:16px;margin-top:24px;border-bottom:1px solid #e0e0e0;padding-bottom:4px}
+  .badge{display:inline-block;padding:6px 16px;border-radius:20px;color:#fff;font-weight:600;font-size:14px}
+  .ok{background:#2e7d32}
+  .no{background:#c62828}
+  .unk{background:#e65100}
+  table{border-collapse:collapse;width:100%;margin:8px 0;font-size:13px}
+  th,td{border:1px solid #ddd;padding:7px 10px;text-align:left;vertical-align:top}
+  th{background:#f5f5f5;font-weight:600}
+  .meta th{width:180px;background:#fafafa}
+  .disc{color:#8a8a8a;font-size:12px;margin-top:20px;border-top:1px solid #eee;padding-top:8px}
+</style>
+</head>
+<body>
+  <h1>Отчёт РВД</h1>
+  <div><span class="badge ok">✅ РАБОТАЛ</span></div>
+
+  <h2>Сводка</h2>
+  <table class="meta">
+    <tr><th>Дата</th><td>26.10.2026 (вс)</td></tr>
+    <tr><th>ФИО</th><td>Иванов Иван</td></tr>
+    <tr><th>Стори</th><td>SBER-12345</td></tr>
+    <tr><th>Исполнитель</th><td>Иванов Иван</td></tr>
+    <tr><th>Уровень</th><td>middle</td></tr>
+  </table>
+
+  <h2>Коммиты</h2>
+  <table>
+    <tr><th>Время коммита</th><th>Время пуша</th><th>Автор</th><th>Файлы</th><th>+/- строк</th><th>Ссылка</th></tr>
+    <tr><td>14:20</td><td>14:21</td><td>Иванов Иван</td><td>form.validation.ts</td><td>+85 / −12</td><td>gitlab…/abc1</td></tr>
+    <tr><td>16:05</td><td>16:06</td><td>Иванов Иван</td><td>form.validation.ts, form.view.ts</td><td>+64 / −18</td><td>gitlab…/abc2</td></tr>
+    <tr><td>17:40</td><td>17:42</td><td>Иванов Иван</td><td>form.tests.ts</td><td>+31 / −10</td><td>gitlab…/abc3</td></tr>
+  </table>
+
+  <h2>PR-активность</h2>
+  <table>
+    <tr><th>Роль</th><th>Действие</th><th>Время</th><th>Автор</th></tr>
+    <tr><td>Автор</td><td>Создание PR #431</td><td>14:22</td><td>Иванов Иван</td></tr>
+    <tr><td>Автор</td><td>Ответ на ревью (доработка)</td><td>17:45</td><td>Иванов Иван</td></tr>
+  </table>
+
+  <h2>Оценка объёма</h2>
+  <p>Средне: 3 коммита, 3 файла, +180 / −40 строк, создан и дорабатывался PR.</p>
+
+  <h2>Обоснование</h2>
+  <p>За 26.10.2026 по стори SBER-12345 найдено 3 содержательных коммита автора Иванов Иван (время пуша 14:21, 16:06, 17:42 МСК) и авторская PR-активность (создание PR #431, доработка). Вердикт — работал.</p>
+
+  <p class="disc">Оценка по строкам кода приблизительна и не является мерой продуктивности. Данные собраны из Jira и Git.</p>
+</body>
+</html>
