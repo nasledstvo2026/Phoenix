@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Крестики-нолики</title>
+<style>
+  :root {
+    --bg1: #1e1b2e;
+    --bg2: #2a2440;
+    --card: #241f3a;
+    --cell: #2f2947;
+    --cell-hover: #3a3258;
+    --x: #a78bfa;
+    --o: #fb7185;
+    --win: #34d399;
+    --text: #ede9fe;
+    --muted: #9a93b5;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    background: radial-gradient(1200px 800px at 50% -10%, #3b2d63 0%, var(--bg1) 55%, var(--bg2) 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text);
+    padding: 20px;
+  }
+  .wrap {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    padding: 30px 34px 34px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+    text-align: center;
+  }
+  h1 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    margin-bottom: 4px;
+  }
+  .sub {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 18px;
+  }
+  .score {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .score .p {
+    background: var(--cell);
+    border-radius: 14px;
+    padding: 9px 18px;
+    min-width: 84px;
+  }
+  .score .p .who { font-size: 18px; font-weight: 800; }
+  .score .p .n { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .score .p.x .who { color: var(--x); }
+  .score .p.o .who { color: var(--o); }
+  .status {
+    font-size: 15px;
+    font-weight: 600;
+    min-height: 22px;
+    margin-bottom: 16px;
+    color: var(--muted);
+  }
+  .status.win { color: var(--win); }
+  .board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 0 auto 22px;
+    max-width: 300px;
+  }
+  .cell {
+    aspect-ratio: 1;
+    background: var(--cell);
+    border-radius: 16px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 46px;
+    font-weight: 800;
+    transition: background .15s ease, transform .08s ease, border-color .15s ease;
+    user-select: none;
+  }
+  .cell:not(.taken):not(.disabled):hover {
+    background: var(--cell-hover);
+    transform: translateY(-2px);
+  }
+  .cell.taken { cursor: default; }
+  .cell.x { color: var(--x); }
+  .cell.o { color: var(--o); }
+  .cell.win { background: rgba(52,211,153,0.16); border-color: var(--win); }
+  .cell.disabled { cursor: default; }
+  .cell.pop { animation: pop .18s ease; }
+  @keyframes pop {
+    0% { transform: scale(0.7); opacity: 0.4; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  .modes {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 14px;
+  }
+  .modes button {
+    background: var(--cell);
+    color: var(--muted);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 9px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .15s ease;
+    font-family: inherit;
+  }
+  .modes button.active {
+    background: #6d28d9;
+    color: #fff;
+    border-color: #8b5cf6;
+  }
+  .reset {
+    background: linear-gradient(135deg, #6d28d9, #8b5cf6);
+    color: #fff;
+    border: none;
+    border-radius: 13px;
+    padding: 12px 22px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform .1s ease, filter .15s ease;
+    font-family: inherit;
+  }
+  .reset:hover { filter: brightness(1.08); }
+  .reset:active { transform: scale(0.97); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Крестики-нолики</h1>
+  <div class="sub">X — фиолетовый · O — розовый</div>
+
+  <div class="score">
+    <div class="p x"><div class="who" id="sx">0</div><div class="n">Игрок X</div></div>
+    <div class="p o"><div class="who" id="so">0</div><div class="n" id="olabel">Компьютер</div></div>
+  </div>
+
+  <div class="status" id="status">Ход: X</div>
+
+  <div class="board" id="board"></div>
+
+  <div class="modes">
+    <button id="m-ai" class="active">Против компьютера</button>
+    <button id="m-pvp">Два игрока</button>
+  </div>
+
+  <button class="reset" id="reset">Новая игра</button>
+</div>
+
+<script>
+(function () {
+  const WIN = [
+    [0,1,2],[3,4,5],[6,7,8],
+    [0,3,6],[1,4,7],[2,5,8],
+    [0,4,8],[2,4,6]
+  ];
+  const boardEl = document.getElementById('board');
+  const statusEl = document.getElementById('status');
+  const sx = document.getElementById('sx');
+  const so = document.getElementById('so');
+  const olabel = document.getElementById('olabel');
+  const mAi = document.getElementById('m-ai');
+  const mPvp = document.getElementById('m-pvp');
+  const resetBtn = document.getElementById('reset');
+
+  let board = Array(9).fill(null);
+  let current = 'X';
+  let mode = 'ai';
+  let scores = { X: 0, O: 0 };
+  let gameOver = false;
+  let aiTimer = null;
+
+  function winner(b) {
+    for (const [a, c, d] of WIN) {
+      if (b[a] && b[a] === b[c] && b[a] === b[d]) return { who: b[a], line: [a, c, d] };
+    }
+    if (b.every(Boolean)) return { who: 'draw', line: [] };
+    return null;
+  }
+
+  function render() {
+    const cells = boardEl.children;
+    for (let i = 0; i < 9; i++) {
+      const el = cells[i];
+      const v = board[i];
+      el.textContent = v === 'X' ? '✕' : v === 'O' ? '◯' : '';
+      el.className = 'cell' + (v ? ' taken ' + (v === 'X' ? 'x' : 'o') : '');
+    }
+    sx.textContent = scores.X;
+    so.textContent = scores.O;
+  }
+
+  function setStatus(text, cls) {
+    statusEl.textContent = text;
+    statusEl.className = 'status' + (cls ? ' ' + cls : '');
+  }
+
+  function endGame(res) {
+    gameOver = true;
+    if (res.who === 'draw') {
+      setStatus('Ничья 🤝');
+    } else {
+      setStatus((res.who === 'X' ? 'Игрок X' : (mode === 'ai' ? 'Компьютер' : 'Игрок O')) + ' победил! 🎉', 'win');
+      for (const i of res.line) boardEl.children[i].classList.add('win');
+      scores[res.who]++;
+      sx.textContent = scores.X;
+      so.textContent = scores.O;
+    }
+  }
+
+  function minimax(b, isMax, aiMark, huMark) {
+    const r = winner(b);
+    if (r) {
+      if (r.who === aiMark) return 10;
+      if (r.who === huMark) return -10;
+      return 0;
+    }
+    let best = isMax ? -Infinity : Infinity;
+    for (let i = 0; i < 9; i++) {
+      if (!b[i]) {
+        b[i] = isMax ? aiMark : huMark;
+        const v = minimax(b, !isMax, aiMark, huMark);
+        b[i] = null;
+        best = isMax ? Math.max(best, v) : Math.min(best, v);
+      }
+    }
+    return best;
+  }
+
+  function aiMove() {
+    const aiMark = 'O', huMark = 'X';
+    let bestScore = -Infinity, move = -1;
+    for (let i = 0; i < 9; i++) {
+      if (!board[i]) {
+        board[i] = aiMark;
+        const s = minimax(board, false, aiMark, huMark);
+        board[i] = null;
+        if (s > bestScore) { bestScore = s; move = i; }
+      }
+    }
+    return move;
+  }
+
+  function place(i) {
+    if (gameOver || board[i]) return;
+    board[i] = current;
+    boardEl.children[i].classList.add('pop');
+    const res = winner(board);
+    if (res) { render(); endGame(res); return; }
+    current = current === 'X' ? 'O' : 'X';
+    render();
+    setStatus('Ход: ' + current);
+
+    if (mode === 'ai' && current === 'O' && !gameOver) {
+      boardEl.querySelectorAll('.cell').forEach(c => c.classList.add('disabled'));
+      aiTimer = setTimeout(() => {
+        const m = aiMove();
+        if (m >= 0) {
+          board[m] = 'O';
+          boardEl.children[m].classList.add('pop');
+          const r = winner(board);
+          if (r) { render(); endGame(r); }
+          else { current = 'X'; render(); setStatus('Ход: X'); }
+        }
+        boardEl.querySelectorAll('.cell').forEach(c => c.classList.remove('disabled'));
+      }, 350);
+    }
+  }
+
+  function newGame() {
+    clearTimeout(aiTimer);
+    board = Array(9).fill(null);
+    current = 'X';
+    gameOver = false;
+    boardEl.querySelectorAll('.cell').forEach(c => c.classList.remove('disabled'));
+    render();
+    setStatus('Ход: X');
+  }
+
+  function buildBoard() {
+    boardEl.innerHTML = '';
+    for (let i = 0; i < 9; i++) {
+      const el = document.createElement('div');
+      el.className = 'cell';
+      el.addEventListener('click', () => place(i));
+      boardEl.appendChild(el);
+    }
+  }
+
+  function setMode(m) {
+    mode = m;
+    mAi.classList.toggle('active', m === 'ai');
+    mPvp.classList.toggle('active', m === 'pvp');
+    olabel.textContent = m === 'ai' ? 'Компьютер' : 'Игрок O';
+    scores = { X: 0, O: 0 };
+    newGame();
+  }
+
+  mAi.addEventListener('click', () => setMode('ai'));
+  mPvp.addEventListener('click', () => setMode('pvp'));
+  resetBtn.addEventListener('click', () => { scores = { X: 0, O: 0 }; newGame(); });
+
+  buildBoard();
+  render();
+  setStatus('Ход: X');
+})();
+</script>
+</body>
+</html>
