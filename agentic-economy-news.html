@@ -16,7 +16,7 @@
     .c-track { flex: 1; height: 20px; background: rgba(255,255,255,0.045); border-radius: 6px; overflow: hidden; }
     .c-bar { height: 100%; border-radius: 6px; }
     .c-num { flex: 0 0 22px; text-align: right; font-weight: 700; font-size: 14px; color: var(--text); }
-    .leader { margin-top: 14px; padding: 10px 14px; border-radius: 10px; background: rgba(255,144,0,0.08); border: 1px solid rgba(255,144,0,0.25); font-size: 12.5px; color: var(--text); }
+    .leader { margin-top: 14px; margin-bottom: 20px; padding: 10px 14px; border-radius: 10px; background: rgba(255,144,0,0.08); border: 1px solid rgba(255,144,0,0.25); font-size: 12.5px; color: var(--text); }
     .leader b { color: var(--orange); }
 
     table.news { width: 100%; border-collapse: collapse; font-size: 13px; }
@@ -28,6 +28,15 @@
     table.news td.title a:hover { color: var(--blue); border-bottom-color: var(--blue); }
     table.news td.src { color: var(--text-dim); white-space: nowrap; }
     .k-badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 10.5px; font-weight: 700; margin: 1px 3px 1px 0; }
+
+    /* ─── Таб-бар ─── */
+    .tabs { display: flex; gap: 8px; margin-bottom: 18px; }
+    .tab { padding: 9px 20px; border-radius: 10px; background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border); color: var(--text-dim); font-size: 13px; font-weight: 600; cursor: pointer; transition: all .2s; font-family: inherit; }
+    .tab:hover { color: var(--text); border-color: var(--glass-hover); }
+    .tab.active { background: rgba(88,166,255,0.12); border-color: rgba(88,166,255,0.45); color: var(--text); }
+    .tab-pane { display: none; }
+    .tab-pane.active { display: block; }
+
     @media (max-width: 640px) {
       .c-label { flex-basis: 116px; font-size: 11px; }
       table.news td.src { display: none; }
@@ -43,200 +52,179 @@
     <div class="meta">Агентная экономика · еженедельный дайджест</div>
   </div>
 
-  <!-- ═══ Накопительный счётчик по критериям ═══ -->
+  <!-- ═══ Одна таблица · два листа ═══ -->
   <div class="panel">
-    <h2>Накопительный счётчик по критериям</h2>
-    <div class="hint">Неделя 1 · 15–22 ноября 2026 · всего 10 новостей · 13 упоминаний критериев</div>
+    <h2>Новости</h2>
+    <div class="hint">Одна таблица · два листа · каждая новость привязана к критерию соответствия</div>
 
-    <div class="c-row">
-      <div class="c-label"><b>К1</b> Монетизация</div>
-      <div class="c-track"><div class="c-bar" style="width:33%;background:#7ee787;"></div></div>
-      <div class="c-num">2</div>
-    </div>
-    <div class="c-row">
-      <div class="c-label"><b>К2</b> Ручные шаги</div>
-      <div class="c-track"><div class="c-bar" style="width:17%;background:#58a6ff;"></div></div>
-      <div class="c-num">1</div>
-    </div>
-    <div class="c-row">
-      <div class="c-label"><b>К3</b> API / приёмка</div>
-      <div class="c-track"><div class="c-bar" style="width:17%;background:#56d4dd;"></div></div>
-      <div class="c-num">1</div>
-    </div>
-    <div class="c-row">
-      <div class="c-label"><b>К4</b> Zero-Touch</div>
-      <div class="c-track"><div class="c-bar" style="width:100%;background:#ff9000;"></div></div>
-      <div class="c-num">6</div>
-    </div>
-    <div class="c-row">
-      <div class="c-label"><b>К5</b> Оркестрация</div>
-      <div class="c-track"><div class="c-bar" style="width:17%;background:#bc8cff;"></div></div>
-      <div class="c-num">1</div>
-    </div>
-    <div class="c-row">
-      <div class="c-label"><b>К6</b> Data Moat</div>
-      <div class="c-track"><div class="c-bar" style="width:33%;background:#f778ba;"></div></div>
-      <div class="c-num">2</div>
+    <!-- Таб-бар -->
+    <div class="tabs">
+      <button class="tab active" id="tab-btn-rf" onclick="switchTab('rf')">🇷🇺 Россия</button>
+      <button class="tab" id="tab-btn-world" onclick="switchTab('world')">🌍 Мир</button>
     </div>
 
-    <div class="leader"><b>Лидер недели:</b> К4 · Zero-Touch Transaction — 6 новостей. Автономные сделки — самое горячее место рынка.</div>
-  </div>
+    <!-- ═══ Лист: Россия ═══ -->
+    <div class="tab-pane active" id="tab-rf">
+      <!-- СЧЁТЧИК РОССИЯ НАЧАЛО -->
+      <div class="c-row">
+        <div class="c-label"><b>К1</b> Монетизация</div>
+        <div class="c-track"><div class="c-bar" style="width:33%;background:#7ee787;"></div></div>
+        <div class="c-num">1</div>
+      </div>
+      <div class="c-row">
+        <div class="c-label"><b>К2</b> Ручные шаги</div>
+        <div class="c-track"><div class="c-bar" style="width:33%;background:#58a6ff;"></div></div>
+        <div class="c-num">1</div>
+      </div>
+      <div class="c-row">
+        <div class="c-label"><b>К3</b> API / приёмка</div>
+        <div class="c-track"><div class="c-bar" style="width:0%;background:#56d4dd;"></div></div>
+        <div class="c-num">0</div>
+      </div>
+      <div class="c-row">
+        <div class="c-label"><b>К4</b> Zero-Touch</div>
+        <div class="c-track"><div class="c-bar" style="width:100%;background:#ff9000;"></div></div>
+        <div class="c-num">3</div>
+      </div>
+      <div class="c-row">
+        <div class="c-label"><b>К5</b> Оркестрация</div>
+        <div class="c-track"><div class="c-bar" style="width:0%;background:#bc8cff;"></div></div>
+        <div class="c-num">0</div>
+      </div>
+      <div class="c-row">
+        <div class="c-label"><b>К6</b> Data Moat</div>
+        <div class="c-track"><div class="c-bar" style="width:33%;background:#f778ba;"></div></div>
+        <div class="c-num">1</div>
+      </div>
+      <div class="leader"><b>Лидер (РФ):</b> К4 · Zero-Touch — 3 новости.</div>
+      <!-- СЧЁТЧИК РОССИЯ КОНЕЦ -->
 
-  <!-- ═══ Таблица новостей ═══ -->
-  <div class="panel">
-    <h2>Новости недели</h2>
-    <div class="hint">Каждая новость привязана к критерию соответствия</div>
-    <table class="news">
-      <thead>
-        <tr><th>Дата</th><th>Новость</th><th>Источник</th><th>Критерий</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="date">19 ноя</td>
-          <td class="title"><a href="https://www.forbes.ru/tekhnologii/572604-um-nalivaut-v-banki-finsektor-potratit-do-20-mlrd-rublej-na-ii-agentov-v-2026-godu" target="_blank" rel="noopener">Финсектор потратит до 20 млрд ₽ на ИИ-агентов в 2026</a></td>
-          <td class="src">Forbes / Axenix</td>
-          <td><span class="k-badge" style="background:rgba(126,231,135,.15);color:#7ee787;">К1</span></td>
-        </tr>
-        <tr>
-          <td class="date">19 ноя</td>
-          <td class="title"><a href="https://www.interfax.ru/pressreleases/1130071" target="_blank" rel="noopener">ИИ-агенты изменят правила конкуренции между банками</a></td>
-          <td class="src">Интерфакс</td>
-          <td><span class="k-badge" style="background:rgba(255,144,0,.15);color:#ff9000;">К4</span> <span class="k-badge" style="background:rgba(247,120,186,.15);color:#f778ba;">К6</span></td>
-        </tr>
-        <tr>
-          <td class="date">19 ноя</td>
-          <td class="title"><a href="https://www.rbc.ru/industries/news/6b002d85c0518bee9953fd51" target="_blank" rel="noopener">Экономика ИИ: от экспериментов к результатам</a></td>
-          <td class="src">РБК</td>
-          <td><span class="k-badge" style="background:rgba(88,166,255,.15);color:#58a6ff;">К2</span></td>
-        </tr>
-        <tr>
-          <td class="date">19 ноя</td>
-          <td class="title"><a href="https://eanews.ru/rossiya/20261119143430/stalo-izvestno-pochemu-glava-mintsifry-rf-raskritikoval-rossiyskie-neyroseti" target="_blank" rel="noopener">Шадаев раскритиковал российские ИИ-агенты за качество и скорость</a></td>
-          <td class="src">EANews</td>
-          <td><span class="k-badge" style="background:rgba(255,144,0,.15);color:#ff9000;">К4</span></td>
-        </tr>
-        <tr>
-          <td class="date">12 ноя</td>
-          <td class="title"><a href="https://www.klerk.ru/buh/news/718277/" target="_blank" rel="noopener">Минэкономразвития: ИИ-агенты — отдельный вопрос регулирования</a></td>
-          <td class="src">Клерк.ру</td>
-          <td><span class="k-badge" style="background:rgba(255,144,0,.15);color:#ff9000;">К4</span></td>
-        </tr>
-        <tr>
-          <td class="date">22 ноя</td>
-          <td class="title"><a href="https://www.ixbt.com/news/2026/11/22/ii-agenty-openai-uze-samostoiatelno-vypolniaiut-46-korotkix-issledovatelskix-zadac.html" target="_blank" rel="noopener">ИИ-агенты OpenAI уже самостоятельно выполняют 46% коротких исследовательских задач</a></td>
-          <td class="src">iXBT</td>
-          <td><span class="k-badge" style="background:rgba(255,144,0,.15);color:#ff9000;">К4</span> <span class="k-badge" style="background:rgba(126,231,135,.15);color:#7ee787;">К1</span></td>
-        </tr>
-        <tr>
-          <td class="date">22 ноя</td>
-          <td class="title"><a href="https://www.ixbt.com/news/2026/11/22/pocti-tysiaca-ii-agentov-za-3-mesiaca-sozdala-naucnoe-soobshhestvo-s-sobstvennym-zurnalom.html" target="_blank" rel="noopener">Почти тысяча ИИ-агентов за 3 месяца создала научное сообщество с собственным журналом</a></td>
-          <td class="src">iXBT</td>
-          <td><span class="k-badge" style="background:rgba(188,140,255,.15);color:#bc8cff;">К5</span> <span class="k-badge" style="background:rgba(86,212,221,.15);color:#56d4dd;">К3</span></td>
-        </tr>
-        <tr>
-          <td class="date">22 ноя</td>
-          <td class="title"><a href="https://habr.com/ru/companies/magnit/articles/1110850/" target="_blank" rel="noopener">Доверяй, но запрещай: как ограничивать полномочия AI-агента на разных уровнях</a></td>
-          <td class="src">Habr / Магнит</td>
-          <td><span class="k-badge" style="background:rgba(255,144,0,.15);color:#ff9000;">К4</span></td>
-        </tr>
-        <tr>
-          <td class="date">22 ноя</td>
-          <td class="title"><a href="https://habr.com/ru/articles/1110886/" target="_blank" rel="noopener">Почему 24/7 ИИ-агенты ломаются за 4 часа: хаос-бенчмарк F01–F10</a></td>
-          <td class="src">Habr</td>
-          <td><span class="k-badge" style="background:rgba(255,144,0,.15);color:#ff9000;">К4</span></td>
-        </tr>
-        <tr>
-          <td class="date">22 ноя</td>
-          <td class="title"><a href="https://www.ixbt.com/news/2026/11/22/signal-nacal-blokirovat-skrinsoty-perepisok-ctoby-ii-agenty-ne-mogli-citat-licnye-soobshheniia.html" target="_blank" rel="noopener">Signal заблокировал скриншоты переписок, чтобы ИИ-агенты не читали личные сообщения</a></td>
-          <td class="src">iXBT</td>
-          <td><span class="k-badge" style="background:rgba(247,120,186,.15);color:#f778ba;">К6</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- ═══ Мир · International ═══ -->
-  <div style="max-width:900px;margin:30px auto 12px;text-align:center;">
-    <span style="display:inline-block;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:8px 22px;border-radius:999px;background:rgba(88,166,255,0.1);border:1px solid rgba(88,166,255,0.3);color:var(--blue);">Мир · International</span>
-  </div>
-
-  <div class="panel">
-    <h2>Накопительный счётчик — мир</h2>
-    <div class="hint">Источники критериев (a16z, BCG, Menlo, Gartner, McKinsey, CACM) · публикуются реже — недели/месяцы</div>
-
-    <div class="c-row">
-      <div class="c-label"><b>К1</b> Монетизация</div>
-      <div class="c-track"><div class="c-bar" style="width:100%;background:#7ee787;"></div></div>
-      <div class="c-num">2</div>
-    </div>
-    <div class="c-row">
-      <div class="c-label"><b>К2</b> Ручные шаги</div>
-      <div class="c-track"><div class="c-bar" style="width:50%;background:#58a6ff;"></div></div>
-      <div class="c-num">1</div>
-    </div>
-    <div class="c-row">
-      <div class="c-label"><b>К3</b> API / приёмка</div>
-      <div class="c-track"><div class="c-bar" style="width:0%;background:#56d4dd;"></div></div>
-      <div class="c-num">0</div>
-    </div>
-    <div class="c-row">
-      <div class="c-label"><b>К4</b> Zero-Touch</div>
-      <div class="c-track"><div class="c-bar" style="width:50%;background:#ff9000;"></div></div>
-      <div class="c-num">1</div>
-    </div>
-    <div class="c-row">
-      <div class="c-label"><b>К5</b> Оркестрация</div>
-      <div class="c-track"><div class="c-bar" style="width:0%;background:#bc8cff;"></div></div>
-      <div class="c-num">0</div>
-    </div>
-    <div class="c-row">
-      <div class="c-label"><b>К6</b> Data Moat</div>
-      <div class="c-track"><div class="c-bar" style="width:50%;background:#f778ba;"></div></div>
-      <div class="c-num">1</div>
+      <!-- ТАБЛИЦА РОССИЯ НАЧАЛО -->
+      <table class="news" id="news-rf">
+        <thead>
+          <tr><th>Дата</th><th>Новость</th><th>Источник</th><th>Критерий</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="date">19 ноя</td>
+            <td class="title"><a href="https://www.forbes.ru/tekhnologii/572604-um-nalivaut-v-banki-finsektor-potratit-do-20-mlrd-rublej-na-ii-agentov-v-2026-godu" target="_blank" rel="noopener">Финсектор потратит до 20 млрд ₽ на ИИ-агентов в 2026</a></td>
+            <td class="src">Forbes / Axenix</td>
+            <td><span class="k-badge" style="background:rgba(126,231,135,.15);color:#7ee787;">К1</span></td>
+          </tr>
+          <tr>
+            <td class="date">19 ноя</td>
+            <td class="title"><a href="https://www.interfax.ru/pressreleases/1130071" target="_blank" rel="noopener">ИИ-агенты изменят правила конкуренции между банками</a></td>
+            <td class="src">Интерфакс</td>
+            <td><span class="k-badge" style="background:rgba(255,144,0,.15);color:#ff9000;">К4</span> <span class="k-badge" style="background:rgba(247,120,186,.15);color:#f778ba;">К6</span></td>
+          </tr>
+          <tr>
+            <td class="date">19 ноя</td>
+            <td class="title"><a href="https://www.rbc.ru/industries/news/6b002d85c0518bee9953fd51" target="_blank" rel="noopener">Экономика ИИ: от экспериментов к результатам</a></td>
+            <td class="src">РБК</td>
+            <td><span class="k-badge" style="background:rgba(88,166,255,.15);color:#58a6ff;">К2</span></td>
+          </tr>
+          <tr>
+            <td class="date">19 ноя</td>
+            <td class="title"><a href="https://eanews.ru/rossiya/20261119143430/stalo-izvestno-pochemu-glava-mintsifry-rf-raskritikoval-rossiyskie-neyroseti" target="_blank" rel="noopener">Шадаев раскритиковал российские ИИ-агенты за качество и скорость</a></td>
+            <td class="src">EANews</td>
+            <td><span class="k-badge" style="background:rgba(255,144,0,.15);color:#ff9000;">К4</span></td>
+          </tr>
+          <tr>
+            <td class="date">12 ноя</td>
+            <td class="title"><a href="https://www.klerk.ru/buh/news/718277/" target="_blank" rel="noopener">Минэкономразвития: ИИ-агенты — отдельный вопрос регулирования</a></td>
+            <td class="src">Клерк.ру</td>
+            <td><span class="k-badge" style="background:rgba(255,144,0,.15);color:#ff9000;">К4</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- ТАБЛИЦА РОССИЯ КОНЕЦ -->
     </div>
 
-    <div class="leader" style="background:rgba(126,231,135,0.08);border-color:rgba(126,231,135,0.25);"><b style="color:var(--green);">Лидер:</b> К1 · Монетизация — 2 публикации.</div>
-  </div>
+    <!-- ═══ Лист: Мир ═══ -->
+    <div class="tab-pane" id="tab-world">
+      <!-- СЧЁТЧИК МИР НАЧАЛО -->
+      <div class="c-row">
+        <div class="c-label"><b>К1</b> Монетизация</div>
+        <div class="c-track"><div class="c-bar" style="width:100%;background:#7ee787;"></div></div>
+        <div class="c-num">2</div>
+      </div>
+      <div class="c-row">
+        <div class="c-label"><b>К2</b> Ручные шаги</div>
+        <div class="c-track"><div class="c-bar" style="width:50%;background:#58a6ff;"></div></div>
+        <div class="c-num">1</div>
+      </div>
+      <div class="c-row">
+        <div class="c-label"><b>К3</b> API / приёмка</div>
+        <div class="c-track"><div class="c-bar" style="width:0%;background:#56d4dd;"></div></div>
+        <div class="c-num">0</div>
+      </div>
+      <div class="c-row">
+        <div class="c-label"><b>К4</b> Zero-Touch</div>
+        <div class="c-track"><div class="c-bar" style="width:50%;background:#ff9000;"></div></div>
+        <div class="c-num">1</div>
+      </div>
+      <div class="c-row">
+        <div class="c-label"><b>К5</b> Оркестрация</div>
+        <div class="c-track"><div class="c-bar" style="width:0%;background:#bc8cff;"></div></div>
+        <div class="c-num">0</div>
+      </div>
+      <div class="c-row">
+        <div class="c-label"><b>К6</b> Data Moat</div>
+        <div class="c-track"><div class="c-bar" style="width:50%;background:#f778ba;"></div></div>
+        <div class="c-num">1</div>
+      </div>
+      <div class="leader" style="background:rgba(126,231,135,0.08);border-color:rgba(126,231,135,0.25);"><b style="color:var(--green);">Лидер (Мир):</b> К1 · Монетизация — 2 публикации.</div>
+      <!-- СЧЁТЧИК МИР КОНЕЦ -->
 
-  <div class="panel">
-    <h2>Публикации — мир</h2>
-    <div class="hint">Каждая публикация привязана к критерию соответствия</div>
-    <table class="news">
-      <thead>
-        <tr><th>Дата</th><th>Публикация</th><th>Источник</th><th>Критерий</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="date">10 ноя</td>
-          <td class="title"><a href="https://a16z.com/welcome-to-the-b2a-economy/" target="_blank" rel="noopener">Welcome to the B2A Economy</a></td>
-          <td class="src">a16z</td>
-          <td><span class="k-badge" style="background:rgba(255,144,0,.15);color:#ff9000;">К4</span> <span class="k-badge" style="background:rgba(247,120,186,.15);color:#f778ba;">К6</span></td>
-        </tr>
-        <tr>
-          <td class="date">3 ноя</td>
-          <td class="title"><a href="https://menlovc.com/perspective/2026-the-state-of-enterprise-ai/" target="_blank" rel="noopener">2026: The State of Enterprise AI</a></td>
-          <td class="src">Menlo Ventures</td>
-          <td><span class="k-badge" style="background:rgba(126,231,135,.15);color:#7ee787;">К1</span></td>
-        </tr>
-        <tr>
-          <td class="date">29 сен</td>
-          <td class="title"><a href="https://www.gartner.com/en/newsroom/press-releases/2026-09-29-gartner-predicts-70-percent-of-enterprises-will-abandon-agentic-ai-built-by-vendor-forward-deployed-engineering-by-2028" target="_blank" rel="noopener">70% of enterprises will abandon agentic AI built by vendor FDE by 2028</a></td>
-          <td class="src">Gartner</td>
-          <td><span class="k-badge" style="background:rgba(88,166,255,.15);color:#58a6ff;">К2</span></td>
-        </tr>
-        <tr>
-          <td class="date">24 авг</td>
-          <td class="title"><a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/where-ai-agents-pay-off-a-practical-guide-to-the-economics-of-agentic-workflows" target="_blank" rel="noopener">Where AI agents pay off: economics of agentic workflows</a></td>
-          <td class="src">McKinsey</td>
-          <td><span class="k-badge" style="background:rgba(126,231,135,.15);color:#7ee787;">К1</span></td>
-        </tr>
-      </tbody>
-    </table>
+      <!-- ТАБЛИЦА МИР НАЧАЛО -->
+      <table class="news" id="news-world">
+        <thead>
+          <tr><th>Дата</th><th>Публикация</th><th>Источник</th><th>Критерий</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="date">10 ноя</td>
+            <td class="title"><a href="https://a16z.com/welcome-to-the-b2a-economy/" target="_blank" rel="noopener">Welcome to the B2A Economy</a></td>
+            <td class="src">a16z</td>
+            <td><span class="k-badge" style="background:rgba(255,144,0,.15);color:#ff9000;">К4</span> <span class="k-badge" style="background:rgba(247,120,186,.15);color:#f778ba;">К6</span></td>
+          </tr>
+          <tr>
+            <td class="date">3 ноя</td>
+            <td class="title"><a href="https://menlovc.com/perspective/2026-the-state-of-enterprise-ai/" target="_blank" rel="noopener">2026: The State of Enterprise AI</a></td>
+            <td class="src">Menlo Ventures</td>
+            <td><span class="k-badge" style="background:rgba(126,231,135,.15);color:#7ee787;">К1</span></td>
+          </tr>
+          <tr>
+            <td class="date">29 сен</td>
+            <td class="title"><a href="https://www.gartner.com/en/newsroom/press-releases/2026-09-29-gartner-predicts-70-percent-of-enterprises-will-abandon-agentic-ai-built-by-vendor-forward-deployed-engineering-by-2028" target="_blank" rel="noopener">70% of enterprises will abandon agentic AI built by vendor FDE by 2028</a></td>
+            <td class="src">Gartner</td>
+            <td><span class="k-badge" style="background:rgba(88,166,255,.15);color:#58a6ff;">К2</span></td>
+          </tr>
+          <tr>
+            <td class="date">24 авг</td>
+            <td class="title"><a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/where-ai-agents-pay-off-a-practical-guide-to-the-economics-of-agentic-workflows" target="_blank" rel="noopener">Where AI agents pay off: economics of agentic workflows</a></td>
+            <td class="src">McKinsey</td>
+            <td><span class="k-badge" style="background:rgba(126,231,135,.15);color:#7ee787;">К1</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- ТАБЛИЦА МИР КОНЕЦ -->
+    </div>
+
   </div>
 
   <div class="footer">
     🔥 Феникс · Новости · Ноябрь 2026 · <a href="https://nasledstvo2026.github.io/Phoenix/">nasledstvo2026.github.io/Phoenix</a>
   </div>
 </div>
+
+<script>
+  function switchTab(region) {
+    document.getElementById('tab-rf').classList.toggle('active', region === 'rf');
+    document.getElementById('tab-world').classList.toggle('active', region === 'world');
+    document.getElementById('tab-btn-rf').classList.toggle('active', region === 'rf');
+    document.getElementById('tab-btn-world').classList.toggle('active', region === 'world');
+  }
+</script>
 </body>
 </html>
