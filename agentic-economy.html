@@ -9,6 +9,13 @@
   <style>
     .plaque-link { text-decoration: none; display: inline-block; cursor: pointer; transition: transform .2s ease, filter .2s ease; }
     .plaque-link:hover { transform: translateY(-2px); filter: brightness(1.18); }
+    .preamble { max-width: 840px; margin: 0 auto 10px; }
+    .quote { position: relative; padding: 24px 30px 20px 48px; margin-bottom: 14px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 14px; backdrop-filter: blur(20px) saturate(1.4); -webkit-backdrop-filter: blur(20px) saturate(1.4); }
+    .quote .qmark { position: absolute; left: 14px; top: 8px; font-family: Georgia, "Times New Roman", serif; font-size: 46px; line-height: 1; font-weight: 700; background: linear-gradient(135deg, #58a6ff, #bc8cff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .quote .text { font-family: Georgia, "Palatino Linotype", "Book Antiqua", Palatino, serif; font-size: 16.5px; line-height: 1.7; color: var(--text); }
+    .quote .text b { color: #bc8cff; font-weight: 700; }
+    .quote .who { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--glass-border); font-size: 12.5px; color: var(--text-dim); }
+    .quote .who b { color: var(--text); font-weight: 600; }
   </style>
 </head>
 <body>
@@ -17,6 +24,20 @@
   <div class="hero">
     <h1 class="page-title">Агентная экономика</h1>
     <div class="meta">Agentic Economy</div>
+  </div>
+
+  <!-- ═══ Преамбула ═══ -->
+  <div class="preamble">
+    <div class="quote">
+      <span class="qmark">«</span>
+      <div class="text">Мы переходим от экономики цифровизации к <b>экономике автономных ИИ-агентов</b>.</div>
+      <div class="who"><b>Александр Ведяхин</b> · первый заместитель Председателя Правления Сбербанка · ПМЭФ, июнь 2026</div>
+    </div>
+    <div class="quote">
+      <span class="qmark">«</span>
+      <div class="text">Мы устали быть операторами своих собственных жизней. <b>Агентная экономика возвращает человеку его главный ресурс — время и свободу</b>. А самым дорогим дефицитом в ней становятся доверие и ответственность.</div>
+      <div class="who"><b>Герман Греф</b> · президент, председатель правления Сбербанка · Стратегия-2029, ноябрь 2026</div>
+    </div>
   </div>
 
   <!-- ═══ Плашка: Термины и определения (кнопка) ═══ -->
