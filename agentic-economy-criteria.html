@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Критерии соответствия — Феникс 🔥</title>
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+  <a href="agentic-economy.html" class="back">← Агентная экономика</a>
+  <div class="hero">
+    <h1 class="page-title">Критерии соответствия</h1>
+    <div class="meta">6 измеримых критериев · максимум 12 баллов</div>
+  </div>
+
+  <!-- Вердикт-шкала -->
+  <div class="item" style="max-width:900px;margin:0 auto 16px;padding:20px 30px;">
+    <div style="font-size:14px;line-height:1.7;color:var(--text-dim);">
+      Сумма: 6 критериев × 0–2 балла = <b style="color:var(--text);">0–12</b>.
+      Вердикт:
+      <b style="color:var(--green);">Agentic Native (10–12)</b> ·
+      <b style="color:var(--yellow);">Transitional Copilot (6–9)</b> ·
+      <b style="color:var(--red);">Legacy Software (0–5)</b>
+    </div>
+  </div>
+
+  <div style="max-width:900px;margin:0 auto;">
+
+    <!-- 1 -->
+    <div class="item" style="padding:24px 30px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+        <span style="flex:none;width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#58a6ff,#bc8cff);color:#0a0e14;font-weight:800;font-size:14px;display:inline-flex;align-items:center;justify-content:center;">1</span>
+        <span style="font-size:16px;font-weight:700;color:var(--text);">Результатная и транзакционная монетизация</span>
+      </div>
+      <div style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:10px;">Порог: ≥ 80% от планируемой выручки</div>
+      <div style="font-size:13.5px;line-height:1.7;color:var(--text-dim);margin-bottom:8px;">
+        <b style="color:var(--green);">2</b> — выручка ≥80% от результата/транзакции ·
+        <b style="color:var(--yellow);">1</b> — частично, либо модель не раскрыта ·
+        <b style="color:var(--red);">0</b> — подписка за места / за токены / ручное подтверждение.
+      </div>
+      <div style="font-size:13px;color:var(--text-faint);line-height:1.6;">Пример: «агент берёт 1% с каждой закрытой сделки, без подписки» → 2 балла.</div>
+      <div style="margin-top:10px;font-size:12px;color:var(--text-dim);">Источник: <a href="https://a16z.com/" target="_blank" rel="noopener">a16z — You are not a model. Don't price per token, August 2026</a></div>
+    </div>
+
+    <!-- 2 -->
+    <div class="item" style="padding:24px 30px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+        <span style="flex:none;width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#58a6ff,#bc8cff);color:#0a0e14;font-weight:800;font-size:14px;display:inline-flex;align-items:center;justify-content:center;">2</span>
+        <span style="font-size:16px;font-weight:700;color:var(--text);">Устранение ручных шагов в сквозном процессе</span>
+      </div>
+      <div style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:10px;">Порог: ≥ 70% операций от триггера до результата</div>
+      <div style="font-size:13.5px;line-height:1.7;color:var(--text-dim);margin-bottom:8px;">
+        <b style="color:var(--green);">2</b> — агент ведёт процесс end-to-end, ≥70% ручных шагов устранено ·
+        <b style="color:var(--yellow);">1</b> — автоматизирует часть, ключевые шаги ручные ·
+        <b style="color:var(--red);">0</b> — ИИ-надстройка поверх ручных операций.
+      </div>
+      <div style="font-size:13px;color:var(--text-faint);line-height:1.6;">Пример: «агент сам от заявки до акта» → 2; «бот подсказывает менеджеру, а оформляет человек» → 0.</div>
+      <div style="margin-top:10px;font-size:12px;color:var(--text-dim);">Источник: <a href="https://www.bcg.com/" target="_blank" rel="noopener">BCG — The Formula for Agentic AI Value, September 2026</a></div>
+    </div>
+
+    <!-- 3 -->
+    <div class="item" style="padding:24px 30px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+        <span style="flex:none;width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#58a6ff,#bc8cff);color:#0a0e14;font-weight:800;font-size:14px;display:inline-flex;align-items:center;justify-content:center;">3</span>
+        <span style="font-size:16px;font-weight:700;color:var(--text);">Цифровые шлюзы и объективная приёмка</span>
+      </div>
+      <div style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:10px;">Порог: ≥ 85% этапов сделки с API и машинной приёмкой</div>
+      <div style="font-size:13.5px;line-height:1.7;color:var(--text-dim);margin-bottom:8px;">
+        <b style="color:var(--green);">2</b> — ниша, где ≥85% этапов закрыты API/ЭДО/биржами, приёмка объективна ·
+        <b style="color:var(--yellow);">1</b> — часть этапов цифровая, есть ручные/субъективные ·
+        <b style="color:var(--red);">0</b> — нет цифровых шлюзов, приёмка субъективная.
+      </div>
+      <div style="font-size:13px;color:var(--text-faint);line-height:1.6;">Пример: «ЭДО + СБП + биржа» → 2; «согласование по телефону/почте» → 0.</div>
+      <div style="margin-top:10px;font-size:12px;color:var(--text-dim);">Источник: <a href="https://menlovc.com/perspective/2026-the-state-of-enterprise-ai/" target="_blank" rel="noopener">Menlo Ventures — 2026: The State of Enterprise AI, November 2026</a></div>
+    </div>
+
+    <!-- 4 -->
+    <div class="item" style="padding:24px 30px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+        <span style="flex:none;width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#58a6ff,#bc8cff);color:#0a0e14;font-weight:800;font-size:14px;display:inline-flex;align-items:center;justify-content:center;">4</span>
+        <span style="font-size:16px;font-weight:700;color:var(--text);">Транзакции без участия человека (Zero-Touch)</span>
+      </div>
+      <div style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:10px;">Порог: ≥ 80% юридически/финансово значимых сделок</div>
+      <div style="font-size:13.5px;line-height:1.7;color:var(--text-dim);margin-bottom:8px;">
+        <b style="color:var(--green);">2</b> — агент сам закрывает ≥80% сделок в рамках мандата ·
+        <b style="color:var(--yellow);">1</b> — частичная автономия, часть подтверждает человек ·
+        <b style="color:var(--red);">0</b> — каждая сделка требует ручного клика.
+      </div>
+      <div style="font-size:13px;color:var(--text-faint);line-height:1.6;">Пример: «агент оплачивает заказы по заданным лимитам» → 2; «платёжку отправляет бухгалтер» → 0.</div>
+      <div style="margin-top:10px;font-size:12px;color:var(--text-dim);">Источник: <a href="https://www.gartner.com/" target="_blank" rel="noopener">Gartner — $234 Billion in Enterprise Application Software Spend Is at Risk from Agentic AI, July 2026</a></div>
+    </div>
+
+    <!-- 5 -->
+    <div class="item" style="padding:24px 30px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+        <span style="flex:none;width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#58a6ff,#bc8cff);color:#0a0e14;font-weight:800;font-size:14px;display:inline-flex;align-items:center;justify-content:center;">5</span>
+        <span style="font-size:16px;font-weight:700;color:var(--text);">Оркестрация независимых систем</span>
+      </div>
+      <div style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:10px;">Порог: ≥ 3 систем в одной сквозной задаче</div>
+      <div style="font-size:13.5px;line-height:1.7;color:var(--text-dim);margin-bottom:8px;">
+        <b style="color:var(--green);">2</b> — агент сводит ≥3 независимые системы ·
+        <b style="color:var(--yellow);">1</b> — 1–2 системы ·
+        <b style="color:var(--red);">0</b> — работает внутри одной системы (узкий бот).
+      </div>
+      <div style="font-size:13px;color:var(--text-faint);line-height:1.6;">Пример: «1С + банк + маркетплейс + ЭДО» → 2; «бот отвечает в одном чате» → 0.</div>
+      <div style="margin-top:10px;font-size:12px;color:var(--text-dim);">Источник: <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" rel="noopener">McKinsey — The State of AI in 2026: On the Road to ROI, August 2026</a></div>
+    </div>
+
+    <!-- 6 -->
+    <div class="item" style="padding:24px 30px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+        <span style="flex:none;width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#58a6ff,#bc8cff);color:#0a0e14;font-weight:800;font-size:14px;display:inline-flex;align-items:center;justify-content:center;">6</span>
+        <span style="font-size:16px;font-weight:700;color:var(--text);">Проприетарный контекст (Data Moat)</span>
+      </div>
+      <div style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:10px;">Порог: ≥ 50% ценности от закрытых данных / сетевого эффекта</div>
+      <div style="font-size:13.5px;line-height:1.7;color:var(--text-dim);margin-bottom:8px;">
+        <b style="color:var(--green);">2</b> — ≥50% ценности от недоступных клиенту данных ·
+        <b style="color:var(--yellow);">1</b> — частично, воспроизводимо на публичных API ·
+        <b style="color:var(--red);">0</b> — легко собирается клиентом, моата нет.
+      </div>
+      <div style="font-size:13px;color:var(--text-faint);line-height:1.6;">Пример: «кросс-клиентские данные о ценах/рисках» → 2; «обёртка над ChatGPT без своих данных» → 0.</div>
+      <div style="margin-top:10px;font-size:12px;color:var(--text-dim);">Источник: <a href="https://a16z.com/" target="_blank" rel="noopener">a16z — How AI Applications Earn Their Premium, November 2026</a></div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    🔥 Феникс · Критерии соответствия · Ноябрь 2026 · <a href="https://nasledstvo2026.github.io/Phoenix/">nasledstvo2026.github.io/Phoenix</a>
+  </div>
+</div>
+</body>
+</html>
