@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Новости — Агентная экономика — Феникс 🔥</title>
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .panel { max-width: 900px; margin: 0 auto 16px; padding: 22px 30px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; backdrop-filter: blur(20px) saturate(1.4); -webkit-backdrop-filter: blur(20px) saturate(1.4); }
+    .panel h2 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .panel .hint { font-size: 12px; color: var(--text-dim); margin-bottom: 16px; }
+    .c-row { display: flex; align-items: center; gap: 12px; margin-bottom: 9px; }
+    .c-label { flex: 0 0 172px; font-size: 12.5px; color: var(--text-dim); white-space: nowrap; }
+    .c-label b { color: var(--text); }
+    .c-track { flex: 1; height: 20px; background: rgba(255,255,255,0.045); border-radius: 6px; overflow: hidden; }
+    .c-bar { height: 100%; border-radius: 6px; }
+    .c-num { flex: 0 0 22px; text-align: right; font-weight: 700; font-size: 14px; color: var(--text); }
+    .leader { margin-top: 14px; padding: 10px 14px; border-radius: 10px; background: rgba(255,144,0,0.08); border: 1px solid rgba(255,144,0,0.25); font-size: 12.5px; color: var(--text); }
+    .leader b { color: var(--orange); }
+
+    table.news { width: 100%; border-collapse: collapse; font-size: 13px; }
+    table.news th { text-align: left; padding: 10px 12px; font-size: 10.5px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-faint); border-bottom: 1px solid var(--glass-border); }
+    table.news td { padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); vertical-align: top; }
+    table.news td.date { white-space: nowrap; color: var(--text-dim); }
+    table.news td.title { color: var(--text); line-height: 1.45; }
+    table.news td.title a { color: var(--text); font-weight: 600; text-decoration: none; border-bottom: 1px dotted rgba(88,166,255,0.45); }
+    table.news td.title a:hover { color: var(--blue); border-bottom-color: var(--blue); }
+    table.news td.src { color: var(--text-dim); white-space: nowrap; }
+    .k-badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 10.5px; font-weight: 700; margin: 1px 3px 1px 0; }
+    @media (max-width: 640px) {
+      .c-label { flex-basis: 116px; font-size: 11px; }
+      table.news td.src { display: none; }
+      .panel { padding: 18px 18px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <a href="agentic-economy.html" class="back">← Агентная экономика</a>
+  <div class="hero">
+    <h1 class="page-title">Новости</h1>
+    <div class="meta">Агентная экономика · еженедельный дайджест</div>
+  </div>
+
+  <!-- ═══ Накопительный счётчик по критериям ═══ -->
+  <div class="panel">
+    <h2>Накопительный счётчик по критериям</h2>
+    <div class="hint">Неделя 1 · 15–22 ноября 2026 · всего 5 новостей · 6 упоминаний критериев</div>
+
+    <div class="c-row">
+      <div class="c-label"><b>К1</b> Монетизация</div>
+      <div class="c-track"><div class="c-bar" style="width:33%;background:#7ee787;"></div></div>
+      <div class="c-num">1</div>
+    </div>
+    <div class="c-row">
+      <div class="c-label"><b>К2</b> Ручные шаги</div>
+      <div class="c-track"><div class="c-bar" style="width:33%;background:#58a6ff;"></div></div>
+      <div class="c-num">1</div>
+    </div>
+    <div class="c-row">
+      <div class="c-label"><b>К3</b> API / приёмка</div>
+      <div class="c-track"><div class="c-bar" style="width:0%;background:#56d4dd;"></div></div>
+      <div class="c-num">0</div>
+    </div>
+    <div class="c-row">
+      <div class="c-label"><b>К4</b> Zero-Touch</div>
+      <div class="c-track"><div class="c-bar" style="width:100%;background:#ff9000;"></div></div>
+      <div class="c-num">3</div>
+    </div>
+    <div class="c-row">
+      <div class="c-label"><b>К5</b> Оркестрация</div>
+      <div class="c-track"><div class="c-bar" style="width:0%;background:#bc8cff;"></div></div>
+      <div class="c-num">0</div>
+    </div>
+    <div class="c-row">
+      <div class="c-label"><b>К6</b> Data Moat</div>
+      <div class="c-track"><div class="c-bar" style="width:33%;background:#f778ba;"></div></div>
+      <div class="c-num">1</div>
+    </div>
+
+    <div class="leader"><b>Лидер недели:</b> К4 · Zero-Touch Transaction — 3 новости. Автономные сделки — самое горячее место рынка.</div>
+  </div>
+
+  <!-- ═══ Таблица новостей ═══ -->
+  <div class="panel">
+    <h2>Новости недели</h2>
+    <div class="hint">Каждая новость привязана к критерию соответствия</div>
+    <table class="news">
+      <thead>
+        <tr><th>Дата</th><th>Новость</th><th>Источник</th><th>Критерий</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="date">19 ноя</td>
+          <td class="title"><a href="https://www.forbes.ru/tekhnologii/572604-um-nalivaut-v-banki-finsektor-potratit-do-20-mlrd-rublej-na-ii-agentov-v-2026-godu" target="_blank" rel="noopener">Финсектор потратит до 20 млрд ₽ на ИИ-агентов в 2026</a></td>
+          <td class="src">Forbes / Axenix</td>
+          <td><span class="k-badge" style="background:rgba(126,231,135,.15);color:#7ee787;">К1</span></td>
+        </tr>
+        <tr>
+          <td class="date">19 ноя</td>
+          <td class="title"><a href="https://www.interfax.ru/pressreleases/1130071" target="_blank" rel="noopener">ИИ-агенты изменят правила конкуренции между банками</a></td>
+          <td class="src">Интерфакс</td>
+          <td><span class="k-badge" style="background:rgba(255,144,0,.15);color:#ff9000;">К4</span> <span class="k-badge" style="background:rgba(247,120,186,.15);color:#f778ba;">К6</span></td>
+        </tr>
+        <tr>
+          <td class="date">19 ноя</td>
+          <td class="title"><a href="https://www.rbc.ru/industries/news/6b002d85c0518bee9953fd51" target="_blank" rel="noopener">Экономика ИИ: от экспериментов к результатам</a></td>
+          <td class="src">РБК</td>
+          <td><span class="k-badge" style="background:rgba(88,166,255,.15);color:#58a6ff;">К2</span></td>
+        </tr>
+        <tr>
+          <td class="date">19 ноя</td>
+          <td class="title"><a href="https://eanews.ru/rossiya/20261119143430/stalo-izvestno-pochemu-glava-mintsifry-rf-raskritikoval-rossiyskie-neyroseti" target="_blank" rel="noopener">Шадаев раскритиковал российские ИИ-агенты за качество и скорость</a></td>
+          <td class="src">EANews</td>
+          <td><span class="k-badge" style="background:rgba(255,144,0,.15);color:#ff9000;">К4</span></td>
+        </tr>
+        <tr>
+          <td class="date">12 ноя</td>
+          <td class="title"><a href="https://www.klerk.ru/buh/news/718277/" target="_blank" rel="noopener">Минэкономразвития: ИИ-агенты — отдельный вопрос регулирования</a></td>
+          <td class="src">Клерк.ру</td>
+          <td><span class="k-badge" style="background:rgba(255,144,0,.15);color:#ff9000;">К4</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">
+    🔥 Феникс · Новости · Ноябрь 2026 · <a href="https://nasledstvo2026.github.io/Phoenix/">nasledstvo2026.github.io/Phoenix</a>
+  </div>
+</div>
+</body>
+</html>
