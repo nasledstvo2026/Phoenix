@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Механика работы верификатора — Феникс 🔥</title>
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+  <a href="agentic-economy.html" class="back">← Агентная экономика</a>
+  <div class="hero">
+    <h1 class="page-title">Механика работы верификатора</h1>
+    <div class="meta">Федор2 · пайплайн оценки бизнес-идей ИИ-агентов</div>
+  </div>
+
+  <div style="max-width:900px;margin:0 auto;">
+
+    <div class="item" style="padding:24px 30px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+        <span style="flex:none;width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#58a6ff,#bc8cff);color:#0a0e14;font-weight:800;font-size:14px;display:inline-flex;align-items:center;justify-content:center;">1</span>
+        <span style="font-size:16px;font-weight:700;color:var(--text);">Триггер</span>
+      </div>
+      <div style="font-size:14.5px;line-height:1.65;color:var(--text-dim);">
+        Сообщение начинается с <b style="color:var(--text);">«Федор2: &lt;текст бизнес-идеи&gt;»</b> — формулировка идеи на самом раннем этапе (концепция / гипотеза).
+      </div>
+    </div>
+
+    <div class="item" style="padding:24px 30px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+        <span style="flex:none;width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#58a6ff,#bc8cff);color:#0a0e14;font-weight:800;font-size:14px;display:inline-flex;align-items:center;justify-content:center;">2</span>
+        <span style="font-size:16px;font-weight:700;color:var(--text);">Маршрутизация</span>
+      </div>
+      <div style="font-size:14.5px;line-height:1.65;color:var(--text-dim);">
+        Main-агент распознаёт триггер и запускает отдельного агента-верификатора <b style="color:var(--text);">agentic-idea-verifier</b> в изолированном контексте (spawn + cleanup).
+      </div>
+    </div>
+
+    <div class="item" style="padding:24px 30px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+        <span style="flex:none;width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#58a6ff,#bc8cff);color:#0a0e14;font-weight:800;font-size:14px;display:inline-flex;align-items:center;justify-content:center;">3</span>
+        <span style="font-size:16px;font-weight:700;color:var(--text);">Загрузка методологии</span>
+      </div>
+      <div style="font-size:14.5px;line-height:1.65;color:var(--text-dim);">
+        Верификатор читает скилл <b style="color:var(--text);">agentic-idea-verifier</b> — 6 измеримых критериев, целевые пороги, шкала 0/1/2, максимум 12 баллов.
+      </div>
+    </div>
+
+    <div class="item" style="padding:24px 30px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+        <span style="flex:none;width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#58a6ff,#bc8cff);color:#0a0e14;font-weight:800;font-size:14px;display:inline-flex;align-items:center;justify-content:center;">4</span>
+        <span style="font-size:16px;font-weight:700;color:var(--text);">Оценка по 6 критериям</span>
+      </div>
+      <div style="font-size:14.5px;line-height:1.8;color:var(--text-dim);">
+        1. Результатная / транзакционная монетизация — <b style="color:var(--text);">≥ 80%</b> выручки<br>
+        2. Устранение ручных шагов в сквозном процессе — <b style="color:var(--text);">≥ 70%</b><br>
+        3. Этапы сделки с API и объективной машинной приёмкой — <b style="color:var(--text);">≥ 85%</b><br>
+        4. Zero-Touch Transaction Rate — <b style="color:var(--text);">≥ 80%</b><br>
+        5. Независимые системы в одной сквозной задаче — <b style="color:var(--text);">≥ 3</b><br>
+        6. Проприетарный контекст / защита от копирования — <b style="color:var(--text);">≥ 50%</b>
+      </div>
+    </div>
+
+    <div class="item" style="padding:24px 30px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+        <span style="flex:none;width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#58a6ff,#bc8cff);color:#0a0e14;font-weight:800;font-size:14px;display:inline-flex;align-items:center;justify-content:center;">5</span>
+        <span style="font-size:16px;font-weight:700;color:var(--text);">Вердикт</span>
+      </div>
+      <div style="font-size:14.5px;line-height:1.7;color:var(--text-dim);">
+        Итоговый балл <b style="color:var(--text);">X / 12</b> →
+        <b style="color:var(--green);">Agentic Native (10–12)</b> ·
+        <b style="color:var(--yellow);">Transitional Copilot (6–9)</b> ·
+        <b style="color:var(--red);">Legacy Software (0–5)</b>.
+        Плюс оценка по каждому критерию, ключевой риск и точка роста (pivot).
+      </div>
+    </div>
+
+    <div class="item" style="padding:24px 30px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+        <span style="flex:none;width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#58a6ff,#bc8cff);color:#0a0e14;font-weight:800;font-size:14px;display:inline-flex;align-items:center;justify-content:center;">6</span>
+        <span style="font-size:16px;font-weight:700;color:var(--text);">Ответ человеку</span>
+      </div>
+      <div style="font-size:14.5px;line-height:1.65;color:var(--text-dim);">
+        Main-агент пересказывает вердикт пользователю человеческим языком. Сырой вердикт верификатора в чат не публикуется — действует ANNOUNCE-контракт.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    🔥 Феникс · Механика работы верификатора · Ноябрь 2026 · <a href="https://nasledstvo2026.github.io/Phoenix/">nasledstvo2026.github.io/Phoenix</a>
+  </div>
+</div>
+</body>
+</html>
