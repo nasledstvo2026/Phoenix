@@ -72,6 +72,7 @@
       text-align: right;
       line-height: 1.3;
     }
+    .gate .g-ex { display: block; margin-top: 5px; font-size: 11px; color: var(--text-dim); font-weight: 500; line-height: 1.4; }
     .verdict {
       max-width: 600px;
       margin: 18px auto 0;
@@ -147,35 +148,35 @@
 
     <div class="gate">
       <span class="n">1</span>
-      <span class="q">Доставляет <b>результат</b>, а не интерфейс?</span>
+      <span class="q">Доставляет <b>результат</b>, а не интерфейс?<span class="g-ex">💡 Sierra — продаёт «решённое обращение», а не доступ к чату</span></span>
       <span class="no">✕ нет<br>СТОП</span>
     </div>
     <div class="arrow">✓ да ↓</div>
 
     <div class="gate">
       <span class="n">2</span>
-      <span class="q">Есть <b>работа агенту</b>?<br>(неструктурный вход / путь по контексту)</span>
+      <span class="q">Есть <b>работа агенту</b>?<br>(неструктурный вход / путь по контексту)<span class="g-ex">💡 Klarna — разбирает свободный текст вопроса клиента</span></span>
       <span class="no">✕ нет<br>это хардкод</span>
     </div>
     <div class="arrow">✓ да ↓</div>
 
     <div class="gate">
       <span class="n">3</span>
-      <span class="q">Есть <b>API / шлюзы</b>, чтобы агент мог действовать?</span>
+      <span class="q">Есть <b>API / шлюзы</b>, чтобы агент мог действовать?<span class="g-ex">💡 Stripe — платежи идут через API</span></span>
       <span class="no">✕ нет<br>СТОП</span>
     </div>
     <div class="arrow">✓ да ↓</div>
 
     <div class="gate">
       <span class="n">4</span>
-      <span class="q">Результат проверяется <b>объективно</b> (машиной)?</span>
+      <span class="q">Результат проверяется <b>объективно</b> (машиной)?<span class="g-ex">💡 Devin — код проходит тесты (объективная проверка)</span></span>
       <span class="no">✕ нет<br>СТОП</span>
     </div>
     <div class="arrow">✓ да ↓</div>
 
     <div class="gate">
       <span class="n">5</span>
-      <span class="q"><b>Цена ошибки</b> управляема?<br>(лимиты / guardrails)</span>
+      <span class="q"><b>Цена ошибки</b> управляема?<br>(лимиты / guardrails)<span class="g-ex">💡 Поддержка — ошибка стоит извинения, а не денег</span></span>
       <span class="no">✕ нет<br>регуляторика</span>
     </div>
     <div class="arrow">✓ да ↓</div>
