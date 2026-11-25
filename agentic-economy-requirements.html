@@ -22,10 +22,15 @@
     .arrow {
       text-align: center;
       color: var(--green);
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 700;
       line-height: 1;
-      padding: 5px 0;
+      padding: 6px 0;
+      animation: flow 1.8s ease-in-out infinite;
+    }
+    @keyframes flow {
+      0%, 100% { opacity: 0.45; transform: translateY(0); }
+      50% { opacity: 1; transform: translateY(2px); }
     }
     .gate {
       display: flex;
@@ -33,12 +38,13 @@
       gap: 12px;
       background: var(--glass-bg);
       border: 1px solid var(--glass-border);
+      border-left: 3px solid rgba(126,231,135,0.55);
       border-radius: 14px;
       padding: 14px 16px;
     }
     .gate .n {
       flex: none;
-      width: 26px; height: 26px;
+      width: 27px; height: 27px;
       border-radius: 50%;
       background: linear-gradient(135deg, #58a6ff, #bc8cff);
       color: #0a0e14;
@@ -47,6 +53,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      box-shadow: 0 0 14px rgba(188,140,255,0.45);
     }
     .gate .q {
       flex: 1;
@@ -62,6 +69,8 @@
       font-weight: 700;
       color: var(--red);
       white-space: nowrap;
+      text-align: right;
+      line-height: 1.3;
     }
     .verdict {
       max-width: 600px;
@@ -74,17 +83,17 @@
     .verdict .title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 12px; text-align: center; }
     .spectrum {
       display: flex;
-      height: 26px;
+      height: 30px;
       border-radius: 8px;
       overflow: hidden;
-      font-size: 11px;
-      font-weight: 700;
+      font-size: 11.5px;
+      font-weight: 800;
       color: #0a0e14;
     }
     .spectrum .z1 { flex: 0 0 50%; background: #f85149; display: flex; align-items: center; justify-content: center; }
     .spectrum .z2 { flex: 0 0 33%; background: #e3b341; display: flex; align-items: center; justify-content: center; }
     .spectrum .z3 { flex: 0 0 17%; background: #7ee787; display: flex; align-items: center; justify-content: center; }
-    .spectrum-label { display: flex; justify-content: space-between; margin-top: 6px; font-size: 11px; color: var(--text-dim); }
+    .spectrum-label { display: flex; justify-content: space-between; margin-top: 7px; font-size: 11px; color: var(--text-dim); }
     .criteria {
       max-width: 620px;
       margin: 0 auto;
@@ -106,12 +115,17 @@
       margin-bottom: 6px;
     }
     .crit .name { font-size: 12.5px; color: var(--text); font-weight: 600; line-height: 1.35; margin-bottom: 8px; }
-    .crit .th {
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--text);
-    }
+    .crit .th { font-size: 20px; font-weight: 800; color: var(--text); }
     .crit .th small { font-size: 12px; color: var(--text-dim); font-weight: 600; }
+    .crit .ex {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--glass-border);
+      font-size: 11.5px;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+    .crit .ex b { color: var(--text); }
     @media (max-width: 560px) {
       .criteria { grid-template-columns: 1fr; }
       .gate .no { display: none; }
@@ -134,39 +148,39 @@
     <div class="gate">
       <span class="n">1</span>
       <span class="q">Доставляет <b>результат</b>, а не интерфейс?</span>
-      <span class="no">✕ нет → СТОП</span>
+      <span class="no">✕ нет<br>СТОП</span>
     </div>
-    <div class="arrow">↓ да</div>
+    <div class="arrow">✓ да ↓</div>
 
     <div class="gate">
       <span class="n">2</span>
-      <span class="q">Есть <b>работа агенту</b>? (неструктурный вход / путь по контексту)</span>
-      <span class="no">✕ нет → это хардкод</span>
+      <span class="q">Есть <b>работа агенту</b>?<br>(неструктурный вход / путь по контексту)</span>
+      <span class="no">✕ нет<br>это хардкод</span>
     </div>
-    <div class="arrow">↓ да</div>
+    <div class="arrow">✓ да ↓</div>
 
     <div class="gate">
       <span class="n">3</span>
       <span class="q">Есть <b>API / шлюзы</b>, чтобы агент мог действовать?</span>
-      <span class="no">✕ нет → СТОП</span>
+      <span class="no">✕ нет<br>СТОП</span>
     </div>
-    <div class="arrow">↓ да</div>
+    <div class="arrow">✓ да ↓</div>
 
     <div class="gate">
       <span class="n">4</span>
       <span class="q">Результат проверяется <b>объективно</b> (машиной)?</span>
-      <span class="no">✕ нет → СТОП</span>
+      <span class="no">✕ нет<br>СТОП</span>
     </div>
-    <div class="arrow">↓ да</div>
+    <div class="arrow">✓ да ↓</div>
 
     <div class="gate">
       <span class="n">5</span>
-      <span class="q"><b>Цена ошибки</b> управляема? (лимиты / guardrails)</span>
-      <span class="no">✕ нет → регуляторика</span>
+      <span class="q"><b>Цена ошибки</b> управляема?<br>(лимиты / guardrails)</span>
+      <span class="no">✕ нет<br>регуляторика</span>
     </div>
-    <div class="arrow">↓ да</div>
+    <div class="arrow">✓ да ↓</div>
 
-    <div class="start" style="border-color: rgba(126,231,135,0.4);">ОЦЕНКА ПО 6 КРИТЕРИЯМ</div>
+    <div class="start" style="border-color: rgba(126,231,135,0.45);">ОЦЕНКА ПО 6 КРИТЕРИЯМ</div>
   </div>
 
   <!-- ═══ Шкала вердикта ═══ -->
@@ -184,37 +198,43 @@
     </div>
   </div>
 
-  <!-- ═══ 6 критериев ═══ -->
+  <!-- ═══ 6 критериев с примерами ═══ -->
   <div class="criteria" style="margin-top:20px;">
     <div class="crit">
       <div class="k" style="color:#7ee787;">К1 · Монетизация</div>
       <div class="name">Результатная / транзакционная</div>
       <div class="th">≥ 80% <small>выручки</small></div>
+      <div class="ex">💡 «Агент-закупщик берёт 1% с каждой закрытой сделки — подписки нет»<br>💡 «Плата за обработанный документ, а не за “рабочее место”»</div>
     </div>
     <div class="crit">
       <div class="k" style="color:#58a6ff;">К2 · Ручные шаги</div>
       <div class="name">Устранение в сквозном процессе</div>
       <div class="th">≥ 70%</div>
+      <div class="ex">💡 «Агент сам от заявки до акта: нашёл поставщика → сравнил → оформил → оплатил»<br>💡 «Агент ведёт сверку отчёта от получения до отправки — без ручного копирования»</div>
     </div>
     <div class="crit">
       <div class="k" style="color:#56d4dd;">К3 · API / приёмка</div>
       <div class="name">Цифровые шлюзы + объективная проверка</div>
       <div class="th">≥ 85%</div>
+      <div class="ex">💡 «Сделка идёт через ЭДО + СБП + биржу — без бумаги»<br>💡 «Документы приходят по ЭДО, приёмка по полям: ИНН, сумма, дата»</div>
     </div>
     <div class="crit">
       <div class="k" style="color:#ff9000;">К4 · Zero-Touch</div>
       <div class="name">Сделки без участия человека</div>
       <div class="th">≥ 80%</div>
+      <div class="ex">💡 «Агент сам оплачивает заказы в рамках установленных лимитов»<br>💡 «Агент бронирует и оплачивает командировку по правилам — без бухгалтера»</div>
     </div>
     <div class="crit">
       <div class="k" style="color:#bc8cff;">К5 · Оркестрация</div>
       <div class="name">Независимые системы в одной задаче</div>
       <div class="th">≥ 3</div>
+      <div class="ex">💡 «Агент сводит 1С + банк + маркетплейс + ЭДО в одном заказе»<br>💡 «Агент синхронизирует CRM + склад + доставку без ручной пересылки»</div>
     </div>
     <div class="crit">
       <div class="k" style="color:#f778ba;">К6 · Data Moat</div>
       <div class="name">Проприетарный контекст / защита</div>
       <div class="th">≥ 50%</div>
+      <div class="ex">💡 «Кросс-клиентская статистика цен и рисков — у клиента её нет»<br>💡 «История сделок всех клиентов, на которой агент учится — сетевой эффект»</div>
     </div>
   </div>
 
