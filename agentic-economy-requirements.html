@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Требования к бизнес-идее — Феникс 🔥</title>
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .flow { max-width: 600px; margin: 0 auto 8px; }
+    .flow .start {
+      text-align: center;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--text);
+      padding: 14px;
+      border: 1px solid var(--glass-border);
+      border-radius: 14px;
+      background: var(--glass-bg);
+    }
+    .arrow {
+      text-align: center;
+      color: var(--green);
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1;
+      padding: 5px 0;
+    }
+    .gate {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
+    .gate .n {
+      flex: none;
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #58a6ff, #bc8cff);
+      color: #0a0e14;
+      font-weight: 800;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .gate .q {
+      flex: 1;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+    }
+    .gate .q b { color: #bc8cff; }
+    .gate .no {
+      flex: none;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--red);
+      white-space: nowrap;
+    }
+    .verdict {
+      max-width: 600px;
+      margin: 18px auto 0;
+      padding: 16px 18px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 14px;
+    }
+    .verdict .title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 12px; text-align: center; }
+    .spectrum {
+      display: flex;
+      height: 26px;
+      border-radius: 8px;
+      overflow: hidden;
+      font-size: 11px;
+      font-weight: 700;
+      color: #0a0e14;
+    }
+    .spectrum .z1 { flex: 0 0 50%; background: #f85149; display: flex; align-items: center; justify-content: center; }
+    .spectrum .z2 { flex: 0 0 33%; background: #e3b341; display: flex; align-items: center; justify-content: center; }
+    .spectrum .z3 { flex: 0 0 17%; background: #7ee787; display: flex; align-items: center; justify-content: center; }
+    .spectrum-label { display: flex; justify-content: space-between; margin-top: 6px; font-size: 11px; color: var(--text-dim); }
+    .criteria {
+      max-width: 620px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .crit {
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 12px 14px;
+      background: var(--glass-bg);
+    }
+    .crit .k {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .crit .name { font-size: 12.5px; color: var(--text); font-weight: 600; line-height: 1.35; margin-bottom: 8px; }
+    .crit .th {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text);
+    }
+    .crit .th small { font-size: 12px; color: var(--text-dim); font-weight: 600; }
+    @media (max-width: 560px) {
+      .criteria { grid-template-columns: 1fr; }
+      .gate .no { display: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <a href="agentic-economy.html" class="back">← Агентная экономика</a>
+  <div class="hero">
+    <h1 class="page-title">Требования к бизнес-идее</h1>
+    <div class="meta">Пройди 5 ворот → набери 10–12 баллов</div>
+  </div>
+
+  <!-- ═══ Воронка: 5 ворот ═══ -->
+  <div class="flow">
+    <div class="start">БИЗНЕС-ИДЕЯ ИИ-АГЕНТА</div>
+    <div class="arrow">↓</div>
+
+    <div class="gate">
+      <span class="n">1</span>
+      <span class="q">Доставляет <b>результат</b>, а не интерфейс?</span>
+      <span class="no">✕ нет → СТОП</span>
+    </div>
+    <div class="arrow">↓ да</div>
+
+    <div class="gate">
+      <span class="n">2</span>
+      <span class="q">Есть <b>работа агенту</b>? (неструктурный вход / путь по контексту)</span>
+      <span class="no">✕ нет → это хардкод</span>
+    </div>
+    <div class="arrow">↓ да</div>
+
+    <div class="gate">
+      <span class="n">3</span>
+      <span class="q">Есть <b>API / шлюзы</b>, чтобы агент мог действовать?</span>
+      <span class="no">✕ нет → СТОП</span>
+    </div>
+    <div class="arrow">↓ да</div>
+
+    <div class="gate">
+      <span class="n">4</span>
+      <span class="q">Результат проверяется <b>объективно</b> (машиной)?</span>
+      <span class="no">✕ нет → СТОП</span>
+    </div>
+    <div class="arrow">↓ да</div>
+
+    <div class="gate">
+      <span class="n">5</span>
+      <span class="q"><b>Цена ошибки</b> управляема? (лимиты / guardrails)</span>
+      <span class="no">✕ нет → регуляторика</span>
+    </div>
+    <div class="arrow">↓ да</div>
+
+    <div class="start" style="border-color: rgba(126,231,135,0.4);">ОЦЕНКА ПО 6 КРИТЕРИЯМ</div>
+  </div>
+
+  <!-- ═══ Шкала вердикта ═══ -->
+  <div class="verdict">
+    <div class="title">Вердикт · 0–12 баллов</div>
+    <div class="spectrum">
+      <div class="z1">0–5</div>
+      <div class="z2">6–9</div>
+      <div class="z3">10–12</div>
+    </div>
+    <div class="spectrum-label">
+      <span>Софт / обёртка</span>
+      <span>Copilot · переупаковать</span>
+      <span>Строим</span>
+    </div>
+  </div>
+
+  <!-- ═══ 6 критериев ═══ -->
+  <div class="criteria" style="margin-top:20px;">
+    <div class="crit">
+      <div class="k" style="color:#7ee787;">К1 · Монетизация</div>
+      <div class="name">Результатная / транзакционная</div>
+      <div class="th">≥ 80% <small>выручки</small></div>
+    </div>
+    <div class="crit">
+      <div class="k" style="color:#58a6ff;">К2 · Ручные шаги</div>
+      <div class="name">Устранение в сквозном процессе</div>
+      <div class="th">≥ 70%</div>
+    </div>
+    <div class="crit">
+      <div class="k" style="color:#56d4dd;">К3 · API / приёмка</div>
+      <div class="name">Цифровые шлюзы + объективная проверка</div>
+      <div class="th">≥ 85%</div>
+    </div>
+    <div class="crit">
+      <div class="k" style="color:#ff9000;">К4 · Zero-Touch</div>
+      <div class="name">Сделки без участия человека</div>
+      <div class="th">≥ 80%</div>
+    </div>
+    <div class="crit">
+      <div class="k" style="color:#bc8cff;">К5 · Оркестрация</div>
+      <div class="name">Независимые системы в одной задаче</div>
+      <div class="th">≥ 3</div>
+    </div>
+    <div class="crit">
+      <div class="k" style="color:#f778ba;">К6 · Data Moat</div>
+      <div class="name">Проприетарный контекст / защита</div>
+      <div class="th">≥ 50%</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    🔥 Феникс · Требования к бизнес-идее · Ноябрь 2026 · <a href="https://nasledstvo2026.github.io/Phoenix/">nasledstvo2026.github.io/Phoenix</a>
+  </div>
+</div>
+</body>
+</html>
