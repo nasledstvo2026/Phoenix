@@ -16,6 +16,11 @@
     .quote .text b { color: #bc8cff; font-weight: 700; }
     .quote .who { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--glass-border); font-size: 12.5px; color: var(--text-dim); }
     .quote .who b { color: var(--text); font-weight: 600; }
+    /* ─── Главная цитата (всегда первая) ─── */
+    .quote.main { box-shadow: inset 3px 0 0 #58a6ff, 0 0 0 1px rgba(88,166,255,.18); }
+    .quote.main .text { font-size: 18px; }
+    .quote.main .qmark { font-size: 56px; }
+    .main-tag { display: inline-block; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: #58a6ff; border: 1px solid rgba(88,166,255,.35); border-radius: 999px; padding: 3px 9px; margin-bottom: 12px; }
 
     /* ─── Пузыри (снизу вверх) ─── */
     .particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden; }
@@ -91,6 +96,13 @@
 
   <!-- ═══ Преамбула ═══ -->
   <div class="preamble" style="margin-top:8px;">
+    <!-- ═══ ГЛАВНАЯ ЦИТАТА — ВСЕГДА ПЕРВАЯ. НЕ ПЕРЕМЕШАТЬ ВНИЗ. ═══ -->
+    <div class="quote main">
+      <span class="qmark">«</span>
+      <div class="main-tag">главная цитата</div>
+      <div class="text">Я подразумевал под переменами <b>освобождение сознания от всяческих догм</b>, от стереотипа маленького, никчемного, равнодушного человека, постоянно посматривающего „наверх“. Перемен в сознании я ждал, а не конкретных там законов, указов, обращений, пленумов, съездов.</div>
+      <div class="who"><b>Виктор Цой</b> · рок-музыкант, лидер группы «Кино» · о песне «Перемен!», 1986 · <a href="https://ru.wikiquote.org/wiki/%D0%9F%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD!" target="_blank" rel="noopener">источник</a></div>
+    </div>
     <div class="quote">
       <span class="qmark">«</span>
       <div class="text">Уже сегодня ИИ-агенты — граждан, компаний, учреждений — начинают взаимодействовать между собой. …Эти ИИ-агенты заключают договоры и совершают платежи, <b>фактически становятся участниками общественных и деловых отношений, то есть формируют агентную экономику</b>.</div>
